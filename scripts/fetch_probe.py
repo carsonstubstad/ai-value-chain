@@ -66,7 +66,7 @@ def probe_gdelt():
     # GDELT asks for at most one request every 5 seconds and often answers 429 to
     # shared cloud runners, so back off and retry before reporting an error.
     attempts = []
-    for wait in (0, 10, 30, 60):
+    for wait in (0, 10, 30):
         time.sleep(wait)
         try:
             status, body = get(url)
@@ -88,6 +88,16 @@ def probe_gdelt():
     return {"status": "ok", "http": status, "endpoint": url, "retries_429": len(attempts), "count": len(items), "items": items}
 
 
+def probe_gdelt_files():
+    """Fallback check: GDELT 2.0 raw update files on a different host than the DOC API."""
+    url = "http://data.gdeltproject.org/gdeltv2/lastupdate.txt"
+    status, body = get(url)
+    lines = body.decode("utf-8", "replace").split("\n")
+    files = [ln.split()[-1] for ln in lines if ln.strip()]
+    sizes = [int(ln.split()[0]) for ln in lines if ln.strip()]
+    return {"status": "ok", "http": status, "endpoint": url, "latest_files": files, "bytes": sizes}
+
+
 def probe_epoch():
     url = "https://epoch.ai/data/data_centers/data_centers.csv"
     status, body = get(url)
@@ -104,7 +114,7 @@ def probe_epoch():
 def main():
     out = sys.argv[1] if len(sys.argv) > 1 else "probe.json"
     result = {"run_at": datetime.now(timezone.utc).isoformat(timespec="seconds"), "sources": {}}
-    for name, fn in (("sec", probe_sec), ("gdelt", probe_gdelt), ("epoch", probe_epoch)):
+    for name, fn in (("sec", probe_sec), ("gdelt", probe_gdelt), ("gdelt_files", probe_gdelt_files), ("epoch", probe_epoch)):
         started = time.time()
         try:
             res = fn()
