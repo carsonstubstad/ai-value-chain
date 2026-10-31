@@ -1,5 +1,5 @@
 {
- "run_at": "2026-10-31T18:34:56+00:00",
+ "run_at": "2026-10-31T18:35:41+00:00",
  "sources": {
   "sec": {
    "status": "ok",
@@ -37,12 +37,13 @@
      "url": "https://www.sec.gov/Archives/edgar/data/1045810/000192109426001040/xsl144X01/primary_doc.xml"
     }
    ],
-   "seconds": 0.06
+   "seconds": 0.05
   },
   "gdelt": {
    "status": "error",
-   "reason": "HTTPError: HTTP Error 429: Too Many Requests",
-   "seconds": 11.85
+   "endpoint": "https://api.gdeltproject.org/api/v2/doc/doc?query=%22OpenAI%22+%22Nvidia%22+sourcelang%3Aenglish&mode=artlist&format=json&maxrecords=10&timespan=7d&sort=datedesc",
+   "reason": "HTTP 429 on all 4 attempts",
+   "seconds": 144.07
   },
   "epoch": {
    "status": "ok",
