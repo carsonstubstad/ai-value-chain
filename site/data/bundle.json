@@ -772,6 +772,26 @@
   },
   {
    "amount_basis": "committed",
+   "amount_kind": "multi_year_total",
+   "amount_usd_low": 3000000000.0,
+   "announced": "2025-07-15",
+   "as_of": "2025-07-15",
+   "confidence": "filed",
+   "id": "alphabet-brookfield-hydro-2025-07",
+   "last_checked": "2026-10-31",
+   "notes": "The amount covers only the initial 670 MW contracts, not the full framework.",
+   "payee": "brookfield",
+   "payer": "alphabet",
+   "sources": [
+    "bam-google-hydro-2025-07-15"
+   ],
+   "status": "signed",
+   "summary": "Google signs a framework for up to 3,000 MW of Brookfield hydro; first 20-year contracts cover 670 MW in Pennsylvania worth over $3B.",
+   "term_years": 20,
+   "type": "power_supply_agreement"
+  },
+  {
+   "amount_basis": "committed",
    "amount_kind": "cap",
    "amount_usd_high": 4000000000.0,
    "announced": "2023-09-25",
@@ -826,6 +846,27 @@
    ],
    "status": "announced",
    "summary": "Amazon invests $5B now and up to $20B more if business targets are met, on top of $8B invested earlier.",
+   "type": "equity_investment"
+  },
+  {
+   "amount_basis": "committed",
+   "amount_kind": "one_time",
+   "amount_usd_high": 50000000000.0,
+   "amount_usd_low": 50000000000.0,
+   "announced": "2026-02-27",
+   "as_of": "2026-02-27",
+   "confidence": "company_stated",
+   "id": "amazon-openai-equity-2026-02",
+   "last_checked": "2026-10-31",
+   "notes": "TechCrunch reports $35B of this arrives only when certain conditions are met; OpenAI's release states no conditions.",
+   "payee": "openai",
+   "payer": "amazon",
+   "sources": [
+    "openai-funding-2026-02-27",
+    "techcrunch-openai-2026-02-27"
+   ],
+   "status": "announced",
+   "summary": "Amazon commits $50B to OpenAI's $110B round at $730B pre-money, alongside a multi-year strategic partnership.",
    "type": "equity_investment"
   },
   {
@@ -1001,6 +1042,43 @@
   },
   {
    "amount_basis": "committed",
+   "announced": "2025-05-21",
+   "as_of": "2025-05-21",
+   "confidence": "company_stated",
+   "id": "blue-owl-crusoe-abilene-2025-05",
+   "last_checked": "2026-10-31",
+   "notes": "$15B is the joint venture's size across partners; Blue Owl's own share is not stated, so no amount is stored.",
+   "payee": "crusoe",
+   "payer": "blue-owl",
+   "sources": [
+    "crusoe-blue-owl-2025-05-21"
+   ],
+   "status": "signed",
+   "summary": "Blue Owl funds co-sponsor a $15B joint venture with Crusoe and Primary Digital for the 1.2 GW Abilene, Texas campus.",
+   "type": "jv_contribution"
+  },
+  {
+   "amount_basis": "committed",
+   "amount_kind": "one_time",
+   "amount_usd_high": 7000000000.0,
+   "amount_usd_low": 7000000000.0,
+   "announced": "2025-10-21",
+   "as_of": "2025-10-21",
+   "confidence": "company_stated",
+   "id": "blue-owl-meta-hyperion-2025-10",
+   "last_checked": "2026-10-31",
+   "notes": "The cash goes into the joint venture, which builds and leases the campus to Meta. Part of Blue Owl's capital is funded by bonds sold to PIMCO and others.",
+   "payee": "meta",
+   "payer": "blue-owl",
+   "sources": [
+    "meta-blue-owl-2025-10-21"
+   ],
+   "status": "signed",
+   "summary": "Blue Owl funds put about $7B cash into an 80/20 joint venture with Meta that owns the $27B Hyperion campus; Meta gets a one-time $3B distribution.",
+   "type": "jv_contribution"
+  },
+  {
+   "amount_basis": "committed",
    "amount_kind": "one_time",
    "amount_usd_high": 350000000.0,
    "amount_usd_low": 350000000.0,
@@ -1071,6 +1149,22 @@
    "status": "announced",
    "summary": "Meta to deploy up to 6 GW of AMD Instinct GPUs, first gigawatt shipping in the second half of 2026. No dollar value stated.",
    "type": "purchase_commitment"
+  },
+  {
+   "amount_basis": "committed",
+   "announced": "2025-10-21",
+   "as_of": "2025-10-21",
+   "confidence": "company_stated",
+   "id": "meta-blue-owl-guarantee-2025-10",
+   "last_checked": "2026-10-31",
+   "payee": "blue-owl",
+   "payer": "meta",
+   "sources": [
+    "meta-blue-owl-2025-10-21"
+   ],
+   "status": "signed",
+   "summary": "Meta gives a capped residual value guarantee for the first 16 years of Hyperion and leases the campus for four years with extension options. Cap not disclosed.",
+   "type": "guarantee_or_backstop"
   },
   {
    "amount_basis": "committed",
@@ -1163,6 +1257,23 @@
   },
   {
    "amount_basis": "committed",
+   "announced": "2025-01-21",
+   "as_of": "2025-01-21",
+   "confidence": "company_stated",
+   "id": "mgx-stargate-equity-2025-01",
+   "last_checked": "2026-10-31",
+   "notes": "The $500B is the project's plan across all funders and is not stored on any single edge.",
+   "payee": "stargate",
+   "payer": "mgx",
+   "sources": [
+    "openai-stargate-2025-01-21"
+   ],
+   "status": "announced",
+   "summary": "MGX is an initial equity funder of Stargate, planned at $500B over four years with $100B deployed first. No per-funder amount stated.",
+   "type": "jv_contribution"
+  },
+  {
+   "amount_basis": "committed",
    "amount_kind": "cap",
    "amount_usd_high": 5000000000.0,
    "announced": "2025-11-18",
@@ -1178,6 +1289,22 @@
    "status": "announced",
    "summary": "Microsoft commits to invest up to $5B in Anthropic.",
    "type": "equity_investment"
+  },
+  {
+   "amount_basis": "committed",
+   "announced": "2024-05-01",
+   "as_of": "2024-05-01",
+   "confidence": "filed",
+   "id": "microsoft-brookfield-renewables-2024-05",
+   "last_checked": "2026-10-31",
+   "payee": "brookfield",
+   "payer": "microsoft",
+   "sources": [
+    "bep-microsoft-2024-05-01"
+   ],
+   "status": "signed",
+   "summary": "Microsoft and Brookfield agree a framework for over 10.5 GW of new renewable capacity from 2026 to 2030. No value stated.",
+   "type": "power_supply_agreement"
   },
   {
    "amount_basis": "committed",
@@ -1347,6 +1474,26 @@
    ],
    "status": "announced",
    "summary": "NVIDIA intends to invest up to $100B in OpenAI, paid in step with each gigawatt deployed; letter of intent.",
+   "type": "equity_investment"
+  },
+  {
+   "amount_basis": "committed",
+   "amount_kind": "one_time",
+   "amount_usd_high": 30000000000.0,
+   "amount_usd_low": 30000000000.0,
+   "announced": "2026-02-27",
+   "as_of": "2026-02-27",
+   "confidence": "company_stated",
+   "id": "nvidia-openai-equity-2026-02",
+   "last_checked": "2026-10-31",
+   "notes": "How this relates to NVIDIA's September 2025 letter of intent for up to $100B is not stated; both are kept as separate edges until a source links them.",
+   "payee": "openai",
+   "payer": "nvidia",
+   "sources": [
+    "openai-funding-2026-02-27"
+   ],
+   "status": "announced",
+   "summary": "NVIDIA commits $30B to OpenAI's $110B round; OpenAI adds 3 GW of inference and 2 GW of training on NVIDIA Vera Rubin systems.",
    "type": "equity_investment"
   },
   {
@@ -1546,6 +1693,40 @@
    "type": "purchase_commitment"
   },
   {
+   "amount_basis": "committed",
+   "announced": "2025-01-21",
+   "as_of": "2025-01-21",
+   "confidence": "company_stated",
+   "id": "openai-stargate-equity-2025-01",
+   "last_checked": "2026-10-31",
+   "notes": "The $500B is the project's plan across all funders and is not stored on any single edge.",
+   "payee": "stargate",
+   "payer": "openai",
+   "sources": [
+    "openai-stargate-2025-01-21"
+   ],
+   "status": "announced",
+   "summary": "OpenAI is an initial equity funder of Stargate, planned at $500B over four years with $100B deployed first. No per-funder amount stated.",
+   "type": "jv_contribution"
+  },
+  {
+   "amount_basis": "committed",
+   "announced": "2025-01-21",
+   "as_of": "2025-01-21",
+   "confidence": "company_stated",
+   "id": "oracle-stargate-equity-2025-01",
+   "last_checked": "2026-10-31",
+   "notes": "The $500B is the project's plan across all funders and is not stored on any single edge.",
+   "payee": "stargate",
+   "payer": "oracle",
+   "sources": [
+    "openai-stargate-2025-01-21"
+   ],
+   "status": "announced",
+   "summary": "Oracle is an initial equity funder of Stargate, planned at $500B over four years with $100B deployed first. No per-funder amount stated.",
+   "type": "jv_contribution"
+  },
+  {
    "amount_basis": "paid",
    "amount_kind": "one_time",
    "amount_usd_high": 2000000000.0,
@@ -1564,6 +1745,65 @@
    "status": "closed",
    "summary": "SoftBank buys $2B of Intel common stock at $23 a share.",
    "type": "equity_investment"
+  },
+  {
+   "amount_basis": "paid",
+   "amount_kind": "one_time",
+   "amount_usd_high": 30000000000.0,
+   "amount_usd_low": 30000000000.0,
+   "announced": "2025-03-31",
+   "as_of": "2025-12-26",
+   "confidence": "company_stated",
+   "id": "softbank-openai-equity-2025-03",
+   "last_checked": "2026-10-31",
+   "notes": "SoftBank also syndicated $11B to third-party co-investors, which is not on this edge.",
+   "payee": "openai",
+   "payer": "softbank",
+   "sources": [
+    "softbank-openai-2025-12-26",
+    "openai-funding-2025-03-31"
+   ],
+   "status": "closed",
+   "summary": "SoftBank invests $30B of its own in OpenAI's $40B round at $300B post-money; completed December 2025 for about 11%.",
+   "type": "equity_investment"
+  },
+  {
+   "amount_basis": "paid",
+   "amount_kind": "one_time",
+   "amount_usd_high": 30000000000.0,
+   "amount_usd_low": 30000000000.0,
+   "announced": "2026-02-27",
+   "as_of": "2026-10-01",
+   "confidence": "company_stated",
+   "id": "softbank-openai-equity-2026-02",
+   "last_checked": "2026-10-31",
+   "notes": "Completion of the final tranche is reported by Reuters.",
+   "payee": "openai",
+   "payer": "softbank",
+   "sources": [
+    "softbank-openai-2026-02-27",
+    "reuters-softbank-openai-2026-10-01"
+   ],
+   "status": "closed",
+   "summary": "SoftBank invests a further $30B in OpenAI in three $10B tranches through October 2026, reaching about 13%.",
+   "type": "equity_investment"
+  },
+  {
+   "amount_basis": "committed",
+   "announced": "2025-01-21",
+   "as_of": "2025-01-21",
+   "confidence": "company_stated",
+   "id": "softbank-stargate-equity-2025-01",
+   "last_checked": "2026-10-31",
+   "notes": "The $500B is the project's plan across all funders and is not stored on any single edge.",
+   "payee": "stargate",
+   "payer": "softbank",
+   "sources": [
+    "openai-stargate-2025-01-21"
+   ],
+   "status": "announced",
+   "summary": "SoftBank is an initial equity funder of Stargate, planned at $500B over four years with $100B deployed first. No per-funder amount stated.",
+   "type": "jv_contribution"
   },
   {
    "amount_basis": "committed",
@@ -1792,6 +2032,26 @@
   },
   {
    "accessed": "2026-10-31",
+   "filing_form": "6-K",
+   "id": "bam-google-hydro-2025-07-15",
+   "kind": "filing",
+   "label": "Brookfield filing exhibit: Google hydro framework up to 3,000 MW",
+   "published": "2025-07-15",
+   "publisher": "Brookfield",
+   "url": "https://www.sec.gov/Archives/edgar/data/1533232/000117184325004464/exh_991.htm"
+  },
+  {
+   "accessed": "2026-10-31",
+   "filing_form": "6-K",
+   "id": "bep-microsoft-2024-05-01",
+   "kind": "filing",
+   "label": "Brookfield Renewable 6-K exhibit: Microsoft 10.5 GW framework",
+   "published": "2024-05-01",
+   "publisher": "Brookfield Renewable",
+   "url": "https://www.sec.gov/Archives/edgar/data/1533232/000117184324002391/exh_991.htm"
+  },
+  {
+   "accessed": "2026-10-31",
    "id": "blackstone-coreweave-2024-05-17",
    "kind": "company",
    "label": "Blackstone release: CoreWeave $7.5B debt facility",
@@ -1886,6 +2146,15 @@
   },
   {
    "accessed": "2026-10-31",
+   "id": "crusoe-blue-owl-2025-05-21",
+   "kind": "company",
+   "label": "Crusoe release: $15B Abilene joint venture with Blue Owl and Primary Digital",
+   "published": "2025-05-21",
+   "publisher": "Crusoe",
+   "url": "https://crusoe.ai/newsroom/crusoe-blue-owl-capital-and-primary-digital-infrastructure-enter-joint-venture/"
+  },
+  {
+   "accessed": "2026-10-31",
    "id": "gev-crusoe-2025-07-22",
    "kind": "company",
    "label": "GE Vernova release: 29 gas turbine packages for Crusoe",
@@ -1940,6 +2209,15 @@
    "published": "2025-11-03",
    "publisher": "Lambda",
    "url": "https://lambda.ai/blog/lambda-announces-multibillion-dollar-agreement-with-microsoft-to-deploy-ai-infrastructure-powered-by-tens-of-thousands-of-nvidia-gpus"
+  },
+  {
+   "accessed": "2026-10-31",
+   "id": "meta-blue-owl-2025-10-21",
+   "kind": "company",
+   "label": "Meta release: Hyperion joint venture with Blue Owl funds",
+   "published": "2025-10-21",
+   "publisher": "Meta",
+   "url": "https://investor.atmeta.com/investor-news/press-release-details/2025/Meta-Announces-Joint-Venture-with-Funds-Managed-by-Blue-Owl-Capital-to-Develop-Hyperion-Data-Center/default.aspx"
   },
   {
    "accessed": "2026-10-31",
@@ -2070,12 +2348,39 @@
   },
   {
    "accessed": "2026-10-31",
+   "id": "openai-funding-2025-03-31",
+   "kind": "company",
+   "label": "OpenAI release: $40B raised at $300B post-money",
+   "published": "2025-03-31",
+   "publisher": "OpenAI",
+   "url": "https://openai.com/index/march-funding-updates/"
+  },
+  {
+   "accessed": "2026-10-31",
+   "id": "openai-funding-2026-02-27",
+   "kind": "company",
+   "label": "OpenAI release: $110B from Amazon, NVIDIA and SoftBank",
+   "published": "2026-02-27",
+   "publisher": "OpenAI",
+   "url": "https://openai.com/index/scaling-ai-for-everyone/"
+  },
+  {
+   "accessed": "2026-10-31",
    "id": "openai-oracle-2025-07-22",
    "kind": "company",
    "label": "OpenAI release: Stargate adds 4.5 GW with Oracle",
    "published": "2025-07-22",
    "publisher": "OpenAI",
    "url": "https://openai.com/index/stargate-advances-with-partnership-with-oracle/"
+  },
+  {
+   "accessed": "2026-10-31",
+   "id": "openai-stargate-2025-01-21",
+   "kind": "company",
+   "label": "OpenAI release: announcing the Stargate Project",
+   "published": "2025-01-21",
+   "publisher": "OpenAI",
+   "url": "https://openai.com/index/announcing-the-stargate-project/"
   },
   {
    "accessed": "2026-10-31",
@@ -2094,6 +2399,15 @@
    "published": "2025-08-22",
    "publisher": "Reuters via BNN Bloomberg",
    "url": "https://www.bnnbloomberg.ca/business/2025/08/22/meta-signs-over-us10-billion-cloud-deal-with-google-source-says-2/"
+  },
+  {
+   "accessed": "2026-10-31",
+   "id": "reuters-softbank-openai-2026-10-01",
+   "kind": "press",
+   "label": "Reuters: SoftBank completes final $30B OpenAI tranche",
+   "published": "2026-10-02",
+   "publisher": "Reuters via The Star",
+   "url": "https://www.thestar.com.my/tech/tech-news/2026/10/02/softbank-completes-final-phase-of-30-billion-investment-in-openai"
   },
   {
    "accessed": "2026-10-31",
@@ -2452,12 +2766,39 @@
   },
   {
    "accessed": "2026-10-31",
+   "id": "softbank-openai-2025-12-26",
+   "kind": "company",
+   "label": "SoftBank release: completes additional $22.5B OpenAI investment",
+   "published": "2025-12-31",
+   "publisher": "SoftBank Group",
+   "url": "https://group.softbank/en/news/press/20251231"
+  },
+  {
+   "accessed": "2026-10-31",
+   "id": "softbank-openai-2026-02-27",
+   "kind": "company",
+   "label": "SoftBank release: $30B follow-on investment in OpenAI",
+   "published": "2026-02-27",
+   "publisher": "SoftBank Group",
+   "url": "https://group.softbank/en/news/press/20260227"
+  },
+  {
+   "accessed": "2026-10-31",
    "id": "techcrunch-amazon-anthropic-2023-09-25",
    "kind": "press",
    "label": "TechCrunch: Amazon to invest up to $4B in Anthropic",
    "published": "2023-09-25",
    "publisher": "TechCrunch",
    "url": "https://techcrunch.com/2023/09/25/amazon-to-invest-up-to-4-billion-in-ai-startup-anthropic"
+  },
+  {
+   "accessed": "2026-10-31",
+   "id": "techcrunch-openai-2026-02-27",
+   "kind": "press",
+   "label": "TechCrunch: OpenAI raises $110B",
+   "published": "2026-02-27",
+   "publisher": "TechCrunch",
+   "url": "https://techcrunch.com/2026/02/27/openai-raises-110b-in-one-of-the-largest-private-funding-rounds-in-history/"
   },
   {
    "accessed": "2026-10-31",

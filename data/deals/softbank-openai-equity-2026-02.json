@@ -1,0 +1,21 @@
+{
+ "id": "softbank-openai-equity-2026-02",
+ "payer": "softbank",
+ "payee": "openai",
+ "type": "equity_investment",
+ "announced": "2026-02-27",
+ "amount_usd_low": 30000000000.0,
+ "amount_usd_high": 30000000000.0,
+ "amount_basis": "paid",
+ "amount_kind": "one_time",
+ "confidence": "company_stated",
+ "status": "closed",
+ "summary": "SoftBank invests a further $30B in OpenAI in three $10B tranches through October 2026, reaching about 13%.",
+ "as_of": "2026-10-01",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "softbank-openai-2026-02-27",
+  "reuters-softbank-openai-2026-10-01"
+ ],
+ "notes": "Completion of the final tranche is reported by Reuters."
+}

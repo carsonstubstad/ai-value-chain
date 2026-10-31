@@ -1,0 +1,17 @@
+{
+ "id": "blue-owl-crusoe-abilene-2025-05",
+ "payer": "blue-owl",
+ "payee": "crusoe",
+ "type": "jv_contribution",
+ "announced": "2025-05-21",
+ "amount_basis": "committed",
+ "confidence": "company_stated",
+ "status": "signed",
+ "summary": "Blue Owl funds co-sponsor a $15B joint venture with Crusoe and Primary Digital for the 1.2 GW Abilene, Texas campus.",
+ "as_of": "2025-05-21",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "crusoe-blue-owl-2025-05-21"
+ ],
+ "notes": "$15B is the joint venture's size across partners; Blue Owl's own share is not stated, so no amount is stored."
+}

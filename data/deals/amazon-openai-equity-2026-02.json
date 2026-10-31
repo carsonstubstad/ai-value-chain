@@ -1,0 +1,21 @@
+{
+ "id": "amazon-openai-equity-2026-02",
+ "payer": "amazon",
+ "payee": "openai",
+ "type": "equity_investment",
+ "announced": "2026-02-27",
+ "amount_usd_low": 50000000000.0,
+ "amount_usd_high": 50000000000.0,
+ "amount_basis": "committed",
+ "amount_kind": "one_time",
+ "confidence": "company_stated",
+ "status": "announced",
+ "summary": "Amazon commits $50B to OpenAI's $110B round at $730B pre-money, alongside a multi-year strategic partnership.",
+ "as_of": "2026-02-27",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "openai-funding-2026-02-27",
+  "techcrunch-openai-2026-02-27"
+ ],
+ "notes": "TechCrunch reports $35B of this arrives only when certain conditions are met; OpenAI's release states no conditions."
+}

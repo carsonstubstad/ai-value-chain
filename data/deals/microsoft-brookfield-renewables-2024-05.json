@@ -1,0 +1,16 @@
+{
+ "id": "microsoft-brookfield-renewables-2024-05",
+ "payer": "microsoft",
+ "payee": "brookfield",
+ "type": "power_supply_agreement",
+ "announced": "2024-05-01",
+ "amount_basis": "committed",
+ "confidence": "filed",
+ "status": "signed",
+ "summary": "Microsoft and Brookfield agree a framework for over 10.5 GW of new renewable capacity from 2026 to 2030. No value stated.",
+ "as_of": "2024-05-01",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "bep-microsoft-2024-05-01"
+ ]
+}

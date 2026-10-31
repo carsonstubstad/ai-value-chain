@@ -1,0 +1,17 @@
+{
+ "id": "mgx-stargate-equity-2025-01",
+ "payer": "mgx",
+ "payee": "stargate",
+ "type": "jv_contribution",
+ "announced": "2025-01-21",
+ "amount_basis": "committed",
+ "confidence": "company_stated",
+ "status": "announced",
+ "summary": "MGX is an initial equity funder of Stargate, planned at $500B over four years with $100B deployed first. No per-funder amount stated.",
+ "as_of": "2025-01-21",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "openai-stargate-2025-01-21"
+ ],
+ "notes": "The $500B is the project's plan across all funders and is not stored on any single edge."
+}

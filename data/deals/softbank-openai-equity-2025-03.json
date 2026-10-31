@@ -1,0 +1,21 @@
+{
+ "id": "softbank-openai-equity-2025-03",
+ "payer": "softbank",
+ "payee": "openai",
+ "type": "equity_investment",
+ "announced": "2025-03-31",
+ "amount_usd_low": 30000000000.0,
+ "amount_usd_high": 30000000000.0,
+ "amount_basis": "paid",
+ "amount_kind": "one_time",
+ "confidence": "company_stated",
+ "status": "closed",
+ "summary": "SoftBank invests $30B of its own in OpenAI's $40B round at $300B post-money; completed December 2025 for about 11%.",
+ "as_of": "2025-12-26",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "softbank-openai-2025-12-26",
+  "openai-funding-2025-03-31"
+ ],
+ "notes": "SoftBank also syndicated $11B to third-party co-investors, which is not on this edge."
+}
