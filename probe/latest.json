@@ -1,0 +1,81 @@
+{
+ "run_at": "2026-10-31T18:34:56+00:00",
+ "sources": {
+  "sec": {
+   "status": "ok",
+   "http": 200,
+   "endpoint": "https://data.sec.gov/submissions/CIK0001045810.json",
+   "company": "NVIDIA CORP",
+   "cik": "0001045810",
+   "tickers": [
+    "NVDA"
+   ],
+   "latest_filings": [
+    {
+     "form": "4/A",
+     "filed": "2026-10-13",
+     "url": "https://www.sec.gov/Archives/edgar/data/1045810/000215218826000007/xslF345X06/wk-form4a_1791925767.xml"
+    },
+    {
+     "form": "4",
+     "filed": "2026-10-09",
+     "url": "https://www.sec.gov/Archives/edgar/data/1045810/000119764726000011/xslF345X06/wk-form4_1791579847.xml"
+    },
+    {
+     "form": "4",
+     "filed": "2026-09-23",
+     "url": "https://www.sec.gov/Archives/edgar/data/1045810/000169684126000014/xslF345X06/wk-form4_1790196985.xml"
+    },
+    {
+     "form": "4",
+     "filed": "2026-09-22",
+     "url": "https://www.sec.gov/Archives/edgar/data/1045810/000119903926000016/xslF345X06/wk-form4_1790110579.xml"
+    },
+    {
+     "form": "144",
+     "filed": "2026-09-21",
+     "url": "https://www.sec.gov/Archives/edgar/data/1045810/000192109426001040/xsl144X01/primary_doc.xml"
+    }
+   ],
+   "seconds": 0.06
+  },
+  "gdelt": {
+   "status": "error",
+   "reason": "HTTPError: HTTP Error 429: Too Many Requests",
+   "seconds": 11.85
+  },
+  "epoch": {
+   "status": "ok",
+   "http": 200,
+   "endpoint": "https://epoch.ai/data/data_centers/data_centers.csv",
+   "credit": "Epoch AI, AI data centers dataset",
+   "rows": 96,
+   "columns": [
+    "Name",
+    "Current H100 equivalents",
+    "Current power (MW)",
+    "Current total capital cost (2025 USD billions)",
+    "Owner",
+    "Users",
+    "Selected Sources",
+    "Calculations sheet",
+    "Project",
+    "Current chip types",
+    "All chip types",
+    "Investors",
+    "Construction companies",
+    "Energy companies",
+    "Country",
+    "Address"
+   ],
+   "first_names": [
+    "Colossus 2",
+    "Anthropic-Amazon New Carlisle",
+    "Microsoft Fairwater Atlanta",
+    "OpenAI Stargate Abilene",
+    "Google Pryor (North)"
+   ],
+   "seconds": 0.09
+  }
+ }
+}
