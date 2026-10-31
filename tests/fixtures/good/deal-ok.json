@@ -1,0 +1,1 @@
+{"id": "example-deal", "amount_usd_low": 1000000, "amount_basis": "committed", "confidence": "filed", "as_of": "2026-10-31", "summary": "Test fixture only, not a real deal.", "sources": ["https://www.sec.gov/"]}
