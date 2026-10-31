@@ -1,0 +1,16 @@
+{
+ "id": "vertiv",
+ "name": "Vertiv",
+ "layer": "power",
+ "hq_country": "US",
+ "ownership": "public",
+ "tickers": [
+  "VRT"
+ ],
+ "sec_cik": "0001674101",
+ "one_line": "US maker of power and cooling equipment for data centers.",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "sec-vertiv"
+ ]
+}

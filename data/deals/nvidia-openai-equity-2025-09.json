@@ -1,0 +1,18 @@
+{
+ "id": "nvidia-openai-equity-2025-09",
+ "payer": "nvidia",
+ "payee": "openai",
+ "type": "equity_investment",
+ "announced": "2025-09-22",
+ "amount_usd_high": 100000000000.0,
+ "amount_basis": "committed",
+ "amount_kind": "cap",
+ "confidence": "company_stated",
+ "status": "announced",
+ "summary": "NVIDIA intends to invest up to $100B in OpenAI, paid in step with each gigawatt deployed; letter of intent.",
+ "as_of": "2025-09-22",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "nvidia-openai-2025-09-22"
+ ]
+}

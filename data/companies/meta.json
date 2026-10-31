@@ -1,0 +1,19 @@
+{
+ "id": "meta",
+ "name": "Meta",
+ "layer": "hyperscale",
+ "secondary": [
+  "labs"
+ ],
+ "hq_country": "US",
+ "ownership": "public",
+ "tickers": [
+  "META"
+ ],
+ "sec_cik": "0001326801",
+ "one_line": "Spends at hyperscale on AI data centers for its own apps and models.",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "sec-meta"
+ ]
+}

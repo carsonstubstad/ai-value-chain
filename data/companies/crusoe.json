@@ -1,0 +1,12 @@
+{
+ "id": "crusoe",
+ "name": "Crusoe",
+ "layer": "data_centers",
+ "hq_country": "US",
+ "ownership": "private",
+ "one_line": "US developer and operator of large AI data center campuses.",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "web-crusoe"
+ ]
+}

@@ -1,0 +1,16 @@
+{
+ "id": "arm",
+ "name": "Arm",
+ "layer": "chip_design",
+ "hq_country": "GB",
+ "ownership": "public",
+ "tickers": [
+  "ARM"
+ ],
+ "sec_cik": "0001973239",
+ "one_line": "Licenses the CPU designs used across phones, servers and AI systems; controlled by SoftBank.",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "sec-arm"
+ ]
+}

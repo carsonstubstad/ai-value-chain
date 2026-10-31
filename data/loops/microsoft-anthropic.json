@@ -1,0 +1,11 @@
+{
+ "id": "microsoft-anthropic",
+ "name": "Microsoft and Anthropic",
+ "deals": [
+  "microsoft-anthropic-equity-2025-11",
+  "anthropic-microsoft-azure-2025-11"
+ ],
+ "flagged_by": "automatic",
+ "explanation": "Microsoft puts equity into Anthropic, and Anthropic commits to buy Azure compute from Microsoft.",
+ "last_checked": "2026-10-31"
+}

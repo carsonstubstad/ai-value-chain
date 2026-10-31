@@ -1,0 +1,12 @@
+{
+ "id": "mgx",
+ "name": "MGX",
+ "layer": "capital",
+ "hq_country": "AE",
+ "ownership": "private",
+ "one_line": "Abu Dhabi investment company focused on AI, investing in labs, data centers and Stargate.",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "web-mgx"
+ ]
+}

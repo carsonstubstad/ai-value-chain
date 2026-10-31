@@ -1,0 +1,16 @@
+{
+ "id": "blue-owl",
+ "name": "Blue Owl",
+ "layer": "capital",
+ "hq_country": "US",
+ "ownership": "public",
+ "tickers": [
+  "OWL"
+ ],
+ "sec_cik": "0001823945",
+ "one_line": "US alternative asset manager providing private credit and equity for data center campuses.",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "sec-blue-owl"
+ ]
+}

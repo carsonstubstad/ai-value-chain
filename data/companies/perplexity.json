@@ -1,0 +1,12 @@
+{
+ "id": "perplexity",
+ "name": "Perplexity",
+ "layer": "applications",
+ "hq_country": "US",
+ "ownership": "private",
+ "one_line": "AI search app that pays labs and clouds for model access and compute.",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "web-perplexity"
+ ]
+}

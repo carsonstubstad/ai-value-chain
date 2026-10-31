@@ -1,0 +1,18 @@
+{
+ "id": "microsoft-anthropic-equity-2025-11",
+ "payer": "microsoft",
+ "payee": "anthropic",
+ "type": "equity_investment",
+ "announced": "2025-11-18",
+ "amount_usd_high": 5000000000.0,
+ "amount_basis": "committed",
+ "amount_kind": "cap",
+ "confidence": "company_stated",
+ "status": "announced",
+ "summary": "Microsoft commits to invest up to $5B in Anthropic.",
+ "as_of": "2025-11-18",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "msft-nvda-anthropic-2025-11-18"
+ ]
+}

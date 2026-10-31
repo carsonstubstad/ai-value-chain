@@ -1,0 +1,19 @@
+{
+ "id": "microsoft",
+ "name": "Microsoft",
+ "layer": "hyperscale",
+ "secondary": [
+  "labs"
+ ],
+ "hq_country": "US",
+ "ownership": "public",
+ "tickers": [
+  "MSFT"
+ ],
+ "sec_cik": "0000789019",
+ "one_line": "Runs Azure, the largest outside funder of OpenAI and an investor in Anthropic.",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "sec-microsoft"
+ ]
+}

@@ -1,0 +1,12 @@
+{
+ "id": "us-government",
+ "name": "US Government",
+ "layer": "capital",
+ "hq_country": "US",
+ "ownership": "government",
+ "one_line": "US federal government, which funds chipmakers through CHIPS Act grants and has taken equity stakes.",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "web-us-government"
+ ]
+}

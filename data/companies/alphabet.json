@@ -1,0 +1,23 @@
+{
+ "id": "alphabet",
+ "name": "Alphabet",
+ "layer": "hyperscale",
+ "secondary": [
+  "labs",
+  "chip_design"
+ ],
+ "hq_country": "US",
+ "ownership": "public",
+ "tickers": [
+  "GOOGL",
+  "GOOG",
+  "GOOGM",
+  "GOOGN"
+ ],
+ "sec_cik": "0001652044",
+ "one_line": "Runs Google Cloud and Google DeepMind, and designs its own TPU chips.",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "sec-alphabet"
+ ]
+}

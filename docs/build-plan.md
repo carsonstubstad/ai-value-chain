@@ -6,9 +6,9 @@ Approved at Gate 1 (D16 to D20). Each session is bounded, ends with the validato
 | --- | --- | --- | --- | --- | --- |
 | 1 | Plan and schema | Final list (data/companies-list.csv), taxonomy, six schemas, validator cross-checks | Final list, schema | Medium | Done |
 | 2 | Mockups | Three overview directions on nine sourced deals (mockups/sample.json) | Pick one (Gate 2) | Medium | Done |
-| 3 | Scaffold | Site skeleton, bundle script, d3 vendored from npm, weekly Actions schedules | Nothing | Light | Next |
-| 4 | Companies | 47 company records; CIKs and tickers from SEC via Actions | Flags only | Medium | |
-| 5 | Deals: upstream | Equipment, chip design, foundry, memory | Flags only | Heavy | |
+| 3 | Scaffold | Site skeleton, bundle script, d3 vendored from npm, weekly Actions schedules | Nothing | Light | Done |
+| 4 | Companies | 47 company records; CIKs and tickers from SEC via Actions | Flags only | Medium | Done |
+| 5 | Deals: upstream | Equipment, chip design, foundry, memory | Flags only | Heavy | Next, waits for Carson |
 | 6 | Deals: systems, power, data centers | Includes neocloud debt; Epoch CSV for campuses | Flags only | Heavy | |
 | 7 | Deals: hyperscale and labs | Densest layer, most loops | Flags only | Heavy | |
 | 8 | Deals: capital rail | Equity, credit and public money into every layer | Flags only | Heavy | |

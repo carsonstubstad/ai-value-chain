@@ -1,0 +1,16 @@
+{
+ "id": "salesforce",
+ "name": "Salesforce",
+ "layer": "applications",
+ "hq_country": "US",
+ "ownership": "public",
+ "tickers": [
+  "CRM"
+ ],
+ "sec_cik": "0001108524",
+ "one_line": "Enterprise software company selling AI agents and investing in AI startups.",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "sec-salesforce"
+ ]
+}

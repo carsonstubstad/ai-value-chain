@@ -1,0 +1,35 @@
+{
+ "id": "brookfield",
+ "name": "Brookfield",
+ "layer": "capital",
+ "secondary": [
+  "power"
+ ],
+ "hq_country": "CA",
+ "ownership": "public",
+ "tickers": [
+  "BN",
+  "BAMGF",
+  "BAMKF",
+  "BKAMF",
+  "BKFAF",
+  "BKFDF",
+  "BKFOF",
+  "BKFPF",
+  "BKPA",
+  "BNH",
+  "BNJ",
+  "BRCFF",
+  "BRFAF",
+  "BRFCF",
+  "BROXF",
+  "BRPSF",
+  "BXDIF"
+ ],
+ "sec_cik": "0001001085",
+ "one_line": "Canadian alternative asset manager investing in power and data center infrastructure.",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "sec-brookfield"
+ ]
+}

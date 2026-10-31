@@ -1,0 +1,19 @@
+{
+ "id": "blackstone",
+ "name": "Blackstone",
+ "layer": "capital",
+ "secondary": [
+  "data_centers"
+ ],
+ "hq_country": "US",
+ "ownership": "public",
+ "tickers": [
+  "BX"
+ ],
+ "sec_cik": "0001393818",
+ "one_line": "US alternative asset manager and a large owner of data centers through QTS.",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "sec-blackstone"
+ ]
+}

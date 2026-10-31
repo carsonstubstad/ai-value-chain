@@ -1,0 +1,15 @@
+{
+ "id": "samsung",
+ "name": "Samsung",
+ "layer": "memory",
+ "secondary": [
+  "foundry"
+ ],
+ "hq_country": "KR",
+ "ownership": "public",
+ "one_line": "Korean maker of memory chips at scale, with a contract foundry business on the side.",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "web-samsung"
+ ]
+}

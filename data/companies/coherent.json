@@ -1,0 +1,16 @@
+{
+ "id": "coherent",
+ "name": "Coherent",
+ "layer": "systems",
+ "hq_country": "US",
+ "ownership": "public",
+ "tickers": [
+  "COHR"
+ ],
+ "sec_cik": "0000820318",
+ "one_line": "US maker of optical components and transceivers that link AI servers together.",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "sec-coherent"
+ ]
+}

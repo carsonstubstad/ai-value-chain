@@ -1,0 +1,16 @@
+{
+ "id": "applied-materials",
+ "name": "Applied Materials",
+ "layer": "equipment",
+ "hq_country": "US",
+ "ownership": "public",
+ "tickers": [
+  "AMAT"
+ ],
+ "sec_cik": "0000006951",
+ "one_line": "US maker of deposition, etch and inspection equipment for chip fabs.",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "sec-applied-materials"
+ ]
+}

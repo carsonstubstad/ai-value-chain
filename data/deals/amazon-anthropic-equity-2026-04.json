@@ -1,0 +1,19 @@
+{
+ "id": "amazon-anthropic-equity-2026-04",
+ "payer": "amazon",
+ "payee": "anthropic",
+ "type": "equity_investment",
+ "announced": "2026-04-20",
+ "amount_usd_low": 5000000000.0,
+ "amount_usd_high": 25000000000.0,
+ "amount_basis": "committed",
+ "amount_kind": "cap",
+ "confidence": "company_stated",
+ "status": "announced",
+ "summary": "Amazon invests $5B now and up to $20B more if business targets are met, on top of $8B invested earlier.",
+ "as_of": "2026-04-20",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "amazon-anthropic-2026-04-20"
+ ]
+}

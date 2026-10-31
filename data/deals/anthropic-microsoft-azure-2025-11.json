@@ -1,0 +1,18 @@
+{
+ "id": "anthropic-microsoft-azure-2025-11",
+ "payer": "anthropic",
+ "payee": "microsoft",
+ "type": "purchase_commitment",
+ "announced": "2025-11-18",
+ "amount_usd_low": 30000000000.0,
+ "amount_usd_high": 30000000000.0,
+ "amount_basis": "committed",
+ "confidence": "company_stated",
+ "status": "announced",
+ "summary": "Anthropic commits to buy $30B of Azure compute capacity.",
+ "as_of": "2025-11-18",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "msft-nvda-anthropic-2025-11-18"
+ ]
+}

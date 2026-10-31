@@ -1,0 +1,19 @@
+{
+ "id": "digital-realty",
+ "name": "Digital Realty",
+ "layer": "data_centers",
+ "hq_country": "US",
+ "ownership": "public",
+ "tickers": [
+  "DLR",
+  "DLR-PK",
+  "DLR-PJ",
+  "DLR-PL"
+ ],
+ "sec_cik": "0001297996",
+ "one_line": "US data center landlord that leases space and power to cloud providers.",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "sec-digital-realty"
+ ]
+}

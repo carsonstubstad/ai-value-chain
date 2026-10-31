@@ -1,0 +1,10 @@
+{
+ "id": "sec-amazon",
+ "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001018724",
+ "publisher": "SEC EDGAR",
+ "kind": "filing",
+ "filing_form": "10-K",
+ "label": "EDGAR filings index for AMAZON COM INC; latest annual report 10-K",
+ "published": "2026-02-06",
+ "accessed": "2026-10-31"
+}

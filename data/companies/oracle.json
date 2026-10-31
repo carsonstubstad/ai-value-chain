@@ -1,0 +1,17 @@
+{
+ "id": "oracle",
+ "name": "Oracle",
+ "layer": "hyperscale",
+ "hq_country": "US",
+ "ownership": "public",
+ "tickers": [
+  "ORCL",
+  "ORCL-PD"
+ ],
+ "sec_cik": "0001341439",
+ "one_line": "Runs Oracle Cloud and builds large compute capacity for OpenAI.",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "sec-oracle"
+ ]
+}

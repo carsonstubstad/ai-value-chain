@@ -1,0 +1,16 @@
+{
+ "id": "coreweave",
+ "name": "CoreWeave",
+ "layer": "data_centers",
+ "hq_country": "US",
+ "ownership": "public",
+ "tickers": [
+  "CRWV"
+ ],
+ "sec_cik": "0001769628",
+ "one_line": "US GPU cloud that rents Nvidia capacity to labs and hyperscalers, financed largely with debt.",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "sec-coreweave"
+ ]
+}

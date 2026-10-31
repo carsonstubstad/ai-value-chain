@@ -1,0 +1,12 @@
+{
+ "id": "stargate",
+ "name": "Stargate (JV)",
+ "layer": "data_centers",
+ "hq_country": "US",
+ "ownership": "joint_venture",
+ "one_line": "AI infrastructure venture announced by OpenAI, SoftBank, Oracle and MGX to build US data centers.",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "web-stargate"
+ ]
+}

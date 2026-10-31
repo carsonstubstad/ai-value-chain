@@ -1,0 +1,19 @@
+{
+ "id": "nvidia",
+ "name": "Nvidia",
+ "layer": "chip_design",
+ "secondary": [
+  "capital"
+ ],
+ "hq_country": "US",
+ "ownership": "public",
+ "tickers": [
+  "NVDA"
+ ],
+ "sec_cik": "0001045810",
+ "one_line": "Designs the GPUs and networking at the core of most AI data centers, and invests across the chain.",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "sec-nvidia"
+ ]
+}

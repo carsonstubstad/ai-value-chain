@@ -1,0 +1,19 @@
+{
+ "id": "amazon",
+ "name": "Amazon",
+ "layer": "hyperscale",
+ "secondary": [
+  "labs"
+ ],
+ "hq_country": "US",
+ "ownership": "public",
+ "tickers": [
+  "AMZN"
+ ],
+ "sec_cik": "0001018724",
+ "one_line": "Runs AWS, a major investor in Anthropic, and designs its own AI chips.",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "sec-amazon"
+ ]
+}

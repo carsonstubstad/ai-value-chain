@@ -1,0 +1,11 @@
+{
+ "id": "amd-openai",
+ "name": "AMD and OpenAI",
+ "deals": [
+  "amd-openai-warrant-2025-10",
+  "openai-amd-gpus-2025-10"
+ ],
+ "flagged_by": "automatic",
+ "explanation": "AMD hands OpenAI a warrant on its own shares, and OpenAI commits to buy AMD GPUs.",
+ "last_checked": "2026-10-31"
+}

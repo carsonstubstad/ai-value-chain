@@ -1,0 +1,17 @@
+{
+ "id": "asml",
+ "name": "ASML",
+ "layer": "equipment",
+ "hq_country": "NL",
+ "ownership": "public",
+ "tickers": [
+  "ASML",
+  "ASMLF"
+ ],
+ "sec_cik": "0000937966",
+ "one_line": "Dutch maker of chip lithography systems and the only supplier of EUV tools.",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "sec-asml"
+ ]
+}

@@ -36,6 +36,7 @@ Settled questions. Do not reopen without Carson. Add a dated line for every new 
 - F03 GDELT DOC API is unreliable from Actions: one of three runs succeeded, the others got HTTP 429 even after backoff. GDELT raw update files on data.gdeltproject.org answered every time. Treat GDELT as best effort; company newsrooms and 8-K filings stay the primary news inputs.
 - F04 The sandbox cannot reach SEC, GDELT, Epoch AI or CDNs, but can reach PyPI and the npm registry. No browser is installed, so no headless render here; Carson previews the page on the laptop at Gate 4.
 - F05 Duet's web fetch reads company newsroom pages (tested on an NVIDIA release), which is how seeding sources get checked.
+- F07 (sessions 3 and 4) SEC EDGAR matched all 31 tracked companies that file with it; their records cite their EDGAR filings index. The other 16 cite their own website or announcement. 38 of 47 websites answered an automated check; 9 (Applied Materials, Intel, TSMC, Supermicro, Oracle, OpenAI and its Stargate page, Perplexity, Blackstone) refuse automated checks but are live.
 - F06 Scheduled triggers in Actions only run from main, so the weekly gather starts only after a merge Carson approves.
 
 ## Approved at Gate 1 (D16): from Step 1 (2026-10-27)

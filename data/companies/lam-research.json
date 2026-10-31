@@ -1,0 +1,16 @@
+{
+ "id": "lam-research",
+ "name": "Lam Research",
+ "layer": "equipment",
+ "hq_country": "US",
+ "ownership": "public",
+ "tickers": [
+  "LRCX"
+ ],
+ "sec_cik": "0000707549",
+ "one_line": "US maker of etch and deposition equipment, with heavy exposure to memory makers.",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "sec-lam-research"
+ ]
+}

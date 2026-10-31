@@ -1,0 +1,16 @@
+{
+ "id": "micron",
+ "name": "Micron",
+ "layer": "memory",
+ "hq_country": "US",
+ "ownership": "public",
+ "tickers": [
+  "MU"
+ ],
+ "sec_cik": "0000723125",
+ "one_line": "US memory maker supplying high-bandwidth memory for AI chips.",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "sec-micron"
+ ]
+}
