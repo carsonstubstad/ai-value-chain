@@ -793,41 +793,44 @@
    "type": "power_supply_agreement"
   },
   {
-   "amount_basis": "committed",
+   "amount_basis": "paid",
    "amount_kind": "cap",
    "amount_usd_high": 4000000000.0,
    "announced": "2023-09-25",
-   "as_of": "2024-11-22",
-   "confidence": "reported",
+   "as_of": "2026-10-30",
+   "confidence": "filed",
    "id": "amazon-anthropic-equity-2023-09",
    "last_checked": "2026-10-31",
-   "notes": "AP reports Amazon's total at $8B by November 2024 including this round, which supports that the full $4B was invested.",
+   "notes": "Amazon's 10-Q states $8.0B invested in Anthropic convertible notes from Q3 2023 to Q4 2025 in total, which equals the 2023 and 2024 rounds together; it gives no split by round.",
    "payee": "anthropic",
    "payer": "amazon",
    "sources": [
     "techcrunch-amazon-anthropic-2023-09-25",
-    "ap-amazon-anthropic-2024-11-22"
+    "ap-amazon-anthropic-2024-11-22",
+    "amazon-10q-2026-q3"
    ],
    "status": "closed",
    "summary": "Amazon invests up to $4B in Anthropic for a minority stake, starting with $1.25B.",
    "type": "equity_investment"
   },
   {
-   "amount_basis": "committed",
+   "amount_basis": "paid",
    "amount_kind": "one_time",
    "amount_usd_high": 4000000000.0,
    "amount_usd_low": 4000000000.0,
    "announced": "2024-11-22",
-   "as_of": "2024-11-22",
-   "confidence": "reported",
+   "as_of": "2026-10-30",
+   "confidence": "filed",
    "id": "amazon-anthropic-equity-2024-11",
    "last_checked": "2026-10-31",
+   "notes": "Amazon's 10-Q states $8.0B invested in Anthropic convertible notes from Q3 2023 to Q4 2025 in total, which equals the 2023 and 2024 rounds together; it gives no split by round.",
    "payee": "anthropic",
    "payer": "amazon",
    "sources": [
-    "ap-amazon-anthropic-2024-11-22"
+    "ap-amazon-anthropic-2024-11-22",
+    "amazon-10q-2026-q3"
    ],
-   "status": "announced",
+   "status": "closed",
    "summary": "Amazon invests another $4B in Anthropic, which names AWS its primary training partner.",
    "type": "equity_investment"
   },
@@ -837,17 +840,19 @@
    "amount_usd_high": 25000000000.0,
    "amount_usd_low": 5000000000.0,
    "announced": "2026-04-20",
-   "as_of": "2026-04-20",
-   "confidence": "company_stated",
+   "as_of": "2026-10-30",
+   "confidence": "filed",
    "id": "amazon-anthropic-equity-2026-04",
    "last_checked": "2026-10-31",
+   "notes": "Amazon's 10-Q shows $10.0B invested in Anthropic preferred stock in the first nine months of 2026, so $10B of the $25B was funded by September 30, 2026.",
    "payee": "anthropic",
    "payer": "amazon",
    "sources": [
-    "amazon-anthropic-2026-04-20"
+    "amazon-anthropic-2026-04-20",
+    "amazon-10q-2026-q3"
    ],
-   "status": "announced",
-   "summary": "Amazon invests $5B now and up to $20B more if business targets are met, on top of $8B invested earlier.",
+   "status": "signed",
+   "summary": "Amazon invests $5B in Anthropic and makes up to $20B more available through a financing facility, on top of $8B invested earlier.",
    "type": "equity_investment"
   },
   {
@@ -856,52 +861,55 @@
    "amount_usd_high": 50000000000.0,
    "amount_usd_low": 50000000000.0,
    "announced": "2026-02-27",
-   "as_of": "2026-07-30",
+   "as_of": "2026-10-30",
    "confidence": "filed",
    "id": "amazon-openai-equity-2026-02",
    "last_checked": "2026-10-31",
-   "notes": "Amazon's release and its 10-Q confirm the $35B was conditional. The 10-Q shows $15.0B paid in Q1 2026, $13.7B in Q2 and the remaining $21.3B after June 30, 2026.",
+   "notes": "Amazon's release and its 10-Qs confirm the $35B was conditional. The 10-Qs show $15.0B paid in Q1 2026, $13.7B in Q2 and the remaining $21.3B in Q3 2026.",
    "payee": "openai",
    "payer": "amazon",
    "sources": [
     "openai-funding-2026-02-27",
     "amazon-openai-2026-02-27",
     "amazon-10q-2026-q2",
-    "techcrunch-openai-2026-02-27"
+    "techcrunch-openai-2026-02-27",
+    "amazon-10q-2026-q3"
    ],
    "status": "closed",
-   "summary": "Amazon invests $50B in OpenAI's $110B round at $730B pre-money: $15B up front and $35B once conditions were met, all paid by late July 2026.",
+   "summary": "Amazon invests $50B in OpenAI's $110B round at $730B pre-money: $15B up front and $35B once conditions were met, fully paid in Q3 2026.",
    "type": "equity_investment"
   },
   {
    "amount_basis": "committed",
    "announced": "2026-02-24",
-   "as_of": "2026-02-24",
+   "as_of": "2026-08-05",
    "confidence": "filed",
    "id": "amd-meta-warrant-2026-02",
    "last_checked": "2026-10-31",
    "payee": "meta",
    "payer": "amd",
    "sources": [
-    "amd-8k-meta-2026-02-24"
+    "amd-8k-meta-2026-02-24",
+    "amd-10q-2026-q2"
    ],
-   "status": "announced",
+   "status": "signed",
    "summary": "AMD grants Meta a warrant for up to 160M AMD shares, vesting as Meta's purchases scale to 6 GW and AMD hits share price thresholds.",
    "type": "warrant_or_equity_grant"
   },
   {
    "amount_basis": "committed",
    "announced": "2025-10-06",
-   "as_of": "2025-10-06",
-   "confidence": "company_stated",
+   "as_of": "2026-02-04",
+   "confidence": "filed",
    "id": "amd-openai-warrant-2025-10",
    "last_checked": "2026-10-31",
    "payee": "openai",
    "payer": "amd",
    "sources": [
-    "amd-openai-2025-10-06"
+    "amd-openai-2025-10-06",
+    "amd-10k-2025"
    ],
-   "status": "announced",
+   "status": "signed",
    "summary": "Warrant for up to 160 million AMD shares, vesting with GPU deployments and AMD share-price targets. No dollar value stated.",
    "type": "warrant_or_equity_grant"
   },
@@ -927,16 +935,18 @@
    "amount_kind": "multi_year_total",
    "amount_usd_low": 100000000000.0,
    "announced": "2026-04-20",
-   "as_of": "2026-04-20",
-   "confidence": "company_stated",
+   "as_of": "2026-10-30",
+   "confidence": "filed",
    "id": "anthropic-aws-spend-2026-04",
    "last_checked": "2026-10-31",
+   "notes": "Amazon's 10-Q describes an amended commercial arrangement and an expanded commitment of more than $100B over ten years.",
    "payee": "amazon",
    "payer": "anthropic",
    "sources": [
-    "amazon-anthropic-2026-04-20"
+    "amazon-anthropic-2026-04-20",
+    "amazon-10q-2026-q3"
    ],
-   "status": "announced",
+   "status": "signed",
    "summary": "Anthropic to spend more than $100B on AWS technologies over ten years.",
    "term_years": 10,
    "type": "purchase_commitment"
@@ -1082,21 +1092,23 @@
    "type": "jv_contribution"
   },
   {
-   "amount_basis": "committed",
+   "amount_basis": "paid",
    "amount_kind": "one_time",
    "amount_usd_high": 350000000.0,
    "amount_usd_low": 350000000.0,
    "announced": "2025-03-10",
-   "as_of": "2025-03-10",
-   "confidence": "company_stated",
+   "as_of": "2025-03-31",
+   "confidence": "filed",
    "id": "coreweave-openai-equity-2025-03",
    "last_checked": "2026-10-31",
+   "notes": "CoreWeave's 10-Q shows 8.75M Class A shares, valued at $350M, issued to OpenAI on March 31, 2025.",
    "payee": "openai",
    "payer": "coreweave",
    "sources": [
-    "coreweave-openai-2025-03-10"
+    "coreweave-openai-2025-03-10",
+    "coreweave-10q-2025-q1"
    ],
-   "status": "signed",
+   "status": "closed",
    "summary": "CoreWeave issues $350M of its stock to OpenAI as part of the compute contract.",
    "type": "warrant_or_equity_grant"
   },
@@ -1140,7 +1152,7 @@
   {
    "amount_basis": "committed",
    "announced": "2026-02-24",
-   "as_of": "2026-02-24",
+   "as_of": "2026-08-05",
    "confidence": "filed",
    "id": "meta-amd-gpus-2026-02",
    "last_checked": "2026-10-31",
@@ -1148,9 +1160,10 @@
    "payee": "amd",
    "payer": "meta",
    "sources": [
-    "amd-8k-meta-2026-02-24"
+    "amd-8k-meta-2026-02-24",
+    "amd-10q-2026-q2"
    ],
-   "status": "announced",
+   "status": "signed",
    "summary": "Meta to deploy up to 6 GW of AMD Instinct GPUs, first gigawatt shipping in the second half of 2026. No dollar value stated.",
    "type": "purchase_commitment"
   },
@@ -1223,6 +1236,27 @@
    ],
    "status": "announced",
    "summary": "Meta signs a new five-year Nebius AI infrastructure agreement worth about $3B.",
+   "term_years": 5,
+   "type": "capacity_lease"
+  },
+  {
+   "amount_basis": "committed",
+   "amount_kind": "multi_year_total",
+   "amount_usd_high": 27000000000.0,
+   "amount_usd_low": 12000000000.0,
+   "announced": "2026-03-16",
+   "as_of": "2026-03-16",
+   "confidence": "filed",
+   "id": "meta-nebius-compute-2026-03",
+   "last_checked": "2026-10-31",
+   "notes": "The range runs from the $12B dedicated capacity to the roughly $27B total if Meta buys the full additional amount. Separate from the November 2025 agreement, which the release does not mention.",
+   "payee": "nebius",
+   "payer": "meta",
+   "sources": [
+    "nebius-meta-6k-2026-03-16"
+   ],
+   "status": "signed",
+   "summary": "Meta signs for $12B of dedicated Nebius capacity on NVIDIA Vera Rubin over five years from early 2027, plus up to $15B of capacity Nebius cannot resell.",
    "term_years": 5,
    "type": "capacity_lease"
   },
@@ -1369,19 +1403,21 @@
    "amount_usd_high": 13000000000.0,
    "amount_usd_low": 13000000000.0,
    "announced": "2025-09-30",
-   "as_of": "2025-09-30",
+   "as_of": "2026-03-31",
    "confidence": "filed",
    "id": "microsoft-openai-equity-2019",
    "last_checked": "2026-10-31",
-   "notes": "Cumulative commitments made in tranches since 2019, as reported in Microsoft's 10-Q. The announced date is the as-of date of that figure, not of any single tranche. The roughly $135B value of the stake is a valuation, not money paid, so it is not stored as an amount.",
+   "notes": "Cumulative commitments made in tranches since 2019, as reported in Microsoft's 10-Qs. The announced date is the as-of date of the first 10-Q figure used, not of any single tranche. The stake fell from about 27% after the October 2025 recapitalization to about 24% by September 30, 2026. The value of the stake is a valuation, not money paid, so it is not stored as an amount.",
    "payee": "openai",
    "payer": "microsoft",
    "sources": [
     "msft-10q-2025-09-30",
-    "msft-openai-2025-10-28"
+    "msft-openai-2025-10-28",
+    "msft-10q-2026-03-31",
+    "msft-10q-2026-09-30"
    ],
    "status": "closed",
-   "summary": "Microsoft's total funding commitments to OpenAI are $13B, of which $11.6B was funded by September 30, 2025; about a 27% stake after the October 2025 recapitalization.",
+   "summary": "Microsoft's total funding commitments to OpenAI are $13B, of which $11.8B was funded by March 31, 2026; about a 24% stake by September 2026.",
    "type": "equity_investment"
   },
   {
@@ -1467,14 +1503,16 @@
    "amount_kind": "cap",
    "amount_usd_high": 100000000000.0,
    "announced": "2025-09-22",
-   "as_of": "2025-09-22",
+   "as_of": "2026-02-25",
    "confidence": "company_stated",
    "id": "nvidia-openai-equity-2025-09",
    "last_checked": "2026-10-31",
+   "notes": "NVIDIA's fiscal 2026 10-K says it is still finalizing the agreement with OpenAI and that there is no assurance a transaction will be completed.",
    "payee": "openai",
    "payer": "nvidia",
    "sources": [
-    "nvidia-openai-2025-09-22"
+    "nvidia-openai-2025-09-22",
+    "nvidia-10k-fy2026"
    ],
    "status": "announced",
    "summary": "NVIDIA intends to invest up to $100B in OpenAI, paid in step with each gigawatt deployed; letter of intent.",
@@ -1502,18 +1540,38 @@
   },
   {
    "amount_basis": "committed",
+   "amount_kind": "cap",
+   "amount_usd_high": 105000000000.0,
+   "announced": "2026-08-26",
+   "as_of": "2026-08-26",
+   "confidence": "filed",
+   "id": "nvidia-openai-guarantee-2026-08",
+   "last_checked": "2026-10-31",
+   "notes": "NVIDIA's 10-Q says it entered the guarantees in August 2026; the announced date is the filing date. They take effect as each of nine data centers opens, from NVIDIA's fiscal 2029, pay out only on tenant default, and shrink as OpenAI pays its leases. The landlord is an SB Energy affiliate, not a tracked company.",
+   "payee": "openai",
+   "payer": "nvidia",
+   "sources": [
+    "nvidia-10q-2026-q2"
+   ],
+   "status": "signed",
+   "summary": "NVIDIA guarantees part of OpenAI's lease and power payments for about 4.25 GW at SB Energy's Ohio campus, capped at $105B; the site hosts NVIDIA systems.",
+   "type": "guarantee_or_backstop"
+  },
+  {
+   "amount_basis": "committed",
    "amount_kind": "multi_year_total",
    "amount_usd_high": 38000000000.0,
    "amount_usd_low": 38000000000.0,
    "announced": "2025-11-03",
-   "as_of": "2025-11-03",
-   "confidence": "company_stated",
+   "as_of": "2026-10-30",
+   "confidence": "filed",
    "id": "openai-amazon-compute-2025-11",
    "last_checked": "2026-10-31",
    "payee": "amazon",
    "payer": "openai",
    "sources": [
-    "openai-aws-2025-11-03"
+    "openai-aws-2025-11-03",
+    "amazon-10q-2026-q3"
    ],
    "status": "signed",
    "summary": "OpenAI commits $38B over seven years for AWS compute on NVIDIA GPU clusters.",
@@ -1526,7 +1584,7 @@
    "amount_usd_high": 100000000000.0,
    "amount_usd_low": 100000000000.0,
    "announced": "2026-02-27",
-   "as_of": "2026-07-30",
+   "as_of": "2026-10-30",
    "confidence": "filed",
    "id": "openai-amazon-compute-2026-02",
    "last_checked": "2026-10-31",
@@ -1535,7 +1593,8 @@
    "payer": "openai",
    "sources": [
     "amazon-openai-2026-02-27",
-    "amazon-10q-2026-q2"
+    "amazon-10q-2026-q2",
+    "amazon-10q-2026-q3"
    ],
    "status": "signed",
    "summary": "OpenAI expands its AWS commitment by $100B over eight years, including about 2 GW of Trainium capacity.",
@@ -1545,16 +1604,17 @@
   {
    "amount_basis": "committed",
    "announced": "2025-10-06",
-   "as_of": "2025-10-06",
-   "confidence": "company_stated",
+   "as_of": "2026-02-04",
+   "confidence": "filed",
    "id": "openai-amd-gpus-2025-10",
    "last_checked": "2026-10-31",
    "payee": "amd",
    "payer": "openai",
    "sources": [
-    "amd-openai-2025-10-06"
+    "amd-openai-2025-10-06",
+    "amd-10k-2025"
    ],
-   "status": "announced",
+   "status": "signed",
    "summary": "OpenAI to deploy 6 GW of AMD Instinct GPUs, first 1 GW in the second half of 2026. No dollar value stated.",
    "type": "purchase_commitment"
   },
@@ -1854,17 +1914,19 @@
    "amount_usd_high": 8900000000.0,
    "amount_usd_low": 8900000000.0,
    "announced": "2025-08-22",
-   "as_of": "2025-08-22",
+   "as_of": "2026-10-30",
    "confidence": "filed",
    "id": "usg-intel-equity-2025-08",
    "last_checked": "2026-10-31",
-   "notes": "Funded by $5.7B of awarded but unpaid CHIPS grants plus $3.2B of Secure Enclave funds, so Intel's CHIPS grant is not a separate edge. Includes a five-year warrant for 5% more at $20 that applies only if Intel's foundry ownership drops below 51%. Announced date taken from the exhibit's file name. Closing not yet checked.",
+   "notes": "Funded by $5.7B of awarded but unpaid CHIPS grants plus $3.2B of Secure Enclave funds, so Intel's CHIPS grant is not a separate edge. The shares were issued; some sit in escrow and are released as Secure Enclave cash arrives (132M still in escrow at September 26, 2026, per Intel's 10-Q), so the amount stays committed. Includes a five-year warrant for 5% more at $20 that applies only if Intel's foundry ownership drops below 51%. Announced date taken from the exhibit's file name.",
    "payee": "intel",
    "payer": "us-government",
    "sources": [
-    "intel-8k-usg-2025-08"
+    "intel-8k-usg-2025-08",
+    "intel-10k-2025",
+    "intel-10q-2026-q3"
    ],
-   "status": "signed",
+   "status": "closed",
    "summary": "US government takes a 9.9% Intel stake: $8.9B for 433.3M shares at $20.47, funded by unpaid CHIPS grants and Secure Enclave money.",
    "type": "equity_investment"
   },
@@ -2071,9 +2133,10 @@
    "deals": [
     "nvidia-openai-equity-2025-09",
     "nvidia-openai-equity-2026-02",
+    "nvidia-openai-guarantee-2026-08",
     "openai-nvidia-systems-2025-09"
    ],
-   "explanation": "NVIDIA intends to invest up to $100B (letter of intent) and then provides $30B, and OpenAI commits to deploy at least 10 GW of NVIDIA systems.",
+   "explanation": "NVIDIA intends to invest up to $100B (letter of intent), provides $30B and guarantees up to $105B of OpenAI's Ohio leases, and OpenAI commits to deploy at least 10 GW of NVIDIA systems.",
    "flagged_by": "automatic",
    "id": "nvidia-openai",
    "last_checked": "2026-10-31",
@@ -2094,6 +2157,17 @@
   },
   {
    "accessed": "2026-10-31",
+   "filing_form": "10-Q",
+   "id": "amazon-10q-2026-q3",
+   "kind": "filing",
+   "label": "Amazon 10-Q for the quarter ended September 30, 2026",
+   "locator": "Non-marketable investments; remaining performance obligations",
+   "published": "2026-10-30",
+   "publisher": "SEC EDGAR",
+   "url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872426000040/amzn-20260930.htm"
+  },
+  {
+   "accessed": "2026-10-31",
    "id": "amazon-anthropic-2026-04-20",
    "kind": "company",
    "label": "Amazon release: $5B more in Anthropic, up to $20B later",
@@ -2109,6 +2183,28 @@
    "published": "2026-02-27",
    "publisher": "Amazon",
    "url": "https://press.aboutamazon.com/2026/2/openai-and-amazon-announce-strategic-partnership"
+  },
+  {
+   "accessed": "2026-10-31",
+   "filing_form": "10-K",
+   "id": "amd-10k-2025",
+   "kind": "filing",
+   "label": "AMD 10-K for fiscal 2025",
+   "locator": "OpenAI product purchase agreement and warrant",
+   "published": "2026-02-04",
+   "publisher": "SEC EDGAR",
+   "url": "https://www.sec.gov/Archives/edgar/data/2488/000000248826000018/amd-20251227.htm"
+  },
+  {
+   "accessed": "2026-10-31",
+   "filing_form": "10-Q",
+   "id": "amd-10q-2026-q2",
+   "kind": "filing",
+   "label": "AMD 10-Q for the quarter ended June 27, 2026",
+   "locator": "Warrants issued to OpenAI and Meta",
+   "published": "2026-08-05",
+   "publisher": "SEC EDGAR",
+   "url": "https://www.sec.gov/Archives/edgar/data/2488/000000248826000123/amd-20260627.htm"
   },
   {
    "accessed": "2026-10-31",
@@ -2224,6 +2320,16 @@
   },
   {
    "accessed": "2026-10-31",
+   "filing_form": "10-Q",
+   "id": "coreweave-10q-2025-q1",
+   "kind": "filing",
+   "label": "CoreWeave 10-Q for the quarter ended March 31, 2025",
+   "locator": "Commercial agreement with OpenAI",
+   "publisher": "SEC EDGAR",
+   "url": "https://www.sec.gov/Archives/edgar/data/1769628/000176962825000014/crwv-20250331.htm"
+  },
+  {
+   "accessed": "2026-10-31",
    "filing_form": "8-K",
    "id": "coreweave-8k-meta-2025-09-25",
    "kind": "filing",
@@ -2299,6 +2405,28 @@
   },
   {
    "accessed": "2026-10-31",
+   "filing_form": "10-K",
+   "id": "intel-10k-2025",
+   "kind": "filing",
+   "label": "Intel 10-K for fiscal 2025",
+   "locator": "US government agreement and CHIPS Act disbursements",
+   "published": "2026-01-23",
+   "publisher": "SEC EDGAR",
+   "url": "https://www.sec.gov/Archives/edgar/data/50863/000005086326000011/intc-20251227.htm"
+  },
+  {
+   "accessed": "2026-10-31",
+   "filing_form": "10-Q",
+   "id": "intel-10q-2026-q3",
+   "kind": "filing",
+   "label": "Intel 10-Q for the quarter ended September 26, 2026",
+   "locator": "Escrowed shares under the US government agreement",
+   "published": "2026-10-30",
+   "publisher": "SEC EDGAR",
+   "url": "https://www.sec.gov/Archives/edgar/data/50863/000005086326000191/intc-20260926.htm"
+  },
+  {
+   "accessed": "2026-10-31",
    "filing_form": "8-K",
    "id": "intel-8k-nvidia-2025-09-18",
    "kind": "filing",
@@ -2356,6 +2484,27 @@
   },
   {
    "accessed": "2026-10-31",
+   "filing_form": "10-Q",
+   "id": "msft-10q-2026-03-31",
+   "kind": "filing",
+   "label": "Microsoft 10-Q for the quarter ended March 31, 2026",
+   "locator": "Investment in OpenAI",
+   "publisher": "SEC EDGAR",
+   "url": "https://www.sec.gov/Archives/edgar/data/0000789019/000119312526191507/msft-20260331.htm"
+  },
+  {
+   "accessed": "2026-10-31",
+   "filing_form": "10-Q",
+   "id": "msft-10q-2026-09-30",
+   "kind": "filing",
+   "label": "Microsoft 10-Q for the quarter ended September 30, 2026",
+   "locator": "Investment in OpenAI",
+   "published": "2026-10-28",
+   "publisher": "SEC EDGAR",
+   "url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526436133/msft-20260930.htm"
+  },
+  {
+   "accessed": "2026-10-31",
    "id": "msft-nvda-anthropic-2025-11-18",
    "kind": "company",
    "label": "Microsoft blog: Microsoft, NVIDIA and Anthropic partnerships",
@@ -2403,6 +2552,16 @@
   },
   {
    "accessed": "2026-10-31",
+   "filing_form": "6-K",
+   "id": "nebius-meta-6k-2026-03-16",
+   "kind": "filing",
+   "label": "Nebius 6-K exhibit: Meta supply agreement, March 2026",
+   "published": "2026-03-16",
+   "publisher": "SEC EDGAR",
+   "url": "https://www.sec.gov/Archives/edgar/data/1513845/000110465926027886/tm268879d1_ex99-1.htm"
+  },
+  {
+   "accessed": "2026-10-31",
    "id": "nist-chips-micron-2024-12-10",
    "kind": "government",
    "label": "NIST release: CHIPS award to Micron for Idaho and New York",
@@ -2435,6 +2594,28 @@
    "label": "NIST CHIPS award page: TSMC Arizona",
    "publisher": "NIST CHIPS Program Office",
    "url": "https://www.nist.gov/node/1855171"
+  },
+  {
+   "accessed": "2026-10-31",
+   "filing_form": "10-K",
+   "id": "nvidia-10k-fy2026",
+   "kind": "filing",
+   "label": "NVIDIA 10-K for fiscal 2026",
+   "locator": "Investments; OpenAI agreement",
+   "published": "2026-02-25",
+   "publisher": "SEC EDGAR",
+   "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm"
+  },
+  {
+   "accessed": "2026-10-31",
+   "filing_form": "10-Q",
+   "id": "nvidia-10q-2026-q2",
+   "kind": "filing",
+   "label": "NVIDIA 10-Q for the quarter ended July 26, 2026",
+   "locator": "SB Energy guarantees",
+   "published": "2026-08-26",
+   "publisher": "SEC EDGAR",
+   "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm"
   },
   {
    "accessed": "2026-10-31",

@@ -6,14 +6,16 @@
  "announced": "2025-03-10",
  "amount_usd_low": 350000000.0,
  "amount_usd_high": 350000000.0,
- "amount_basis": "committed",
+ "amount_basis": "paid",
  "amount_kind": "one_time",
- "confidence": "company_stated",
- "status": "signed",
+ "confidence": "filed",
+ "status": "closed",
  "summary": "CoreWeave issues $350M of its stock to OpenAI as part of the compute contract.",
- "as_of": "2025-03-10",
+ "as_of": "2025-03-31",
  "last_checked": "2026-10-31",
  "sources": [
-  "coreweave-openai-2025-03-10"
- ]
+  "coreweave-openai-2025-03-10",
+  "coreweave-10q-2025-q1"
+ ],
+ "notes": "CoreWeave's 10-Q shows 8.75M Class A shares, valued at $350M, issued to OpenAI on March 31, 2025."
 }

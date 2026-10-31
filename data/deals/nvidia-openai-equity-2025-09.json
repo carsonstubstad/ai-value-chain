@@ -10,9 +10,11 @@
  "confidence": "company_stated",
  "status": "announced",
  "summary": "NVIDIA intends to invest up to $100B in OpenAI, paid in step with each gigawatt deployed; letter of intent.",
- "as_of": "2025-09-22",
+ "as_of": "2026-02-25",
  "last_checked": "2026-10-31",
  "sources": [
-  "nvidia-openai-2025-09-22"
- ]
+  "nvidia-openai-2025-09-22",
+  "nvidia-10k-fy2026"
+ ],
+ "notes": "NVIDIA's fiscal 2026 10-K says it is still finalizing the agreement with OpenAI and that there is no assurance a transaction will be completed."
 }

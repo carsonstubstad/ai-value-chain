@@ -5,16 +5,17 @@
  "type": "equity_investment",
  "announced": "2023-09-25",
  "amount_usd_high": 4000000000.0,
- "amount_basis": "committed",
+ "amount_basis": "paid",
  "amount_kind": "cap",
- "confidence": "reported",
+ "confidence": "filed",
  "status": "closed",
  "summary": "Amazon invests up to $4B in Anthropic for a minority stake, starting with $1.25B.",
- "as_of": "2024-11-22",
+ "as_of": "2026-10-30",
  "last_checked": "2026-10-31",
  "sources": [
   "techcrunch-amazon-anthropic-2023-09-25",
-  "ap-amazon-anthropic-2024-11-22"
+  "ap-amazon-anthropic-2024-11-22",
+  "amazon-10q-2026-q3"
  ],
- "notes": "AP reports Amazon's total at $8B by November 2024 including this round, which supports that the full $4B was invested."
+ "notes": "Amazon's 10-Q states $8.0B invested in Anthropic convertible notes from Q3 2023 to Q4 2025 in total, which equals the 2023 and 2024 rounds together; it gives no split by round."
 }

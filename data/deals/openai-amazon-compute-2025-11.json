@@ -9,12 +9,13 @@
  "amount_basis": "committed",
  "amount_kind": "multi_year_total",
  "term_years": 7,
- "confidence": "company_stated",
+ "confidence": "filed",
  "status": "signed",
  "summary": "OpenAI commits $38B over seven years for AWS compute on NVIDIA GPU clusters.",
- "as_of": "2025-11-03",
+ "as_of": "2026-10-30",
  "last_checked": "2026-10-31",
  "sources": [
-  "openai-aws-2025-11-03"
+  "openai-aws-2025-11-03",
+  "amazon-10q-2026-q3"
  ]
 }
