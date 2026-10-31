@@ -86,6 +86,7 @@ Settled questions. Do not reopen without Carson. Add a dated line for every new 
 - D29 Loop rule (was P25): a loop is two or three companies with money flowing out and back, found automatically from deals that are not rumored, terminated or superseded. Its record lists every such deal along the cycle, not only the first matching pair. Three-company rings are tagged even when two of the companies already form a loop. CI enforces it with scripts/loops.py --check.
 - D30 PR #8 merged to main. Pages stays off.
 - D31 Next is the status sweep (O16): check every open deal against the latest 10-Q or 10-K of a party that files with the SEC, then stop and report before sessions 11 to 13.
+- D32 (2026-10-31, "Yes, run to Gate 4") A filing figure outranks a press release figure for the same deal, so the Blackstone-led CoreWeave facility is $7.6B per CoreWeave's 10-K. PR #9 merged. Sessions 11 to 13 approved back to back; stop at Gate 4. Pages stays off.
 
 ## Proposed at Gate 2 (2026-10-31), awaiting Carson's feedback
 - P21 Company list: the 47 in data/companies-list.csv stand. Bench promotion order if a sourced edge appears: Core Scientific, Humain, Bloom Energy.

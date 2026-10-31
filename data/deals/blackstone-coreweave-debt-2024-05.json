@@ -4,18 +4,19 @@
  "payee": "coreweave",
  "type": "debt_or_gpu_backed_loan",
  "announced": "2024-05-17",
- "amount_usd_low": 7500000000.0,
- "amount_usd_high": 7500000000.0,
+ "amount_usd_low": 7600000000.0,
+ "amount_usd_high": 7600000000.0,
  "amount_basis": "committed",
  "amount_kind": "cap",
  "syndicate_total": true,
- "confidence": "company_stated",
+ "confidence": "filed",
  "status": "signed",
- "summary": "Blackstone funds lead a $7.5B debt facility for CoreWeave with Magnetar, Coatue and others; the amount is the syndicate total.",
- "as_of": "2024-05-17",
+ "summary": "Blackstone funds lead a $7.6B delayed draw loan facility for CoreWeave with Magnetar, Coatue and others; the amount is the syndicate total.",
+ "as_of": "2026-03-02",
  "last_checked": "2026-10-31",
  "sources": [
-  "blackstone-coreweave-2024-05-17"
+  "blackstone-coreweave-2024-05-17",
+  "coreweave-10k-2025"
  ],
- "notes": "Syndicate total across all lenders, shown on the lead lender's edge (D25). Blackstone's own share is not stated. Other lenders get no separate amount, so nothing is double counted."
+ "notes": "Syndicate total across all lenders, shown on the lead lender's edge (D25). Blackstone's own share is not stated. Other lenders get no separate amount, so nothing is double counted. CoreWeave's 10-K gives the May 2024 facility (DDTL 2.0) as up to $7.6B, so the filing figure replaces the $7.5B in the release (D32). A later $3.0B tranche (DDTL 2.1, September 2025) is not included."
 }
