@@ -1,0 +1,16 @@
+{
+ "id": "meta-blue-owl-guarantee-2025-10",
+ "payer": "meta",
+ "payee": "blue-owl",
+ "type": "guarantee_or_backstop",
+ "announced": "2025-10-21",
+ "amount_basis": "committed",
+ "confidence": "company_stated",
+ "status": "signed",
+ "summary": "Meta gives a capped residual value guarantee for the first 16 years of Hyperion and leases the campus for four years with extension options. Cap not disclosed.",
+ "as_of": "2025-10-21",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "meta-blue-owl-2025-10-21"
+ ]
+}

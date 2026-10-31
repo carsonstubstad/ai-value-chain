@@ -1,0 +1,20 @@
+{
+ "id": "blue-owl-meta-hyperion-2025-10",
+ "payer": "blue-owl",
+ "payee": "meta",
+ "type": "jv_contribution",
+ "announced": "2025-10-21",
+ "amount_usd_low": 7000000000.0,
+ "amount_usd_high": 7000000000.0,
+ "amount_basis": "committed",
+ "amount_kind": "one_time",
+ "confidence": "company_stated",
+ "status": "signed",
+ "summary": "Blue Owl funds put about $7B cash into an 80/20 joint venture with Meta that owns the $27B Hyperion campus; Meta gets a one-time $3B distribution.",
+ "as_of": "2025-10-21",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "meta-blue-owl-2025-10-21"
+ ],
+ "notes": "The cash goes into the joint venture, which builds and leases the campus to Meta. Part of Blue Owl's capital is funded by bonds sold to PIMCO and others."
+}

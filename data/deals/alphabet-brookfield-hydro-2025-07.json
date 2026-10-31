@@ -1,0 +1,20 @@
+{
+ "id": "alphabet-brookfield-hydro-2025-07",
+ "payer": "alphabet",
+ "payee": "brookfield",
+ "type": "power_supply_agreement",
+ "announced": "2025-07-15",
+ "amount_usd_low": 3000000000.0,
+ "amount_basis": "committed",
+ "amount_kind": "multi_year_total",
+ "term_years": 20,
+ "confidence": "filed",
+ "status": "signed",
+ "summary": "Google signs a framework for up to 3,000 MW of Brookfield hydro; first 20-year contracts cover 670 MW in Pennsylvania worth over $3B.",
+ "as_of": "2025-07-15",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "bam-google-hydro-2025-07-15"
+ ],
+ "notes": "The amount covers only the initial 670 MW contracts, not the full framework."
+}
