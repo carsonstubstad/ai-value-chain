@@ -8,12 +8,14 @@
  "amount_basis": "committed",
  "amount_kind": "multi_year_total",
  "term_years": 10,
- "confidence": "company_stated",
- "status": "announced",
+ "confidence": "filed",
+ "status": "signed",
  "summary": "Anthropic to spend more than $100B on AWS technologies over ten years.",
- "as_of": "2026-04-20",
+ "as_of": "2026-10-30",
  "last_checked": "2026-10-31",
  "sources": [
-  "amazon-anthropic-2026-04-20"
- ]
+  "amazon-anthropic-2026-04-20",
+  "amazon-10q-2026-q3"
+ ],
+ "notes": "Amazon's 10-Q describes an amended commercial arrangement and an expanded commitment of more than $100B over ten years."
 }

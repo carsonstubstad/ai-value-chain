@@ -4,9 +4,10 @@
  "deals": [
   "nvidia-openai-equity-2025-09",
   "nvidia-openai-equity-2026-02",
+  "nvidia-openai-guarantee-2026-08",
   "openai-nvidia-systems-2025-09"
  ],
  "flagged_by": "automatic",
- "explanation": "NVIDIA intends to invest up to $100B (letter of intent) and then provides $30B, and OpenAI commits to deploy at least 10 GW of NVIDIA systems.",
+ "explanation": "NVIDIA intends to invest up to $100B (letter of intent), provides $30B and guarantees up to $105B of OpenAI's Ohio leases, and OpenAI commits to deploy at least 10 GW of NVIDIA systems.",
  "last_checked": "2026-10-31"
 }

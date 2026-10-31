@@ -8,12 +8,14 @@
  "amount_usd_high": 25000000000.0,
  "amount_basis": "committed",
  "amount_kind": "cap",
- "confidence": "company_stated",
- "status": "announced",
- "summary": "Amazon invests $5B now and up to $20B more if business targets are met, on top of $8B invested earlier.",
- "as_of": "2026-04-20",
+ "confidence": "filed",
+ "status": "signed",
+ "summary": "Amazon invests $5B in Anthropic and makes up to $20B more available through a financing facility, on top of $8B invested earlier.",
+ "as_of": "2026-10-30",
  "last_checked": "2026-10-31",
  "sources": [
-  "amazon-anthropic-2026-04-20"
- ]
+  "amazon-anthropic-2026-04-20",
+  "amazon-10q-2026-q3"
+ ],
+ "notes": "Amazon's 10-Q shows $10.0B invested in Anthropic preferred stock in the first nine months of 2026, so $10B of the $25B was funded by September 30, 2026."
 }

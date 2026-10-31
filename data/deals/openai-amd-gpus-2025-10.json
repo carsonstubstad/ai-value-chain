@@ -5,12 +5,13 @@
  "type": "purchase_commitment",
  "announced": "2025-10-06",
  "amount_basis": "committed",
- "confidence": "company_stated",
- "status": "announced",
+ "confidence": "filed",
+ "status": "signed",
  "summary": "OpenAI to deploy 6 GW of AMD Instinct GPUs, first 1 GW in the second half of 2026. No dollar value stated.",
- "as_of": "2025-10-06",
+ "as_of": "2026-02-04",
  "last_checked": "2026-10-31",
  "sources": [
-  "amd-openai-2025-10-06"
+  "amd-openai-2025-10-06",
+  "amd-10k-2025"
  ]
 }

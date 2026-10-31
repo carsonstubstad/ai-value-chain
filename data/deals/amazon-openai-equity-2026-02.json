@@ -10,14 +10,15 @@
  "amount_kind": "one_time",
  "confidence": "filed",
  "status": "closed",
- "summary": "Amazon invests $50B in OpenAI's $110B round at $730B pre-money: $15B up front and $35B once conditions were met, all paid by late July 2026.",
- "as_of": "2026-07-30",
+ "summary": "Amazon invests $50B in OpenAI's $110B round at $730B pre-money: $15B up front and $35B once conditions were met, fully paid in Q3 2026.",
+ "as_of": "2026-10-30",
  "last_checked": "2026-10-31",
  "sources": [
   "openai-funding-2026-02-27",
   "amazon-openai-2026-02-27",
   "amazon-10q-2026-q2",
-  "techcrunch-openai-2026-02-27"
+  "techcrunch-openai-2026-02-27",
+  "amazon-10q-2026-q3"
  ],
- "notes": "Amazon's release and its 10-Q confirm the $35B was conditional. The 10-Q shows $15.0B paid in Q1 2026, $13.7B in Q2 and the remaining $21.3B after June 30, 2026."
+ "notes": "Amazon's release and its 10-Qs confirm the $35B was conditional. The 10-Qs show $15.0B paid in Q1 2026, $13.7B in Q2 and the remaining $21.3B in Q3 2026."
 }

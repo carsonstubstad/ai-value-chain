@@ -12,6 +12,7 @@ on:
     paths:
       - data/companies-list.csv
       - scripts/fetch_companies.py
+      - scripts/fetch_filings.py
       - .github/workflows/fetch.yml
 
 permissions:
@@ -44,4 +45,29 @@ jobs:
           cp "$RUNNER_TEMP/companies.json" companies/latest.json
           git add companies/latest.json
           git commit -m "fetch companies: ${GITHUB_SHA::7} on ${GITHUB_REF_NAME}" || echo "No change"
+          git push origin fetch
+
+  filings:
+    needs: companies
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Latest 10-Q and annual report passages for open deals (O16)
+        env:
+          SEC_USER_AGENT: ${{ secrets.SEC_USER_AGENT }}
+        run: python3 scripts/fetch_filings.py "$RUNNER_TEMP/filings.json"
+      - name: Commit output to the fetch branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git fetch --depth 1 origin fetch 2>/dev/null; then
+            git checkout -B fetch FETCH_HEAD
+          else
+            git checkout --orphan fetch
+            git rm -rf --quiet .
+          fi
+          mkdir -p filings
+          cp "$RUNNER_TEMP/filings.json" filings/latest.json
+          git add filings/latest.json
+          git commit -m "fetch filings: ${GITHUB_SHA::7} on ${GITHUB_REF_NAME}" || echo "No change"
           git push origin fetch
