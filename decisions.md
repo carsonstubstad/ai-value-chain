@@ -72,6 +72,7 @@ Settled questions. Do not reopen without Carson. Add a dated line for every new 
 ## Settled by Carson (2026-10-31, "Merge and start 5")
 - D23 PRs #2 and #3 merged to main. GitHub Pages stays off. Session 5 approved; stop and report before session 6.
 - D24 (2026-10-31, "Merge and start 6") PR #4 merged to main. Session 6 approved; stop and report before session 7. Pages stays off.
+- D25 (2026-10-31, "Yes to all three") Multi-lender loans: the full facility amount goes on the lead lender's edge, flagged syndicate_total and labeled "syndicate total" on the site. Other lenders in the same facility get no amount, so nothing is double counted. Closes O15. PR #5 merged; session 7 approved; stop and report before session 8. Pages stays off.
 
 ## Proposed at Gate 2 (2026-10-31), awaiting Carson's feedback
 - P21 Company list: the 47 in data/companies-list.csv stand. Bench promotion order if a sourced edge appears: Core Scientific, Humain, Bloom Energy.
@@ -80,6 +81,5 @@ Settled questions. Do not reopen without Carson. Add a dated line for every new 
 
 ## Open (need Carson)
 - O14 Confirm P21 to P23 (PRs merged per D23).
-- O15 Syndicated loans: keep the lead lender as payer with no amount (current), or show the full facility on that edge, labeled as a syndicate total.
 - O06 Paid data: $0 through the MVP; revisit after two months of weekly updates.
 - O12 Epoch AI terms of use: confirm before Gate 5 (the downloads page states no license).

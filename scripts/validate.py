@@ -171,6 +171,8 @@ def check_references(records):
         if key in edges:
             errors.append(f"{rel}: same edge as {edges[key]} (one deal is one edge)")
         edges[key] = rel
+        if d.get("syndicate_total") and "amount_usd_high" not in d and "amount_usd_low" not in d:
+            errors.append(f"{rel}: syndicate_total needs an amount (D25)")
     for rel, loop in records["loop"].values():
         for did in loop.get("deals", []):
             need(rel, "deal", did, deals)
