@@ -1,0 +1,19 @@
+{
+ "id": "amazon-anthropic-equity-2024-11",
+ "payer": "amazon",
+ "payee": "anthropic",
+ "type": "equity_investment",
+ "announced": "2024-11-22",
+ "amount_usd_low": 4000000000.0,
+ "amount_usd_high": 4000000000.0,
+ "amount_basis": "committed",
+ "amount_kind": "one_time",
+ "confidence": "reported",
+ "status": "announced",
+ "summary": "Amazon invests another $4B in Anthropic, which names AWS its primary training partner.",
+ "as_of": "2024-11-22",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "ap-amazon-anthropic-2024-11-22"
+ ]
+}

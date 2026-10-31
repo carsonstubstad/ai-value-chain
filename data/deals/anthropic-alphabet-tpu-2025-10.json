@@ -1,0 +1,17 @@
+{
+ "id": "anthropic-alphabet-tpu-2025-10",
+ "payer": "anthropic",
+ "payee": "alphabet",
+ "type": "capacity_lease",
+ "announced": "2025-10-23",
+ "amount_basis": "committed",
+ "confidence": "company_stated",
+ "status": "signed",
+ "summary": "Anthropic expands to up to one million Google Cloud TPUs, well over 1 GW coming online in 2026, worth tens of billions of dollars.",
+ "as_of": "2025-10-23",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "anthropic-google-tpu-2025-10-23"
+ ],
+ "notes": "Only 'tens of billions of dollars' is stated, so no amount is stored. Separate from Anthropic's TPU rack orders placed with Broadcom."
+}
