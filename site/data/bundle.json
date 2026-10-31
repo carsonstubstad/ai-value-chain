@@ -904,6 +904,59 @@
   },
   {
    "amount_basis": "committed",
+   "announced": "2024-05-17",
+   "as_of": "2024-05-17",
+   "confidence": "company_stated",
+   "id": "blackstone-coreweave-debt-2024-05",
+   "last_checked": "2026-10-31",
+   "notes": "Facility total is $7.5B across many lenders; Blackstone's own share is not stated, so no amount is stored on this edge.",
+   "payee": "coreweave",
+   "payer": "blackstone",
+   "sources": [
+    "blackstone-coreweave-2024-05-17"
+   ],
+   "status": "signed",
+   "summary": "Blackstone funds lead a $7.5B debt facility for CoreWeave with Magnetar, Coatue and others.",
+   "type": "debt_or_gpu_backed_loan"
+  },
+  {
+   "amount_basis": "committed",
+   "amount_kind": "one_time",
+   "amount_usd_high": 350000000.0,
+   "amount_usd_low": 350000000.0,
+   "announced": "2025-03-10",
+   "as_of": "2025-03-10",
+   "confidence": "company_stated",
+   "id": "coreweave-openai-equity-2025-03",
+   "last_checked": "2026-10-31",
+   "payee": "openai",
+   "payer": "coreweave",
+   "sources": [
+    "coreweave-openai-2025-03-10"
+   ],
+   "status": "signed",
+   "summary": "CoreWeave issues $350M of its stock to OpenAI as part of the compute contract.",
+   "type": "warrant_or_equity_grant"
+  },
+  {
+   "amount_basis": "committed",
+   "announced": "2025-07-22",
+   "as_of": "2025-07-22",
+   "confidence": "company_stated",
+   "id": "crusoe-ge-vernova-turbines-2025-07",
+   "last_checked": "2026-10-31",
+   "notes": "10 units booked in December 2024 and 19 more in the second quarter of 2025.",
+   "payee": "ge-vernova",
+   "payer": "crusoe",
+   "sources": [
+    "gev-crusoe-2025-07-22"
+   ],
+   "status": "signed",
+   "summary": "Crusoe books 29 GE Vernova gas turbine packages, nearly 1 GW, for AI data centers. No value stated.",
+   "type": "purchase_commitment"
+  },
+  {
+   "amount_basis": "committed",
    "announced": "2026-02-24",
    "as_of": "2026-02-24",
    "confidence": "filed",
@@ -918,6 +971,62 @@
    "status": "announced",
    "summary": "Meta to deploy up to 6 GW of AMD Instinct GPUs, first gigawatt shipping in the second half of 2026. No dollar value stated.",
    "type": "purchase_commitment"
+  },
+  {
+   "amount_basis": "committed",
+   "announced": "2025-06-03",
+   "as_of": "2025-06-03",
+   "confidence": "company_stated",
+   "id": "meta-constellation-ppa-2025-06",
+   "last_checked": "2026-10-31",
+   "payee": "constellation",
+   "payer": "meta",
+   "sources": [
+    "ceg-meta-2025-06-03"
+   ],
+   "status": "signed",
+   "summary": "Meta signs a 20-year deal for 1,121 MW from the Clinton nuclear plant starting June 2027. No value stated.",
+   "term_years": 20,
+   "type": "power_supply_agreement"
+  },
+  {
+   "amount_basis": "committed",
+   "amount_kind": "cap",
+   "amount_usd_high": 14200000000.0,
+   "announced": "2025-09-25",
+   "as_of": "2025-09-25",
+   "confidence": "filed",
+   "id": "meta-coreweave-compute-2025-09",
+   "last_checked": "2026-10-31",
+   "notes": "Subject to termination and delivery requirements.",
+   "payee": "coreweave",
+   "payer": "meta",
+   "sources": [
+    "coreweave-8k-meta-2025-09-25"
+   ],
+   "status": "signed",
+   "summary": "Meta commits up to about $14.2B for CoreWeave cloud capacity through December 2031, with an option to expand.",
+   "type": "capacity_lease"
+  },
+  {
+   "amount_basis": "committed",
+   "amount_kind": "multi_year_total",
+   "amount_usd_high": 3000000000.0,
+   "amount_usd_low": 3000000000.0,
+   "announced": "2025-11-11",
+   "as_of": "2025-11-11",
+   "confidence": "filed",
+   "id": "meta-nebius-compute-2025-11",
+   "last_checked": "2026-10-31",
+   "payee": "nebius",
+   "payer": "meta",
+   "sources": [
+    "nebius-6k-2025-11-11"
+   ],
+   "status": "announced",
+   "summary": "Meta signs a new five-year Nebius AI infrastructure agreement worth about $3B.",
+   "term_years": 5,
+   "type": "capacity_lease"
   },
   {
    "amount_basis": "committed",
@@ -937,6 +1046,23 @@
   },
   {
    "amount_basis": "committed",
+   "announced": "2026-01-09",
+   "as_of": "2026-01-09",
+   "confidence": "company_stated",
+   "id": "meta-vistra-ppa-2026-01",
+   "last_checked": "2026-10-31",
+   "payee": "vistra",
+   "payer": "meta",
+   "sources": [
+    "vistra-meta-2026-01-09"
+   ],
+   "status": "signed",
+   "summary": "Meta signs 20-year deals for about 2,609 MW from three Vistra nuclear plants, including 433 MW of uprates. No value stated.",
+   "term_years": 20,
+   "type": "power_supply_agreement"
+  },
+  {
+   "amount_basis": "committed",
    "amount_kind": "cap",
    "amount_usd_high": 5000000000.0,
    "announced": "2025-11-18",
@@ -952,6 +1078,39 @@
    "status": "announced",
    "summary": "Microsoft commits to invest up to $5B in Anthropic.",
    "type": "equity_investment"
+  },
+  {
+   "amount_basis": "committed",
+   "announced": "2024-09-20",
+   "as_of": "2024-09-20",
+   "confidence": "filed",
+   "id": "microsoft-constellation-ppa-2024-09",
+   "last_checked": "2026-10-31",
+   "payee": "constellation",
+   "payer": "microsoft",
+   "sources": [
+    "ceg-8k-microsoft-2024-09-20"
+   ],
+   "status": "signed",
+   "summary": "Microsoft signs a 20-year deal for about 835 MW from the restarted Crane nuclear plant, expected online in 2028. No value stated.",
+   "term_years": 20,
+   "type": "power_supply_agreement"
+  },
+  {
+   "amount_basis": "committed",
+   "announced": "2025-11-03",
+   "as_of": "2025-11-03",
+   "confidence": "company_stated",
+   "id": "microsoft-lambda-compute-2025-11",
+   "last_checked": "2026-10-31",
+   "payee": "lambda",
+   "payer": "microsoft",
+   "sources": [
+    "lambda-microsoft-2025-11-03"
+   ],
+   "status": "signed",
+   "summary": "Microsoft signs a multiyear, multibillion-dollar deal for Lambda AI infrastructure on NVIDIA GB300 systems. No exact value stated.",
+   "type": "capacity_lease"
   },
   {
    "amount_basis": "committed",
@@ -989,6 +1148,45 @@
    ],
    "status": "announced",
    "summary": "NVIDIA commits to invest up to $10B in Anthropic.",
+   "type": "equity_investment"
+  },
+  {
+   "amount_basis": "committed",
+   "amount_kind": "multi_year_total",
+   "amount_usd_high": 6300000000.0,
+   "amount_usd_low": 6300000000.0,
+   "announced": "2025-09-09",
+   "as_of": "2025-09-09",
+   "confidence": "filed",
+   "id": "nvidia-coreweave-capacity-2025-09",
+   "last_checked": "2026-10-31",
+   "notes": "A backstop: NVIDIA pays only for capacity CoreWeave cannot sell. Subject to termination and delivery terms.",
+   "payee": "coreweave",
+   "payer": "nvidia",
+   "sources": [
+    "coreweave-8k-nvidia-2025-09-09"
+   ],
+   "status": "signed",
+   "summary": "NVIDIA places a $6.3B initial order to buy any CoreWeave capacity its customers leave unused, through April 2032.",
+   "type": "guarantee_or_backstop"
+  },
+  {
+   "amount_basis": "paid",
+   "amount_kind": "one_time",
+   "amount_usd_high": 2000000000.0,
+   "amount_usd_low": 2000000000.0,
+   "announced": "2026-01-23",
+   "as_of": "2026-01-23",
+   "confidence": "filed",
+   "id": "nvidia-coreweave-equity-2026-01",
+   "last_checked": "2026-10-31",
+   "payee": "coreweave",
+   "payer": "nvidia",
+   "sources": [
+    "coreweave-8k-nvidia-2026-01-23"
+   ],
+   "status": "closed",
+   "summary": "NVIDIA buys $2B of CoreWeave Class A stock at $87.20 a share.",
    "type": "equity_investment"
   },
   {
@@ -1061,6 +1259,63 @@
    "status": "announced",
    "summary": "OpenAI and Broadcom to deploy 10 GW of OpenAI-designed accelerator racks from late 2026 to end of 2029. No dollar value stated.",
    "type": "purchase_commitment"
+  },
+  {
+   "amount_basis": "committed",
+   "amount_kind": "cap",
+   "amount_usd_high": 11900000000.0,
+   "announced": "2025-03-10",
+   "as_of": "2025-03-10",
+   "confidence": "company_stated",
+   "id": "openai-coreweave-compute-2025-03",
+   "last_checked": "2026-10-31",
+   "notes": "Term not stated.",
+   "payee": "coreweave",
+   "payer": "openai",
+   "sources": [
+    "coreweave-openai-2025-03-10"
+   ],
+   "status": "signed",
+   "summary": "OpenAI contracts up to $11.9B of AI compute from CoreWeave.",
+   "type": "capacity_lease"
+  },
+  {
+   "amount_basis": "committed",
+   "amount_kind": "cap",
+   "amount_usd_high": 4000000000.0,
+   "announced": "2025-05-15",
+   "as_of": "2025-09-25",
+   "confidence": "company_stated",
+   "id": "openai-coreweave-compute-2025-05",
+   "last_checked": "2026-10-31",
+   "notes": "Amount from CoreWeave's September 2025 release; date from Bloomberg's headline.",
+   "payee": "coreweave",
+   "payer": "openai",
+   "sources": [
+    "coreweave-openai-2025-09-25",
+    "bloomberg-openai-coreweave-2025-05-15"
+   ],
+   "status": "signed",
+   "summary": "OpenAI expands its CoreWeave contract by up to $4B.",
+   "type": "capacity_lease"
+  },
+  {
+   "amount_basis": "committed",
+   "amount_kind": "cap",
+   "amount_usd_high": 6500000000.0,
+   "announced": "2025-09-25",
+   "as_of": "2025-09-25",
+   "confidence": "company_stated",
+   "id": "openai-coreweave-compute-2025-09",
+   "last_checked": "2026-10-31",
+   "payee": "coreweave",
+   "payer": "openai",
+   "sources": [
+    "coreweave-openai-2025-09-25"
+   ],
+   "status": "signed",
+   "summary": "OpenAI expands its CoreWeave contract by up to $6.5B, about $22.4B across three contracts.",
+   "type": "capacity_lease"
   },
   {
    "amount_basis": "committed",
@@ -1251,6 +1506,17 @@
   },
   {
    "deals": [
+    "coreweave-openai-equity-2025-03",
+    "openai-coreweave-compute-2025-03"
+   ],
+   "explanation": "CoreWeave issues OpenAI $350M of its own stock, and OpenAI commits to buy CoreWeave compute.",
+   "flagged_by": "automatic",
+   "id": "coreweave-openai",
+   "last_checked": "2026-10-31",
+   "name": "CoreWeave and OpenAI"
+  },
+  {
+   "deals": [
     "microsoft-anthropic-equity-2025-11",
     "anthropic-microsoft-azure-2025-11"
    ],
@@ -1301,6 +1567,100 @@
   },
   {
    "accessed": "2026-10-31",
+   "id": "blackstone-coreweave-2024-05-17",
+   "kind": "company",
+   "label": "Blackstone release: CoreWeave $7.5B debt facility",
+   "published": "2024-05-17",
+   "publisher": "Blackstone",
+   "url": "https://www.blackstone.com/news/press/coreweave-secures-7-5-billion-debt-financing-facility-led-by-blackstone-and-magnetar/"
+  },
+  {
+   "accessed": "2026-10-31",
+   "id": "bloomberg-openai-coreweave-2025-05-15",
+   "kind": "press",
+   "label": "Bloomberg: OpenAI adds $4B CoreWeave deal (headline only, paywalled)",
+   "published": "2025-05-15",
+   "publisher": "Bloomberg",
+   "url": "https://www.bloomberg.com/news/articles/2025-05-15/openai-expands-coreweave-tie-up-with-new-4-billion-cloud-deal"
+  },
+  {
+   "accessed": "2026-10-31",
+   "filing_form": "8-K",
+   "id": "ceg-8k-microsoft-2024-09-20",
+   "kind": "filing",
+   "label": "Constellation 8-K exhibit: Crane restart and Microsoft PPA",
+   "published": "2024-09-20",
+   "publisher": "Constellation Energy",
+   "url": "https://www.sec.gov/Archives/edgar/data/1868275/000186827524000058/ceg-202409208kexh991.htm"
+  },
+  {
+   "accessed": "2026-10-31",
+   "id": "ceg-meta-2025-06-03",
+   "kind": "company",
+   "label": "Constellation release: 20-year Clinton nuclear deal with Meta",
+   "published": "2025-06-03",
+   "publisher": "Constellation Energy",
+   "url": "https://investors.constellationenergy.com/news-releases/news-release-details/constellation-meta-sign-20-year-deal-clean-reliable-nuclear"
+  },
+  {
+   "accessed": "2026-10-31",
+   "filing_form": "8-K",
+   "id": "coreweave-8k-meta-2025-09-25",
+   "kind": "filing",
+   "label": "CoreWeave 8-K: Meta order form up to about $14.2B",
+   "published": "2025-09-25",
+   "publisher": "CoreWeave",
+   "url": "https://www.sec.gov/Archives/edgar/data/1769628/000176962825000050/crwv-20250925.htm"
+  },
+  {
+   "accessed": "2026-10-31",
+   "filing_form": "8-K",
+   "id": "coreweave-8k-nvidia-2025-09-09",
+   "kind": "filing",
+   "label": "CoreWeave 8-K: NVIDIA order for unsold capacity",
+   "published": "2025-09-09",
+   "publisher": "CoreWeave",
+   "url": "https://www.sec.gov/Archives/edgar/data/1769628/000176962825000047/crwv-20250909.htm"
+  },
+  {
+   "accessed": "2026-10-31",
+   "filing_form": "8-K",
+   "id": "coreweave-8k-nvidia-2026-01-23",
+   "kind": "filing",
+   "label": "CoreWeave 8-K: NVIDIA buys $2B of Class A stock",
+   "published": "2026-01-23",
+   "publisher": "CoreWeave",
+   "url": "https://www.sec.gov/Archives/edgar/data/1769628/000176962826000044/crwv-20260123.htm"
+  },
+  {
+   "accessed": "2026-10-31",
+   "id": "coreweave-openai-2025-03-10",
+   "kind": "company",
+   "label": "CoreWeave release: OpenAI agreement up to $11.9B",
+   "published": "2025-03-10",
+   "publisher": "CoreWeave",
+   "url": "https://investors.coreweave.com/news/news-details/2025/CoreWeave-Announces-Agreement-with-OpenAI-to-Deliver-AI-Infrastructure/default.aspx"
+  },
+  {
+   "accessed": "2026-10-31",
+   "id": "coreweave-openai-2025-09-25",
+   "kind": "company",
+   "label": "CoreWeave release: OpenAI agreement expanded by up to $6.5B",
+   "published": "2025-09-25",
+   "publisher": "CoreWeave",
+   "url": "https://investors.coreweave.com/news/news-details/2025/CoreWeave-Expands-Agreement-with-OpenAI-by-up-to-6-5B/"
+  },
+  {
+   "accessed": "2026-10-31",
+   "id": "gev-crusoe-2025-07-22",
+   "kind": "company",
+   "label": "GE Vernova release: 29 gas turbine packages for Crusoe",
+   "published": "2025-07-22",
+   "publisher": "GE Vernova",
+   "url": "https://www.gevernova.com/news/press-releases/ge-vernova-crusoe-announce-major-29-unit-aeroderivative-gas-turbine-deliver-ai-data-centers"
+  },
+  {
+   "accessed": "2026-10-31",
    "id": "house-stanton-tsmc-2024-11-15",
    "kind": "government",
    "label": "House office release: TSMC CHIPS award finalized",
@@ -1340,6 +1700,15 @@
   },
   {
    "accessed": "2026-10-31",
+   "id": "lambda-microsoft-2025-11-03",
+   "kind": "company",
+   "label": "Lambda release: multibillion-dollar Microsoft agreement",
+   "published": "2025-11-03",
+   "publisher": "Lambda",
+   "url": "https://lambda.ai/blog/lambda-announces-multibillion-dollar-agreement-with-microsoft-to-deploy-ai-infrastructure-powered-by-tens-of-thousands-of-nvidia-gpus"
+  },
+  {
+   "accessed": "2026-10-31",
    "id": "msft-nvda-anthropic-2025-11-18",
    "kind": "company",
    "label": "Microsoft blog: Microsoft, NVIDIA and Anthropic partnerships",
@@ -1356,6 +1725,16 @@
    "published": "2025-09-08",
    "publisher": "Nebius Group",
    "url": "https://assets.nebius.com/assets/86625727-9e66-46c1-af79-c27d57434e3c/25-25580-1_Nebius%20Group%20N.V._6-K.pdf"
+  },
+  {
+   "accessed": "2026-10-31",
+   "filing_form": "6-K",
+   "id": "nebius-6k-2025-11-11",
+   "kind": "filing",
+   "label": "Nebius 6-K exhibit: Q3 2025 results and Meta agreement",
+   "published": "2025-11-11",
+   "publisher": "Nebius Group",
+   "url": "https://www.sec.gov/Archives/edgar/data/1513845/000110465925109806/tm2530882d1_ex99-1.htm"
   },
   {
    "accessed": "2026-10-31",
@@ -1782,6 +2161,15 @@
    "published": "2025-08-19",
    "publisher": "SoftBank Group",
    "url": "https://group.softbank/en/news/press/20250819"
+  },
+  {
+   "accessed": "2026-10-31",
+   "id": "vistra-meta-2026-01-09",
+   "kind": "company",
+   "label": "Vistra release: 20-year nuclear PPAs with Meta",
+   "published": "2026-01-09",
+   "publisher": "Vistra",
+   "url": "https://investor.vistracorp.com/2026-01-09-Vistra-and-Meta-Announce-Agreements-to-Support-Nuclear-Plants-in-PJM-and-Add-New-Nuclear-Generation-to-the-Grid"
   },
   {
    "accessed": "2026-10-31",

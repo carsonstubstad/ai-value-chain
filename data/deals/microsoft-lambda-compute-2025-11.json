@@ -1,0 +1,16 @@
+{
+ "id": "microsoft-lambda-compute-2025-11",
+ "payer": "microsoft",
+ "payee": "lambda",
+ "type": "capacity_lease",
+ "announced": "2025-11-03",
+ "amount_basis": "committed",
+ "confidence": "company_stated",
+ "status": "signed",
+ "summary": "Microsoft signs a multiyear, multibillion-dollar deal for Lambda AI infrastructure on NVIDIA GB300 systems. No exact value stated.",
+ "as_of": "2025-11-03",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "lambda-microsoft-2025-11-03"
+ ]
+}

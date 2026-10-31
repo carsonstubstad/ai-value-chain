@@ -1,0 +1,17 @@
+{
+ "id": "crusoe-ge-vernova-turbines-2025-07",
+ "payer": "crusoe",
+ "payee": "ge-vernova",
+ "type": "purchase_commitment",
+ "announced": "2025-07-22",
+ "amount_basis": "committed",
+ "confidence": "company_stated",
+ "status": "signed",
+ "summary": "Crusoe books 29 GE Vernova gas turbine packages, nearly 1 GW, for AI data centers. No value stated.",
+ "as_of": "2025-07-22",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "gev-crusoe-2025-07-22"
+ ],
+ "notes": "10 units booked in December 2024 and 19 more in the second quarter of 2025."
+}

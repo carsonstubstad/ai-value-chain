@@ -1,0 +1,19 @@
+{
+ "id": "meta-coreweave-compute-2025-09",
+ "payer": "meta",
+ "payee": "coreweave",
+ "type": "capacity_lease",
+ "announced": "2025-09-25",
+ "amount_usd_high": 14200000000.0,
+ "amount_basis": "committed",
+ "amount_kind": "cap",
+ "confidence": "filed",
+ "status": "signed",
+ "summary": "Meta commits up to about $14.2B for CoreWeave cloud capacity through December 2031, with an option to expand.",
+ "as_of": "2025-09-25",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "coreweave-8k-meta-2025-09-25"
+ ],
+ "notes": "Subject to termination and delivery requirements."
+}

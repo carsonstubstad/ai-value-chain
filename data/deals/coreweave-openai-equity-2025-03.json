@@ -1,0 +1,19 @@
+{
+ "id": "coreweave-openai-equity-2025-03",
+ "payer": "coreweave",
+ "payee": "openai",
+ "type": "warrant_or_equity_grant",
+ "announced": "2025-03-10",
+ "amount_usd_low": 350000000.0,
+ "amount_usd_high": 350000000.0,
+ "amount_basis": "committed",
+ "amount_kind": "one_time",
+ "confidence": "company_stated",
+ "status": "signed",
+ "summary": "CoreWeave issues $350M of its stock to OpenAI as part of the compute contract.",
+ "as_of": "2025-03-10",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "coreweave-openai-2025-03-10"
+ ]
+}

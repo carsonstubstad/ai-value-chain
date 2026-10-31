@@ -1,0 +1,19 @@
+{
+ "id": "openai-coreweave-compute-2025-03",
+ "payer": "openai",
+ "payee": "coreweave",
+ "type": "capacity_lease",
+ "announced": "2025-03-10",
+ "amount_usd_high": 11900000000.0,
+ "amount_basis": "committed",
+ "amount_kind": "cap",
+ "confidence": "company_stated",
+ "status": "signed",
+ "summary": "OpenAI contracts up to $11.9B of AI compute from CoreWeave.",
+ "as_of": "2025-03-10",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "coreweave-openai-2025-03-10"
+ ],
+ "notes": "Term not stated."
+}
