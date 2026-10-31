@@ -23,6 +23,13 @@ Settled questions. Do not reopen without Carson. Add a dated line for every new 
 - D14 Publishing in a public repo (was O07): within an approved session, Duet may push working branches and open draft pull requests. Merging to main, enabling or deploying GitHub Pages, and any other publishing wait for Carson's explicit yes.
 - D15 SEC identity (was O08): Carson's name and his account email go in the EDGAR User-Agent header, stored only as the Actions secret SEC_USER_AGENT, which Carson adds himself. Never written in code, commits or pull requests. If the secret is missing, the fetch skips SEC and says so.
 
+## Settled by Carson at Gate 1 (2026-10-31, "Approve all five")
+- D16 Concept note and reconciliation approved as written: P01 to P20 become settled (closes O02, O09).
+- D17 News inputs: company newsrooms and 8-K filings first; GDELT only as best effort (closes O10).
+- D18 News cadence: weekly; Actions gather Sunday night, one light Duet review Monday morning Pacific (closes O05).
+- D19 PR #1 (rules, decisions log, validator, probe) merged to main. Pages stays off until Gate 5 (closes O11).
+- D20 Gate 2 starts: final list of about 50, record schema, two or three overview mockups, in two medium sessions.
+
 ## Step 3 findings (2026-10-31, tested live)
 - F01 GitHub: Duet reads the repo, pushes branches (workflow files included) and opens draft pull requests. Tested on draft PR #1.
 - F02 Fetching: GitHub Actions run stdlib Python fetch scripts and commit filtered output to the `fetch` branch; Duet reads it back. SEC EDGAR (with the SEC_USER_AGENT secret) and the Epoch AI data centers CSV worked on all three runs.
@@ -31,7 +38,7 @@ Settled questions. Do not reopen without Carson. Add a dated line for every new 
 - F05 Duet's web fetch reads company newsroom pages (tested on an NVIDIA release), which is how seeding sources get checked.
 - F06 Scheduled triggers in Actions only run from main, so the weekly gather starts only after a merge Carson approves.
 
-## Proposed in Step 1 (2026-10-27), awaiting Carson's feedback
+## Approved at Gate 1 (D16): from Step 1 (2026-10-27)
 - P01 Five views (chain overview, money flows, loops, company card, what changed) plus Method and About the data pages. No network-graph home screen, no time-series charts, no prices in the MVP.
 - P02 First-screen controls: amount basis, time window, confidence chips, layer focus, search, light/dark. Drill-down: show rumored, deal type, minimum deal size, public/private, HQ region. Contextual: net/gross (loops), follow the money (card).
 - P03 Company rubric (anchor by layer, loop membership overrides size, edges beat size, global coverage, one primary layer with secondary tags, entry condition of one sourced edge) and the 47-company first cut with bench.
@@ -39,7 +46,7 @@ Settled questions. Do not reopen without Carson. Add a dated line for every new 
 - P05 Staleness: amber after 90 days unchecked, grey after 180.
 - P06 Deal records carry amount basis (committed, paid, estimated) and amount kind (cap, multi-year total, annual run-rate, one-time), with low and high.
 
-## Proposed in Step 2 (2026-10-28), awaiting Carson's feedback
+## Approved at Gate 1 (D16): from Step 2 (2026-10-28)
 - P07 Stack: no-build static site; plain HTML, CSS and JS modules; d3 and d3-sankey only; no Cytoscape and no time-series library in the MVP. Replaces O03, final after Step 3.
 - P08 Libraries vendored as pinned files in the repo, copied once by an Action; the live site makes no third-party requests.
 - P09 Data: one JSON file per record as source of truth; bundle.py writes site/data/bundle.json; CI fails if stale. Replaces O04.
@@ -56,9 +63,5 @@ Settled questions. Do not reopen without Carson. Add a dated line for every new 
 - P20 Company list: hold at 47; fill up to three slots from the bench only with a sourced edge. Products roll up to companies; DeepMind and Meta AI are secondary lab tags.
 
 ## Open (need Carson)
-- O02 Feedback on P01 to P06.
-- O05 News cadence: weekly, gather Sunday night and judge Monday morning Pacific. Step 3 shows it is feasible; confirm at Gate 1.
-- O10 News inputs, given F03: newsroom RSS plus 8-K filings as primary, GDELT DOC as best effort with retries. Confirm at Gate 1.
-- O11 Merge PR #1 (rules, decisions, validator, probe) to main after Gate 1, so checks and schedules run from main.
 - O06 Paid data: $0 through the MVP; revisit after two months of weekly updates.
-- O09 Feedback on P07 to P20.
+- O12 Epoch AI terms of use: confirm before Gate 5 (the downloads page states no license).
