@@ -1,0 +1,17 @@
+{
+ "id": "openai-samsung-memory-2025-10",
+ "payer": "openai",
+ "payee": "samsung",
+ "type": "purchase_commitment",
+ "announced": "2025-10-01",
+ "amount_basis": "committed",
+ "confidence": "company_stated",
+ "status": "announced",
+ "summary": "Samsung signs a letter of intent to supply DRAM to OpenAI's Stargate. No dollar value or volume share stated.",
+ "as_of": "2025-10-01",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "samsung-openai-2025-10-01"
+ ],
+ "notes": "OpenAI projects demand of up to 900,000 DRAM wafers a month across suppliers; Samsung's share is not stated."
+}

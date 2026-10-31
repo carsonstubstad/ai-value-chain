@@ -1,0 +1,16 @@
+{
+ "id": "meta-nvidia-gpus-2026-02",
+ "payer": "meta",
+ "payee": "nvidia",
+ "type": "purchase_commitment",
+ "announced": "2026-02-17",
+ "amount_basis": "committed",
+ "confidence": "company_stated",
+ "status": "announced",
+ "summary": "Meta commits to a multiyear build on millions of NVIDIA Blackwell and Rubin GPUs, Grace CPUs and Spectrum-X networking. No dollar value stated.",
+ "as_of": "2026-02-17",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "nvidia-meta-2026-02-17"
+ ]
+}

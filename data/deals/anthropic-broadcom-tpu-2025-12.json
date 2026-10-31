@@ -1,0 +1,20 @@
+{
+ "id": "anthropic-broadcom-tpu-2025-12",
+ "payer": "anthropic",
+ "payee": "broadcom",
+ "type": "purchase_commitment",
+ "announced": "2025-12-11",
+ "amount_usd_low": 11000000000.0,
+ "amount_usd_high": 11000000000.0,
+ "amount_basis": "committed",
+ "amount_kind": "one_time",
+ "confidence": "reported",
+ "status": "signed",
+ "summary": "Anthropic places a further $11B order with Broadcom for TPU racks.",
+ "as_of": "2025-12-11",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "sherwood-broadcom-2025-12-11"
+ ],
+ "notes": "Separate order from the $10B one, so a separate edge. Stored as reported for the same reason."
+}

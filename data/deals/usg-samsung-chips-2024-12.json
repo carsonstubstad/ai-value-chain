@@ -1,0 +1,19 @@
+{
+ "id": "usg-samsung-chips-2024-12",
+ "payer": "us-government",
+ "payee": "samsung",
+ "type": "government_grant_or_incentive",
+ "announced": "2024-12-20",
+ "amount_usd_high": 4745000000.0,
+ "amount_basis": "committed",
+ "amount_kind": "cap",
+ "confidence": "company_stated",
+ "status": "signed",
+ "summary": "Final CHIPS award of up to $4.745B in direct funding for Samsung's Taylor and Austin, Texas fabs.",
+ "as_of": "2024-12-20",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "nist-chips-samsung-2024-12-20"
+ ],
+ "notes": "Paid against construction, production and commercial milestones. Amount disbursed is not tracked."
+}

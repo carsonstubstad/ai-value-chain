@@ -1,0 +1,17 @@
+{
+ "id": "meta-amd-gpus-2026-02",
+ "payer": "meta",
+ "payee": "amd",
+ "type": "purchase_commitment",
+ "announced": "2026-02-24",
+ "amount_basis": "committed",
+ "confidence": "filed",
+ "status": "announced",
+ "summary": "Meta to deploy up to 6 GW of AMD Instinct GPUs, first gigawatt shipping in the second half of 2026. No dollar value stated.",
+ "as_of": "2026-02-24",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "amd-8k-meta-2026-02-24"
+ ],
+ "notes": "Press reports put a dollar value on this deal; the company release does not, so none is stored."
+}

@@ -1,0 +1,21 @@
+{
+ "id": "anthropic-broadcom-tpu-2025-09",
+ "payer": "anthropic",
+ "payee": "broadcom",
+ "type": "purchase_commitment",
+ "announced": "2025-09-04",
+ "amount_usd_low": 10000000000.0,
+ "amount_usd_high": 10000000000.0,
+ "amount_basis": "committed",
+ "amount_kind": "one_time",
+ "confidence": "reported",
+ "status": "signed",
+ "summary": "Anthropic orders $10B of TPU Ironwood racks from Broadcom; disclosed as an unnamed customer in September, named in December.",
+ "as_of": "2025-12-11",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "siliconangle-broadcom-2025-09-04",
+  "sherwood-broadcom-2025-12-11"
+ ],
+ "notes": "Broadcom's CEO stated this on earnings calls; stored as reported because only press accounts of the calls are cited."
+}

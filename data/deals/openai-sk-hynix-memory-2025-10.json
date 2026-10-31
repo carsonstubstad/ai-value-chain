@@ -1,0 +1,16 @@
+{
+ "id": "openai-sk-hynix-memory-2025-10",
+ "payer": "openai",
+ "payee": "sk-hynix",
+ "type": "purchase_commitment",
+ "announced": "2025-10-01",
+ "amount_basis": "committed",
+ "confidence": "company_stated",
+ "status": "announced",
+ "summary": "SK hynix signs a non-binding letter of intent to supply HBM to OpenAI's Stargate. Volumes and value to be set later.",
+ "as_of": "2025-10-01",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "sk-openai-2025-10-01"
+ ]
+}

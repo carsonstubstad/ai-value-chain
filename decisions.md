@@ -38,6 +38,7 @@ Settled questions. Do not reopen without Carson. Add a dated line for every new 
 - F05 Duet's web fetch reads company newsroom pages (tested on an NVIDIA release), which is how seeding sources get checked.
 - F07 (sessions 3 and 4) SEC EDGAR matched all 31 tracked companies that file with it; their records cite their EDGAR filings index. The other 16 cite their own website or announcement. 38 of 47 websites answered an automated check; 9 (Applied Materials, Intel, TSMC, Supermicro, Oracle, OpenAI and its Stargate page, Perplexity, Blackstone) refuse automated checks but are live.
 - F06 Scheduled triggers in Actions only run from main, so the weekly gather starts only after a merge Carson approves.
+- F08 (session 5) Upstream added 16 deals and 1 loop, 25 deals in all. Equipment makers have almost no money edges with tracked companies; ASML into Mistral is the only one. The US government's Intel stake is funded by Intel's unpaid CHIPS grants, so Intel's CHIPS award is not a separate edge. Dollar values are left empty where the company states none (OpenAI with Broadcom, Samsung and SK hynix; Meta with AMD and NVIDIA), even when press reports give one. ASML's Mistral stake is stored in euros only.
 
 ## Approved at Gate 1 (D16): from Step 1 (2026-10-27)
 - P01 Five views (chain overview, money flows, loops, company card, what changed) plus Method and About the data pages. No network-graph home screen, no time-series charts, no prices in the MVP.
@@ -65,7 +66,10 @@ Settled questions. Do not reopen without Carson. Add a dated line for every new 
 
 ## Settled by Carson at Gate 2 (2026-10-31, "Go with A plus B")
 - D21 Overview: direction A (chain rail) as the home screen, with direction B's one-sentence "state of the chain" line above it. Direction C (flow map) becomes the money-flow view. Closes O13 and P24.
-- D22 PR #2 stays a draft until Carson says to merge it.
+- D22 PR #2 stays a draft until Carson says to merge it. Superseded by D23.
+
+## Settled by Carson (2026-10-31, "Merge and start 5")
+- D23 PRs #2 and #3 merged to main. GitHub Pages stays off. Session 5 approved; stop and report before session 6.
 
 ## Proposed at Gate 2 (2026-10-31), awaiting Carson's feedback
 - P21 Company list: the 47 in data/companies-list.csv stand. Bench promotion order if a sourced edge appears: Core Scientific, Humain, Bloom Energy.
@@ -73,6 +77,6 @@ Settled questions. Do not reopen without Carson. Add a dated line for every new 
 - P23 Loop sides are shown gross each way and never netted when either side is a cap or multi-year total. Company rankings use the largest single deal, never a sum of caps.
 
 ## Open (need Carson)
-- O14 Confirm P21 to P23, and say when to merge PR #2.
+- O14 Confirm P21 to P23 (PRs merged per D23).
 - O06 Paid data: $0 through the MVP; revisit after two months of weekly updates.
 - O12 Epoch AI terms of use: confirm before Gate 5 (the downloads page states no license).
