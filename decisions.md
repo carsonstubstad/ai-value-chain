@@ -23,11 +23,13 @@ Settled questions. Do not reopen without Carson. Add a dated line for every new 
 - D14 Publishing in a public repo (was O07): within an approved session, Duet may push working branches and open draft pull requests. Merging to main, enabling or deploying GitHub Pages, and any other publishing wait for Carson's explicit yes.
 - D15 SEC identity (was O08): Carson's name and his account email go in the EDGAR User-Agent header, stored only as the Actions secret SEC_USER_AGENT, which Carson adds himself. Never written in code, commits or pull requests. If the secret is missing, the fetch skips SEC and says so.
 
-## Step 3 findings (2026-10-31)
-- F01 GitHub: Duet can read the repo, push a branch, and open a draft pull request. See the Gate 1 document for each test.
-- F02 Fetching: GitHub Actions run stdlib Python fetch scripts and commit filtered output to the `fetch` branch; Duet reads it back through the GitHub API. The sandbox itself cannot reach SEC, GDELT, Epoch AI or CDNs.
-- F03 The sandbox can reach PyPI and the npm registry, but has no browser for a headless render; Carson previews the page on the laptop at Gate 4.
-- F04 Scheduled triggers in Actions only run from main, so a weekly schedule starts working only after a merge Carson approves.
+## Step 3 findings (2026-10-31, tested live)
+- F01 GitHub: Duet reads the repo, pushes branches (workflow files included) and opens draft pull requests. Tested on draft PR #1.
+- F02 Fetching: GitHub Actions run stdlib Python fetch scripts and commit filtered output to the `fetch` branch; Duet reads it back. SEC EDGAR (with the SEC_USER_AGENT secret) and the Epoch AI data centers CSV worked on all three runs.
+- F03 GDELT DOC API is unreliable from Actions: one of three runs succeeded, the others got HTTP 429 even after backoff. GDELT raw update files on data.gdeltproject.org answered every time. Treat GDELT as best effort; company newsrooms and 8-K filings stay the primary news inputs.
+- F04 The sandbox cannot reach SEC, GDELT, Epoch AI or CDNs, but can reach PyPI and the npm registry. No browser is installed, so no headless render here; Carson previews the page on the laptop at Gate 4.
+- F05 Duet's web fetch reads company newsroom pages (tested on an NVIDIA release), which is how seeding sources get checked.
+- F06 Scheduled triggers in Actions only run from main, so the weekly gather starts only after a merge Carson approves.
 
 ## Proposed in Step 1 (2026-10-27), awaiting Carson's feedback
 - P01 Five views (chain overview, money flows, loops, company card, what changed) plus Method and About the data pages. No network-graph home screen, no time-series charts, no prices in the MVP.
@@ -56,5 +58,7 @@ Settled questions. Do not reopen without Carson. Add a dated line for every new 
 ## Open (need Carson)
 - O02 Feedback on P01 to P06.
 - O05 News cadence: weekly, gather Sunday night and judge Monday morning Pacific. Step 3 shows it is feasible; confirm at Gate 1.
+- O10 News inputs, given F03: newsroom RSS plus 8-K filings as primary, GDELT DOC as best effort with retries. Confirm at Gate 1.
+- O11 Merge PR #1 (rules, decisions, validator, probe) to main after Gate 1, so checks and schedules run from main.
 - O06 Paid data: $0 through the MVP; revisit after two months of weekly updates.
 - O09 Feedback on P07 to P20.
