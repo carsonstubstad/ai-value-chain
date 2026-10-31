@@ -1,5 +1,5 @@
 {
- "run_at": "2026-10-31T21:29:29+00:00",
+ "run_at": "2026-10-31T21:31:29+00:00",
  "sec": {
   "asml": {
    "ticker": "ASML",
@@ -546,8 +546,8 @@
   },
   "sk-hynix": {
    "url": "https://www.skhynix.com/",
-   "status": 200,
-   "final_url": "https://www.skhynix.com/"
+   "status": null,
+   "error": "URLError: <urlopen error timed out>"
   },
   "samsung": {
    "url": "https://semiconductor.samsung.com/",
