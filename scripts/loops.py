@@ -4,7 +4,7 @@
 Standard library only. A loop is a cycle of companies where money flows out and comes
 back: A pays B and B pays A, or A pays B, B pays C and C pays A. Rumored deals and
 deals that are terminated or superseded are left out, so a loop never rests on a
-rumor. The detected loop lists every remaining deal along the cycle, both ways (P25).
+rumor. The detected loop lists every remaining deal along the cycle, both ways (D29).
 
 Usage:
   python3 scripts/loops.py          print detected loops and how they match the records

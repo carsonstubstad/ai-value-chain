@@ -80,13 +80,16 @@ Settled questions. Do not reopen without Carson. Add a dated line for every new 
 - D26 (2026-10-31, "Merge and start 8") PR #6 merged to main. Session 8 approved. Pages stays off.
 - D27 (2026-10-31, "Merge and run both") PR #7 merged to main. Sessions 9 (loops) and 10 (spot check) approved back to back; stop at Gate 3. Pages stays off.
 
+## Settled by Carson at Gate 3 (2026-10-31, "Approve all four")
+- D28 The data as of PR #8 is accepted: 64 deals and 11 loops after the session 10 spot check.
+- D29 Loop rule (was P25): a loop is two or three companies with money flowing out and back, found automatically from deals that are not rumored, terminated or superseded. Its record lists every such deal along the cycle, not only the first matching pair. Three-company rings are tagged even when two of the companies already form a loop. CI enforces it with scripts/loops.py --check.
+- D30 PR #8 merged to main. Pages stays off.
+- D31 Next is the status sweep (O16): check every open deal against the latest 10-Q or 10-K of a party that files with the SEC, then stop and report before sessions 11 to 13.
+
 ## Proposed at Gate 2 (2026-10-31), awaiting Carson's feedback
 - P21 Company list: the 47 in data/companies-list.csv stand. Bench promotion order if a sourced edge appears: Core Scientific, Humain, Bloom Energy.
 - P22 Schema: six JSON Schemas in schema/ plus data/taxonomy.json. Financials are JSON records like the rest, not a CSV, so one validator covers everything.
 - P23 Loop sides are shown gross each way and never netted when either side is a cap or multi-year total. Company rankings use the largest single deal, never a sum of caps.
-
-## Proposed at Gate 3 (2026-10-31), awaiting Carson
-- P25 A loop is two or three companies with money flowing out and back, found automatically from non-rumored, live deals. Its record lists every such deal along the cycle, not only the first matching pair. Three-company rings are tagged even when two of the companies already form a loop.
 
 ## Open (need Carson)
 - O14 Confirm P21 to P23 (PRs merged per D23).
