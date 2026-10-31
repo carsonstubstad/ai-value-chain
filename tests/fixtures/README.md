@@ -1,0 +1,1 @@
+Fixtures for `python3 scripts/validate.py --self-test`. The schema here is a test stand-in, not the record schema (that comes at Gate 2). Files in `bad/` must fail; `em-dash.json` holds an em-dash on purpose and is skipped by the repo-wide check.

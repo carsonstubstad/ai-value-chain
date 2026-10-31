@@ -1,0 +1,43 @@
+name: fetch-probe
+
+# Step 3 capability test. Runs the probe and commits its small output to the
+# fetch branch, which holds fetched data only and never mixes with reviewed data.
+on:
+  workflow_dispatch:
+  push:
+    branches: ["claude/**"]
+    paths:
+      - scripts/fetch_probe.py
+      - .github/workflows/fetch-probe.yml
+
+permissions:
+  contents: write
+
+concurrency:
+  group: fetch-branch
+  cancel-in-progress: false
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run probe
+        env:
+          SEC_USER_AGENT: ${{ secrets.SEC_USER_AGENT }}
+        run: python3 scripts/fetch_probe.py "$RUNNER_TEMP/probe.json"
+      - name: Commit output to the fetch branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git fetch --depth 1 origin fetch 2>/dev/null; then
+            git checkout -B fetch FETCH_HEAD
+          else
+            git checkout --orphan fetch
+            git rm -rf --quiet .
+          fi
+          mkdir -p probe
+          cp "$RUNNER_TEMP/probe.json" probe/latest.json
+          git add probe/latest.json
+          git commit -m "fetch-probe: ${GITHUB_SHA::7} on ${GITHUB_REF_NAME}" || echo "No change"
+          git push origin fetch
