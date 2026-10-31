@@ -126,6 +126,7 @@ export function renderOverview(ctx) {
     <div><b>${undisclosed}</b><span>deals with no disclosed amount</span></div>
   </section>
   <p class="note">These are counts of deals, not dollar totals. Caps, ranges and multi-year totals are never added up as cash.</p>
+  <div id="controls"></div>
   <section aria-labelledby="chain-h">
     <h2 id="chain-h" class="eyebrow">The chain, left to right. Pick a layer to filter.</h2>
     <div class="rail">${rail}</div>
@@ -177,6 +178,7 @@ export function renderCompany(ctx, id) {
     <p class="one">${esc(c.one_line)}</p>
     <p class="checked"><span class="stale ${st}" title="${st === "fresh" ? "Checked recently" : st === "amber" ? "Not checked in over 90 days" : "Not checked in over 180 days"}"></span>Checked ${esc(fmtDate(c.last_checked))}. <a href="#/flows?${(ctx.qs ? ctx.qs.slice(1) + "&" : "")}focus=${esc(id)}">Trace its money in Money flows</a></p>
   </header>
+  <div id="controls"></div>
   ${hidden ? `<p class="note">${plural(hidden, "deal is", "deals are")} hidden by the filters. <button type="button" class="link" data-reset>Reset filters</button></p>` : ""}
   <section class="two">
     <div><h2 class="eyebrow">Money out: ${plural(out.length, "deal", "deals")}</h2>${out.length ? `<ul class="deals">${out.map((d) => dealItem(ctx, d, d.payee)).join("")}</ul>` : `<p class="empty">None recorded.</p>`}</div>
@@ -196,7 +198,7 @@ export function renderFlows(ctx) {
   const used = new Set(shown.flatMap((d) => [d.payer, d.payee]));
   if (s.focus && idx.companies[s.focus]) used.add(s.focus);
   const cols = layers.map((l) => data.companies.filter((c) => c.layer === l.id && used.has(c.id)).sort((a, b) => a.name.localeCompare(b.name)));
-  const colW = 120, rowH = 26, top = 46, pad = 8, nodeW = 8;
+  const colW = 96, rowH = 38, top = 46, pad = 8, nodeW = 8;
   const rows = Math.max(1, ...cols.map((c) => c.length));
   const W = pad * 2 + colW * layers.length, H = top + rows * rowH + 16;
   const pos = {};
@@ -231,17 +233,18 @@ export function renderFlows(ctx) {
     const c = idx.companies[id];
     const cls = litNodes ? (id === focus ? " focus" : litNodes.has(id) ? " lit" : " faded") : "";
     const href = id === focus ? `#/flows${ctx.qs}` : `#/flows?${qsBase}focus=${id}`;
-    return `<a class="node${cls}" href="${esc(href)}"><rect x="${p.x}" y="${p.y - 7}" width="${nodeW}" height="14" rx="2" fill="var(--l-${c.layer})"/><text x="${p.x + nodeW + 4}" y="${p.y + 4}">${esc(c.name.length > 17 ? c.name.slice(0, 16) + "." : c.name)}</text><title>${esc(c.name)}: ${id === focus ? "clear the trace" : "trace its money"}</title></a>`;
+    return `<a class="node${cls}" href="${esc(href)}"><rect x="${p.x}" y="${p.y - 7}" width="${nodeW}" height="14" rx="2" fill="var(--l-${c.layer})"/><text x="${p.x + nodeW + 4}" y="${p.y + 4}">${esc(c.name.length > 15 ? c.name.slice(0, 14) + "." : c.name)}</text><title>${esc(c.name)}: ${id === focus ? "clear the trace" : "trace its money"}</title></a>`;
   }).join("");
 
-  const heads = layers.map((l, i) => `<text class="colhead" x="${pad + i * colW}" y="20">${esc(l.label)}</text><line x1="${pad + i * colW}" x2="${pad + i * colW + colW - 16}" y1="28" y2="28" stroke="var(--l-${l.id})" stroke-width="3"/>`).join("");
+  const heads = layers.map((l, i) => `<text class="colhead" x="${pad + i * colW}" y="20">${esc(l.label)}</text><line x1="${pad + i * colW}" x2="${pad + i * colW + colW - 12}" y1="28" y2="28" stroke="var(--l-${l.id})" stroke-width="3"/>`).join("");
   const markers = layers.map((l) => `<marker id="ar-${l.id}" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="var(--l-${l.id})"/></marker>`).join("");
 
   const companyOptions = [...data.companies].sort((a, b) => a.name.localeCompare(b.name)).map((c) => [c.id, c.name]);
   return `<header><div class="eyebrow">Money flows</div><h1>Follow the money from payer to payee</h1>
     <p class="lede">Each line is one deal, drawn from the company that pays to the company that is paid. Thicker lines are bigger deals at the high end. Pick a company to trace where its money goes and where it comes from.</p></header>
+  <div id="controls"></div>
   <div class="row trace"><label class="label" for="f-focus">Trace</label><select id="f-focus" data-field="focus">${options(companyOptions, focus, "Pick a company")}</select>${focus ? ` <button type="button" class="link" data-set="focus" data-v="">Clear</button>` : ""}</div>
-  ${shown.length ? `<div class="chart" tabindex="0" aria-label="Money flow chart, scrolls sideways on small screens"><svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="${plural(shown.length, "deal", "deals")} drawn between ${Object.keys(pos).length} companies across the chain"><defs>${markers}</defs>${heads}<g>${edges}</g><g>${nodes}</g></svg></div>` : `<p class="empty">No deals match these filters.</p>`}
+  ${shown.length ? `<div class="chart" tabindex="0" aria-label="Money flow chart, scrolls sideways on small screens"><svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${plural(shown.length, "deal", "deals")} drawn between ${Object.keys(pos).length} companies across the chain"><defs>${markers}</defs>${heads}<g>${edges}</g><g>${nodes}</g></svg></div>` : `<p class="empty">No deals match these filters.</p>`}
   <p class="legend"><svg width="34" height="8" aria-hidden="true"><line x1="0" x2="34" y1="4" y2="4" class="lkey"/></svg>Filed <svg width="34" height="8" aria-hidden="true"><line x1="0" x2="34" y1="4" y2="4" class="lkey" stroke-dasharray="8 3"/></svg>Company-stated <svg width="34" height="8" aria-hidden="true"><line x1="0" x2="34" y1="4" y2="4" class="lkey" stroke-dasharray="3 3"/></svg>Reported. A hairline means no amount was disclosed. Color shows the paying company's layer. Click a line to open its source.</p>
   ${focus ? traceLists(ctx, focus, down, up) : ""}
   <details class="list"><summary>All ${plural(shown.length, "flow", "flows")} as a list</summary><ul class="deals">${[...shown].sort((a, b) => highEnd(b) - highEnd(a)).map((d) => `<li class="deal"><div class="head">${companyLink(ctx, d.payer)} to ${companyLink(ctx, d.payee)}<span class="amt">${amountLink(ctx, d)}</span></div><div class="meta"><span>${esc(typeLabel(d.type))}</span><span>${esc(LABEL.basis[d.amount_basis])}</span><span>${esc(LABEL.confidence[d.confidence])}</span></div></li>`).join("")}</ul></details>`;

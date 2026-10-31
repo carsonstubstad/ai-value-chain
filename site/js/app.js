@@ -15,7 +15,6 @@ function route() {
   return { page: parts[0] || "overview", id: parts[1] ? decodeURIComponent(parts[1]) : "", s: parseState(query) };
 }
 
-const FILTERED = new Set(["overview", "company", "flows"]);
 const TITLES = { overview: "", company: "", flows: "Money flows", loops: "Loops", changes: "What changed" };
 
 function render(keepControls) {
@@ -29,10 +28,13 @@ function render(keepControls) {
     changes: () => renderChanges(ctx),
   };
   const page = views[r.page] ? r.page : "overview";
+  // Each filtered page places the filters right after its own answer (a #controls slot).
+  // While the reader types a search, the live filter box is moved across, so it keeps focus.
+  const live = keepControls ? document.querySelector("#controls .controls") : null;
   $("view").innerHTML = views[page]();
-  if (keepControls) $("count").innerHTML = countLine(ctx);
-  else $("controls").innerHTML = FILTERED.has(page) ? renderControls(ctx) : "";
-  $("controls").hidden = !FILTERED.has(page);
+  const slot = $("controls");
+  if (slot && live) { slot.appendChild(live); $("count").innerHTML = countLine(ctx); }
+  else if (slot) slot.innerHTML = renderControls(ctx);
   $("foot").innerHTML = renderFoot(ctx);
   for (const a of document.querySelectorAll("[data-nav]")) {
     a.href = `#/${a.dataset.nav === "overview" ? "" : a.dataset.nav}${ctx.qs}`;
