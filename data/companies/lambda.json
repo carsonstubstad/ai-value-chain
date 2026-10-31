@@ -1,0 +1,12 @@
+{
+ "id": "lambda",
+ "name": "Lambda",
+ "layer": "data_centers",
+ "hq_country": "US",
+ "ownership": "private",
+ "one_line": "US GPU cloud selling AI compute to labs, hyperscalers and developers.",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "web-lambda"
+ ]
+}

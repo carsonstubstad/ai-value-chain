@@ -1,0 +1,12 @@
+{
+ "id": "anthropic",
+ "name": "Anthropic",
+ "layer": "labs",
+ "hq_country": "US",
+ "ownership": "private",
+ "one_line": "Lab behind Claude, funded by hyperscalers and chipmakers that also sell it compute.",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "web-anthropic"
+ ]
+}

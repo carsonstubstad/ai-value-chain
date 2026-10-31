@@ -1,0 +1,16 @@
+{
+ "id": "dell",
+ "name": "Dell",
+ "layer": "systems",
+ "hq_country": "US",
+ "ownership": "public",
+ "tickers": [
+  "DELL"
+ ],
+ "sec_cik": "0001571996",
+ "one_line": "US maker of servers and PCs that sells AI server systems to labs, clouds and enterprises.",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "sec-dell"
+ ]
+}

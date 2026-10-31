@@ -1,0 +1,16 @@
+{
+ "id": "vistra",
+ "name": "Vistra",
+ "layer": "power",
+ "hq_country": "US",
+ "ownership": "public",
+ "tickers": [
+  "VST"
+ ],
+ "sec_cik": "0001692819",
+ "one_line": "US power producer selling generation capacity to data center operators.",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "sec-vistra"
+ ]
+}

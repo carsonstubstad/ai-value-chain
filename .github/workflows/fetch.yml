@@ -1,0 +1,47 @@
+name: fetch
+
+# Recurring fetches. Each job writes small filtered JSON and commits it to the
+# fetch branch, which holds fetched data only and never mixes with reviewed data.
+# Scheduled runs only fire from main, so the weekly run starts after a merge.
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 6 * * 1"   # Monday 06:00 UTC, Sunday night Pacific (D18)
+  push:
+    branches: ["claude/**"]
+    paths:
+      - data/companies-list.csv
+      - scripts/fetch_companies.py
+      - .github/workflows/fetch.yml
+
+permissions:
+  contents: write
+
+concurrency:
+  group: fetch-branch
+  cancel-in-progress: false
+
+jobs:
+  companies:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: SEC lookups and website checks
+        env:
+          SEC_USER_AGENT: ${{ secrets.SEC_USER_AGENT }}
+        run: python3 scripts/fetch_companies.py "$RUNNER_TEMP/companies.json"
+      - name: Commit output to the fetch branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git fetch --depth 1 origin fetch 2>/dev/null; then
+            git checkout -B fetch FETCH_HEAD
+          else
+            git checkout --orphan fetch
+            git rm -rf --quiet .
+          fi
+          mkdir -p companies
+          cp "$RUNNER_TEMP/companies.json" companies/latest.json
+          git add companies/latest.json
+          git commit -m "fetch companies: ${GITHUB_SHA::7} on ${GITHUB_REF_NAME}" || echo "No change"
+          git push origin fetch

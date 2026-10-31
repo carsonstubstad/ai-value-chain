@@ -1,0 +1,19 @@
+{
+ "id": "anthropic-aws-spend-2026-04",
+ "payer": "anthropic",
+ "payee": "amazon",
+ "type": "purchase_commitment",
+ "announced": "2026-04-20",
+ "amount_usd_low": 100000000000.0,
+ "amount_basis": "committed",
+ "amount_kind": "multi_year_total",
+ "term_years": 10,
+ "confidence": "company_stated",
+ "status": "announced",
+ "summary": "Anthropic to spend more than $100B on AWS technologies over ten years.",
+ "as_of": "2026-04-20",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "amazon-anthropic-2026-04-20"
+ ]
+}

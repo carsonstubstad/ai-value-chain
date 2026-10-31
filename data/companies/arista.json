@@ -1,0 +1,16 @@
+{
+ "id": "arista",
+ "name": "Arista",
+ "layer": "systems",
+ "hq_country": "US",
+ "ownership": "public",
+ "tickers": [
+  "ANET"
+ ],
+ "sec_cik": "0001596532",
+ "one_line": "US maker of data center network switches used by hyperscalers.",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "sec-arista"
+ ]
+}

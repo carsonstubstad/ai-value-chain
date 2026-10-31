@@ -1,0 +1,16 @@
+{
+ "id": "amd",
+ "name": "AMD",
+ "layer": "chip_design",
+ "hq_country": "US",
+ "ownership": "public",
+ "tickers": [
+  "AMD"
+ ],
+ "sec_cik": "0000002488",
+ "one_line": "Designs GPUs and CPUs for data centers; second GPU supplier to the large labs.",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "sec-amd"
+ ]
+}

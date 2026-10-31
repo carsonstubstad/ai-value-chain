@@ -1,0 +1,20 @@
+{
+ "id": "microsoft-nebius-capacity-2025-09",
+ "payer": "microsoft",
+ "payee": "nebius",
+ "type": "capacity_lease",
+ "announced": "2025-09-08",
+ "amount_usd_low": 17400000000.0,
+ "amount_usd_high": 19400000000.0,
+ "amount_basis": "committed",
+ "amount_kind": "multi_year_total",
+ "term_years": 5,
+ "confidence": "filed",
+ "status": "signed",
+ "summary": "Five-year GPU capacity agreement worth about $17.4B through 2031, up to about $19.4B with extra services.",
+ "as_of": "2025-09-08",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "nebius-6k-2025-09-08"
+ ]
+}

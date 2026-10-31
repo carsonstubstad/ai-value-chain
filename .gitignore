@@ -218,3 +218,6 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# The static site lives in site/ (P07); keep it tracked despite the mkdocs rule above.
+!site/

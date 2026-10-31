@@ -1,0 +1,17 @@
+{
+ "id": "supermicro",
+ "name": "Supermicro",
+ "layer": "systems",
+ "hq_country": "US",
+ "ownership": "public",
+ "tickers": [
+  "SMCI",
+  "SMCIP"
+ ],
+ "sec_cik": "0001375365",
+ "one_line": "US maker of AI servers and rack systems, close to the GPU cloud providers.",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "sec-supermicro"
+ ]
+}

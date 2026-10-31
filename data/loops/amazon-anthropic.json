@@ -1,0 +1,11 @@
+{
+ "id": "amazon-anthropic",
+ "name": "Amazon and Anthropic",
+ "deals": [
+  "amazon-anthropic-equity-2026-04",
+  "anthropic-aws-spend-2026-04"
+ ],
+ "flagged_by": "automatic",
+ "explanation": "Amazon puts equity into Anthropic, and Anthropic commits to spend on AWS.",
+ "last_checked": "2026-10-31"
+}

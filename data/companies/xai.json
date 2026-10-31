@@ -1,0 +1,15 @@
+{
+ "id": "xai",
+ "name": "xAI",
+ "layer": "labs",
+ "secondary": [
+  "hyperscale"
+ ],
+ "hq_country": "US",
+ "ownership": "private",
+ "one_line": "Lab behind Grok that builds and owns its own compute clusters.",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "web-xai"
+ ]
+}

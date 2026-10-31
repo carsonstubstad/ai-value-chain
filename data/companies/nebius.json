@@ -1,0 +1,16 @@
+{
+ "id": "nebius",
+ "name": "Nebius",
+ "layer": "data_centers",
+ "hq_country": "NL",
+ "ownership": "public",
+ "tickers": [
+  "NBIS"
+ ],
+ "sec_cik": "0001513845",
+ "one_line": "Amsterdam-based GPU cloud selling AI capacity to hyperscalers and model developers.",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "sec-nebius"
+ ]
+}

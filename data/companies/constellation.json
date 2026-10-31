@@ -1,0 +1,16 @@
+{
+ "id": "constellation",
+ "name": "Constellation",
+ "layer": "power",
+ "hq_country": "US",
+ "ownership": "public",
+ "tickers": [
+  "CEG"
+ ],
+ "sec_cik": "0001868275",
+ "one_line": "US power producer with the largest US nuclear fleet, selling power to hyperscalers.",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "sec-constellation"
+ ]
+}

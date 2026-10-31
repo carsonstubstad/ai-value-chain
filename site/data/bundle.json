@@ -1,0 +1,1563 @@
+{
+ "companies": [
+  {
+   "hq_country": "US",
+   "id": "alphabet",
+   "last_checked": "2026-10-31",
+   "layer": "hyperscale",
+   "name": "Alphabet",
+   "one_line": "Runs Google Cloud and Google DeepMind, and designs its own TPU chips.",
+   "ownership": "public",
+   "sec_cik": "0001652044",
+   "secondary": [
+    "labs",
+    "chip_design"
+   ],
+   "sources": [
+    "sec-alphabet"
+   ],
+   "tickers": [
+    "GOOGL",
+    "GOOG",
+    "GOOGM",
+    "GOOGN"
+   ]
+  },
+  {
+   "hq_country": "US",
+   "id": "amazon",
+   "last_checked": "2026-10-31",
+   "layer": "hyperscale",
+   "name": "Amazon",
+   "one_line": "Runs AWS, a major investor in Anthropic, and designs its own AI chips.",
+   "ownership": "public",
+   "sec_cik": "0001018724",
+   "secondary": [
+    "labs"
+   ],
+   "sources": [
+    "sec-amazon"
+   ],
+   "tickers": [
+    "AMZN"
+   ]
+  },
+  {
+   "hq_country": "US",
+   "id": "amd",
+   "last_checked": "2026-10-31",
+   "layer": "chip_design",
+   "name": "AMD",
+   "one_line": "Designs GPUs and CPUs for data centers; second GPU supplier to the large labs.",
+   "ownership": "public",
+   "sec_cik": "0000002488",
+   "sources": [
+    "sec-amd"
+   ],
+   "tickers": [
+    "AMD"
+   ]
+  },
+  {
+   "hq_country": "US",
+   "id": "anthropic",
+   "last_checked": "2026-10-31",
+   "layer": "labs",
+   "name": "Anthropic",
+   "one_line": "Lab behind Claude, funded by hyperscalers and chipmakers that also sell it compute.",
+   "ownership": "private",
+   "sources": [
+    "web-anthropic"
+   ]
+  },
+  {
+   "hq_country": "US",
+   "id": "anysphere",
+   "last_checked": "2026-10-31",
+   "layer": "applications",
+   "name": "Anysphere (Cursor)",
+   "one_line": "Maker of the Cursor coding app, a large customer of the AI labs.",
+   "ownership": "private",
+   "sources": [
+    "web-anysphere"
+   ]
+  },
+  {
+   "hq_country": "US",
+   "id": "applied-materials",
+   "last_checked": "2026-10-31",
+   "layer": "equipment",
+   "name": "Applied Materials",
+   "one_line": "US maker of deposition, etch and inspection equipment for chip fabs.",
+   "ownership": "public",
+   "sec_cik": "0000006951",
+   "sources": [
+    "sec-applied-materials"
+   ],
+   "tickers": [
+    "AMAT"
+   ]
+  },
+  {
+   "hq_country": "US",
+   "id": "arista",
+   "last_checked": "2026-10-31",
+   "layer": "systems",
+   "name": "Arista",
+   "one_line": "US maker of data center network switches used by hyperscalers.",
+   "ownership": "public",
+   "sec_cik": "0001596532",
+   "sources": [
+    "sec-arista"
+   ],
+   "tickers": [
+    "ANET"
+   ]
+  },
+  {
+   "hq_country": "GB",
+   "id": "arm",
+   "last_checked": "2026-10-31",
+   "layer": "chip_design",
+   "name": "Arm",
+   "one_line": "Licenses the CPU designs used across phones, servers and AI systems; controlled by SoftBank.",
+   "ownership": "public",
+   "sec_cik": "0001973239",
+   "sources": [
+    "sec-arm"
+   ],
+   "tickers": [
+    "ARM"
+   ]
+  },
+  {
+   "hq_country": "NL",
+   "id": "asml",
+   "last_checked": "2026-10-31",
+   "layer": "equipment",
+   "name": "ASML",
+   "one_line": "Dutch maker of chip lithography systems and the only supplier of EUV tools.",
+   "ownership": "public",
+   "sec_cik": "0000937966",
+   "sources": [
+    "sec-asml"
+   ],
+   "tickers": [
+    "ASML",
+    "ASMLF"
+   ]
+  },
+  {
+   "hq_country": "US",
+   "id": "blackstone",
+   "last_checked": "2026-10-31",
+   "layer": "capital",
+   "name": "Blackstone",
+   "one_line": "US alternative asset manager and a large owner of data centers through QTS.",
+   "ownership": "public",
+   "sec_cik": "0001393818",
+   "secondary": [
+    "data_centers"
+   ],
+   "sources": [
+    "sec-blackstone"
+   ],
+   "tickers": [
+    "BX"
+   ]
+  },
+  {
+   "hq_country": "US",
+   "id": "blue-owl",
+   "last_checked": "2026-10-31",
+   "layer": "capital",
+   "name": "Blue Owl",
+   "one_line": "US alternative asset manager providing private credit and equity for data center campuses.",
+   "ownership": "public",
+   "sec_cik": "0001823945",
+   "sources": [
+    "sec-blue-owl"
+   ],
+   "tickers": [
+    "OWL"
+   ]
+  },
+  {
+   "hq_country": "US",
+   "id": "broadcom",
+   "last_checked": "2026-10-31",
+   "layer": "chip_design",
+   "name": "Broadcom",
+   "one_line": "Designs custom AI accelerators and networking chips for hyperscalers and labs.",
+   "ownership": "public",
+   "sec_cik": "0001730168",
+   "secondary": [
+    "systems"
+   ],
+   "sources": [
+    "sec-broadcom"
+   ],
+   "tickers": [
+    "AVGO"
+   ]
+  },
+  {
+   "hq_country": "CA",
+   "id": "brookfield",
+   "last_checked": "2026-10-31",
+   "layer": "capital",
+   "name": "Brookfield",
+   "one_line": "Canadian alternative asset manager investing in power and data center infrastructure.",
+   "ownership": "public",
+   "sec_cik": "0001001085",
+   "secondary": [
+    "power"
+   ],
+   "sources": [
+    "sec-brookfield"
+   ],
+   "tickers": [
+    "BN",
+    "BAMGF",
+    "BAMKF",
+    "BKAMF",
+    "BKFAF",
+    "BKFDF",
+    "BKFOF",
+    "BKFPF",
+    "BKPA",
+    "BNH",
+    "BNJ",
+    "BRCFF",
+    "BRFAF",
+    "BRFCF",
+    "BROXF",
+    "BRPSF",
+    "BXDIF"
+   ]
+  },
+  {
+   "hq_country": "US",
+   "id": "coherent",
+   "last_checked": "2026-10-31",
+   "layer": "systems",
+   "name": "Coherent",
+   "one_line": "US maker of optical components and transceivers that link AI servers together.",
+   "ownership": "public",
+   "sec_cik": "0000820318",
+   "sources": [
+    "sec-coherent"
+   ],
+   "tickers": [
+    "COHR"
+   ]
+  },
+  {
+   "hq_country": "US",
+   "id": "constellation",
+   "last_checked": "2026-10-31",
+   "layer": "power",
+   "name": "Constellation",
+   "one_line": "US power producer with the largest US nuclear fleet, selling power to hyperscalers.",
+   "ownership": "public",
+   "sec_cik": "0001868275",
+   "sources": [
+    "sec-constellation"
+   ],
+   "tickers": [
+    "CEG"
+   ]
+  },
+  {
+   "hq_country": "US",
+   "id": "coreweave",
+   "last_checked": "2026-10-31",
+   "layer": "data_centers",
+   "name": "CoreWeave",
+   "one_line": "US GPU cloud that rents Nvidia capacity to labs and hyperscalers, financed largely with debt.",
+   "ownership": "public",
+   "sec_cik": "0001769628",
+   "sources": [
+    "sec-coreweave"
+   ],
+   "tickers": [
+    "CRWV"
+   ]
+  },
+  {
+   "hq_country": "US",
+   "id": "crusoe",
+   "last_checked": "2026-10-31",
+   "layer": "data_centers",
+   "name": "Crusoe",
+   "one_line": "US developer and operator of large AI data center campuses.",
+   "ownership": "private",
+   "sources": [
+    "web-crusoe"
+   ]
+  },
+  {
+   "hq_country": "US",
+   "id": "dell",
+   "last_checked": "2026-10-31",
+   "layer": "systems",
+   "name": "Dell",
+   "one_line": "US maker of servers and PCs that sells AI server systems to labs, clouds and enterprises.",
+   "ownership": "public",
+   "sec_cik": "0001571996",
+   "sources": [
+    "sec-dell"
+   ],
+   "tickers": [
+    "DELL"
+   ]
+  },
+  {
+   "hq_country": "US",
+   "id": "digital-realty",
+   "last_checked": "2026-10-31",
+   "layer": "data_centers",
+   "name": "Digital Realty",
+   "one_line": "US data center landlord that leases space and power to cloud providers.",
+   "ownership": "public",
+   "sec_cik": "0001297996",
+   "sources": [
+    "sec-digital-realty"
+   ],
+   "tickers": [
+    "DLR",
+    "DLR-PK",
+    "DLR-PJ",
+    "DLR-PL"
+   ]
+  },
+  {
+   "hq_country": "TW",
+   "id": "foxconn",
+   "last_checked": "2026-10-31",
+   "layer": "systems",
+   "name": "Foxconn (Hon Hai)",
+   "one_line": "Taiwanese electronics assembler and the largest builder of AI servers and racks.",
+   "ownership": "public",
+   "sources": [
+    "web-foxconn"
+   ]
+  },
+  {
+   "hq_country": "US",
+   "id": "ge-vernova",
+   "last_checked": "2026-10-31",
+   "layer": "power",
+   "name": "GE Vernova",
+   "one_line": "US maker of gas turbines and grid equipment; power for new data centers.",
+   "ownership": "public",
+   "sec_cik": "0001996810",
+   "sources": [
+    "sec-ge-vernova"
+   ],
+   "tickers": [
+    "GEV"
+   ]
+  },
+  {
+   "hq_country": "US",
+   "id": "intel",
+   "last_checked": "2026-10-31",
+   "layer": "chip_design",
+   "name": "Intel",
+   "one_line": "Designs and makes CPUs and runs a contract foundry business; has the US government and Nvidia as shareholders.",
+   "ownership": "public",
+   "sec_cik": "0000050863",
+   "secondary": [
+    "foundry"
+   ],
+   "sources": [
+    "sec-intel"
+   ],
+   "tickers": [
+    "INTC"
+   ]
+  },
+  {
+   "hq_country": "US",
+   "id": "lam-research",
+   "last_checked": "2026-10-31",
+   "layer": "equipment",
+   "name": "Lam Research",
+   "one_line": "US maker of etch and deposition equipment, with heavy exposure to memory makers.",
+   "ownership": "public",
+   "sec_cik": "0000707549",
+   "sources": [
+    "sec-lam-research"
+   ],
+   "tickers": [
+    "LRCX"
+   ]
+  },
+  {
+   "hq_country": "US",
+   "id": "lambda",
+   "last_checked": "2026-10-31",
+   "layer": "data_centers",
+   "name": "Lambda",
+   "one_line": "US GPU cloud selling AI compute to labs, hyperscalers and developers.",
+   "ownership": "private",
+   "sources": [
+    "web-lambda"
+   ]
+  },
+  {
+   "hq_country": "US",
+   "id": "meta",
+   "last_checked": "2026-10-31",
+   "layer": "hyperscale",
+   "name": "Meta",
+   "one_line": "Spends at hyperscale on AI data centers for its own apps and models.",
+   "ownership": "public",
+   "sec_cik": "0001326801",
+   "secondary": [
+    "labs"
+   ],
+   "sources": [
+    "sec-meta"
+   ],
+   "tickers": [
+    "META"
+   ]
+  },
+  {
+   "hq_country": "AE",
+   "id": "mgx",
+   "last_checked": "2026-10-31",
+   "layer": "capital",
+   "name": "MGX",
+   "one_line": "Abu Dhabi investment company focused on AI, investing in labs, data centers and Stargate.",
+   "ownership": "private",
+   "sources": [
+    "web-mgx"
+   ]
+  },
+  {
+   "hq_country": "US",
+   "id": "micron",
+   "last_checked": "2026-10-31",
+   "layer": "memory",
+   "name": "Micron",
+   "one_line": "US memory maker supplying high-bandwidth memory for AI chips.",
+   "ownership": "public",
+   "sec_cik": "0000723125",
+   "sources": [
+    "sec-micron"
+   ],
+   "tickers": [
+    "MU"
+   ]
+  },
+  {
+   "hq_country": "US",
+   "id": "microsoft",
+   "last_checked": "2026-10-31",
+   "layer": "hyperscale",
+   "name": "Microsoft",
+   "one_line": "Runs Azure, the largest outside funder of OpenAI and an investor in Anthropic.",
+   "ownership": "public",
+   "sec_cik": "0000789019",
+   "secondary": [
+    "labs"
+   ],
+   "sources": [
+    "sec-microsoft"
+   ],
+   "tickers": [
+    "MSFT"
+   ]
+  },
+  {
+   "hq_country": "FR",
+   "id": "mistral",
+   "last_checked": "2026-10-31",
+   "layer": "labs",
+   "name": "Mistral",
+   "one_line": "French lab building open and commercial AI models.",
+   "ownership": "private",
+   "sources": [
+    "web-mistral"
+   ]
+  },
+  {
+   "hq_country": "NL",
+   "id": "nebius",
+   "last_checked": "2026-10-31",
+   "layer": "data_centers",
+   "name": "Nebius",
+   "one_line": "Amsterdam-based GPU cloud selling AI capacity to hyperscalers and model developers.",
+   "ownership": "public",
+   "sec_cik": "0001513845",
+   "sources": [
+    "sec-nebius"
+   ],
+   "tickers": [
+    "NBIS"
+   ]
+  },
+  {
+   "hq_country": "US",
+   "id": "nvidia",
+   "last_checked": "2026-10-31",
+   "layer": "chip_design",
+   "name": "Nvidia",
+   "one_line": "Designs the GPUs and networking at the core of most AI data centers, and invests across the chain.",
+   "ownership": "public",
+   "sec_cik": "0001045810",
+   "secondary": [
+    "capital"
+   ],
+   "sources": [
+    "sec-nvidia"
+   ],
+   "tickers": [
+    "NVDA"
+   ]
+  },
+  {
+   "hq_country": "US",
+   "id": "openai",
+   "last_checked": "2026-10-31",
+   "layer": "labs",
+   "name": "OpenAI",
+   "one_line": "Lab behind ChatGPT and the largest buyer of compute across the chain.",
+   "ownership": "private",
+   "sources": [
+    "web-openai"
+   ]
+  },
+  {
+   "hq_country": "US",
+   "id": "oracle",
+   "last_checked": "2026-10-31",
+   "layer": "hyperscale",
+   "name": "Oracle",
+   "one_line": "Runs Oracle Cloud and builds large compute capacity for OpenAI.",
+   "ownership": "public",
+   "sec_cik": "0001341439",
+   "sources": [
+    "sec-oracle"
+   ],
+   "tickers": [
+    "ORCL",
+    "ORCL-PD"
+   ]
+  },
+  {
+   "hq_country": "US",
+   "id": "palantir",
+   "last_checked": "2026-10-31",
+   "layer": "applications",
+   "name": "Palantir",
+   "one_line": "Software company selling AI platforms to governments and enterprises.",
+   "ownership": "public",
+   "sec_cik": "0001321655",
+   "sources": [
+    "sec-palantir"
+   ],
+   "tickers": [
+    "PLTR"
+   ]
+  },
+  {
+   "hq_country": "US",
+   "id": "perplexity",
+   "last_checked": "2026-10-31",
+   "layer": "applications",
+   "name": "Perplexity",
+   "one_line": "AI search app that pays labs and clouds for model access and compute.",
+   "ownership": "private",
+   "sources": [
+    "web-perplexity"
+   ]
+  },
+  {
+   "hq_country": "US",
+   "id": "salesforce",
+   "last_checked": "2026-10-31",
+   "layer": "applications",
+   "name": "Salesforce",
+   "one_line": "Enterprise software company selling AI agents and investing in AI startups.",
+   "ownership": "public",
+   "sec_cik": "0001108524",
+   "sources": [
+    "sec-salesforce"
+   ],
+   "tickers": [
+    "CRM"
+   ]
+  },
+  {
+   "hq_country": "KR",
+   "id": "samsung",
+   "last_checked": "2026-10-31",
+   "layer": "memory",
+   "name": "Samsung",
+   "one_line": "Korean maker of memory chips at scale, with a contract foundry business on the side.",
+   "ownership": "public",
+   "secondary": [
+    "foundry"
+   ],
+   "sources": [
+    "web-samsung"
+   ]
+  },
+  {
+   "hq_country": "KR",
+   "id": "sk-hynix",
+   "last_checked": "2026-10-31",
+   "layer": "memory",
+   "name": "SK Hynix",
+   "one_line": "Korean memory maker and the leading supplier of high-bandwidth memory for AI chips.",
+   "ownership": "public",
+   "sources": [
+    "web-sk-hynix"
+   ]
+  },
+  {
+   "hq_country": "JP",
+   "id": "softbank",
+   "last_checked": "2026-10-31",
+   "layer": "capital",
+   "name": "SoftBank Group",
+   "one_line": "Japanese investment group, a major OpenAI backer, Stargate partner and owner of most of Arm.",
+   "ownership": "public",
+   "sources": [
+    "web-softbank"
+   ]
+  },
+  {
+   "hq_country": "US",
+   "id": "stargate",
+   "last_checked": "2026-10-31",
+   "layer": "data_centers",
+   "name": "Stargate (JV)",
+   "one_line": "AI infrastructure venture announced by OpenAI, SoftBank, Oracle and MGX to build US data centers.",
+   "ownership": "joint_venture",
+   "sources": [
+    "web-stargate"
+   ]
+  },
+  {
+   "hq_country": "US",
+   "id": "supermicro",
+   "last_checked": "2026-10-31",
+   "layer": "systems",
+   "name": "Supermicro",
+   "one_line": "US maker of AI servers and rack systems, close to the GPU cloud providers.",
+   "ownership": "public",
+   "sec_cik": "0001375365",
+   "sources": [
+    "sec-supermicro"
+   ],
+   "tickers": [
+    "SMCI",
+    "SMCIP"
+   ]
+  },
+  {
+   "hq_country": "JP",
+   "id": "tokyo-electron",
+   "last_checked": "2026-10-31",
+   "layer": "equipment",
+   "name": "Tokyo Electron",
+   "one_line": "Japanese maker of chip fabrication equipment, strongest in coating, etch and deposition.",
+   "ownership": "public",
+   "sources": [
+    "web-tokyo-electron"
+   ]
+  },
+  {
+   "hq_country": "TW",
+   "id": "tsmc",
+   "last_checked": "2026-10-31",
+   "layer": "foundry",
+   "name": "TSMC",
+   "one_line": "Taiwanese contract chipmaker that fabricates and packages nearly every leading AI chip.",
+   "ownership": "public",
+   "sec_cik": "0001046179",
+   "sources": [
+    "sec-tsmc"
+   ],
+   "tickers": [
+    "TSM",
+    "TSMWF"
+   ]
+  },
+  {
+   "hq_country": "US",
+   "id": "us-government",
+   "last_checked": "2026-10-31",
+   "layer": "capital",
+   "name": "US Government",
+   "one_line": "US federal government, which funds chipmakers through CHIPS Act grants and has taken equity stakes.",
+   "ownership": "government",
+   "sources": [
+    "web-us-government"
+   ]
+  },
+  {
+   "hq_country": "US",
+   "id": "vertiv",
+   "last_checked": "2026-10-31",
+   "layer": "power",
+   "name": "Vertiv",
+   "one_line": "US maker of power and cooling equipment for data centers.",
+   "ownership": "public",
+   "sec_cik": "0001674101",
+   "sources": [
+    "sec-vertiv"
+   ],
+   "tickers": [
+    "VRT"
+   ]
+  },
+  {
+   "hq_country": "US",
+   "id": "vistra",
+   "last_checked": "2026-10-31",
+   "layer": "power",
+   "name": "Vistra",
+   "one_line": "US power producer selling generation capacity to data center operators.",
+   "ownership": "public",
+   "sec_cik": "0001692819",
+   "sources": [
+    "sec-vistra"
+   ],
+   "tickers": [
+    "VST"
+   ]
+  },
+  {
+   "hq_country": "US",
+   "id": "xai",
+   "last_checked": "2026-10-31",
+   "layer": "labs",
+   "name": "xAI",
+   "one_line": "Lab behind Grok that builds and owns its own compute clusters.",
+   "ownership": "private",
+   "secondary": [
+    "hyperscale"
+   ],
+   "sources": [
+    "web-xai"
+   ]
+  }
+ ],
+ "deals": [
+  {
+   "amount_basis": "committed",
+   "amount_kind": "cap",
+   "amount_usd_high": 25000000000.0,
+   "amount_usd_low": 5000000000.0,
+   "announced": "2026-04-20",
+   "as_of": "2026-04-20",
+   "confidence": "company_stated",
+   "id": "amazon-anthropic-equity-2026-04",
+   "last_checked": "2026-10-31",
+   "payee": "anthropic",
+   "payer": "amazon",
+   "sources": [
+    "amazon-anthropic-2026-04-20"
+   ],
+   "status": "announced",
+   "summary": "Amazon invests $5B now and up to $20B more if business targets are met, on top of $8B invested earlier.",
+   "type": "equity_investment"
+  },
+  {
+   "amount_basis": "committed",
+   "announced": "2025-10-06",
+   "as_of": "2025-10-06",
+   "confidence": "company_stated",
+   "id": "amd-openai-warrant-2025-10",
+   "last_checked": "2026-10-31",
+   "payee": "openai",
+   "payer": "amd",
+   "sources": [
+    "amd-openai-2025-10-06"
+   ],
+   "status": "announced",
+   "summary": "Warrant for up to 160 million AMD shares, vesting with GPU deployments and AMD share-price targets. No dollar value stated.",
+   "type": "warrant_or_equity_grant"
+  },
+  {
+   "amount_basis": "committed",
+   "amount_kind": "multi_year_total",
+   "amount_usd_low": 100000000000.0,
+   "announced": "2026-04-20",
+   "as_of": "2026-04-20",
+   "confidence": "company_stated",
+   "id": "anthropic-aws-spend-2026-04",
+   "last_checked": "2026-10-31",
+   "payee": "amazon",
+   "payer": "anthropic",
+   "sources": [
+    "amazon-anthropic-2026-04-20"
+   ],
+   "status": "announced",
+   "summary": "Anthropic to spend more than $100B on AWS technologies over ten years.",
+   "term_years": 10,
+   "type": "purchase_commitment"
+  },
+  {
+   "amount_basis": "committed",
+   "amount_usd_high": 30000000000.0,
+   "amount_usd_low": 30000000000.0,
+   "announced": "2025-11-18",
+   "as_of": "2025-11-18",
+   "confidence": "company_stated",
+   "id": "anthropic-microsoft-azure-2025-11",
+   "last_checked": "2026-10-31",
+   "payee": "microsoft",
+   "payer": "anthropic",
+   "sources": [
+    "msft-nvda-anthropic-2025-11-18"
+   ],
+   "status": "announced",
+   "summary": "Anthropic commits to buy $30B of Azure compute capacity.",
+   "type": "purchase_commitment"
+  },
+  {
+   "amount_basis": "committed",
+   "amount_kind": "cap",
+   "amount_usd_high": 5000000000.0,
+   "announced": "2025-11-18",
+   "as_of": "2025-11-18",
+   "confidence": "company_stated",
+   "id": "microsoft-anthropic-equity-2025-11",
+   "last_checked": "2026-10-31",
+   "payee": "anthropic",
+   "payer": "microsoft",
+   "sources": [
+    "msft-nvda-anthropic-2025-11-18"
+   ],
+   "status": "announced",
+   "summary": "Microsoft commits to invest up to $5B in Anthropic.",
+   "type": "equity_investment"
+  },
+  {
+   "amount_basis": "committed",
+   "amount_kind": "multi_year_total",
+   "amount_usd_high": 19400000000.0,
+   "amount_usd_low": 17400000000.0,
+   "announced": "2025-09-08",
+   "as_of": "2025-09-08",
+   "confidence": "filed",
+   "id": "microsoft-nebius-capacity-2025-09",
+   "last_checked": "2026-10-31",
+   "payee": "nebius",
+   "payer": "microsoft",
+   "sources": [
+    "nebius-6k-2025-09-08"
+   ],
+   "status": "signed",
+   "summary": "Five-year GPU capacity agreement worth about $17.4B through 2031, up to about $19.4B with extra services.",
+   "term_years": 5,
+   "type": "capacity_lease"
+  },
+  {
+   "amount_basis": "committed",
+   "amount_kind": "cap",
+   "amount_usd_high": 10000000000.0,
+   "announced": "2025-11-18",
+   "as_of": "2025-11-18",
+   "confidence": "company_stated",
+   "id": "nvidia-anthropic-equity-2025-11",
+   "last_checked": "2026-10-31",
+   "payee": "anthropic",
+   "payer": "nvidia",
+   "sources": [
+    "msft-nvda-anthropic-2025-11-18"
+   ],
+   "status": "announced",
+   "summary": "NVIDIA commits to invest up to $10B in Anthropic.",
+   "type": "equity_investment"
+  },
+  {
+   "amount_basis": "committed",
+   "amount_kind": "cap",
+   "amount_usd_high": 100000000000.0,
+   "announced": "2025-09-22",
+   "as_of": "2025-09-22",
+   "confidence": "company_stated",
+   "id": "nvidia-openai-equity-2025-09",
+   "last_checked": "2026-10-31",
+   "payee": "openai",
+   "payer": "nvidia",
+   "sources": [
+    "nvidia-openai-2025-09-22"
+   ],
+   "status": "announced",
+   "summary": "NVIDIA intends to invest up to $100B in OpenAI, paid in step with each gigawatt deployed; letter of intent.",
+   "type": "equity_investment"
+  },
+  {
+   "amount_basis": "committed",
+   "announced": "2025-10-06",
+   "as_of": "2025-10-06",
+   "confidence": "company_stated",
+   "id": "openai-amd-gpus-2025-10",
+   "last_checked": "2026-10-31",
+   "payee": "amd",
+   "payer": "openai",
+   "sources": [
+    "amd-openai-2025-10-06"
+   ],
+   "status": "announced",
+   "summary": "OpenAI to deploy 6 GW of AMD Instinct GPUs, first 1 GW in the second half of 2026. No dollar value stated.",
+   "type": "purchase_commitment"
+  }
+ ],
+ "events": [],
+ "financials": [],
+ "loops": [
+  {
+   "deals": [
+    "amazon-anthropic-equity-2026-04",
+    "anthropic-aws-spend-2026-04"
+   ],
+   "explanation": "Amazon puts equity into Anthropic, and Anthropic commits to spend on AWS.",
+   "flagged_by": "automatic",
+   "id": "amazon-anthropic",
+   "last_checked": "2026-10-31",
+   "name": "Amazon and Anthropic"
+  },
+  {
+   "deals": [
+    "amd-openai-warrant-2025-10",
+    "openai-amd-gpus-2025-10"
+   ],
+   "explanation": "AMD hands OpenAI a warrant on its own shares, and OpenAI commits to buy AMD GPUs.",
+   "flagged_by": "automatic",
+   "id": "amd-openai",
+   "last_checked": "2026-10-31",
+   "name": "AMD and OpenAI"
+  },
+  {
+   "deals": [
+    "microsoft-anthropic-equity-2025-11",
+    "anthropic-microsoft-azure-2025-11"
+   ],
+   "explanation": "Microsoft puts equity into Anthropic, and Anthropic commits to buy Azure compute from Microsoft.",
+   "flagged_by": "automatic",
+   "id": "microsoft-anthropic",
+   "last_checked": "2026-10-31",
+   "name": "Microsoft and Anthropic"
+  }
+ ],
+ "sources": [
+  {
+   "accessed": "2026-10-31",
+   "id": "amazon-anthropic-2026-04-20",
+   "kind": "company",
+   "label": "Amazon release: $5B more in Anthropic, up to $20B later",
+   "published": "2026-04-20",
+   "publisher": "Amazon",
+   "url": "https://www.aboutamazon.com/news/company-news/amazon-invests-additional-5-billion-anthropic-ai"
+  },
+  {
+   "accessed": "2026-10-31",
+   "id": "amd-openai-2025-10-06",
+   "kind": "company",
+   "label": "AMD release: OpenAI partnership for 6 GW of AMD GPUs, with warrant",
+   "published": "2025-10-06",
+   "publisher": "AMD",
+   "url": "https://newsroom.amd.com/news/amd-and-openai-announce-strategic-partnership-to-d/"
+  },
+  {
+   "accessed": "2026-10-31",
+   "id": "msft-nvda-anthropic-2025-11-18",
+   "kind": "company",
+   "label": "Microsoft blog: Microsoft, NVIDIA and Anthropic partnerships",
+   "published": "2025-11-18",
+   "publisher": "Microsoft",
+   "url": "https://blogs.microsoft.com/blog/2025/11/18/microsoft-nvidia-and-anthropic-announce-strategic-partnerships/"
+  },
+  {
+   "accessed": "2026-10-31",
+   "filing_form": "6-K",
+   "id": "nebius-6k-2025-09-08",
+   "kind": "filing",
+   "label": "Nebius 6-K: Microsoft agreement",
+   "published": "2025-09-08",
+   "publisher": "Nebius Group",
+   "url": "https://assets.nebius.com/assets/86625727-9e66-46c1-af79-c27d57434e3c/25-25580-1_Nebius%20Group%20N.V._6-K.pdf"
+  },
+  {
+   "accessed": "2026-10-31",
+   "id": "nvidia-openai-2025-09-22",
+   "kind": "company",
+   "label": "NVIDIA release: OpenAI partnership for 10 GW of NVIDIA systems",
+   "published": "2025-09-22",
+   "publisher": "NVIDIA",
+   "url": "https://nvidianews.nvidia.com/news/openai-and-nvidia-announce-strategic-partnership-to-deploy-10gw-of-nvidia-systems"
+  },
+  {
+   "accessed": "2026-10-31",
+   "filing_form": "10-K",
+   "id": "sec-alphabet",
+   "kind": "filing",
+   "label": "EDGAR filings index for Alphabet Inc.; latest annual report 10-K",
+   "published": "2026-02-05",
+   "publisher": "SEC EDGAR",
+   "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001652044"
+  },
+  {
+   "accessed": "2026-10-31",
+   "filing_form": "10-K",
+   "id": "sec-amazon",
+   "kind": "filing",
+   "label": "EDGAR filings index for AMAZON COM INC; latest annual report 10-K",
+   "published": "2026-02-06",
+   "publisher": "SEC EDGAR",
+   "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001018724"
+  },
+  {
+   "accessed": "2026-10-31",
+   "filing_form": "10-K",
+   "id": "sec-amd",
+   "kind": "filing",
+   "label": "EDGAR filings index for ADVANCED MICRO DEVICES INC; latest annual report 10-K",
+   "published": "2026-02-04",
+   "publisher": "SEC EDGAR",
+   "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000002488"
+  },
+  {
+   "accessed": "2026-10-31",
+   "filing_form": "10-K",
+   "id": "sec-applied-materials",
+   "kind": "filing",
+   "label": "EDGAR filings index for APPLIED MATERIALS INC /DE; latest annual report 10-K",
+   "published": "2025-12-12",
+   "publisher": "SEC EDGAR",
+   "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000006951"
+  },
+  {
+   "accessed": "2026-10-31",
+   "filing_form": "10-K",
+   "id": "sec-arista",
+   "kind": "filing",
+   "label": "EDGAR filings index for Arista Networks, Inc.; latest annual report 10-K",
+   "published": "2026-02-17",
+   "publisher": "SEC EDGAR",
+   "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001596532"
+  },
+  {
+   "accessed": "2026-10-31",
+   "filing_form": "20-F",
+   "id": "sec-arm",
+   "kind": "filing",
+   "label": "EDGAR filings index for ARM HOLDINGS PLC /UK; latest annual report 20-F",
+   "published": "2026-05-26",
+   "publisher": "SEC EDGAR",
+   "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001973239"
+  },
+  {
+   "accessed": "2026-10-31",
+   "filing_form": "20-F",
+   "id": "sec-asml",
+   "kind": "filing",
+   "label": "EDGAR filings index for ASML HOLDING NV; latest annual report 20-F",
+   "published": "2026-02-25",
+   "publisher": "SEC EDGAR",
+   "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000937966"
+  },
+  {
+   "accessed": "2026-10-31",
+   "filing_form": "10-K",
+   "id": "sec-blackstone",
+   "kind": "filing",
+   "label": "EDGAR filings index for Blackstone Inc.; latest annual report 10-K",
+   "published": "2026-02-27",
+   "publisher": "SEC EDGAR",
+   "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001393818"
+  },
+  {
+   "accessed": "2026-10-31",
+   "filing_form": "10-K",
+   "id": "sec-blue-owl",
+   "kind": "filing",
+   "label": "EDGAR filings index for BLUE OWL CAPITAL INC.; latest annual report 10-K",
+   "published": "2026-02-19",
+   "publisher": "SEC EDGAR",
+   "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001823945"
+  },
+  {
+   "accessed": "2026-10-31",
+   "filing_form": "10-K",
+   "id": "sec-broadcom",
+   "kind": "filing",
+   "label": "EDGAR filings index for Broadcom Inc.; latest annual report 10-K",
+   "published": "2025-12-18",
+   "publisher": "SEC EDGAR",
+   "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001730168"
+  },
+  {
+   "accessed": "2026-10-31",
+   "filing_form": "40-F",
+   "id": "sec-brookfield",
+   "kind": "filing",
+   "label": "EDGAR filings index for BROOKFIELD Corp /ON/; latest annual report 40-F",
+   "published": "2026-03-18",
+   "publisher": "SEC EDGAR",
+   "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001001085"
+  },
+  {
+   "accessed": "2026-10-31",
+   "filing_form": "10-K",
+   "id": "sec-coherent",
+   "kind": "filing",
+   "label": "EDGAR filings index for COHERENT CORP.; latest annual report 10-K",
+   "published": "2026-08-14",
+   "publisher": "SEC EDGAR",
+   "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000820318"
+  },
+  {
+   "accessed": "2026-10-31",
+   "filing_form": "10-K",
+   "id": "sec-constellation",
+   "kind": "filing",
+   "label": "EDGAR filings index for Constellation Energy Corp; latest annual report 10-K",
+   "published": "2026-02-24",
+   "publisher": "SEC EDGAR",
+   "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001868275"
+  },
+  {
+   "accessed": "2026-10-31",
+   "filing_form": "10-K",
+   "id": "sec-coreweave",
+   "kind": "filing",
+   "label": "EDGAR filings index for CoreWeave, Inc.; latest annual report 10-K",
+   "published": "2026-03-02",
+   "publisher": "SEC EDGAR",
+   "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001769628"
+  },
+  {
+   "accessed": "2026-10-31",
+   "filing_form": "10-K",
+   "id": "sec-dell",
+   "kind": "filing",
+   "label": "EDGAR filings index for Dell Technologies Inc.; latest annual report 10-K",
+   "published": "2026-03-16",
+   "publisher": "SEC EDGAR",
+   "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001571996"
+  },
+  {
+   "accessed": "2026-10-31",
+   "filing_form": "10-K",
+   "id": "sec-digital-realty",
+   "kind": "filing",
+   "label": "EDGAR filings index for DIGITAL REALTY TRUST, INC.; latest annual report 10-K",
+   "published": "2026-02-13",
+   "publisher": "SEC EDGAR",
+   "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001297996"
+  },
+  {
+   "accessed": "2026-10-31",
+   "filing_form": "10-K",
+   "id": "sec-ge-vernova",
+   "kind": "filing",
+   "label": "EDGAR filings index for GE Vernova Inc.; latest annual report 10-K",
+   "published": "2026-01-29",
+   "publisher": "SEC EDGAR",
+   "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001996810"
+  },
+  {
+   "accessed": "2026-10-31",
+   "filing_form": "10-K",
+   "id": "sec-intel",
+   "kind": "filing",
+   "label": "EDGAR filings index for INTEL CORP; latest annual report 10-K",
+   "published": "2026-01-23",
+   "publisher": "SEC EDGAR",
+   "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000050863"
+  },
+  {
+   "accessed": "2026-10-31",
+   "filing_form": "10-K",
+   "id": "sec-lam-research",
+   "kind": "filing",
+   "label": "EDGAR filings index for LAM RESEARCH CORP; latest annual report 10-K",
+   "published": "2026-08-07",
+   "publisher": "SEC EDGAR",
+   "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000707549"
+  },
+  {
+   "accessed": "2026-10-31",
+   "filing_form": "10-K",
+   "id": "sec-meta",
+   "kind": "filing",
+   "label": "EDGAR filings index for Meta Platforms, Inc.; latest annual report 10-K",
+   "published": "2026-01-29",
+   "publisher": "SEC EDGAR",
+   "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001326801"
+  },
+  {
+   "accessed": "2026-10-31",
+   "filing_form": "10-K",
+   "id": "sec-micron",
+   "kind": "filing",
+   "label": "EDGAR filings index for MICRON TECHNOLOGY INC; latest annual report 10-K",
+   "published": "2026-10-09",
+   "publisher": "SEC EDGAR",
+   "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000723125"
+  },
+  {
+   "accessed": "2026-10-31",
+   "filing_form": "10-K",
+   "id": "sec-microsoft",
+   "kind": "filing",
+   "label": "EDGAR filings index for MICROSOFT CORP; latest annual report 10-K",
+   "published": "2026-07-29",
+   "publisher": "SEC EDGAR",
+   "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000789019"
+  },
+  {
+   "accessed": "2026-10-31",
+   "filing_form": "20-F",
+   "id": "sec-nebius",
+   "kind": "filing",
+   "label": "EDGAR filings index for Nebius Group N.V.; latest annual report 20-F",
+   "published": "2026-04-30",
+   "publisher": "SEC EDGAR",
+   "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001513845"
+  },
+  {
+   "accessed": "2026-10-31",
+   "filing_form": "10-K",
+   "id": "sec-nvidia",
+   "kind": "filing",
+   "label": "EDGAR filings index for NVIDIA CORP; latest annual report 10-K",
+   "published": "2026-02-25",
+   "publisher": "SEC EDGAR",
+   "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001045810"
+  },
+  {
+   "accessed": "2026-10-31",
+   "filing_form": "10-K",
+   "id": "sec-oracle",
+   "kind": "filing",
+   "label": "EDGAR filings index for ORACLE CORP; latest annual report 10-K",
+   "published": "2026-06-22",
+   "publisher": "SEC EDGAR",
+   "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001341439"
+  },
+  {
+   "accessed": "2026-10-31",
+   "filing_form": "10-K",
+   "id": "sec-palantir",
+   "kind": "filing",
+   "label": "EDGAR filings index for Palantir Technologies Inc.; latest annual report 10-K",
+   "published": "2026-02-17",
+   "publisher": "SEC EDGAR",
+   "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001321655"
+  },
+  {
+   "accessed": "2026-10-31",
+   "filing_form": "10-K",
+   "id": "sec-salesforce",
+   "kind": "filing",
+   "label": "EDGAR filings index for Salesforce, Inc.; latest annual report 10-K",
+   "published": "2026-03-02",
+   "publisher": "SEC EDGAR",
+   "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001108524"
+  },
+  {
+   "accessed": "2026-10-31",
+   "filing_form": "10-K",
+   "id": "sec-supermicro",
+   "kind": "filing",
+   "label": "EDGAR filings index for Super Micro Computer, Inc.; latest annual report 10-K",
+   "published": "2026-08-31",
+   "publisher": "SEC EDGAR",
+   "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001375365"
+  },
+  {
+   "accessed": "2026-10-31",
+   "filing_form": "20-F",
+   "id": "sec-tsmc",
+   "kind": "filing",
+   "label": "EDGAR filings index for TAIWAN SEMICONDUCTOR MANUFACTURING CO LTD; latest annual report 20-F",
+   "published": "2026-04-16",
+   "publisher": "SEC EDGAR",
+   "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001046179"
+  },
+  {
+   "accessed": "2026-10-31",
+   "filing_form": "10-K",
+   "id": "sec-vertiv",
+   "kind": "filing",
+   "label": "EDGAR filings index for Vertiv Holdings Co; latest annual report 10-K",
+   "published": "2026-02-13",
+   "publisher": "SEC EDGAR",
+   "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001674101"
+  },
+  {
+   "accessed": "2026-10-31",
+   "filing_form": "10-K",
+   "id": "sec-vistra",
+   "kind": "filing",
+   "label": "EDGAR filings index for Vistra Corp.; latest annual report 10-K",
+   "published": "2026-02-27",
+   "publisher": "SEC EDGAR",
+   "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001692819"
+  },
+  {
+   "accessed": "2026-10-31",
+   "id": "web-anthropic",
+   "kind": "company",
+   "label": "Anthropic official website",
+   "publisher": "Anthropic",
+   "url": "https://www.anthropic.com/"
+  },
+  {
+   "accessed": "2026-10-31",
+   "id": "web-anysphere",
+   "kind": "company",
+   "label": "Anysphere (Cursor) official website",
+   "publisher": "Anysphere (Cursor)",
+   "url": "https://cursor.com/"
+  },
+  {
+   "accessed": "2026-10-31",
+   "id": "web-crusoe",
+   "kind": "company",
+   "label": "Crusoe official website",
+   "publisher": "Crusoe",
+   "url": "https://www.crusoe.ai/"
+  },
+  {
+   "accessed": "2026-10-31",
+   "id": "web-foxconn",
+   "kind": "company",
+   "label": "Foxconn (Hon Hai) official website",
+   "publisher": "Foxconn (Hon Hai)",
+   "url": "https://www.foxconn.com/"
+  },
+  {
+   "accessed": "2026-10-31",
+   "id": "web-lambda",
+   "kind": "company",
+   "label": "Lambda official website",
+   "publisher": "Lambda",
+   "url": "https://lambda.ai/"
+  },
+  {
+   "accessed": "2026-10-31",
+   "id": "web-mgx",
+   "kind": "company",
+   "label": "MGX official website",
+   "publisher": "MGX",
+   "url": "https://www.mgx.ae/"
+  },
+  {
+   "accessed": "2026-10-31",
+   "id": "web-mistral",
+   "kind": "company",
+   "label": "Mistral official website",
+   "publisher": "Mistral",
+   "url": "https://mistral.ai/"
+  },
+  {
+   "accessed": "2026-10-31",
+   "id": "web-openai",
+   "kind": "company",
+   "label": "OpenAI official website",
+   "publisher": "OpenAI",
+   "url": "https://openai.com/"
+  },
+  {
+   "accessed": "2026-10-31",
+   "id": "web-perplexity",
+   "kind": "company",
+   "label": "Perplexity official website",
+   "publisher": "Perplexity",
+   "url": "https://www.perplexity.ai/"
+  },
+  {
+   "accessed": "2026-10-31",
+   "id": "web-samsung",
+   "kind": "company",
+   "label": "Samsung official website",
+   "publisher": "Samsung",
+   "url": "https://semiconductor.samsung.com/"
+  },
+  {
+   "accessed": "2026-10-31",
+   "id": "web-sk-hynix",
+   "kind": "company",
+   "label": "SK Hynix official website",
+   "publisher": "SK Hynix",
+   "url": "https://www.skhynix.com/"
+  },
+  {
+   "accessed": "2026-10-31",
+   "id": "web-softbank",
+   "kind": "company",
+   "label": "SoftBank Group official website",
+   "publisher": "SoftBank Group",
+   "url": "https://group.softbank/en"
+  },
+  {
+   "accessed": "2026-10-31",
+   "id": "web-stargate",
+   "kind": "company",
+   "label": "OpenAI announcement of the Stargate Project",
+   "published": "2025-01-21",
+   "publisher": "Stargate (JV)",
+   "url": "https://openai.com/index/announcing-the-stargate-project/"
+  },
+  {
+   "accessed": "2026-10-31",
+   "id": "web-tokyo-electron",
+   "kind": "company",
+   "label": "Tokyo Electron official website",
+   "publisher": "Tokyo Electron",
+   "url": "https://www.tel.com/"
+  },
+  {
+   "accessed": "2026-10-31",
+   "id": "web-us-government",
+   "kind": "government",
+   "label": "US Government official website",
+   "publisher": "US Government",
+   "url": "https://www.nist.gov/chips"
+  },
+  {
+   "accessed": "2026-10-31",
+   "id": "web-xai",
+   "kind": "company",
+   "label": "xAI official website",
+   "publisher": "xAI",
+   "url": "https://x.ai/"
+  }
+ ],
+ "state": {
+  "as_of": "2026-10-31",
+  "draft": true,
+  "text": "Most of the money tracked so far is promised, not yet paid."
+ },
+ "taxonomy": {
+  "amount_basis": [
+   "committed",
+   "paid",
+   "estimated"
+  ],
+  "amount_kind": [
+   "cap",
+   "multi_year_total",
+   "annual_run_rate",
+   "one_time"
+  ],
+  "confidence": [
+   "filed",
+   "company_stated",
+   "reported",
+   "rumored"
+  ],
+  "deal_families": [
+   {
+    "id": "equity",
+    "label": "Equity",
+    "types": [
+     "equity_investment",
+     "warrant_or_equity_grant",
+     "jv_contribution",
+     "acquisition"
+    ]
+   },
+   {
+    "id": "debt",
+    "label": "Debt and guarantees",
+    "types": [
+     "debt_or_gpu_backed_loan",
+     "guarantee_or_backstop"
+    ]
+   },
+   {
+    "id": "commercial",
+    "label": "Commercial commitments",
+    "types": [
+     "purchase_commitment",
+     "capacity_lease",
+     "cloud_credits",
+     "power_supply_agreement",
+     "revenue_share"
+    ]
+   },
+   {
+    "id": "public",
+    "label": "Public money",
+    "types": [
+     "government_grant_or_incentive"
+    ]
+   }
+  ],
+  "layers": [
+   {
+    "id": "equipment",
+    "label": "Equipment",
+    "order": 1
+   },
+   {
+    "id": "chip_design",
+    "label": "Chip design",
+    "order": 2
+   },
+   {
+    "id": "foundry",
+    "label": "Foundry",
+    "order": 3
+   },
+   {
+    "id": "memory",
+    "label": "Memory",
+    "order": 4
+   },
+   {
+    "id": "systems",
+    "label": "Systems",
+    "order": 5
+   },
+   {
+    "id": "power",
+    "label": "Power",
+    "order": 6
+   },
+   {
+    "id": "data_centers",
+    "label": "Data centers",
+    "order": 7
+   },
+   {
+    "id": "hyperscale",
+    "label": "Hyperscale",
+    "order": 8
+   },
+   {
+    "id": "labs",
+    "label": "Labs",
+    "order": 9
+   },
+   {
+    "id": "applications",
+    "label": "Applications",
+    "order": 10
+   },
+   {
+    "id": "capital",
+    "label": "Capital",
+    "order": 11
+   }
+  ],
+  "stale_days": {
+   "amber": 90,
+   "grey": 180
+  }
+ }
+}

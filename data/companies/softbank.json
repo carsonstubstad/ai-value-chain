@@ -1,0 +1,12 @@
+{
+ "id": "softbank",
+ "name": "SoftBank Group",
+ "layer": "capital",
+ "hq_country": "JP",
+ "ownership": "public",
+ "one_line": "Japanese investment group, a major OpenAI backer, Stargate partner and owner of most of Arm.",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "web-softbank"
+ ]
+}

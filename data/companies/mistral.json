@@ -1,0 +1,12 @@
+{
+ "id": "mistral",
+ "name": "Mistral",
+ "layer": "labs",
+ "hq_country": "FR",
+ "ownership": "private",
+ "one_line": "French lab building open and commercial AI models.",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "web-mistral"
+ ]
+}

@@ -1,0 +1,16 @@
+{
+ "id": "ge-vernova",
+ "name": "GE Vernova",
+ "layer": "power",
+ "hq_country": "US",
+ "ownership": "public",
+ "tickers": [
+  "GEV"
+ ],
+ "sec_cik": "0001996810",
+ "one_line": "US maker of gas turbines and grid equipment; power for new data centers.",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "sec-ge-vernova"
+ ]
+}

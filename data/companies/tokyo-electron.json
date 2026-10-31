@@ -1,0 +1,12 @@
+{
+ "id": "tokyo-electron",
+ "name": "Tokyo Electron",
+ "layer": "equipment",
+ "hq_country": "JP",
+ "ownership": "public",
+ "one_line": "Japanese maker of chip fabrication equipment, strongest in coating, etch and deposition.",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "web-tokyo-electron"
+ ]
+}

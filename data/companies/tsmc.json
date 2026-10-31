@@ -1,0 +1,17 @@
+{
+ "id": "tsmc",
+ "name": "TSMC",
+ "layer": "foundry",
+ "hq_country": "TW",
+ "ownership": "public",
+ "tickers": [
+  "TSM",
+  "TSMWF"
+ ],
+ "sec_cik": "0001046179",
+ "one_line": "Taiwanese contract chipmaker that fabricates and packages nearly every leading AI chip.",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "sec-tsmc"
+ ]
+}

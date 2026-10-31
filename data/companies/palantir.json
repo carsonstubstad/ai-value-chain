@@ -1,0 +1,16 @@
+{
+ "id": "palantir",
+ "name": "Palantir",
+ "layer": "applications",
+ "hq_country": "US",
+ "ownership": "public",
+ "tickers": [
+  "PLTR"
+ ],
+ "sec_cik": "0001321655",
+ "one_line": "Software company selling AI platforms to governments and enterprises.",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "sec-palantir"
+ ]
+}

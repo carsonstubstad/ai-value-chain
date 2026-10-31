@@ -1,0 +1,19 @@
+{
+ "id": "broadcom",
+ "name": "Broadcom",
+ "layer": "chip_design",
+ "secondary": [
+  "systems"
+ ],
+ "hq_country": "US",
+ "ownership": "public",
+ "tickers": [
+  "AVGO"
+ ],
+ "sec_cik": "0001730168",
+ "one_line": "Designs custom AI accelerators and networking chips for hyperscalers and labs.",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "sec-broadcom"
+ ]
+}

@@ -1,0 +1,16 @@
+{
+ "id": "amd-openai-warrant-2025-10",
+ "payer": "amd",
+ "payee": "openai",
+ "type": "warrant_or_equity_grant",
+ "announced": "2025-10-06",
+ "amount_basis": "committed",
+ "confidence": "company_stated",
+ "status": "announced",
+ "summary": "Warrant for up to 160 million AMD shares, vesting with GPU deployments and AMD share-price targets. No dollar value stated.",
+ "as_of": "2025-10-06",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "amd-openai-2025-10-06"
+ ]
+}
