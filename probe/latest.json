@@ -1,5 +1,5 @@
 {
- "run_at": "2026-10-31T18:35:41+00:00",
+ "run_at": "2026-10-31T18:39:24+00:00",
  "sources": {
   "sec": {
    "status": "ok",
@@ -37,13 +37,87 @@
      "url": "https://www.sec.gov/Archives/edgar/data/1045810/000192109426001040/xsl144X01/primary_doc.xml"
     }
    ],
-   "seconds": 0.05
+   "seconds": 0.06
   },
   "gdelt": {
-   "status": "error",
+   "status": "ok",
+   "http": 200,
    "endpoint": "https://api.gdeltproject.org/api/v2/doc/doc?query=%22OpenAI%22+%22Nvidia%22+sourcelang%3Aenglish&mode=artlist&format=json&maxrecords=10&timespan=7d&sort=datedesc",
-   "reason": "HTTP 429 on all 4 attempts",
-   "seconds": 144.07
+   "retries_429": 0,
+   "count": 9,
+   "items": [
+    {
+     "title": "Big Tech is cashing in on AI while the rest of corporate America sees no financial returns report outlines how rising token costs threaten to squeeze corporate profit margins",
+     "url": "https://www.tomshardware.com/tech-industry/artificial-intelligence/big-tech-is-cashing-in-on-ai-while-the-rest-of-corporate-america-sees-no-financial-returns-report-outlines-how-rising-token-costs-threaten-to-squeeze-corporate-profit-margins",
+     "domain": "tomshardware.com",
+     "seen": "20261025T191500Z"
+    },
+    {
+     "title": "If the Stock Market Crashes , This Is the First ETF Im Loading Up On",
+     "url": "https://www.aol.com/articles/stock-market-crashes-first-etf-115000000.html",
+     "domain": "aol.com",
+     "seen": "20261025T124500Z"
+    },
+    {
+     "title": "Bill Gates warns AI could disrupt jobs for 20 years before creating abundance as robots threaten human employment",
+     "url": "https://www.hindustantimes.com/world-news/us-news/bill-gates-warns-ai-could-disrupt-jobs-for-20-years-before-creating-abundance-as-robots-threaten-human-employment-101792928137473.html",
+     "domain": "hindustantimes.com",
+     "seen": "20261025T123000Z"
+    },
+    {
+     "title": "China fifth plenum , Jio listing on Indian bourses , BOJ meeting",
+     "url": "https://asia.nikkei.com/spotlight/your-week-in-asia/china-s-fifth-plenum-jio-listing-on-indian-bourses-boj-meeting",
+     "domain": "asia.nikkei.com",
+     "seen": "20261025T110000Z"
+    },
+    {
+     "title": "Here the Price at Which Id Buy Microsoft Stock",
+     "url": "https://www.aol.com/articles/heres-price-id-buy-microsoft-094702000.html",
+     "domain": "aol.com",
+     "seen": "20261025T110000Z"
+    },
+    {
+     "title": "OpenAI Sam Altman Warns Humans Could Lose Control of AI",
+     "url": "https://decrypt.co/378179/openai-sam-altman-humans-lose-control-ai&t=OpenAI%E2%80%99s%20Sam%20Altman%20Warns%20Humans%20Could%20Lose%20Control%20of%20AI&fnp_t=1792921484.54649fbd0843409a",
+     "domain": "decrypt.co",
+     "seen": "20261025T103000Z"
+    },
+    {
+     "title": "United States vs China : AI Models , Compute , Quantum and Electricity , by Shayne Heffernan",
+     "url": "https://www.livetradingnews.com/united-states-vs-china-ai-models-compute-quantum-and-electricity",
+     "domain": "livetradingnews.com",
+     "seen": "20261025T103000Z"
+    },
+    {
+     "title": "Uber Technologies ( NYSE : UBER ) Stock Falls 3 . 7 % – Should You Sell ? ",
+     "url": "https://www.themarketsdaily.com/2026/10/25/uber-technologies-nyseuber-stock-falls-3-7-should-you-sell.html",
+     "domain": "themarketsdaily.com",
+     "seen": "20261025T100000Z"
+    },
+    {
+     "title": "Will AI expose the rickety infrastructure of the internet ? ",
+     "url": "https://techcrunch.com/2026/10/24/will-ai-expose-the-rickety-infrastructure-of-the-internet/",
+     "domain": "techcrunch.com",
+     "seen": "20261024T210000Z"
+    }
+   ],
+   "seconds": 10.12
+  },
+  "gdelt_files": {
+   "status": "ok",
+   "http": 200,
+   "endpoint": "http://data.gdeltproject.org/gdeltv2/lastupdate.txt",
+   "latest_files": [
+    "http://data.gdeltproject.org/gdeltv2/20261031184500.export.CSV.zip",
+    "http://data.gdeltproject.org/gdeltv2/20261031184500.mentions.CSV.zip",
+    "http://data.gdeltproject.org/gdeltv2/20261031184500.gkg.csv.zip"
+   ],
+   "bytes": [
+    32593,
+    68501,
+    3004887
+   ],
+   "seconds": 0.07
   },
   "epoch": {
    "status": "ok",
@@ -76,7 +150,7 @@
     "OpenAI Stargate Abilene",
     "Google Pryor (North)"
    ],
-   "seconds": 0.09
+   "seconds": 0.42
   }
  }
 }
