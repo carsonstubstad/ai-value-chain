@@ -1,0 +1,16 @@
+{
+ "id": "openai-broadcom-accelerators-2025-10",
+ "payer": "openai",
+ "payee": "broadcom",
+ "type": "purchase_commitment",
+ "announced": "2025-10-13",
+ "amount_basis": "committed",
+ "confidence": "company_stated",
+ "status": "announced",
+ "summary": "OpenAI and Broadcom to deploy 10 GW of OpenAI-designed accelerator racks from late 2026 to end of 2029. No dollar value stated.",
+ "as_of": "2025-10-13",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "openai-broadcom-2025-10-13"
+ ]
+}

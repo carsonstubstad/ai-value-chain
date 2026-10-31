@@ -1,0 +1,16 @@
+{
+ "id": "amd-meta-warrant-2026-02",
+ "payer": "amd",
+ "payee": "meta",
+ "type": "warrant_or_equity_grant",
+ "announced": "2026-02-24",
+ "amount_basis": "committed",
+ "confidence": "filed",
+ "status": "announced",
+ "summary": "AMD grants Meta a warrant for up to 160M AMD shares, vesting as Meta's purchases scale to 6 GW and AMD hits share price thresholds.",
+ "as_of": "2026-02-24",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "amd-8k-meta-2026-02-24"
+ ]
+}

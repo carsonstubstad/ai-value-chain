@@ -1,0 +1,20 @@
+{
+ "id": "usg-intel-equity-2025-08",
+ "payer": "us-government",
+ "payee": "intel",
+ "type": "equity_investment",
+ "announced": "2025-08-22",
+ "amount_usd_low": 8900000000.0,
+ "amount_usd_high": 8900000000.0,
+ "amount_basis": "committed",
+ "amount_kind": "one_time",
+ "confidence": "filed",
+ "status": "signed",
+ "summary": "US government takes a 9.9% Intel stake: $8.9B for 433.3M shares at $20.47, funded by unpaid CHIPS grants and Secure Enclave money.",
+ "as_of": "2025-08-22",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "intel-8k-usg-2025-08"
+ ],
+ "notes": "Funded by $5.7B of awarded but unpaid CHIPS grants plus $3.2B of Secure Enclave funds, so Intel's CHIPS grant is not a separate edge. Includes a five-year warrant for 5% more at $20 that applies only if Intel's foundry ownership drops below 51%. Announced date taken from the exhibit's file name. Closing not yet checked."
+}

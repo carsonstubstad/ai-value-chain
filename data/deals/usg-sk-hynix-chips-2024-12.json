@@ -1,0 +1,19 @@
+{
+ "id": "usg-sk-hynix-chips-2024-12",
+ "payer": "us-government",
+ "payee": "sk-hynix",
+ "type": "government_grant_or_incentive",
+ "announced": "2024-12-19",
+ "amount_usd_high": 458000000.0,
+ "amount_basis": "committed",
+ "amount_kind": "cap",
+ "confidence": "company_stated",
+ "status": "signed",
+ "summary": "Final CHIPS award of up to $458M in direct funding for SK hynix's AI memory packaging plant in Indiana.",
+ "as_of": "2024-12-19",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "nist-chips-sk-hynix-2024-12-19"
+ ],
+ "notes": "Up to $500M of loans also available and not counted."
+}

@@ -1,0 +1,23 @@
+{
+ "id": "asml-mistral-equity-2025-09",
+ "payer": "asml",
+ "payee": "mistral",
+ "type": "equity_investment",
+ "announced": "2025-09-09",
+ "amount_native": {
+  "currency": "EUR",
+  "low": 1300000000.0,
+  "high": 1300000000.0
+ },
+ "amount_basis": "committed",
+ "amount_kind": "one_time",
+ "confidence": "company_stated",
+ "status": "announced",
+ "summary": "ASML leads Mistral AI's Series C with EUR 1.3B for about 11% fully diluted, plus a long-term partnership.",
+ "as_of": "2025-09-09",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "asml-mistral-2025-09-09"
+ ],
+ "notes": "Stated in euros only; no USD figure is stored because the source gives none."
+}

@@ -1,0 +1,20 @@
+{
+ "id": "softbank-intel-equity-2025-08",
+ "payer": "softbank",
+ "payee": "intel",
+ "type": "equity_investment",
+ "announced": "2025-08-19",
+ "amount_usd_low": 2000000000.0,
+ "amount_usd_high": 2000000000.0,
+ "amount_basis": "paid",
+ "amount_kind": "one_time",
+ "confidence": "filed",
+ "status": "closed",
+ "summary": "SoftBank buys $2B of Intel common stock at $23 a share.",
+ "as_of": "2025-09-26",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "softbank-intel-2025-08-19",
+  "intel-8k-softbank-2025-09-26"
+ ]
+}

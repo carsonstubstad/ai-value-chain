@@ -1,0 +1,21 @@
+{
+ "id": "nvidia-intel-equity-2025-09",
+ "payer": "nvidia",
+ "payee": "intel",
+ "type": "equity_investment",
+ "announced": "2025-09-18",
+ "amount_usd_low": 5000000000.0,
+ "amount_usd_high": 5000000000.0,
+ "amount_basis": "paid",
+ "amount_kind": "one_time",
+ "confidence": "filed",
+ "status": "closed",
+ "summary": "NVIDIA buys $5B of Intel common stock at $23.28 a share alongside a product partnership.",
+ "as_of": "2025-12-29",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "intel-8k-nvidia-2025-09-18",
+  "register-nvidia-intel-2025-12-29"
+ ],
+ "notes": "Amount and price are from Intel's 8-K. Closing in December 2025 is reported by The Register citing Intel filings."
+}

@@ -1,0 +1,19 @@
+{
+ "id": "usg-micron-chips-2024-12",
+ "payer": "us-government",
+ "payee": "micron",
+ "type": "government_grant_or_incentive",
+ "announced": "2024-12-10",
+ "amount_usd_high": 6165000000.0,
+ "amount_basis": "committed",
+ "amount_kind": "cap",
+ "confidence": "company_stated",
+ "status": "signed",
+ "summary": "Final CHIPS award of up to $6.165B in direct funding for Micron's New York and Idaho fabs.",
+ "as_of": "2024-12-10",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "nist-chips-micron-2024-12-10"
+ ],
+ "notes": "A separate preliminary award of up to $275M for Virginia was announced the same day and is not included. Amount disbursed is not tracked."
+}

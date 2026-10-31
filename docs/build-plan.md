@@ -8,8 +8,8 @@ Approved at Gate 1 (D16 to D20). Each session is bounded, ends with the validato
 | 2 | Mockups | Three overview directions on nine sourced deals (mockups/sample.json) | Pick one (Gate 2) | Medium | Done |
 | 3 | Scaffold | Site skeleton, bundle script, d3 vendored from npm, weekly Actions schedules | Nothing | Light | Done |
 | 4 | Companies | 47 company records; CIKs and tickers from SEC via Actions | Flags only | Medium | Done |
-| 5 | Deals: upstream | Equipment, chip design, foundry, memory | Flags only | Heavy | Next, waits for Carson |
-| 6 | Deals: systems, power, data centers | Includes neocloud debt; Epoch CSV for campuses | Flags only | Heavy | |
+| 5 | Deals: upstream | Equipment, chip design, foundry, memory | Flags only | Heavy | Done |
+| 6 | Deals: systems, power, data centers | Includes neocloud debt; Epoch CSV for campuses | Flags only | Heavy | Next, waits for Carson |
 | 7 | Deals: hyperscale and labs | Densest layer, most loops | Flags only | Heavy | |
 | 8 | Deals: capital rail | Equity, credit and public money into every layer | Flags only | Heavy | |
 | 9 | Loops | Automatic detection, hand tagging, one-line explanations | Flags only | Medium | |

@@ -1,0 +1,20 @@
+{
+ "id": "usg-tsmc-chips-2024-11",
+ "payer": "us-government",
+ "payee": "tsmc",
+ "type": "government_grant_or_incentive",
+ "announced": "2024-11-15",
+ "amount_usd_high": 6600000000.0,
+ "amount_basis": "committed",
+ "amount_kind": "cap",
+ "confidence": "company_stated",
+ "status": "signed",
+ "summary": "Final CHIPS award of up to $6.6B in direct funding for TSMC's three Phoenix fabs, plus about $5B of loans available.",
+ "as_of": "2026-10-31",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "nist-chips-tsmc",
+  "house-stanton-tsmc-2024-11-15"
+ ],
+ "notes": "Direct funding only; the loans are not counted. Paid against milestones; amount disbursed so far is not tracked."
+}

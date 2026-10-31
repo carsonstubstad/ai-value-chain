@@ -771,6 +771,22 @@
   },
   {
    "amount_basis": "committed",
+   "announced": "2026-02-24",
+   "as_of": "2026-02-24",
+   "confidence": "filed",
+   "id": "amd-meta-warrant-2026-02",
+   "last_checked": "2026-10-31",
+   "payee": "meta",
+   "payer": "amd",
+   "sources": [
+    "amd-8k-meta-2026-02-24"
+   ],
+   "status": "announced",
+   "summary": "AMD grants Meta a warrant for up to 160M AMD shares, vesting as Meta's purchases scale to 6 GW and AMD hits share price thresholds.",
+   "type": "warrant_or_equity_grant"
+  },
+  {
+   "amount_basis": "committed",
    "announced": "2025-10-06",
    "as_of": "2025-10-06",
    "confidence": "company_stated",
@@ -806,6 +822,47 @@
   },
   {
    "amount_basis": "committed",
+   "amount_kind": "one_time",
+   "amount_usd_high": 10000000000.0,
+   "amount_usd_low": 10000000000.0,
+   "announced": "2025-09-04",
+   "as_of": "2025-12-11",
+   "confidence": "reported",
+   "id": "anthropic-broadcom-tpu-2025-09",
+   "last_checked": "2026-10-31",
+   "notes": "Broadcom's CEO stated this on earnings calls; stored as reported because only press accounts of the calls are cited.",
+   "payee": "broadcom",
+   "payer": "anthropic",
+   "sources": [
+    "siliconangle-broadcom-2025-09-04",
+    "sherwood-broadcom-2025-12-11"
+   ],
+   "status": "signed",
+   "summary": "Anthropic orders $10B of TPU Ironwood racks from Broadcom; disclosed as an unnamed customer in September, named in December.",
+   "type": "purchase_commitment"
+  },
+  {
+   "amount_basis": "committed",
+   "amount_kind": "one_time",
+   "amount_usd_high": 11000000000.0,
+   "amount_usd_low": 11000000000.0,
+   "announced": "2025-12-11",
+   "as_of": "2025-12-11",
+   "confidence": "reported",
+   "id": "anthropic-broadcom-tpu-2025-12",
+   "last_checked": "2026-10-31",
+   "notes": "Separate order from the $10B one, so a separate edge. Stored as reported for the same reason.",
+   "payee": "broadcom",
+   "payer": "anthropic",
+   "sources": [
+    "sherwood-broadcom-2025-12-11"
+   ],
+   "status": "signed",
+   "summary": "Anthropic places a further $11B order with Broadcom for TPU racks.",
+   "type": "purchase_commitment"
+  },
+  {
+   "amount_basis": "committed",
    "amount_usd_high": 30000000000.0,
    "amount_usd_low": 30000000000.0,
    "announced": "2025-11-18",
@@ -820,6 +877,62 @@
    ],
    "status": "announced",
    "summary": "Anthropic commits to buy $30B of Azure compute capacity.",
+   "type": "purchase_commitment"
+  },
+  {
+   "amount_basis": "committed",
+   "amount_kind": "one_time",
+   "amount_native": {
+    "currency": "EUR",
+    "high": 1300000000.0,
+    "low": 1300000000.0
+   },
+   "announced": "2025-09-09",
+   "as_of": "2025-09-09",
+   "confidence": "company_stated",
+   "id": "asml-mistral-equity-2025-09",
+   "last_checked": "2026-10-31",
+   "notes": "Stated in euros only; no USD figure is stored because the source gives none.",
+   "payee": "mistral",
+   "payer": "asml",
+   "sources": [
+    "asml-mistral-2025-09-09"
+   ],
+   "status": "announced",
+   "summary": "ASML leads Mistral AI's Series C with EUR 1.3B for about 11% fully diluted, plus a long-term partnership.",
+   "type": "equity_investment"
+  },
+  {
+   "amount_basis": "committed",
+   "announced": "2026-02-24",
+   "as_of": "2026-02-24",
+   "confidence": "filed",
+   "id": "meta-amd-gpus-2026-02",
+   "last_checked": "2026-10-31",
+   "notes": "Press reports put a dollar value on this deal; the company release does not, so none is stored.",
+   "payee": "amd",
+   "payer": "meta",
+   "sources": [
+    "amd-8k-meta-2026-02-24"
+   ],
+   "status": "announced",
+   "summary": "Meta to deploy up to 6 GW of AMD Instinct GPUs, first gigawatt shipping in the second half of 2026. No dollar value stated.",
+   "type": "purchase_commitment"
+  },
+  {
+   "amount_basis": "committed",
+   "announced": "2026-02-17",
+   "as_of": "2026-02-17",
+   "confidence": "company_stated",
+   "id": "meta-nvidia-gpus-2026-02",
+   "last_checked": "2026-10-31",
+   "payee": "nvidia",
+   "payer": "meta",
+   "sources": [
+    "nvidia-meta-2026-02-17"
+   ],
+   "status": "announced",
+   "summary": "Meta commits to a multiyear build on millions of NVIDIA Blackwell and Rubin GPUs, Grace CPUs and Spectrum-X networking. No dollar value stated.",
    "type": "purchase_commitment"
   },
   {
@@ -879,6 +992,27 @@
    "type": "equity_investment"
   },
   {
+   "amount_basis": "paid",
+   "amount_kind": "one_time",
+   "amount_usd_high": 5000000000.0,
+   "amount_usd_low": 5000000000.0,
+   "announced": "2025-09-18",
+   "as_of": "2025-12-29",
+   "confidence": "filed",
+   "id": "nvidia-intel-equity-2025-09",
+   "last_checked": "2026-10-31",
+   "notes": "Amount and price are from Intel's 8-K. Closing in December 2025 is reported by The Register citing Intel filings.",
+   "payee": "intel",
+   "payer": "nvidia",
+   "sources": [
+    "intel-8k-nvidia-2025-09-18",
+    "register-nvidia-intel-2025-12-29"
+   ],
+   "status": "closed",
+   "summary": "NVIDIA buys $5B of Intel common stock at $23.28 a share alongside a product partnership.",
+   "type": "equity_investment"
+  },
+  {
    "amount_basis": "committed",
    "amount_kind": "cap",
    "amount_usd_high": 100000000000.0,
@@ -911,6 +1045,172 @@
    "status": "announced",
    "summary": "OpenAI to deploy 6 GW of AMD Instinct GPUs, first 1 GW in the second half of 2026. No dollar value stated.",
    "type": "purchase_commitment"
+  },
+  {
+   "amount_basis": "committed",
+   "announced": "2025-10-13",
+   "as_of": "2025-10-13",
+   "confidence": "company_stated",
+   "id": "openai-broadcom-accelerators-2025-10",
+   "last_checked": "2026-10-31",
+   "payee": "broadcom",
+   "payer": "openai",
+   "sources": [
+    "openai-broadcom-2025-10-13"
+   ],
+   "status": "announced",
+   "summary": "OpenAI and Broadcom to deploy 10 GW of OpenAI-designed accelerator racks from late 2026 to end of 2029. No dollar value stated.",
+   "type": "purchase_commitment"
+  },
+  {
+   "amount_basis": "committed",
+   "announced": "2025-10-01",
+   "as_of": "2025-10-01",
+   "confidence": "company_stated",
+   "id": "openai-samsung-memory-2025-10",
+   "last_checked": "2026-10-31",
+   "notes": "OpenAI projects demand of up to 900,000 DRAM wafers a month across suppliers; Samsung's share is not stated.",
+   "payee": "samsung",
+   "payer": "openai",
+   "sources": [
+    "samsung-openai-2025-10-01"
+   ],
+   "status": "announced",
+   "summary": "Samsung signs a letter of intent to supply DRAM to OpenAI's Stargate. No dollar value or volume share stated.",
+   "type": "purchase_commitment"
+  },
+  {
+   "amount_basis": "committed",
+   "announced": "2025-10-01",
+   "as_of": "2025-10-01",
+   "confidence": "company_stated",
+   "id": "openai-sk-hynix-memory-2025-10",
+   "last_checked": "2026-10-31",
+   "payee": "sk-hynix",
+   "payer": "openai",
+   "sources": [
+    "sk-openai-2025-10-01"
+   ],
+   "status": "announced",
+   "summary": "SK hynix signs a non-binding letter of intent to supply HBM to OpenAI's Stargate. Volumes and value to be set later.",
+   "type": "purchase_commitment"
+  },
+  {
+   "amount_basis": "paid",
+   "amount_kind": "one_time",
+   "amount_usd_high": 2000000000.0,
+   "amount_usd_low": 2000000000.0,
+   "announced": "2025-08-19",
+   "as_of": "2025-09-26",
+   "confidence": "filed",
+   "id": "softbank-intel-equity-2025-08",
+   "last_checked": "2026-10-31",
+   "payee": "intel",
+   "payer": "softbank",
+   "sources": [
+    "softbank-intel-2025-08-19",
+    "intel-8k-softbank-2025-09-26"
+   ],
+   "status": "closed",
+   "summary": "SoftBank buys $2B of Intel common stock at $23 a share.",
+   "type": "equity_investment"
+  },
+  {
+   "amount_basis": "committed",
+   "amount_kind": "one_time",
+   "amount_usd_high": 8900000000.0,
+   "amount_usd_low": 8900000000.0,
+   "announced": "2025-08-22",
+   "as_of": "2025-08-22",
+   "confidence": "filed",
+   "id": "usg-intel-equity-2025-08",
+   "last_checked": "2026-10-31",
+   "notes": "Funded by $5.7B of awarded but unpaid CHIPS grants plus $3.2B of Secure Enclave funds, so Intel's CHIPS grant is not a separate edge. Includes a five-year warrant for 5% more at $20 that applies only if Intel's foundry ownership drops below 51%. Announced date taken from the exhibit's file name. Closing not yet checked.",
+   "payee": "intel",
+   "payer": "us-government",
+   "sources": [
+    "intel-8k-usg-2025-08"
+   ],
+   "status": "signed",
+   "summary": "US government takes a 9.9% Intel stake: $8.9B for 433.3M shares at $20.47, funded by unpaid CHIPS grants and Secure Enclave money.",
+   "type": "equity_investment"
+  },
+  {
+   "amount_basis": "committed",
+   "amount_kind": "cap",
+   "amount_usd_high": 6165000000.0,
+   "announced": "2024-12-10",
+   "as_of": "2024-12-10",
+   "confidence": "company_stated",
+   "id": "usg-micron-chips-2024-12",
+   "last_checked": "2026-10-31",
+   "notes": "A separate preliminary award of up to $275M for Virginia was announced the same day and is not included. Amount disbursed is not tracked.",
+   "payee": "micron",
+   "payer": "us-government",
+   "sources": [
+    "nist-chips-micron-2024-12-10"
+   ],
+   "status": "signed",
+   "summary": "Final CHIPS award of up to $6.165B in direct funding for Micron's New York and Idaho fabs.",
+   "type": "government_grant_or_incentive"
+  },
+  {
+   "amount_basis": "committed",
+   "amount_kind": "cap",
+   "amount_usd_high": 4745000000.0,
+   "announced": "2024-12-20",
+   "as_of": "2024-12-20",
+   "confidence": "company_stated",
+   "id": "usg-samsung-chips-2024-12",
+   "last_checked": "2026-10-31",
+   "notes": "Paid against construction, production and commercial milestones. Amount disbursed is not tracked.",
+   "payee": "samsung",
+   "payer": "us-government",
+   "sources": [
+    "nist-chips-samsung-2024-12-20"
+   ],
+   "status": "signed",
+   "summary": "Final CHIPS award of up to $4.745B in direct funding for Samsung's Taylor and Austin, Texas fabs.",
+   "type": "government_grant_or_incentive"
+  },
+  {
+   "amount_basis": "committed",
+   "amount_kind": "cap",
+   "amount_usd_high": 458000000.0,
+   "announced": "2024-12-19",
+   "as_of": "2024-12-19",
+   "confidence": "company_stated",
+   "id": "usg-sk-hynix-chips-2024-12",
+   "last_checked": "2026-10-31",
+   "notes": "Up to $500M of loans also available and not counted.",
+   "payee": "sk-hynix",
+   "payer": "us-government",
+   "sources": [
+    "nist-chips-sk-hynix-2024-12-19"
+   ],
+   "status": "signed",
+   "summary": "Final CHIPS award of up to $458M in direct funding for SK hynix's AI memory packaging plant in Indiana.",
+   "type": "government_grant_or_incentive"
+  },
+  {
+   "amount_basis": "committed",
+   "amount_kind": "cap",
+   "amount_usd_high": 6600000000.0,
+   "announced": "2024-11-15",
+   "as_of": "2026-10-31",
+   "confidence": "company_stated",
+   "id": "usg-tsmc-chips-2024-11",
+   "last_checked": "2026-10-31",
+   "notes": "Direct funding only; the loans are not counted. Paid against milestones; amount disbursed so far is not tracked.",
+   "payee": "tsmc",
+   "payer": "us-government",
+   "sources": [
+    "nist-chips-tsmc",
+    "house-stanton-tsmc-2024-11-15"
+   ],
+   "status": "signed",
+   "summary": "Final CHIPS award of up to $6.6B in direct funding for TSMC's three Phoenix fabs, plus about $5B of loans available.",
+   "type": "government_grant_or_incentive"
   }
  ],
  "events": [],
@@ -926,6 +1226,17 @@
    "id": "amazon-anthropic",
    "last_checked": "2026-10-31",
    "name": "Amazon and Anthropic"
+  },
+  {
+   "deals": [
+    "amd-meta-warrant-2026-02",
+    "meta-amd-gpus-2026-02"
+   ],
+   "explanation": "AMD hands Meta a warrant on its own shares, and Meta commits to buy AMD GPUs.",
+   "flagged_by": "automatic",
+   "id": "amd-meta",
+   "last_checked": "2026-10-31",
+   "name": "AMD and Meta"
   },
   {
    "deals": [
@@ -962,12 +1273,70 @@
   },
   {
    "accessed": "2026-10-31",
+   "filing_form": "8-K",
+   "id": "amd-8k-meta-2026-02-24",
+   "kind": "filing",
+   "label": "AMD 8-K exhibit: Meta partnership for 6 GW of AMD GPUs",
+   "published": "2026-02-24",
+   "publisher": "AMD",
+   "url": "https://www.sec.gov/Archives/edgar/data/2488/000000248826000045/pressreleasedatedfebruary2.htm"
+  },
+  {
+   "accessed": "2026-10-31",
    "id": "amd-openai-2025-10-06",
    "kind": "company",
    "label": "AMD release: OpenAI partnership for 6 GW of AMD GPUs, with warrant",
    "published": "2025-10-06",
    "publisher": "AMD",
    "url": "https://newsroom.amd.com/news/amd-and-openai-announce-strategic-partnership-to-d/"
+  },
+  {
+   "accessed": "2026-10-31",
+   "id": "asml-mistral-2025-09-09",
+   "kind": "company",
+   "label": "ASML release: Mistral AI strategic partnership and Series C",
+   "published": "2025-09-09",
+   "publisher": "ASML",
+   "url": "https://investor.asml.com/news-releases/news-release-details/asml-mistral-ai-enter-strategic-partnership"
+  },
+  {
+   "accessed": "2026-10-31",
+   "id": "house-stanton-tsmc-2024-11-15",
+   "kind": "government",
+   "label": "House office release: TSMC CHIPS award finalized",
+   "published": "2024-11-15",
+   "publisher": "Office of Rep. Greg Stanton",
+   "url": "https://stanton.house.gov/2024/11/stanton-arizona-leaders-applaud-finalized-6-6-billion-chips-and-science-act-award-to-tsmc-for-arizona-manufacturing-expansion"
+  },
+  {
+   "accessed": "2026-10-31",
+   "filing_form": "8-K",
+   "id": "intel-8k-nvidia-2025-09-18",
+   "kind": "filing",
+   "label": "Intel 8-K exhibit: NVIDIA to buy $5B of Intel stock",
+   "published": "2025-09-18",
+   "publisher": "Intel",
+   "url": "https://www.sec.gov/Archives/edgar/data/50863/000005086325000155/a09152025form8-kex991.htm"
+  },
+  {
+   "accessed": "2026-10-31",
+   "filing_form": "8-K",
+   "id": "intel-8k-softbank-2025-09-26",
+   "kind": "filing",
+   "label": "Intel 8-K: SoftBank share sale completed",
+   "published": "2025-09-26",
+   "publisher": "Intel",
+   "url": "https://www.sec.gov/Archives/edgar/data/50863/000005086325000159/intc-20250926.htm"
+  },
+  {
+   "accessed": "2026-10-31",
+   "filing_form": "8-K",
+   "id": "intel-8k-usg-2025-08",
+   "kind": "filing",
+   "label": "Intel 8-K exhibit: US government buys $8.9B of Intel stock",
+   "published": "2025-08-22",
+   "publisher": "Intel",
+   "url": "https://www.sec.gov/Archives/edgar/data/50863/000005086325000129/a08222025form8-kex991.htm"
   },
   {
    "accessed": "2026-10-31",
@@ -990,12 +1359,83 @@
   },
   {
    "accessed": "2026-10-31",
+   "id": "nist-chips-micron-2024-12-10",
+   "kind": "government",
+   "label": "NIST release: CHIPS award to Micron for Idaho and New York",
+   "published": "2024-12-10",
+   "publisher": "NIST CHIPS Program Office",
+   "url": "https://www.nist.gov/node/1869301"
+  },
+  {
+   "accessed": "2026-10-31",
+   "id": "nist-chips-samsung-2024-12-20",
+   "kind": "government",
+   "label": "NIST release: CHIPS award to Samsung for Texas",
+   "published": "2024-12-20",
+   "publisher": "NIST CHIPS Program Office",
+   "url": "https://www.nist.gov/news-events/news/2024/12/biden-harris-administration-announces-chips-incentives-award-samsung"
+  },
+  {
+   "accessed": "2026-10-31",
+   "id": "nist-chips-sk-hynix-2024-12-19",
+   "kind": "government",
+   "label": "NIST release: CHIPS award to SK hynix for Indiana",
+   "published": "2024-12-19",
+   "publisher": "NIST CHIPS Program Office",
+   "url": "https://www.nist.gov/news-events/news/2024/12/biden-harris-administration-announces-chips-incentives-award-sk-hynix"
+  },
+  {
+   "accessed": "2026-10-31",
+   "id": "nist-chips-tsmc",
+   "kind": "government",
+   "label": "NIST CHIPS award page: TSMC Arizona",
+   "publisher": "NIST CHIPS Program Office",
+   "url": "https://www.nist.gov/node/1855171"
+  },
+  {
+   "accessed": "2026-10-31",
+   "id": "nvidia-meta-2026-02-17",
+   "kind": "company",
+   "label": "NVIDIA release: Meta multiyear AI infrastructure partnership",
+   "published": "2026-02-17",
+   "publisher": "NVIDIA",
+   "url": "https://investor.nvidia.com/news/press-release-details/2026/Meta-Builds-AI-Infrastructure-With-NVIDIA/default.aspx"
+  },
+  {
+   "accessed": "2026-10-31",
    "id": "nvidia-openai-2025-09-22",
    "kind": "company",
    "label": "NVIDIA release: OpenAI partnership for 10 GW of NVIDIA systems",
    "published": "2025-09-22",
    "publisher": "NVIDIA",
    "url": "https://nvidianews.nvidia.com/news/openai-and-nvidia-announce-strategic-partnership-to-deploy-10gw-of-nvidia-systems"
+  },
+  {
+   "accessed": "2026-10-31",
+   "id": "openai-broadcom-2025-10-13",
+   "kind": "company",
+   "label": "OpenAI release: 10 GW of OpenAI-designed accelerators with Broadcom",
+   "published": "2025-10-13",
+   "publisher": "OpenAI",
+   "url": "https://openai.com/index/openai-and-broadcom-announce-strategic-collaboration/"
+  },
+  {
+   "accessed": "2026-10-31",
+   "id": "register-nvidia-intel-2025-12-29",
+   "kind": "press",
+   "label": "The Register: NVIDIA completes Intel share purchase",
+   "published": "2025-12-29",
+   "publisher": "The Register",
+   "url": "https://www.theregister.com/2025/12/29/nvidia_intel_5_billion/"
+  },
+  {
+   "accessed": "2026-10-31",
+   "id": "samsung-openai-2025-10-01",
+   "kind": "company",
+   "label": "Samsung release: OpenAI strategic partnership and memory LOI",
+   "published": "2025-10-01",
+   "publisher": "Samsung Electronics",
+   "url": "https://news.samsung.com/global/samsung-and-openai-announce-strategic-partnership-to-accelerate-advancements-in-global-ai-infrastructure"
   },
   {
    "accessed": "2026-10-31",
@@ -1306,6 +1746,42 @@
    "published": "2026-02-27",
    "publisher": "SEC EDGAR",
    "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001692819"
+  },
+  {
+   "accessed": "2026-10-31",
+   "id": "sherwood-broadcom-2025-12-11",
+   "kind": "press",
+   "label": "Sherwood: Broadcom names Anthropic behind $10B and $11B orders",
+   "published": "2025-12-11",
+   "publisher": "Sherwood News",
+   "url": "https://sherwood.news/markets/broadcom-q4-2025-earnings-report-guidance-asics-ai-boom-bubble/"
+  },
+  {
+   "accessed": "2026-10-31",
+   "id": "siliconangle-broadcom-2025-09-04",
+   "kind": "press",
+   "label": "SiliconANGLE: Broadcom lands $10B of AI orders from a new customer",
+   "published": "2025-09-04",
+   "publisher": "SiliconANGLE",
+   "url": "https://siliconangle.com/2025/09/04/broadcoms-stock-surges-new-time-high-landing-10b-new-ai-chip-orders/"
+  },
+  {
+   "accessed": "2026-10-31",
+   "id": "sk-openai-2025-10-01",
+   "kind": "company",
+   "label": "SK Group release: SK hynix LOI to supply HBM to OpenAI",
+   "published": "2025-10-01",
+   "publisher": "SK Group",
+   "url": "https://eng.sk.com/news/sk-group-partners-with-openai-to-advance-global-ai-infrastructure"
+  },
+  {
+   "accessed": "2026-10-31",
+   "id": "softbank-intel-2025-08-19",
+   "kind": "company",
+   "label": "SoftBank release: $2B Intel investment agreement",
+   "published": "2025-08-19",
+   "publisher": "SoftBank Group",
+   "url": "https://group.softbank/en/news/press/20250819"
   },
   {
    "accessed": "2026-10-31",
