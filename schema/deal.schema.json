@@ -1,0 +1,140 @@
+{
+ "type": "object",
+ "additionalProperties": false,
+ "required": [
+  "id",
+  "payer",
+  "payee",
+  "type",
+  "announced",
+  "amount_basis",
+  "confidence",
+  "status",
+  "summary",
+  "as_of",
+  "last_checked",
+  "sources"
+ ],
+ "properties": {
+  "id": {
+   "type": "string",
+   "pattern": "^[a-z0-9][a-z0-9-]*$"
+  },
+  "payer": {
+   "type": "string",
+   "pattern": "^[a-z0-9][a-z0-9-]*$"
+  },
+  "payee": {
+   "type": "string",
+   "pattern": "^[a-z0-9][a-z0-9-]*$"
+  },
+  "type": {
+   "enum": [
+    "equity_investment",
+    "warrant_or_equity_grant",
+    "jv_contribution",
+    "acquisition",
+    "debt_or_gpu_backed_loan",
+    "guarantee_or_backstop",
+    "purchase_commitment",
+    "capacity_lease",
+    "cloud_credits",
+    "power_supply_agreement",
+    "revenue_share",
+    "government_grant_or_incentive"
+   ]
+  },
+  "announced": {
+   "type": "string",
+   "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+  },
+  "amount_usd_low": {
+   "type": "number",
+   "minimum": 0
+  },
+  "amount_usd_high": {
+   "type": "number",
+   "minimum": 0
+  },
+  "amount_native": {
+   "type": "object",
+   "additionalProperties": false,
+   "required": [
+    "currency",
+    "low"
+   ],
+   "properties": {
+    "currency": {
+     "type": "string",
+     "pattern": "^[A-Z]{3}$"
+    },
+    "low": {
+     "type": "number",
+     "minimum": 0
+    },
+    "high": {
+     "type": "number",
+     "minimum": 0
+    }
+   }
+  },
+  "amount_basis": {
+   "enum": [
+    "committed",
+    "paid",
+    "estimated"
+   ]
+  },
+  "amount_kind": {
+   "enum": [
+    "cap",
+    "multi_year_total",
+    "annual_run_rate",
+    "one_time"
+   ]
+  },
+  "term_years": {
+   "type": "number",
+   "minimum": 0
+  },
+  "confidence": {
+   "enum": [
+    "filed",
+    "company_stated",
+    "reported",
+    "rumored"
+   ]
+  },
+  "status": {
+   "enum": [
+    "announced",
+    "signed",
+    "closed",
+    "terminated",
+    "superseded"
+   ]
+  },
+  "summary": {
+   "type": "string"
+  },
+  "as_of": {
+   "type": "string",
+   "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+  },
+  "last_checked": {
+   "type": "string",
+   "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+  },
+  "sources": {
+   "type": "array",
+   "minItems": 1,
+   "items": {
+    "type": "string",
+    "pattern": "^[a-z0-9][a-z0-9-]*$"
+   }
+  },
+  "notes": {
+   "type": "string"
+  }
+ }
+}

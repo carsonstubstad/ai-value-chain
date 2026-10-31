@@ -62,6 +62,16 @@ Settled questions. Do not reopen without Carson. Add a dated line for every new 
 - P19 Concentration: top-3 share only where a sourced market-share figure exists; otherwise share of tracked flows, labeled.
 - P20 Company list: hold at 47; fill up to three slots from the bench only with a sourced edge. Products roll up to companies; DeepMind and Meta AI are secondary lab tags.
 
+## Settled by Carson at Gate 2 (2026-10-31, "Go with A plus B")
+- D21 Overview: direction A (chain rail) as the home screen, with direction B's one-sentence "state of the chain" line above it. Direction C (flow map) becomes the money-flow view. Closes O13 and P24.
+- D22 PR #2 stays a draft until Carson says to merge it.
+
+## Proposed at Gate 2 (2026-10-31), awaiting Carson's feedback
+- P21 Company list: the 47 in data/companies-list.csv stand. Bench promotion order if a sourced edge appears: Core Scientific, Humain, Bloom Energy.
+- P22 Schema: six JSON Schemas in schema/ plus data/taxonomy.json. Financials are JSON records like the rest, not a CSV, so one validator covers everything.
+- P23 Loop sides are shown gross each way and never netted when either side is a cap or multi-year total. Company rankings use the largest single deal, never a sum of caps.
+
 ## Open (need Carson)
+- O14 Confirm P21 to P23, and say when to merge PR #2.
 - O06 Paid data: $0 through the MVP; revisit after two months of weekly updates.
 - O12 Epoch AI terms of use: confirm before Gate 5 (the downloads page states no license).

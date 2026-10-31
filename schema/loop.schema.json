@@ -1,0 +1,42 @@
+{
+ "type": "object",
+ "additionalProperties": false,
+ "required": [
+  "id",
+  "name",
+  "deals",
+  "flagged_by",
+  "explanation",
+  "last_checked"
+ ],
+ "properties": {
+  "id": {
+   "type": "string",
+   "pattern": "^[a-z0-9][a-z0-9-]*$"
+  },
+  "name": {
+   "type": "string"
+  },
+  "deals": {
+   "type": "array",
+   "minItems": 2,
+   "items": {
+    "type": "string",
+    "pattern": "^[a-z0-9][a-z0-9-]*$"
+   }
+  },
+  "flagged_by": {
+   "enum": [
+    "automatic",
+    "hand"
+   ]
+  },
+  "explanation": {
+   "type": "string"
+  },
+  "last_checked": {
+   "type": "string",
+   "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+  }
+ }
+}

@@ -1,0 +1,25 @@
+{
+ "layers": [
+  {"id": "equipment", "label": "Equipment", "order": 1},
+  {"id": "chip_design", "label": "Chip design", "order": 2},
+  {"id": "foundry", "label": "Foundry", "order": 3},
+  {"id": "memory", "label": "Memory", "order": 4},
+  {"id": "systems", "label": "Systems", "order": 5},
+  {"id": "power", "label": "Power", "order": 6},
+  {"id": "data_centers", "label": "Data centers", "order": 7},
+  {"id": "hyperscale", "label": "Hyperscale", "order": 8},
+  {"id": "labs", "label": "Labs", "order": 9},
+  {"id": "applications", "label": "Applications", "order": 10},
+  {"id": "capital", "label": "Capital", "order": 11}
+ ],
+ "deal_families": [
+  {"id": "equity", "label": "Equity", "types": ["equity_investment", "warrant_or_equity_grant", "jv_contribution", "acquisition"]},
+  {"id": "debt", "label": "Debt and guarantees", "types": ["debt_or_gpu_backed_loan", "guarantee_or_backstop"]},
+  {"id": "commercial", "label": "Commercial commitments", "types": ["purchase_commitment", "capacity_lease", "cloud_credits", "power_supply_agreement", "revenue_share"]},
+  {"id": "public", "label": "Public money", "types": ["government_grant_or_incentive"]}
+ ],
+ "confidence": ["filed", "company_stated", "reported", "rumored"],
+ "amount_basis": ["committed", "paid", "estimated"],
+ "amount_kind": ["cap", "multi_year_total", "annual_run_rate", "one_time"],
+ "stale_days": {"amber": 90, "grey": 180}
+}

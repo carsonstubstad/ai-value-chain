@@ -4,8 +4,11 @@
 Standard library only. Checks:
 1. No em-dash character in any tracked text file (decision D12).
 2. Every .json file parses.
-3. Every record in data/<type>/*.json matches schema/<type>.schema.json when that
-   schema exists, using a small JSON Schema subset (see check_schema).
+3. Every record in data/<folder>/*.json matches its schema in schema/, using a small
+   JSON Schema subset (see check_schema).
+4. Cross-record rules: ids match file names and are unique, every reference points at
+   a real record, filed and company_stated claims cite the right kind of source,
+   low is not above high, and one deal is one edge (no duplicate payer, payee, type, date).
 
 Usage:
   python3 scripts/validate.py              run the checks on the repo
@@ -49,6 +52,11 @@ def check_em_dashes(paths):
             continue
     return errors
 
+
+FOLDERS = {
+    "companies": "company", "deals": "deal", "loops": "loop",
+    "sources": "source", "events": "event", "financials": "financial",
+}
 
 TYPES = {
     "object": dict, "array": list, "string": str, "boolean": bool,
@@ -113,12 +121,66 @@ def check_json_and_records(paths):
                 parsed[rel] = load_json(rel)
             except (json.JSONDecodeError, UnicodeDecodeError) as exc:
                 errors.append(f"{rel}: invalid JSON ({exc})")
+    records = {kind: {} for kind in FOLDERS.values()}
     for rel, record in parsed.items():
         parts = rel.split("/")
-        if len(parts) == 3 and parts[0] == "data":
-            schema_rel = f"schema/{parts[1]}.schema.json"
-            if schema_rel in parsed:
-                errors += [f"{rel}: {e}" for e in check_schema(record, parsed[schema_rel])]
+        if len(parts) != 3 or parts[0] != "data" or parts[1] not in FOLDERS:
+            continue
+        kind = FOLDERS[parts[1]]
+        schema_rel = f"schema/{kind}.schema.json"
+        if schema_rel in parsed:
+            errors += [f"{rel}: {e}" for e in check_schema(record, parsed[schema_rel])]
+        rid = record.get("id") if isinstance(record, dict) else None
+        if rid != parts[2][:-5]:
+            errors.append(f"{rel}: id {rid!r} does not match file name")
+        if rid in records[kind]:
+            errors.append(f"{rel}: duplicate {kind} id {rid!r}")
+        records[kind][rid] = (rel, record)
+    return errors + check_references(records)
+
+
+def check_references(records):
+    errors = []
+    companies, deals, sources = records["company"], records["deal"], records["source"]
+
+    def need(rel, kind, ref, pool):
+        if ref not in pool:
+            errors.append(f"{rel}: unknown {kind} {ref!r}")
+
+    for kind, pool in records.items():
+        for rel, rec in pool.values():
+            if not isinstance(rec, dict):
+                continue
+            for sid in rec.get("sources", []):
+                need(rel, "source", sid, sources)
+            low, high = rec.get("amount_usd_low", rec.get("value_usd_low")), rec.get("amount_usd_high", rec.get("value_usd_high"))
+            if isinstance(low, (int, float)) and isinstance(high, (int, float)) and low > high:
+                errors.append(f"{rel}: low is above high")
+            kinds = {sources[s][1].get("kind") for s in rec.get("sources", []) if s in sources}
+            if rec.get("confidence") == "filed" and "filing" not in kinds:
+                errors.append(f"{rel}: confidence filed needs a filing source")
+            if rec.get("confidence") == "company_stated" and not kinds & {"filing", "company", "government"}:
+                errors.append(f"{rel}: confidence company_stated needs a company or filing source")
+    edges = {}
+    for rel, d in deals.values():
+        need(rel, "company", d.get("payer"), companies)
+        need(rel, "company", d.get("payee"), companies)
+        if d.get("payer") == d.get("payee"):
+            errors.append(f"{rel}: payer and payee are the same")
+        key = (d.get("payer"), d.get("payee"), d.get("type"), d.get("announced"))
+        if key in edges:
+            errors.append(f"{rel}: same edge as {edges[key]} (one deal is one edge)")
+        edges[key] = rel
+    for rel, loop in records["loop"].values():
+        for did in loop.get("deals", []):
+            need(rel, "deal", did, deals)
+    for rel, ev in records["event"].values():
+        for cid in ev.get("companies", []):
+            need(rel, "company", cid, companies)
+        if "deal" in ev:
+            need(rel, "deal", ev["deal"], deals)
+    for rel, fin in records["financial"].values():
+        need(rel, "company", fin.get("company"), companies)
     return errors
 
 
