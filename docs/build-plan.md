@@ -13,10 +13,10 @@ Approved at Gate 1 (D16 to D20). Each session is bounded, ends with the validato
 | 7 | Deals: hyperscale and labs | Densest layer, most loops | Flags only | Heavy | Done |
 | 8 | Deals: capital rail | Equity, credit and public money into every layer | Flags only | Heavy | Done |
 | 9 | Loops | Automatic detection, hand tagging, one-line explanations | Flags only | Medium | Done |
-| 10 | Spot check | 20 records chosen at random, checked by a fresh session | Accept (Gate 3) | Medium | Done, waits on Gate 3 |
-| 11 | Overview and company card | | Nothing | Medium | |
-| 12 | Money flows and trace | | Nothing | Medium | |
-| 13 | Loops, what changed, filters, mobile, dark | | Accept (Gate 4) | Medium | |
+| 10 | Spot check | 20 records chosen at random, checked by a fresh session | Accept (Gate 3) | Medium | Done |
+| 11 | Overview and company card | State line, deal counts, chain rail, top flows, largest deals; company card with money in and out | Nothing | Medium | Done |
+| 12 | Money flows and trace | Layer columns, one line per deal, trace up and down from any company | Nothing | Medium | Done |
+| 13 | Loops, what changed, filters, mobile, dark | Loop cards, dated change log, URL filters, phone layout, theme button | Accept (Gate 4) | Medium | Done, waits on Gate 4 |
 | 14 | Launch pages | Method, About the data, README, changelog, first weekly entry; check Epoch terms (O12) | Yes to Pages (Gate 5) | Light | |
 
 Bench (promote up to three only with a sourced edge to a tracked company): Core Scientific, Humain, Bloom Energy first; then KLA, Cisco, Schneider Electric, Eaton, Oklo, Equinix, Thrive Capital, Alibaba, DeepSeek.
