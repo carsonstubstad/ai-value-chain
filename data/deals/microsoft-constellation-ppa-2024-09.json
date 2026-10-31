@@ -1,0 +1,17 @@
+{
+ "id": "microsoft-constellation-ppa-2024-09",
+ "payer": "microsoft",
+ "payee": "constellation",
+ "type": "power_supply_agreement",
+ "announced": "2024-09-20",
+ "amount_basis": "committed",
+ "term_years": 20,
+ "confidence": "filed",
+ "status": "signed",
+ "summary": "Microsoft signs a 20-year deal for about 835 MW from the restarted Crane nuclear plant, expected online in 2028. No value stated.",
+ "as_of": "2024-09-20",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "ceg-8k-microsoft-2024-09-20"
+ ]
+}

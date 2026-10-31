@@ -1,0 +1,20 @@
+{
+ "id": "meta-nebius-compute-2025-11",
+ "payer": "meta",
+ "payee": "nebius",
+ "type": "capacity_lease",
+ "announced": "2025-11-11",
+ "amount_usd_low": 3000000000.0,
+ "amount_usd_high": 3000000000.0,
+ "amount_basis": "committed",
+ "amount_kind": "multi_year_total",
+ "term_years": 5,
+ "confidence": "filed",
+ "status": "announced",
+ "summary": "Meta signs a new five-year Nebius AI infrastructure agreement worth about $3B.",
+ "as_of": "2025-11-11",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "nebius-6k-2025-11-11"
+ ]
+}

@@ -1,0 +1,17 @@
+{
+ "id": "blackstone-coreweave-debt-2024-05",
+ "payer": "blackstone",
+ "payee": "coreweave",
+ "type": "debt_or_gpu_backed_loan",
+ "announced": "2024-05-17",
+ "amount_basis": "committed",
+ "confidence": "company_stated",
+ "status": "signed",
+ "summary": "Blackstone funds lead a $7.5B debt facility for CoreWeave with Magnetar, Coatue and others.",
+ "as_of": "2024-05-17",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "blackstone-coreweave-2024-05-17"
+ ],
+ "notes": "Facility total is $7.5B across many lenders; Blackstone's own share is not stated, so no amount is stored on this edge."
+}

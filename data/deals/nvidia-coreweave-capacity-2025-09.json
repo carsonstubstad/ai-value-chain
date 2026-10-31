@@ -1,0 +1,20 @@
+{
+ "id": "nvidia-coreweave-capacity-2025-09",
+ "payer": "nvidia",
+ "payee": "coreweave",
+ "type": "guarantee_or_backstop",
+ "announced": "2025-09-09",
+ "amount_usd_low": 6300000000.0,
+ "amount_usd_high": 6300000000.0,
+ "amount_basis": "committed",
+ "amount_kind": "multi_year_total",
+ "confidence": "filed",
+ "status": "signed",
+ "summary": "NVIDIA places a $6.3B initial order to buy any CoreWeave capacity its customers leave unused, through April 2032.",
+ "as_of": "2025-09-09",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "coreweave-8k-nvidia-2025-09-09"
+ ],
+ "notes": "A backstop: NVIDIA pays only for capacity CoreWeave cannot sell. Subject to termination and delivery terms."
+}

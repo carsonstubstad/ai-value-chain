@@ -1,0 +1,17 @@
+{
+ "id": "meta-vistra-ppa-2026-01",
+ "payer": "meta",
+ "payee": "vistra",
+ "type": "power_supply_agreement",
+ "announced": "2026-01-09",
+ "amount_basis": "committed",
+ "term_years": 20,
+ "confidence": "company_stated",
+ "status": "signed",
+ "summary": "Meta signs 20-year deals for about 2,609 MW from three Vistra nuclear plants, including 433 MW of uprates. No value stated.",
+ "as_of": "2026-01-09",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "vistra-meta-2026-01-09"
+ ]
+}

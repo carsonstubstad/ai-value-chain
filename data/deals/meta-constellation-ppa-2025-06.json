@@ -1,0 +1,17 @@
+{
+ "id": "meta-constellation-ppa-2025-06",
+ "payer": "meta",
+ "payee": "constellation",
+ "type": "power_supply_agreement",
+ "announced": "2025-06-03",
+ "amount_basis": "committed",
+ "term_years": 20,
+ "confidence": "company_stated",
+ "status": "signed",
+ "summary": "Meta signs a 20-year deal for 1,121 MW from the Clinton nuclear plant starting June 2027. No value stated.",
+ "as_of": "2025-06-03",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "ceg-meta-2025-06-03"
+ ]
+}

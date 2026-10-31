@@ -39,6 +39,7 @@ Settled questions. Do not reopen without Carson. Add a dated line for every new 
 - F07 (sessions 3 and 4) SEC EDGAR matched all 31 tracked companies that file with it; their records cite their EDGAR filings index. The other 16 cite their own website or announcement. 38 of 47 websites answered an automated check; 9 (Applied Materials, Intel, TSMC, Supermicro, Oracle, OpenAI and its Stargate page, Perplexity, Blackstone) refuse automated checks but are live.
 - F06 Scheduled triggers in Actions only run from main, so the weekly gather starts only after a merge Carson approves.
 - F08 (session 5) Upstream added 16 deals and 1 loop, 25 deals in all. Equipment makers have almost no money edges with tracked companies; ASML into Mistral is the only one. The US government's Intel stake is funded by Intel's unpaid CHIPS grants, so Intel's CHIPS award is not a separate edge. Dollar values are left empty where the company states none (OpenAI with Broadcom, Samsung and SK hynix; Meta with AMD and NVIDIA), even when press reports give one. ASML's Mistral stake is stored in euros only.
+- F09 (session 6) Systems, power and data centers added 14 deals and 1 loop, 39 deals in all. Neoclouds carry most of the dollar value (CoreWeave contracts from OpenAI, Meta and NVIDIA). Power deals are 20-year nuclear PPAs that state megawatts but never a dollar value. Systems makers (Foxconn, Supermicro, Dell, Arista, Coherent) have no sourced money edges with tracked companies yet. Syndicated loans keep the lead lender as payer with no amount, since the lead's own share is not disclosed.
 
 ## Approved at Gate 1 (D16): from Step 1 (2026-10-27)
 - P01 Five views (chain overview, money flows, loops, company card, what changed) plus Method and About the data pages. No network-graph home screen, no time-series charts, no prices in the MVP.
@@ -70,6 +71,7 @@ Settled questions. Do not reopen without Carson. Add a dated line for every new 
 
 ## Settled by Carson (2026-10-31, "Merge and start 5")
 - D23 PRs #2 and #3 merged to main. GitHub Pages stays off. Session 5 approved; stop and report before session 6.
+- D24 (2026-10-31, "Merge and start 6") PR #4 merged to main. Session 6 approved; stop and report before session 7. Pages stays off.
 
 ## Proposed at Gate 2 (2026-10-31), awaiting Carson's feedback
 - P21 Company list: the 47 in data/companies-list.csv stand. Bench promotion order if a sourced edge appears: Core Scientific, Humain, Bloom Energy.
@@ -78,5 +80,6 @@ Settled questions. Do not reopen without Carson. Add a dated line for every new 
 
 ## Open (need Carson)
 - O14 Confirm P21 to P23 (PRs merged per D23).
+- O15 Syndicated loans: keep the lead lender as payer with no amount (current), or show the full facility on that edge, labeled as a syndicate total.
 - O06 Paid data: $0 through the MVP; revisit after two months of weekly updates.
 - O12 Epoch AI terms of use: confirm before Gate 5 (the downloads page states no license).

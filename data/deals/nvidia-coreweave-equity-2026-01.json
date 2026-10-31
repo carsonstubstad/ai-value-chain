@@ -1,0 +1,19 @@
+{
+ "id": "nvidia-coreweave-equity-2026-01",
+ "payer": "nvidia",
+ "payee": "coreweave",
+ "type": "equity_investment",
+ "announced": "2026-01-23",
+ "amount_usd_low": 2000000000.0,
+ "amount_usd_high": 2000000000.0,
+ "amount_basis": "paid",
+ "amount_kind": "one_time",
+ "confidence": "filed",
+ "status": "closed",
+ "summary": "NVIDIA buys $2B of CoreWeave Class A stock at $87.20 a share.",
+ "as_of": "2026-01-23",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "coreweave-8k-nvidia-2026-01-23"
+ ]
+}

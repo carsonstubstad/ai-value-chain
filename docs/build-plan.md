@@ -9,8 +9,8 @@ Approved at Gate 1 (D16 to D20). Each session is bounded, ends with the validato
 | 3 | Scaffold | Site skeleton, bundle script, d3 vendored from npm, weekly Actions schedules | Nothing | Light | Done |
 | 4 | Companies | 47 company records; CIKs and tickers from SEC via Actions | Flags only | Medium | Done |
 | 5 | Deals: upstream | Equipment, chip design, foundry, memory | Flags only | Heavy | Done |
-| 6 | Deals: systems, power, data centers | Includes neocloud debt; Epoch CSV for campuses | Flags only | Heavy | Next, waits for Carson |
-| 7 | Deals: hyperscale and labs | Densest layer, most loops | Flags only | Heavy | |
+| 6 | Deals: systems, power, data centers | Includes neocloud debt; Epoch CSV for campuses | Flags only | Heavy | Done |
+| 7 | Deals: hyperscale and labs | Densest layer, most loops | Flags only | Heavy || Next, waits for Carson |
 | 8 | Deals: capital rail | Equity, credit and public money into every layer | Flags only | Heavy | |
 | 9 | Loops | Automatic detection, hand tagging, one-line explanations | Flags only | Medium | |
 | 10 | Spot check | 20 records chosen at random, checked by a fresh session | Accept (Gate 3) | Medium | |
