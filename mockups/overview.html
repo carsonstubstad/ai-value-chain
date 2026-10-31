@@ -1,0 +1,230 @@
+<title>Value Chain Overview Mockups</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,600&display=swap">
+<style>
+/* Layout: three stacked "screens", each a framed overview direction drawn from the same nine sourced deals. */
+:root {
+  --bg: #f4f5f7; --panel: #ffffff; --fg: #151a22; --muted: #5b6573; --rule: #d9dde3; --ink-soft: #eef0f3;
+  --l-equipment: #6b7f99; --l-chip_design: #2f6fd1; --l-foundry: #6a4fc4; --l-memory: #9a3fb0;
+  --l-systems: #c0407a; --l-power: #d2622a; --l-data_centers: #b58a12; --l-hyperscale: #3f8f4a;
+  --l-labs: #11847f; --l-applications: #2a8fbf; --l-capital: #8a6a4a;
+  --sans: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  --serif: "Newsreader", Georgia, "Times New Roman", serif;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #0e1116; --panel: #161a21; --fg: #e5e8ed; --muted: #98a2b0; --rule: #2a313b; --ink-soft: #1d222a;
+  --l-equipment: #8da0ba; --l-chip_design: #5b93ec; --l-foundry: #9178e0; --l-memory: #c26bd6;
+  --l-systems: #e06b9c; --l-power: #ec8650; --l-data_centers: #d8ad3a; --l-hyperscale: #62b26d;
+  --l-labs: #3cb3ad; --l-applications: #55b2de; --l-capital: #b8936e; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #0e1116; --panel: #161a21; --fg: #e5e8ed; --muted: #98a2b0; --rule: #2a313b; --ink-soft: #1d222a;
+  --l-equipment: #8da0ba; --l-chip_design: #5b93ec; --l-foundry: #9178e0; --l-memory: #c26bd6;
+  --l-systems: #e06b9c; --l-power: #ec8650; --l-data_centers: #d8ad3a; --l-hyperscale: #62b26d;
+  --l-labs: #3cb3ad; --l-applications: #55b2de; --l-capital: #b8936e; color-scheme: dark }
+* { box-sizing: border-box }
+body { background: var(--bg); color: var(--fg); font: 15px/1.5 var(--sans);
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 28px 56px }
+.wrap { max-width: 1080px; margin: 0 auto; display: grid; gap: 40px }
+header.page h1 { font: 600 1.6rem/1.2 var(--sans); margin: 0 0 6px; text-wrap: balance }
+header.page p { margin: 0; color: var(--muted); max-width: 68ch }
+.eyebrow { font: 500 0.72rem/1 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted) }
+.dir { display: grid; gap: 10px }
+.dir > .meta { display: flex; flex-wrap: wrap; gap: 6px 16px; align-items: baseline }
+.dir > .meta h2 { margin: 0; font: 600 1.15rem/1.3 var(--sans) }
+.dir > .meta p { margin: 0; color: var(--muted); flex: 1 1 320px; min-width: 0 }
+.screen { background: var(--panel); border: 1px solid var(--rule); border-radius: 10px; padding: 22px; display: grid; gap: 18px; min-width: 0 }
+.num { font-variant-numeric: tabular-nums }
+a { color: inherit; text-decoration-color: var(--muted); text-underline-offset: 2px }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--l-chip_design); outline-offset: 2px }
+.controls { display: flex; flex-wrap: wrap; gap: 6px }
+.chip { font: 500 0.75rem/1 var(--sans); padding: 6px 10px; border-radius: 999px; border: 1px solid var(--rule); color: var(--muted); background: transparent }
+.chip.on { color: var(--fg); border-color: var(--fg) }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 0.78rem; color: var(--muted) }
+.legend span { display: inline-flex; align-items: center; gap: 6px }
+.sw { width: 18px; height: 10px; border-radius: 2px; display: inline-block; border: 1.5px solid var(--fg) }
+.sw.filed { background: var(--fg) }
+.sw.stated { background: repeating-linear-gradient(135deg, var(--fg) 0 2px, transparent 2px 5px) }
+.sw.reported { background: transparent }
+
+/* A: chain rail */
+.rail { display: grid; grid-template-columns: repeat(11, minmax(0, 1fr)); gap: 4px; overflow-x: auto }
+.rail .step { border-top: 4px solid var(--c); padding: 8px 4px 0; min-width: 64px }
+.rail .step b { display: block; font: 500 0.72rem/1.2 var(--sans) }
+.rail .step i { display: block; font: 400 0.7rem/1.3 var(--mono); color: var(--muted); font-style: normal }
+.rail .step.dim { opacity: 0.45 }
+.flows { display: grid; gap: 8px }
+.flow { display: grid; grid-template-columns: minmax(0, 15rem) minmax(0, 1fr) 7.5rem; gap: 12px; align-items: center }
+.flow .who { font-size: 0.86rem; min-width: 0 }
+.flow .who small { display: block; color: var(--muted); font-size: 0.74rem }
+.dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--c); margin-right: 5px }
+.track { position: relative; height: 14px; background: var(--ink-soft); border-radius: 2px }
+.bar { position: absolute; top: 0; bottom: 0; border: 1.5px solid var(--c); border-radius: 2px }
+.bar.filed { background: var(--c) }
+.bar.company_stated { background: repeating-linear-gradient(135deg, var(--c) 0 2px, transparent 2px 5px) }
+.bar.range { border-style: dashed; background: transparent }
+.flow .amt { font: 500 0.82rem/1.2 var(--mono); text-align: right }
+.flow .amt small { display: block; color: var(--muted); font-weight: 400; font-size: 0.7rem }
+.axis { display: grid; grid-template-columns: minmax(0, 15rem) minmax(0, 1fr) 7.5rem; gap: 12px; font: 0.7rem var(--mono); color: var(--muted) }
+.axis div:nth-child(2) { display: flex; justify-content: space-between }
+
+/* B: ledger */
+.ledger .thesis { font: 400 clamp(1.5rem, 3.4vw, 2.3rem)/1.15 var(--serif); margin: 0; max-width: 26ch; text-wrap: balance }
+.ledger .dek { font: 400 1.02rem/1.55 var(--serif); color: var(--muted); max-width: 62ch; margin: 0 }
+.cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px 28px }
+.cols h3 { font: 500 0.72rem/1 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin: 0 0 8px; padding-bottom: 8px; border-bottom: 1px solid var(--rule) }
+.row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 10px; padding: 7px 0; border-bottom: 1px solid var(--rule); font-family: var(--serif); font-size: 1rem }
+.row span:last-child { font: 500 0.85rem var(--mono) }
+.loopcard { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: 10px; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--rule) }
+.loopcard .side { font-size: 0.84rem; min-width: 0 }
+.loopcard .side b { font: 500 0.85rem var(--mono); display: block }
+.loopcard .mid { font: 600 0.92rem var(--serif); text-align: center }
+.loopcard .side.r { text-align: right }
+
+/* C: flow map */
+.mapwrap { overflow-x: auto }
+svg text { fill: var(--fg); font-family: var(--sans) }
+svg .lbl { font-size: 11px; fill: var(--muted); font-family: var(--mono); letter-spacing: 0.06em }
+.note { font-size: 0.78rem; color: var(--muted); margin: 0 }
+@media (max-width: 640px) {
+  .flow, .axis { grid-template-columns: minmax(0, 1fr) 6.5rem; }
+  .flow .track, .axis div:nth-child(2) { grid-column: 1 / -1; grid-row: 2 }
+  .screen { padding: 16px }
+}
+@media (prefers-reduced-motion: no-preference) { .bar { transition: width .4s ease } }
+</style>
+
+<div class="wrap">
+  <header class="page">
+    <div class="eyebrow">Gate 2 · overview mockups</div>
+    <h1>Three ways to open the AI value chain tracker</h1>
+    <p>Each direction uses the same nine real deals, checked on 31 Oct 2026 against company releases and one SEC filing. They are a sample to judge the look, not the full data. Color always means layer; fill pattern means confidence; dashed means a range or a cap.</p>
+  </header>
+
+  <section class="dir" id="a">
+    <div class="meta"><h2>A. Chain rail</h2><p>Analyst feel. The eleven layers run left to right as a rail, then the largest flows sit below as bars on one scale. Best for "who gets the money?" in ten seconds.</p></div>
+    <div class="screen">
+      <div class="controls" aria-label="Example controls">
+        <span class="chip on">Committed</span><span class="chip">Paid</span><span class="chip on">All time</span><span class="chip on">Filed</span><span class="chip on">Company-stated</span><span class="chip on">Reported</span><span class="chip">Rumored</span>
+      </div>
+      <div class="rail" id="rail"></div>
+      <div class="axis"><div class="eyebrow">Largest flows, high end</div><div id="axis"></div><div></div></div>
+      <div class="flows" id="flowsA"></div>
+      <div class="legend"><span><i class="sw filed"></i>Filed</span><span><i class="sw stated"></i>Company-stated</span><span><i class="sw reported"></i>Reported</span><span>Dashed edge: range or cap. Undisclosed amounts are listed with no bar.</span></div>
+    </div>
+  </section>
+
+  <section class="dir" id="b">
+    <div class="meta"><h2>B. Ledger</h2><p>Editorial feel. One sentence states what the data says, then money out and money in by company, then the loops. Best for a reader who wants the story first.</p></div>
+    <div class="screen ledger">
+      <div class="eyebrow">State of the chain · sample</div>
+      <p class="thesis">Most of the money in this sample is promised, not yet paid.</p>
+      <p class="dek">Most deals here are commitments, many capped at "up to" amounts or spread over years. Two labs, OpenAI and Anthropic, sit at the center: they take equity from their suppliers and commit to buy those suppliers' compute.</p>
+      <div class="cols">
+        <div><h3>Largest single commitment out</h3><div id="outB"></div></div>
+        <div><h3>Largest single commitment in</h3><div id="inB"></div></div>
+      </div>
+      <div><h3 class="eyebrow" style="margin:0 0 4px">Loops: equity out, spending back</h3><div id="loopsB"></div></div>
+      <p class="note">Two sides of a loop are shown gross. They are not netted, because caps and multi-year totals are not cash.</p>
+    </div>
+  </section>
+
+  <section class="dir" id="c">
+    <div class="meta"><h2>C. Flow map</h2><p>Visual feel. Companies sit in their layer's column and money is drawn as bands, wider for bigger amounts, with loops traced in both directions. Best for seeing circular money at a glance.</p></div>
+    <div class="screen">
+      <div class="mapwrap"><svg id="map" viewBox="0 0 980 420" width="980" height="420" role="img" aria-label="Flow map of nine sample deals across five layers"></svg></div>
+      <div class="legend"><span>Band width scales with the high end of each deal.</span><span>Dotted band: amount not disclosed.</span><span>Faded columns: layers with no deals in this sample.</span></div>
+    </div>
+  </section>
+
+  <section class="dir">
+    <div class="meta"><h2>Sources for the nine deals</h2></div>
+    <div class="screen" id="sources" style="gap:6px"></div>
+  </section>
+</div>
+
+<script>
+const RAW = [[["nvidia-openai-equity-2025-09", "nvidia", "openai", "equity_investment", null, 100000000000.0, "cap", "company_stated", "2025-09-22", "NVIDIA intends to invest up to $100B in OpenAI, paid in step with each gigawatt deployed; letter of intent.", "nvidia-openai-2025-09-22"], ["amd-openai-warrant-2025-10", "amd", "openai", "warrant_or_equity_grant", null, null, null, "company_stated", "2025-10-06", "Warrant for up to 160 million AMD shares, vesting with GPU deployments and AMD share-price targets. No dollar value stated.", "amd-openai-2025-10-06"], ["openai-amd-gpus-2025-10", "openai", "amd", "purchase_commitment", null, null, null, "company_stated", "2025-10-06", "OpenAI to deploy 6 GW of AMD Instinct GPUs, first 1 GW in the second half of 2026. No dollar value stated.", "amd-openai-2025-10-06"], ["microsoft-anthropic-equity-2025-11", "microsoft", "anthropic", "equity_investment", null, 5000000000.0, "cap", "company_stated", "2025-11-18", "Microsoft commits to invest up to $5B in Anthropic.", "msft-nvda-anthropic-2025-11-18"], ["nvidia-anthropic-equity-2025-11", "nvidia", "anthropic", "equity_investment", null, 10000000000.0, "cap", "company_stated", "2025-11-18", "NVIDIA commits to invest up to $10B in Anthropic.", "msft-nvda-anthropic-2025-11-18"], ["anthropic-microsoft-azure-2025-11", "anthropic", "microsoft", "purchase_commitment", 30000000000.0, 30000000000.0, null, "company_stated", "2025-11-18", "Anthropic commits to buy $30B of Azure compute capacity.", "msft-nvda-anthropic-2025-11-18"], ["microsoft-nebius-capacity-2025-09", "microsoft", "nebius", "capacity_lease", 17400000000.0, 19400000000.0, "multi_year_total", "filed", "2025-09-08", "Five-year GPU capacity agreement worth about $17.4B through 2031, up to about $19.4B with extra services.", "nebius-6k-2025-09-08"], ["amazon-anthropic-equity-2026-04", "amazon", "anthropic", "equity_investment", 5000000000.0, 25000000000.0, "cap", "company_stated", "2026-04-20", "Amazon invests $5B now and up to $20B more if business targets are met, on top of $8B invested earlier.", "amazon-anthropic-2026-04-20"], ["anthropic-aws-spend-2026-04", "anthropic", "amazon", "purchase_commitment", 100000000000.0, null, "multi_year_total", "company_stated", "2026-04-20", "Anthropic to spend more than $100B on AWS technologies over ten years.", "amazon-anthropic-2026-04-20"]],{"nvidia-openai-2025-09-22": ["https://nvidianews.nvidia.com/news/openai-and-nvidia-announce-strategic-partnership-to-deploy-10gw-of-nvidia-systems", "NVIDIA release: OpenAI partnership for 10 GW of NVIDIA systems"], "amd-openai-2025-10-06": ["https://newsroom.amd.com/news/amd-and-openai-announce-strategic-partnership-to-d/", "AMD release: OpenAI partnership for 6 GW of AMD GPUs, with warrant"], "msft-nvda-anthropic-2025-11-18": ["https://blogs.microsoft.com/blog/2025/11/18/microsoft-nvidia-and-anthropic-announce-strategic-partnerships/", "Microsoft blog: Microsoft, NVIDIA and Anthropic partnerships"], "nebius-6k-2025-09-08": ["https://assets.nebius.com/assets/86625727-9e66-46c1-af79-c27d57434e3c/25-25580-1_Nebius%20Group%20N.V._6-K.pdf", "Nebius 6-K: Microsoft agreement"], "amazon-anthropic-2026-04-20": ["https://www.aboutamazon.com/news/company-news/amazon-invests-additional-5-billion-anthropic-ai", "Amazon release: $5B more in Anthropic, up to $20B later"]}];
+const DEALS = RAW[0].map(r => ({id:r[0], payer:r[1], payee:r[2], type:r[3], low:r[4], high:r[5], kind:r[6], conf:r[7], date:r[8], summary:r[9], src:r[10]}));
+const SRC = RAW[1];
+const LAYERS = [["equipment","Equipment"],["chip_design","Chip design"],["foundry","Foundry"],["memory","Memory"],["systems","Systems"],["power","Power"],["data_centers","Data centers"],["hyperscale","Hyperscale"],["labs","Labs"],["applications","Applications"],["capital","Capital"]];
+const CO = {nvidia:["NVIDIA","chip_design"], amd:["AMD","chip_design"], microsoft:["Microsoft","hyperscale"], amazon:["Amazon","hyperscale"], nebius:["Nebius","data_centers"], openai:["OpenAI","labs"], anthropic:["Anthropic","labs"]};
+const TYPE = {equity_investment:"Equity", warrant_or_equity_grant:"Warrant", purchase_commitment:"Purchase commitment", capacity_lease:"Capacity lease"};
+const col = id => `var(--l-${CO[id][1]})`;
+const B = v => "$" + (v/1e9).toFixed(v % 1e9 ? 1 : 0) + "B";
+function amt(d) {
+  if (d.low == null && d.high == null) return "not stated";
+  if (d.low == null) return "up to " + B(d.high);
+  if (d.high == null) return "over " + B(d.low);
+  if (d.low === d.high) return B(d.low);
+  return B(d.low) + " to " + B(d.high);
+}
+const top = d => d.high ?? d.low ?? 0;
+const esc = s => s.replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+// A
+const used = new Set(Object.values(CO).map(c => c[1]));
+document.getElementById("rail").innerHTML = LAYERS.map(([id, name]) => {
+  const n = DEALS.filter(d => CO[d.payer][1] === id || CO[d.payee][1] === id).length;
+  return `<div class="step ${used.has(id) ? "" : "dim"}" style="--c:var(--l-${id})"><b>${name}</b><i>${n ? n + " deal" + (n > 1 ? "s" : "") : "none yet"}</i></div>`;
+}).join("");
+const MAX = 100e9;
+document.getElementById("axis").innerHTML = ["$0","$25B","$50B","$75B","$100B"].map(t => `<span>${t}</span>`).join("");
+const sorted = [...DEALS].sort((a, b) => top(b) - top(a));
+document.getElementById("flowsA").innerHTML = sorted.map(d => {
+  const lo = (d.low ?? 0) / MAX * 100, hi = top(d) / MAX * 100;
+  const ranged = d.low == null || (d.high != null && d.high !== d.low) || d.kind === "cap";
+  let bars = "";
+  if (top(d)) {
+    if (d.low && ranged) bars += `<span class="bar ${d.conf}" style="--c:${col(d.payer)};left:0;width:${lo}%"></span>`;
+    bars += `<span class="bar ${ranged ? "range" : d.conf}" style="--c:${col(d.payer)};left:0;width:${hi}%"></span>`;
+  }
+  return `<div class="flow"><div class="who"><span class="dot" style="--c:${col(d.payer)}"></span>${CO[d.payer][0]} → ${CO[d.payee][0]}<small>${TYPE[d.type]} · ${d.date.slice(0,7)}</small></div>
+    <div class="track" aria-hidden="true">${bars}</div><div class="amt num">${amt(d)}<small>${d.kind ? d.kind.replace(/_/g," ") : "committed"}</small></div></div>`;
+}).join("");
+
+// B
+function tally(key) {
+  const t = {};
+  DEALS.forEach(d => { if (top(d) && top(d) > (t[d[key]]?.[1] ?? 0)) t[d[key]] = [d, top(d)]; });
+  return Object.entries(t).sort((a, b) => b[1][1] - a[1][1]);
+}
+const rows = list => list.map(([id, v]) => `<div class="row"><span><span class="dot" style="--c:${col(id)}"></span>${CO[id][0]}</span><span class="num">${amt(v[0])}</span></div>`).join("");
+document.getElementById("outB").innerHTML = rows(tally("payer"));
+document.getElementById("inB").innerHTML = rows(tally("payee"));
+const LOOPS = [["microsoft","anthropic"],["amazon","anthropic"],["amd","openai"]];
+document.getElementById("loopsB").innerHTML = LOOPS.map(([a, b]) => {
+  const out = DEALS.find(d => d.payer === a && d.payee === b), back = DEALS.find(d => d.payer === b && d.payee === a);
+  return `<div class="loopcard"><div class="side"><b class="num">${amt(out)}</b>${TYPE[out.type]}, ${CO[a][0]} to ${CO[b][0]}</div>
+    <div class="mid">${CO[a][0]} ⇄ ${CO[b][0]}</div><div class="side r"><b class="num">${amt(back)}</b>${TYPE[back.type]}, ${CO[b][0]} to ${CO[a][0]}</div></div>`;
+}).join("");
+
+// C
+const svg = document.getElementById("map"), W = 980, H = 420, colW = W / 11;
+const pos = {}, perLayer = {};
+Object.entries(CO).forEach(([id, [, l]]) => { (perLayer[l] = perLayer[l] || []).push(id); });
+let s = "";
+LAYERS.forEach(([id, name], i) => {
+  const x = i * colW;
+  s += `<text class="lbl" x="${x + colW / 2}" y="18" text-anchor="middle" opacity="${used.has(id) ? 1 : 0.4}">${name.toUpperCase().slice(0, 9)}</text>`;
+  s += `<line x1="${x + colW / 2}" y1="30" x2="${x + colW / 2}" y2="${H - 10}" stroke="var(--rule)" stroke-width="1" opacity="${used.has(id) ? 1 : 0.4}"/>`;
+  (perLayer[id] || []).forEach((c, j, arr) => { pos[c] = [x + colW / 2, 90 + j * (280 / Math.max(arr.length - 1, 1))]; if (arr.length === 1) pos[c][1] = 210; });
+});
+const wOf = d => top(d) ? Math.max(2, Math.sqrt(top(d) / 1e9) * 2.2) : 2;
+DEALS.forEach(d => {
+  const [x1, y1] = pos[d.payer], [x2, y2] = pos[d.payee];
+  const bend = (x2 > x1 ? -1 : 1) * (40 + Math.abs(x2 - x1) * 0.18);
+  const mx = (x1 + x2) / 2, my = (y1 + y2) / 2 + bend;
+  s += `<path d="M${x1},${y1} Q${mx},${my} ${x2},${y2}" fill="none" stroke="${col(d.payer)}" stroke-opacity="0.55" stroke-width="${wOf(d)}" ${top(d) ? "" : 'stroke-dasharray="2 4"'} stroke-linecap="round"><title>${esc(CO[d.payer][0] + " to " + CO[d.payee][0] + ": " + amt(d))}</title></path>`;
+});
+Object.entries(pos).forEach(([id, [x, y]]) => {
+  s += `<circle cx="${x}" cy="${y}" r="7" fill="${col(id)}" stroke="var(--panel)" stroke-width="2"/>`;
+  s += `<text x="${x}" y="${y + 24}" text-anchor="middle" font-size="12" font-weight="600">${CO[id][0]}</text>`;
+});
+svg.innerHTML = s;
+
+// sources
+document.getElementById("sources").innerHTML = Object.entries(SRC).map(([id, [url, label]]) =>
+  `<div style="font-size:.85rem"><a href="${esc(url)}" target="_blank" rel="noopener">${esc(label)}</a></div>`).join("");
+</script>
