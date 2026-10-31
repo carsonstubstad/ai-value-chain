@@ -1,0 +1,15 @@
+{
+ "id": "usg-intel-equity-2025-08-status-change-2026-01-23",
+ "date": "2026-01-23",
+ "kind": "status_change",
+ "companies": [
+  "us-government",
+  "intel"
+ ],
+ "deal": "usg-intel-equity-2025-08",
+ "summary": "Intel's 10-K shows the shares issued to the US government, so the stake is closed; part still sits in escrow.",
+ "confidence": "filed",
+ "sources": [
+  "intel-10k-2025"
+ ]
+}

@@ -221,3 +221,4 @@ __marimo__/
 
 # The static site lives in site/ (P07); keep it tracked despite the mkdocs rule above.
 !site/
+node_modules/

@@ -2009,7 +2009,263 @@
    "type": "government_grant_or_incentive"
   }
  ],
- "events": [],
+ "events": [
+  {
+   "companies": [
+    "amazon",
+    "anthropic"
+   ],
+   "confidence": "filed",
+   "date": "2026-10-30",
+   "deal": "amazon-anthropic-equity-2023-09",
+   "id": "amazon-anthropic-equity-2023-09-basis-change-2026-10-30",
+   "kind": "basis_change",
+   "sources": [
+    "amazon-10q-2026-q3"
+   ],
+   "summary": "Amazon's 10-Q confirms its first Anthropic round as funded, so it moves to paid and filed."
+  },
+  {
+   "companies": [
+    "amazon",
+    "anthropic"
+   ],
+   "confidence": "filed",
+   "date": "2026-10-30",
+   "deal": "amazon-anthropic-equity-2024-11",
+   "id": "amazon-anthropic-equity-2024-11-basis-change-2026-10-30",
+   "kind": "basis_change",
+   "sources": [
+    "amazon-10q-2026-q3"
+   ],
+   "summary": "Amazon's 10-Q confirms its second Anthropic round as funded, so it is closed and paid."
+  },
+  {
+   "companies": [
+    "amazon",
+    "anthropic"
+   ],
+   "confidence": "filed",
+   "date": "2026-10-30",
+   "deal": "amazon-anthropic-equity-2026-04",
+   "id": "amazon-anthropic-equity-2026-04-status-change-2026-10-30",
+   "kind": "status_change",
+   "sources": [
+    "amazon-10q-2026-q3"
+   ],
+   "summary": "Amazon's 10-Q shows $10B of its up to $25B Anthropic commitment funded, so the deal moves to signed."
+  },
+  {
+   "companies": [
+    "amazon",
+    "openai"
+   ],
+   "confidence": "filed",
+   "date": "2026-07-30",
+   "deal": "amazon-openai-equity-2026-02",
+   "id": "amazon-openai-equity-2026-02-basis-change-2026-07-30",
+   "kind": "basis_change",
+   "sources": [
+    "amazon-10q-2026-q2"
+   ],
+   "summary": "Amazon's 10-Q shows its OpenAI investment funded, so the deal is closed and paid."
+  },
+  {
+   "companies": [
+    "amd",
+    "meta"
+   ],
+   "confidence": "filed",
+   "date": "2026-08-05",
+   "deal": "amd-meta-warrant-2026-02",
+   "id": "amd-meta-warrant-2026-02-status-change-2026-08-05",
+   "kind": "status_change",
+   "sources": [
+    "amd-10q-2026-q2"
+   ],
+   "summary": "AMD's 10-Q describes the signed Meta warrant agreement, so the deal moves to signed."
+  },
+  {
+   "companies": [
+    "amd",
+    "openai"
+   ],
+   "confidence": "filed",
+   "date": "2026-02-04",
+   "deal": "amd-openai-warrant-2025-10",
+   "id": "amd-openai-warrant-2025-10-status-change-2026-02-04",
+   "kind": "status_change",
+   "sources": [
+    "amd-10k-2025"
+   ],
+   "summary": "AMD's 10-K describes the signed OpenAI warrant agreement, so the deal moves to signed and filed."
+  },
+  {
+   "companies": [
+    "anthropic",
+    "amazon"
+   ],
+   "confidence": "filed",
+   "date": "2026-10-30",
+   "deal": "anthropic-aws-spend-2026-04",
+   "id": "anthropic-aws-spend-2026-04-status-change-2026-10-30",
+   "kind": "status_change",
+   "sources": [
+    "amazon-10q-2026-q3"
+   ],
+   "summary": "Amazon's 10-Q describes Anthropic's AWS spending commitment as signed."
+  },
+  {
+   "companies": [
+    "blackstone",
+    "coreweave"
+   ],
+   "confidence": "filed",
+   "date": "2026-03-02",
+   "deal": "blackstone-coreweave-debt-2024-05",
+   "id": "blackstone-coreweave-debt-2024-05-amount-change-2026-03-02",
+   "kind": "amount_change",
+   "sources": [
+    "coreweave-10k-2025"
+   ],
+   "summary": "CoreWeave's 10-K puts the Blackstone-led facility at $7.6B, replacing the $7.5B press release figure."
+  },
+  {
+   "companies": [
+    "coreweave",
+    "openai"
+   ],
+   "confidence": "filed",
+   "date": "2025-05-14",
+   "deal": "coreweave-openai-equity-2025-03",
+   "id": "coreweave-openai-equity-2025-03-status-change-2025-05-14",
+   "kind": "status_change",
+   "sources": [
+    "coreweave-10q-2025-q1"
+   ],
+   "summary": "CoreWeave's 10-Q shows the $350M of stock issued to OpenAI, so the deal is closed and paid."
+  },
+  {
+   "companies": [
+    "meta",
+    "amd"
+   ],
+   "confidence": "filed",
+   "date": "2026-08-05",
+   "deal": "meta-amd-gpus-2026-02",
+   "id": "meta-amd-gpus-2026-02-status-change-2026-08-05",
+   "kind": "status_change",
+   "sources": [
+    "amd-10q-2026-q2"
+   ],
+   "summary": "AMD's 10-Q describes the Meta GPU agreement as signed."
+  },
+  {
+   "companies": [
+    "meta",
+    "nebius"
+   ],
+   "confidence": "filed",
+   "date": "2026-03-16",
+   "deal": "meta-nebius-compute-2026-03",
+   "id": "meta-nebius-compute-2026-03-new-deal-2026-03-16",
+   "kind": "new_deal",
+   "sources": [
+    "nebius-meta-6k-2026-03-16"
+   ],
+   "summary": "Meta signs $12B to $27B of Nebius capacity over five years, per Nebius's filing."
+  },
+  {
+   "companies": [
+    "nvidia",
+    "openai"
+   ],
+   "confidence": "filed",
+   "date": "2026-08-26",
+   "deal": "nvidia-openai-guarantee-2026-08",
+   "id": "nvidia-openai-guarantee-2026-08-new-deal-2026-08-26",
+   "kind": "new_deal",
+   "sources": [
+    "nvidia-10q-2026-q2"
+   ],
+   "summary": "NVIDIA's 10-Q discloses a guarantee of up to $105B on OpenAI's Ohio lease and power payments."
+  },
+  {
+   "companies": [
+    "openai",
+    "amazon"
+   ],
+   "confidence": "filed",
+   "date": "2026-10-30",
+   "deal": "openai-amazon-compute-2025-11",
+   "id": "openai-amazon-compute-2025-11-filing-2026-10-30",
+   "kind": "filing",
+   "sources": [
+    "amazon-10q-2026-q3"
+   ],
+   "summary": "Amazon's 10-Q confirms OpenAI's 2025 AWS commitment, so it is now backed by a filing."
+  },
+  {
+   "companies": [
+    "openai",
+    "amazon"
+   ],
+   "confidence": "company_stated",
+   "date": "2026-02-27",
+   "deal": "openai-amazon-compute-2026-02",
+   "id": "openai-amazon-compute-2026-02-new-deal-2026-02-27",
+   "kind": "new_deal",
+   "sources": [
+    "amazon-openai-2026-02-27"
+   ],
+   "summary": "OpenAI adds $100B over eight years to its AWS commitment."
+  },
+  {
+   "companies": [
+    "openai",
+    "amd"
+   ],
+   "confidence": "filed",
+   "date": "2026-02-04",
+   "deal": "openai-amd-gpus-2025-10",
+   "id": "openai-amd-gpus-2025-10-status-change-2026-02-04",
+   "kind": "status_change",
+   "sources": [
+    "amd-10k-2025"
+   ],
+   "summary": "AMD's 10-K describes the OpenAI GPU agreement as signed."
+  },
+  {
+   "companies": [
+    "us-government",
+    "intel"
+   ],
+   "confidence": "filed",
+   "date": "2026-10-30",
+   "deal": "usg-intel-equity-2025-08",
+   "id": "usg-intel-equity-2025-08-filing-2026-10-30",
+   "kind": "filing",
+   "sources": [
+    "intel-10q-2026-q3"
+   ],
+   "summary": "Intel's 10-Q shows 132M shares still in escrow, so the stake stays committed rather than paid."
+  },
+  {
+   "companies": [
+    "us-government",
+    "intel"
+   ],
+   "confidence": "filed",
+   "date": "2026-01-23",
+   "deal": "usg-intel-equity-2025-08",
+   "id": "usg-intel-equity-2025-08-status-change-2026-01-23",
+   "kind": "status_change",
+   "sources": [
+    "intel-10k-2025"
+   ],
+   "summary": "Intel's 10-K shows the shares issued to the US government, so the stake is closed; part still sits in escrow."
+  }
+ ],
  "financials": [],
  "loops": [
   {
@@ -2337,6 +2593,7 @@
    "kind": "filing",
    "label": "CoreWeave 10-Q for the quarter ended March 31, 2025",
    "locator": "Commercial agreement with OpenAI",
+   "published": "2025-05-14",
    "publisher": "SEC EDGAR",
    "url": "https://www.sec.gov/Archives/edgar/data/1769628/000176962825000014/crwv-20250331.htm"
   },

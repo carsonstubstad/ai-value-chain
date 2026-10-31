@@ -1,0 +1,15 @@
+{
+ "id": "openai-amazon-compute-2025-11-filing-2026-10-30",
+ "date": "2026-10-30",
+ "kind": "filing",
+ "companies": [
+  "openai",
+  "amazon"
+ ],
+ "deal": "openai-amazon-compute-2025-11",
+ "summary": "Amazon's 10-Q confirms OpenAI's 2025 AWS commitment, so it is now backed by a filing.",
+ "confidence": "filed",
+ "sources": [
+  "amazon-10q-2026-q3"
+ ]
+}

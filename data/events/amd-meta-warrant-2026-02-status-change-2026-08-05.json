@@ -1,0 +1,15 @@
+{
+ "id": "amd-meta-warrant-2026-02-status-change-2026-08-05",
+ "date": "2026-08-05",
+ "kind": "status_change",
+ "companies": [
+  "amd",
+  "meta"
+ ],
+ "deal": "amd-meta-warrant-2026-02",
+ "summary": "AMD's 10-Q describes the signed Meta warrant agreement, so the deal moves to signed.",
+ "confidence": "filed",
+ "sources": [
+  "amd-10q-2026-q2"
+ ]
+}
