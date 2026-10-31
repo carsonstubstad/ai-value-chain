@@ -8,7 +8,8 @@ Standard library only. Checks:
    JSON Schema subset (see check_schema).
 4. Cross-record rules: ids match file names and are unique, every reference points at
    a real record, filed and company_stated claims cite the right kind of source,
-   low is not above high, and one deal is one edge (no duplicate payer, payee, type, date).
+   low is not above high, one deal is one edge (no duplicate payer, payee, type, date),
+   and every loop is closed (each company in it both pays and receives).
 
 Usage:
   python3 scripts/validate.py              run the checks on the repo
@@ -174,8 +175,14 @@ def check_references(records):
         if d.get("syndicate_total") and "amount_usd_high" not in d and "amount_usd_low" not in d:
             errors.append(f"{rel}: syndicate_total needs an amount (D25)")
     for rel, loop in records["loop"].values():
+        pays, gets = set(), set()
         for did in loop.get("deals", []):
             need(rel, "deal", did, deals)
+            if did in deals:
+                pays.add(deals[did][1].get("payer"))
+                gets.add(deals[did][1].get("payee"))
+        if pays != gets:
+            errors.append(f"{rel}: not a loop, every company must both pay and receive in its deals")
     for rel, ev in records["event"].values():
         for cid in ev.get("companies", []):
             need(rel, "company", cid, companies)

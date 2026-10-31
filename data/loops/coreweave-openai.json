@@ -3,9 +3,11 @@
  "name": "CoreWeave and OpenAI",
  "deals": [
   "coreweave-openai-equity-2025-03",
-  "openai-coreweave-compute-2025-03"
+  "openai-coreweave-compute-2025-03",
+  "openai-coreweave-compute-2025-05",
+  "openai-coreweave-compute-2025-09"
  ],
  "flagged_by": "automatic",
- "explanation": "CoreWeave issues OpenAI $350M of its own stock, and OpenAI commits to buy CoreWeave compute.",
+ "explanation": "CoreWeave issues OpenAI $350M of its own stock, and OpenAI commits up to $22.4B across three CoreWeave compute contracts.",
  "last_checked": "2026-10-31"
 }

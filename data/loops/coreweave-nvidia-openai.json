@@ -1,0 +1,13 @@
+{
+ "id": "coreweave-nvidia-openai",
+ "name": "NVIDIA, CoreWeave and OpenAI",
+ "deals": [
+  "nvidia-coreweave-capacity-2025-09",
+  "nvidia-coreweave-equity-2026-01",
+  "coreweave-openai-equity-2025-03",
+  "openai-nvidia-systems-2025-09"
+ ],
+ "flagged_by": "automatic",
+ "explanation": "NVIDIA backs CoreWeave with equity and a $6.3B capacity backstop, CoreWeave gives OpenAI $350M of its stock, and OpenAI commits to deploy NVIDIA systems.",
+ "last_checked": "2026-10-31"
+}

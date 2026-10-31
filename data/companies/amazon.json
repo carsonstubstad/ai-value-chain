@@ -11,9 +11,10 @@
   "AMZN"
  ],
  "sec_cik": "0001018724",
- "one_line": "Runs AWS, a major investor in Anthropic, and designs its own AI chips.",
+ "one_line": "Runs AWS, a major investor in Anthropic and OpenAI, and designs its own AI chips.",
  "last_checked": "2026-10-31",
  "sources": [
-  "sec-amazon"
+  "sec-amazon",
+  "amazon-10q-2026-q2"
  ]
 }

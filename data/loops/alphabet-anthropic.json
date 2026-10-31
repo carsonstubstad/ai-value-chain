@@ -1,0 +1,11 @@
+{
+ "id": "alphabet-anthropic",
+ "name": "Google and Anthropic",
+ "deals": [
+  "alphabet-anthropic-equity-2025-01",
+  "anthropic-alphabet-tpu-2025-10"
+ ],
+ "flagged_by": "automatic",
+ "explanation": "Google invests in Anthropic, and Anthropic rents up to one million Google Cloud TPUs, worth tens of billions of dollars by Anthropic's account.",
+ "last_checked": "2026-10-31"
+}
