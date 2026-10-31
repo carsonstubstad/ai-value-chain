@@ -1644,6 +1644,23 @@
   },
   {
    "amount_basis": "committed",
+   "announced": "2025-09-22",
+   "as_of": "2025-09-22",
+   "confidence": "company_stated",
+   "id": "openai-nvidia-systems-2025-09",
+   "last_checked": "2026-10-31",
+   "notes": "The release does not say whether OpenAI buys the systems directly or through cloud partners. NVIDIA's investment is paid in step with each gigawatt deployed.",
+   "payee": "nvidia",
+   "payer": "openai",
+   "sources": [
+    "nvidia-openai-2025-09-22"
+   ],
+   "status": "announced",
+   "summary": "OpenAI to deploy at least 10 GW of NVIDIA systems, first 1 GW on Vera Rubin in the second half of 2026; letter of intent. No dollar value stated.",
+   "type": "purchase_commitment"
+  },
+  {
+   "amount_basis": "committed",
    "announced": "2025-07-22",
    "as_of": "2025-07-22",
    "confidence": "company_stated",
@@ -1908,14 +1925,38 @@
  "loops": [
   {
    "deals": [
+    "alphabet-anthropic-equity-2025-01",
+    "anthropic-alphabet-tpu-2025-10"
+   ],
+   "explanation": "Google invests in Anthropic, and Anthropic rents up to one million Google Cloud TPUs, worth tens of billions of dollars by Anthropic's account.",
+   "flagged_by": "automatic",
+   "id": "alphabet-anthropic",
+   "last_checked": "2026-10-31",
+   "name": "Google and Anthropic"
+  },
+  {
+   "deals": [
+    "amazon-anthropic-equity-2023-09",
+    "amazon-anthropic-equity-2024-11",
     "amazon-anthropic-equity-2026-04",
     "anthropic-aws-spend-2026-04"
    ],
-   "explanation": "Amazon puts equity into Anthropic, and Anthropic commits to spend on AWS.",
+   "explanation": "Amazon has put equity into Anthropic since 2023, and Anthropic commits to spend more than $100B on AWS over ten years.",
    "flagged_by": "automatic",
    "id": "amazon-anthropic",
    "last_checked": "2026-10-31",
    "name": "Amazon and Anthropic"
+  },
+  {
+   "deals": [
+    "amazon-openai-equity-2026-02",
+    "openai-amazon-compute-2025-11"
+   ],
+   "explanation": "Amazon commits $50B to OpenAI's February 2026 round, and OpenAI commits $38B to AWS compute over seven years.",
+   "flagged_by": "automatic",
+   "id": "amazon-openai",
+   "last_checked": "2026-10-31",
+   "name": "Amazon and OpenAI"
   },
   {
    "deals": [
@@ -1941,10 +1982,36 @@
   },
   {
    "deals": [
-    "coreweave-openai-equity-2025-03",
-    "openai-coreweave-compute-2025-03"
+    "blue-owl-meta-hyperion-2025-10",
+    "meta-blue-owl-guarantee-2025-10"
    ],
-   "explanation": "CoreWeave issues OpenAI $350M of its own stock, and OpenAI commits to buy CoreWeave compute.",
+   "explanation": "Blue Owl funds about $7B of the venture that owns Meta's Hyperion campus, and Meta guarantees part of the campus's value back to Blue Owl.",
+   "flagged_by": "automatic",
+   "id": "blue-owl-meta",
+   "last_checked": "2026-10-31",
+   "name": "Blue Owl and Meta"
+  },
+  {
+   "deals": [
+    "nvidia-coreweave-capacity-2025-09",
+    "nvidia-coreweave-equity-2026-01",
+    "coreweave-openai-equity-2025-03",
+    "openai-nvidia-systems-2025-09"
+   ],
+   "explanation": "NVIDIA backs CoreWeave with equity and a $6.3B capacity backstop, CoreWeave gives OpenAI $350M of its stock, and OpenAI commits to deploy NVIDIA systems.",
+   "flagged_by": "automatic",
+   "id": "coreweave-nvidia-openai",
+   "last_checked": "2026-10-31",
+   "name": "NVIDIA, CoreWeave and OpenAI"
+  },
+  {
+   "deals": [
+    "coreweave-openai-equity-2025-03",
+    "openai-coreweave-compute-2025-03",
+    "openai-coreweave-compute-2025-05",
+    "openai-coreweave-compute-2025-09"
+   ],
+   "explanation": "CoreWeave issues OpenAI $350M of its own stock, and OpenAI commits up to $22.4B across three CoreWeave compute contracts.",
    "flagged_by": "automatic",
    "id": "coreweave-openai",
    "last_checked": "2026-10-31",
@@ -1972,6 +2039,18 @@
    "id": "microsoft-openai",
    "last_checked": "2026-10-31",
    "name": "Microsoft and OpenAI"
+  },
+  {
+   "deals": [
+    "nvidia-openai-equity-2025-09",
+    "nvidia-openai-equity-2026-02",
+    "openai-nvidia-systems-2025-09"
+   ],
+   "explanation": "NVIDIA commits up to $100B and then $30B to OpenAI, and OpenAI commits to deploy at least 10 GW of NVIDIA systems.",
+   "flagged_by": "automatic",
+   "id": "nvidia-openai",
+   "last_checked": "2026-10-31",
+   "name": "NVIDIA and OpenAI"
   }
  ],
  "sources": [

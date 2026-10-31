@@ -42,6 +42,7 @@ Settled questions. Do not reopen without Carson. Add a dated line for every new 
 - F09 (session 6) Systems, power and data centers added 14 deals and 1 loop, 39 deals in all. Neoclouds carry most of the dollar value (CoreWeave contracts from OpenAI, Meta and NVIDIA). Power deals are 20-year nuclear PPAs that state megawatts but never a dollar value. Systems makers (Foxconn, Supermicro, Dell, Arista, Coherent) have no sourced money edges with tracked companies yet. Syndicated loans keep the lead lender as payer with no amount, since the lead's own share is not disclosed.
 - F10 (session 7) Hyperscale and labs added 10 deals and 1 loop, 49 deals in all. OpenAI's $250B Azure and $38B AWS commitments are the largest stated figures. Microsoft's April 2026 amendment ended its exclusivity and its revenue share payments to OpenAI, with no dollar figures. Several deals carry only words ("tens of billions"), so no amount is stored. Meta's Google Cloud deal rests on one unnamed source and is stored as rumored (hidden). xAI has no sourced edges yet.
 - F11 (session 8) The capital rail added 13 deals, 62 deals in all. SoftBank has paid $60B into OpenAI across two rounds, the largest paid flows tracked. Stargate's four funders state no individual amounts, so their edges carry none; the $500B plan sits on no edge. Joint ventures (Meta and Blue Owl, Crusoe and Blue Owl) are drawn as edges to the operating company, with the JV size in notes when a partner's share is not stated. NVIDIA's February 2026 $30B commitment to OpenAI is kept separate from its September 2025 letter of intent because no source links the two.
+- F12 (session 9) Loop detection now runs in CI (scripts/loops.py --check): any two or three companies with money flowing out and back form a loop, using every deal that is not rumored, terminated or superseded. It found 11 loops; 5 were new (Google and Anthropic, Amazon and OpenAI, Blue Owl and Meta, NVIDIA and OpenAI, and the NVIDIA, CoreWeave and OpenAI ring) and 2 existing loops were missing deals. NVIDIA and OpenAI only closes because session 9 added OpenAI's 10 GW NVIDIA systems commitment from the same September 2025 release, with no dollar value. Anthropic's 1 GW of NVIDIA systems is not an edge, because the release does not say Anthropic buys from NVIDIA rather than through Azure. CoreWeave's GPU purchases from NVIDIA have no sourced edge yet. The homepage line still holds: 57 of 62 visible deals are commitments and 5 are paid.
 
 ## Approved at Gate 1 (D16): from Step 1 (2026-10-27)
 - P01 Five views (chain overview, money flows, loops, company card, what changed) plus Method and About the data pages. No network-graph home screen, no time-series charts, no prices in the MVP.
@@ -76,11 +77,15 @@ Settled questions. Do not reopen without Carson. Add a dated line for every new 
 - D24 (2026-10-31, "Merge and start 6") PR #4 merged to main. Session 6 approved; stop and report before session 7. Pages stays off.
 - D25 (2026-10-31, "Yes to all three") Multi-lender loans: the full facility amount goes on the lead lender's edge, flagged syndicate_total and labeled "syndicate total" on the site. Other lenders in the same facility get no amount, so nothing is double counted. Closes O15. PR #5 merged; session 7 approved; stop and report before session 8. Pages stays off.
 - D26 (2026-10-31, "Merge and start 8") PR #6 merged to main. Session 8 approved. Pages stays off.
+- D27 (2026-10-31, "Merge and run both") PR #7 merged to main. Sessions 9 (loops) and 10 (spot check) approved back to back; stop at Gate 3. Pages stays off.
 
 ## Proposed at Gate 2 (2026-10-31), awaiting Carson's feedback
 - P21 Company list: the 47 in data/companies-list.csv stand. Bench promotion order if a sourced edge appears: Core Scientific, Humain, Bloom Energy.
 - P22 Schema: six JSON Schemas in schema/ plus data/taxonomy.json. Financials are JSON records like the rest, not a CSV, so one validator covers everything.
 - P23 Loop sides are shown gross each way and never netted when either side is a cap or multi-year total. Company rankings use the largest single deal, never a sum of caps.
+
+## Proposed at Gate 3 (2026-10-31), awaiting Carson
+- P25 A loop is two or three companies with money flowing out and back, found automatically from non-rumored, live deals. Its record lists every such deal along the cycle, not only the first matching pair. Three-company rings are tagged even when two of the companies already form a loop.
 
 ## Open (need Carson)
 - O14 Confirm P21 to P23 (PRs merged per D23).

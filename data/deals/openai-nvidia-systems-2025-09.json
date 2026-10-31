@@ -1,0 +1,17 @@
+{
+ "id": "openai-nvidia-systems-2025-09",
+ "payer": "openai",
+ "payee": "nvidia",
+ "type": "purchase_commitment",
+ "announced": "2025-09-22",
+ "amount_basis": "committed",
+ "confidence": "company_stated",
+ "status": "announced",
+ "summary": "OpenAI to deploy at least 10 GW of NVIDIA systems, first 1 GW on Vera Rubin in the second half of 2026; letter of intent. No dollar value stated.",
+ "as_of": "2025-09-22",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "nvidia-openai-2025-09-22"
+ ],
+ "notes": "The release does not say whether OpenAI buys the systems directly or through cloud partners. NVIDIA's investment is paid in step with each gigawatt deployed."
+}
