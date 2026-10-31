@@ -1,0 +1,733 @@
+{
+ "run_at": "2026-10-31T20:36:09+00:00",
+ "sec": {
+  "asml": {
+   "ticker": "ASML",
+   "cik": "0000937966",
+   "sec_name": "ASML HOLDING NV",
+   "tickers": [
+    "ASML",
+    "ASMLF"
+   ],
+   "sic": "Special Industry Machinery, NEC",
+   "incorporated": "",
+   "business_address": "Netherlands",
+   "latest_annual": {
+    "form": "20-F",
+    "filed": "2026-02-25"
+   }
+  },
+  "applied-materials": {
+   "ticker": "AMAT",
+   "cik": "0000006951",
+   "sec_name": "APPLIED MATERIALS INC /DE",
+   "tickers": [
+    "AMAT"
+   ],
+   "sic": "Semiconductors & Related Devices",
+   "incorporated": "DC",
+   "business_address": "CA",
+   "latest_annual": {
+    "form": "10-K",
+    "filed": "2025-12-12"
+   }
+  },
+  "lam-research": {
+   "ticker": "LRCX",
+   "cik": "0000707549",
+   "sec_name": "LAM RESEARCH CORP",
+   "tickers": [
+    "LRCX"
+   ],
+   "sic": "Special Industry Machinery, NEC",
+   "incorporated": "DE",
+   "business_address": "CA",
+   "latest_annual": {
+    "form": "10-K",
+    "filed": "2026-08-07"
+   }
+  },
+  "nvidia": {
+   "ticker": "NVDA",
+   "cik": "0001045810",
+   "sec_name": "NVIDIA CORP",
+   "tickers": [
+    "NVDA"
+   ],
+   "sic": "Semiconductors & Related Devices",
+   "incorporated": "DE",
+   "business_address": "CA",
+   "latest_annual": {
+    "form": "10-K",
+    "filed": "2026-02-25"
+   }
+  },
+  "amd": {
+   "ticker": "AMD",
+   "cik": "0000002488",
+   "sec_name": "ADVANCED MICRO DEVICES INC",
+   "tickers": [
+    "AMD"
+   ],
+   "sic": "Semiconductors & Related Devices",
+   "incorporated": "DE",
+   "business_address": "CA",
+   "latest_annual": {
+    "form": "10-K",
+    "filed": "2026-02-04"
+   }
+  },
+  "broadcom": {
+   "ticker": "AVGO",
+   "cik": "0001730168",
+   "sec_name": "Broadcom Inc.",
+   "tickers": [
+    "AVGO"
+   ],
+   "sic": "Semiconductors & Related Devices",
+   "incorporated": "",
+   "business_address": "CA",
+   "latest_annual": {
+    "form": "10-K",
+    "filed": "2025-12-18"
+   }
+  },
+  "arm": {
+   "ticker": "ARM",
+   "cik": "0001973239",
+   "sec_name": "ARM HOLDINGS PLC /UK",
+   "tickers": [
+    "ARM"
+   ],
+   "sic": "Semiconductors & Related Devices",
+   "incorporated": "United Kingdom",
+   "business_address": "United Kingdom",
+   "latest_annual": {
+    "form": "20-F",
+    "filed": "2026-05-26"
+   }
+  },
+  "intel": {
+   "ticker": "INTC",
+   "cik": "0000050863",
+   "sec_name": "INTEL CORP",
+   "tickers": [
+    "INTC"
+   ],
+   "sic": "Semiconductors & Related Devices",
+   "incorporated": "DE",
+   "business_address": "CA",
+   "latest_annual": {
+    "form": "10-K",
+    "filed": "2026-01-23"
+   }
+  },
+  "tsmc": {
+   "ticker": "TSM",
+   "cik": "0001046179",
+   "sec_name": "TAIWAN SEMICONDUCTOR MANUFACTURING CO LTD",
+   "tickers": [
+    "TSM",
+    "TSMWF"
+   ],
+   "sic": "Semiconductors & Related Devices",
+   "incorporated": "",
+   "business_address": null,
+   "latest_annual": {
+    "form": "20-F",
+    "filed": "2026-04-16"
+   }
+  },
+  "micron": {
+   "ticker": "MU",
+   "cik": "0000723125",
+   "sec_name": "MICRON TECHNOLOGY INC",
+   "tickers": [
+    "MU"
+   ],
+   "sic": "Semiconductors & Related Devices",
+   "incorporated": "DE",
+   "business_address": "ID",
+   "latest_annual": {
+    "form": "10-K",
+    "filed": "2026-10-09"
+   }
+  },
+  "supermicro": {
+   "ticker": "SMCI",
+   "cik": "0001375365",
+   "sec_name": "Super Micro Computer, Inc.",
+   "tickers": [
+    "SMCI",
+    "SMCIP"
+   ],
+   "sic": "Electronic Computers",
+   "incorporated": "CA",
+   "business_address": "CA",
+   "latest_annual": {
+    "form": "10-K",
+    "filed": "2026-08-31"
+   }
+  },
+  "dell": {
+   "ticker": "DELL",
+   "cik": "0001571996",
+   "sec_name": "Dell Technologies Inc.",
+   "tickers": [
+    "DELL"
+   ],
+   "sic": "Electronic Computers",
+   "incorporated": "TX",
+   "business_address": "TX",
+   "latest_annual": {
+    "form": "10-K",
+    "filed": "2026-03-16"
+   }
+  },
+  "arista": {
+   "ticker": "ANET",
+   "cik": "0001596532",
+   "sec_name": "Arista Networks, Inc.",
+   "tickers": [
+    "ANET"
+   ],
+   "sic": "Computer Communications Equipment",
+   "incorporated": "DE",
+   "business_address": "CA",
+   "latest_annual": {
+    "form": "10-K",
+    "filed": "2026-02-17"
+   }
+  },
+  "coherent": {
+   "ticker": "COHR",
+   "cik": "0000820318",
+   "sec_name": "COHERENT CORP.",
+   "tickers": [
+    "COHR"
+   ],
+   "sic": "Optical Instruments & Lenses",
+   "incorporated": "PA",
+   "business_address": "PA",
+   "latest_annual": {
+    "form": "10-K",
+    "filed": "2026-08-14"
+   }
+  },
+  "vertiv": {
+   "ticker": "VRT",
+   "cik": "0001674101",
+   "sec_name": "Vertiv Holdings Co",
+   "tickers": [
+    "VRT"
+   ],
+   "sic": "Electronic Components, NEC",
+   "incorporated": "DE",
+   "business_address": "OH",
+   "latest_annual": {
+    "form": "10-K",
+    "filed": "2026-02-13"
+   }
+  },
+  "ge-vernova": {
+   "ticker": "GEV",
+   "cik": "0001996810",
+   "sec_name": "GE Vernova Inc.",
+   "tickers": [
+    "GEV"
+   ],
+   "sic": "Electronic & Other Electrical Equipment (No Computer Equip)",
+   "incorporated": "DE",
+   "business_address": "MA",
+   "latest_annual": {
+    "form": "10-K",
+    "filed": "2026-01-29"
+   }
+  },
+  "constellation": {
+   "ticker": "CEG",
+   "cik": "0001868275",
+   "sec_name": "Constellation Energy Corp",
+   "tickers": [
+    "CEG"
+   ],
+   "sic": "Electric Services",
+   "incorporated": "PA",
+   "business_address": "MD",
+   "latest_annual": {
+    "form": "10-K",
+    "filed": "2026-02-24"
+   }
+  },
+  "vistra": {
+   "ticker": "VST",
+   "cik": "0001692819",
+   "sec_name": "Vistra Corp.",
+   "tickers": [
+    "VST"
+   ],
+   "sic": "Electric Services",
+   "incorporated": "DE",
+   "business_address": "TX",
+   "latest_annual": {
+    "form": "10-K",
+    "filed": "2026-02-27"
+   }
+  },
+  "coreweave": {
+   "ticker": "CRWV",
+   "cik": "0001769628",
+   "sec_name": "CoreWeave, Inc.",
+   "tickers": [
+    "CRWV"
+   ],
+   "sic": "Services-Prepackaged Software",
+   "incorporated": "DE",
+   "business_address": "NJ",
+   "latest_annual": {
+    "form": "10-K",
+    "filed": "2026-03-02"
+   }
+  },
+  "nebius": {
+   "ticker": "NBIS",
+   "cik": "0001513845",
+   "sec_name": "Nebius Group N.V.",
+   "tickers": [
+    "NBIS"
+   ],
+   "sic": "Services-Computer Programming, Data Processing, Etc.",
+   "incorporated": "Netherlands",
+   "business_address": null,
+   "latest_annual": {
+    "form": "20-F",
+    "filed": "2026-04-30"
+   }
+  },
+  "digital-realty": {
+   "ticker": "DLR",
+   "cik": "0001297996",
+   "sec_name": "DIGITAL REALTY TRUST, INC.",
+   "tickers": [
+    "DLR",
+    "DLR-PK",
+    "DLR-PJ",
+    "DLR-PL"
+   ],
+   "sic": "Real Estate Investment Trusts",
+   "incorporated": "MD",
+   "business_address": "TX",
+   "latest_annual": {
+    "form": "10-K",
+    "filed": "2026-02-13"
+   }
+  },
+  "microsoft": {
+   "ticker": "MSFT",
+   "cik": "0000789019",
+   "sec_name": "MICROSOFT CORP",
+   "tickers": [
+    "MSFT"
+   ],
+   "sic": "Services-Prepackaged Software",
+   "incorporated": "WA",
+   "business_address": "WA",
+   "latest_annual": {
+    "form": "10-K",
+    "filed": "2026-07-29"
+   }
+  },
+  "amazon": {
+   "ticker": "AMZN",
+   "cik": "0001018724",
+   "sec_name": "AMAZON COM INC",
+   "tickers": [
+    "AMZN"
+   ],
+   "sic": "Retail-Catalog & Mail-Order Houses",
+   "incorporated": "DE",
+   "business_address": "WA",
+   "latest_annual": {
+    "form": "10-K",
+    "filed": "2026-02-06"
+   }
+  },
+  "alphabet": {
+   "ticker": "GOOGL",
+   "cik": "0001652044",
+   "sec_name": "Alphabet Inc.",
+   "tickers": [
+    "GOOGL",
+    "GOOG",
+    "GOOGM",
+    "GOOGN"
+   ],
+   "sic": "Services-Computer Programming, Data Processing, Etc.",
+   "incorporated": "DE",
+   "business_address": "CA",
+   "latest_annual": {
+    "form": "10-K",
+    "filed": "2026-02-05"
+   }
+  },
+  "oracle": {
+   "ticker": "ORCL",
+   "cik": "0001341439",
+   "sec_name": "ORACLE CORP",
+   "tickers": [
+    "ORCL",
+    "ORCL-PD"
+   ],
+   "sic": "Services-Prepackaged Software",
+   "incorporated": "",
+   "business_address": "TX",
+   "latest_annual": {
+    "form": "10-K",
+    "filed": "2026-06-22"
+   }
+  },
+  "meta": {
+   "ticker": "META",
+   "cik": "0001326801",
+   "sec_name": "Meta Platforms, Inc.",
+   "tickers": [
+    "META"
+   ],
+   "sic": "Services-Computer Programming, Data Processing, Etc.",
+   "incorporated": "DE",
+   "business_address": "CA",
+   "latest_annual": {
+    "form": "10-K",
+    "filed": "2026-01-29"
+   }
+  },
+  "salesforce": {
+   "ticker": "CRM",
+   "cik": "0001108524",
+   "sec_name": "Salesforce, Inc.",
+   "tickers": [
+    "CRM"
+   ],
+   "sic": "Services-Prepackaged Software",
+   "incorporated": "DE",
+   "business_address": "CA",
+   "latest_annual": {
+    "form": "10-K",
+    "filed": "2026-03-02"
+   }
+  },
+  "palantir": {
+   "ticker": "PLTR",
+   "cik": "0001321655",
+   "sec_name": "Palantir Technologies Inc.",
+   "tickers": [
+    "PLTR"
+   ],
+   "sic": "Services-Prepackaged Software",
+   "incorporated": "",
+   "business_address": "FL",
+   "latest_annual": {
+    "form": "10-K",
+    "filed": "2026-02-17"
+   }
+  },
+  "blue-owl": {
+   "ticker": "OWL",
+   "cik": "0001823945",
+   "sec_name": "BLUE OWL CAPITAL INC.",
+   "tickers": [
+    "OWL"
+   ],
+   "sic": "Investment Advice",
+   "incorporated": "NJ",
+   "business_address": "NY",
+   "latest_annual": {
+    "form": "10-K",
+    "filed": "2026-02-19"
+   }
+  },
+  "blackstone": {
+   "ticker": "BX",
+   "cik": "0001393818",
+   "sec_name": "Blackstone Inc.",
+   "tickers": [
+    "BX"
+   ],
+   "sic": "Investment Advice",
+   "incorporated": "DE",
+   "business_address": "NY",
+   "latest_annual": {
+    "form": "10-K",
+    "filed": "2026-02-27"
+   }
+  },
+  "brookfield": {
+   "ticker": "BN",
+   "cik": "0001001085",
+   "sec_name": "BROOKFIELD Corp /ON/",
+   "tickers": [
+    "BN",
+    "BAMGF",
+    "BAMKF",
+    "BKAMF",
+    "BKFAF",
+    "BKFDF",
+    "BKFOF",
+    "BKFPF",
+    "BKPA",
+    "BNH",
+    "BNJ",
+    "BRCFF",
+    "BRFAF",
+    "BRFCF",
+    "BROXF",
+    "BRPSF",
+    "BXDIF"
+   ],
+   "sic": "Opeators of  Nonresidential Buildings",
+   "incorporated": "Ontario, Canada",
+   "business_address": "Ontario, Canada",
+   "latest_annual": {
+    "form": "40-F",
+    "filed": "2026-03-18"
+   }
+  }
+ },
+ "websites": {
+  "asml": {
+   "url": "https://www.asml.com/",
+   "status": 200,
+   "final_url": "https://www.asml.com/en"
+  },
+  "applied-materials": {
+   "url": "https://www.appliedmaterials.com/",
+   "status": 403,
+   "final_url": "https://www.appliedmaterials.com/"
+  },
+  "tokyo-electron": {
+   "url": "https://www.tel.com/",
+   "status": 200,
+   "final_url": "https://www.tel.com/"
+  },
+  "lam-research": {
+   "url": "https://www.lamresearch.com/",
+   "status": 200,
+   "final_url": "https://www.lamresearch.com/"
+  },
+  "nvidia": {
+   "url": "https://www.nvidia.com/",
+   "status": 200,
+   "final_url": "https://www.nvidia.com/en-us/"
+  },
+  "amd": {
+   "url": "https://www.amd.com/",
+   "status": 200,
+   "final_url": "https://www.amd.com/en.html"
+  },
+  "broadcom": {
+   "url": "https://www.broadcom.com/",
+   "status": 200,
+   "final_url": "https://www.broadcom.com/"
+  },
+  "arm": {
+   "url": "https://www.arm.com/",
+   "status": 200,
+   "final_url": "https://www.arm.com/"
+  },
+  "intel": {
+   "url": "https://www.intel.com/",
+   "status": 403,
+   "final_url": "https://www.intel.com/"
+  },
+  "tsmc": {
+   "url": "https://www.tsmc.com/",
+   "status": 403,
+   "final_url": "https://www.tsmc.com/"
+  },
+  "sk-hynix": {
+   "url": "https://www.skhynix.com/",
+   "status": 200,
+   "final_url": "https://www.skhynix.com/"
+  },
+  "samsung": {
+   "url": "https://semiconductor.samsung.com/",
+   "status": 200,
+   "final_url": "https://semiconductor.samsung.com/"
+  },
+  "micron": {
+   "url": "https://www.micron.com/",
+   "status": 200,
+   "final_url": "https://www.micron.com/"
+  },
+  "foxconn": {
+   "url": "https://www.foxconn.com/",
+   "status": 200,
+   "final_url": "https://www.foxconn.com/"
+  },
+  "supermicro": {
+   "url": "https://www.supermicro.com/",
+   "status": 403,
+   "final_url": "https://www.supermicro.com/"
+  },
+  "dell": {
+   "url": "https://www.dell.com/",
+   "status": 200,
+   "final_url": "https://www.dell.com/en-us"
+  },
+  "arista": {
+   "url": "https://www.arista.com/",
+   "status": 200,
+   "final_url": "https://www.arista.com/en/"
+  },
+  "coherent": {
+   "url": "https://www.coherent.com/",
+   "status": 200,
+   "final_url": "https://www.coherent.com/"
+  },
+  "vertiv": {
+   "url": "https://www.vertiv.com/",
+   "status": 200,
+   "final_url": "https://www.vertiv.com/en-us/"
+  },
+  "ge-vernova": {
+   "url": "https://www.gevernova.com/",
+   "status": 200,
+   "final_url": "https://www.gevernova.com/"
+  },
+  "constellation": {
+   "url": "https://www.constellationenergy.com/",
+   "status": 200,
+   "final_url": "https://www.constellationenergy.com/"
+  },
+  "vistra": {
+   "url": "https://vistracorp.com/",
+   "status": 200,
+   "final_url": "https://vistracorp.com/"
+  },
+  "coreweave": {
+   "url": "https://www.coreweave.com/",
+   "status": 200,
+   "final_url": "https://www.coreweave.com/"
+  },
+  "nebius": {
+   "url": "https://nebius.com/",
+   "status": 200,
+   "final_url": "https://nebius.com/"
+  },
+  "crusoe": {
+   "url": "https://www.crusoe.ai/",
+   "status": 200,
+   "final_url": "https://www.crusoe.ai/"
+  },
+  "lambda": {
+   "url": "https://lambda.ai/",
+   "status": 200,
+   "final_url": "https://lambda.ai/"
+  },
+  "digital-realty": {
+   "url": "https://www.digitalrealty.com/",
+   "status": 200,
+   "final_url": "https://www.digitalrealty.com/"
+  },
+  "stargate": {
+   "url": "https://openai.com/index/announcing-the-stargate-project/",
+   "status": 403,
+   "final_url": "https://openai.com/index/announcing-the-stargate-project/"
+  },
+  "microsoft": {
+   "url": "https://www.microsoft.com/",
+   "status": 200,
+   "final_url": "https://www.microsoft.com/en-us"
+  },
+  "amazon": {
+   "url": "https://www.aboutamazon.com/",
+   "status": 200,
+   "final_url": "https://www.aboutamazon.com/"
+  },
+  "alphabet": {
+   "url": "https://abc.xyz/",
+   "status": 200,
+   "final_url": "https://abc.xyz/"
+  },
+  "oracle": {
+   "url": "https://www.oracle.com/",
+   "status": 403,
+   "final_url": "https://www.oracle.com/"
+  },
+  "meta": {
+   "url": "https://about.meta.com/",
+   "status": 200,
+   "final_url": "https://www.meta.com/about/?utm_source=about.meta.com&utm_medium=redirect"
+  },
+  "openai": {
+   "url": "https://openai.com/",
+   "status": 403,
+   "final_url": "https://openai.com/"
+  },
+  "anthropic": {
+   "url": "https://www.anthropic.com/",
+   "status": 200,
+   "final_url": "https://www.anthropic.com/"
+  },
+  "xai": {
+   "url": "https://x.ai/",
+   "status": 200,
+   "final_url": "https://x.ai/"
+  },
+  "mistral": {
+   "url": "https://mistral.ai/",
+   "status": 200,
+   "final_url": "https://mistral.ai/"
+  },
+  "salesforce": {
+   "url": "https://www.salesforce.com/",
+   "status": 200,
+   "final_url": "https://www.salesforce.com/?bc=OTH"
+  },
+  "perplexity": {
+   "url": "https://www.perplexity.ai/",
+   "status": 403,
+   "final_url": "https://www.perplexity.ai/"
+  },
+  "anysphere": {
+   "url": "https://cursor.com/",
+   "status": 200,
+   "final_url": "https://cursor.com/"
+  },
+  "palantir": {
+   "url": "https://www.palantir.com/",
+   "status": 200,
+   "final_url": "https://www.palantir.com/"
+  },
+  "softbank": {
+   "url": "https://group.softbank/en",
+   "status": 200,
+   "final_url": "https://group.softbank/en"
+  },
+  "mgx": {
+   "url": "https://www.mgx.ae/",
+   "status": 200,
+   "final_url": "https://www.mgx.ae/"
+  },
+  "blue-owl": {
+   "url": "https://www.blueowl.com/",
+   "status": 200,
+   "final_url": "https://www.blueowl.com/"
+  },
+  "blackstone": {
+   "url": "https://www.blackstone.com/",
+   "status": 403,
+   "final_url": "https://www.blackstone.com/"
+  },
+  "brookfield": {
+   "url": "https://www.brookfield.com/",
+   "status": 200,
+   "final_url": "https://www.brookfield.com/"
+  },
+  "us-government": {
+   "url": "https://www.nist.gov/chips",
+   "status": 200,
+   "final_url": "https://www.nist.gov/chips"
+  }
+ }
+}
