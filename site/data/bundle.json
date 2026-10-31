@@ -29,14 +29,15 @@
    "last_checked": "2026-10-31",
    "layer": "hyperscale",
    "name": "Amazon",
-   "one_line": "Runs AWS, a major investor in Anthropic, and designs its own AI chips.",
+   "one_line": "Runs AWS, a major investor in Anthropic and OpenAI, and designs its own AI chips.",
    "ownership": "public",
    "sec_cik": "0001018724",
    "secondary": [
     "labs"
    ],
    "sources": [
-    "sec-amazon"
+    "sec-amazon",
+    "amazon-10q-2026-q2"
    ],
    "tickers": [
     "AMZN"
@@ -337,7 +338,7 @@
    "last_checked": "2026-10-31",
    "layer": "systems",
    "name": "Foxconn (Hon Hai)",
-   "one_line": "Taiwanese electronics assembler and the largest builder of AI servers and racks.",
+   "one_line": "Taiwanese electronics assembler and a major builder of AI servers and racks.",
    "ownership": "public",
    "sources": [
     "web-foxconn"
@@ -403,7 +404,8 @@
    "one_line": "US GPU cloud selling AI compute to labs, hyperscalers and developers.",
    "ownership": "private",
    "sources": [
-    "web-lambda"
+    "web-lambda",
+    "lambda-microsoft-2025-11-03"
    ]
   },
   {
@@ -613,7 +615,7 @@
    "last_checked": "2026-10-31",
    "layer": "memory",
    "name": "SK Hynix",
-   "one_line": "Korean memory maker and the leading supplier of high-bandwidth memory for AI chips.",
+   "one_line": "Korean maker of DRAM and NAND memory chips.",
    "ownership": "public",
    "sources": [
     "web-sk-hynix"
@@ -849,24 +851,26 @@
    "type": "equity_investment"
   },
   {
-   "amount_basis": "committed",
+   "amount_basis": "paid",
    "amount_kind": "one_time",
    "amount_usd_high": 50000000000.0,
    "amount_usd_low": 50000000000.0,
    "announced": "2026-02-27",
-   "as_of": "2026-02-27",
-   "confidence": "company_stated",
+   "as_of": "2026-07-30",
+   "confidence": "filed",
    "id": "amazon-openai-equity-2026-02",
    "last_checked": "2026-10-31",
-   "notes": "TechCrunch reports $35B of this arrives only when certain conditions are met; OpenAI's release states no conditions.",
+   "notes": "Amazon's release and its 10-Q confirm the $35B was conditional. The 10-Q shows $15.0B paid in Q1 2026, $13.7B in Q2 and the remaining $21.3B after June 30, 2026.",
    "payee": "openai",
    "payer": "amazon",
    "sources": [
     "openai-funding-2026-02-27",
+    "amazon-openai-2026-02-27",
+    "amazon-10q-2026-q2",
     "techcrunch-openai-2026-02-27"
    ],
-   "status": "announced",
-   "summary": "Amazon commits $50B to OpenAI's $110B round at $730B pre-money, alongside a multi-year strategic partnership.",
+   "status": "closed",
+   "summary": "Amazon invests $50B in OpenAI's $110B round at $730B pre-money: $15B up front and $35B once conditions were met, all paid by late July 2026.",
    "type": "equity_investment"
   },
   {
@@ -1493,7 +1497,7 @@
     "openai-funding-2026-02-27"
    ],
    "status": "announced",
-   "summary": "NVIDIA commits $30B to OpenAI's $110B round; OpenAI adds 3 GW of inference and 2 GW of training on NVIDIA Vera Rubin systems.",
+   "summary": "NVIDIA provides $30B of OpenAI's $110B round; OpenAI adds 3 GW of NVIDIA inference capacity and 2 GW of training on Vera Rubin systems.",
    "type": "equity_investment"
   },
   {
@@ -1514,6 +1518,28 @@
    "status": "signed",
    "summary": "OpenAI commits $38B over seven years for AWS compute on NVIDIA GPU clusters.",
    "term_years": 7,
+   "type": "capacity_lease"
+  },
+  {
+   "amount_basis": "committed",
+   "amount_kind": "multi_year_total",
+   "amount_usd_high": 100000000000.0,
+   "amount_usd_low": 100000000000.0,
+   "announced": "2026-02-27",
+   "as_of": "2026-07-30",
+   "confidence": "filed",
+   "id": "openai-amazon-compute-2026-02",
+   "last_checked": "2026-10-31",
+   "notes": "An expansion on top of the $38B November 2025 agreement, kept as its own edge.",
+   "payee": "amazon",
+   "payer": "openai",
+   "sources": [
+    "amazon-openai-2026-02-27",
+    "amazon-10q-2026-q2"
+   ],
+   "status": "signed",
+   "summary": "OpenAI expands its AWS commitment by $100B over eight years, including about 2 GW of Trainium capacity.",
+   "term_years": 8,
    "type": "capacity_lease"
   },
   {
@@ -1649,7 +1675,7 @@
    "confidence": "company_stated",
    "id": "openai-nvidia-systems-2025-09",
    "last_checked": "2026-10-31",
-   "notes": "The release does not say whether OpenAI buys the systems directly or through cloud partners. NVIDIA's investment is paid in step with each gigawatt deployed.",
+   "notes": "The release does not say whether OpenAI buys the systems directly or through cloud partners. NVIDIA intends to invest in step with each gigawatt deployed.",
    "payee": "nvidia",
    "payer": "openai",
    "sources": [
@@ -1950,9 +1976,10 @@
   {
    "deals": [
     "amazon-openai-equity-2026-02",
-    "openai-amazon-compute-2025-11"
+    "openai-amazon-compute-2025-11",
+    "openai-amazon-compute-2026-02"
    ],
-   "explanation": "Amazon commits $50B to OpenAI's February 2026 round, and OpenAI commits $38B to AWS compute over seven years.",
+   "explanation": "Amazon has paid $50B into OpenAI's February 2026 round, and OpenAI commits $38B and then another $100B to AWS.",
    "flagged_by": "automatic",
    "id": "amazon-openai",
    "last_checked": "2026-10-31",
@@ -2046,7 +2073,7 @@
     "nvidia-openai-equity-2026-02",
     "openai-nvidia-systems-2025-09"
    ],
-   "explanation": "NVIDIA commits up to $100B and then $30B to OpenAI, and OpenAI commits to deploy at least 10 GW of NVIDIA systems.",
+   "explanation": "NVIDIA intends to invest up to $100B (letter of intent) and then provides $30B, and OpenAI commits to deploy at least 10 GW of NVIDIA systems.",
    "flagged_by": "automatic",
    "id": "nvidia-openai",
    "last_checked": "2026-10-31",
@@ -2056,12 +2083,32 @@
  "sources": [
   {
    "accessed": "2026-10-31",
+   "filing_form": "10-Q",
+   "id": "amazon-10q-2026-q2",
+   "kind": "filing",
+   "label": "Amazon 10-Q for the quarter ended June 30, 2026",
+   "locator": "Notes on investments and commitments",
+   "published": "2026-07-30",
+   "publisher": "SEC EDGAR",
+   "url": "https://www.sec.gov/Archives/edgar/data/0001018724/000101872426000026/amzn-20260630.htm"
+  },
+  {
+   "accessed": "2026-10-31",
    "id": "amazon-anthropic-2026-04-20",
    "kind": "company",
    "label": "Amazon release: $5B more in Anthropic, up to $20B later",
    "published": "2026-04-20",
    "publisher": "Amazon",
    "url": "https://www.aboutamazon.com/news/company-news/amazon-invests-additional-5-billion-anthropic-ai"
+  },
+  {
+   "accessed": "2026-10-31",
+   "id": "amazon-openai-2026-02-27",
+   "kind": "company",
+   "label": "Amazon release: OpenAI and Amazon strategic partnership",
+   "published": "2026-02-27",
+   "publisher": "Amazon",
+   "url": "https://press.aboutamazon.com/2026/2/openai-and-amazon-announce-strategic-partnership"
   },
   {
    "accessed": "2026-10-31",

@@ -3,9 +3,10 @@
  "name": "Amazon and OpenAI",
  "deals": [
   "amazon-openai-equity-2026-02",
-  "openai-amazon-compute-2025-11"
+  "openai-amazon-compute-2025-11",
+  "openai-amazon-compute-2026-02"
  ],
  "flagged_by": "automatic",
- "explanation": "Amazon commits $50B to OpenAI's February 2026 round, and OpenAI commits $38B to AWS compute over seven years.",
+ "explanation": "Amazon has paid $50B into OpenAI's February 2026 round, and OpenAI commits $38B and then another $100B to AWS.",
  "last_checked": "2026-10-31"
 }

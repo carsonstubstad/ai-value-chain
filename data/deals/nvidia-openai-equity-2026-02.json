@@ -10,7 +10,7 @@
  "amount_kind": "one_time",
  "confidence": "company_stated",
  "status": "announced",
- "summary": "NVIDIA commits $30B to OpenAI's $110B round; OpenAI adds 3 GW of inference and 2 GW of training on NVIDIA Vera Rubin systems.",
+ "summary": "NVIDIA provides $30B of OpenAI's $110B round; OpenAI adds 3 GW of NVIDIA inference capacity and 2 GW of training on Vera Rubin systems.",
  "as_of": "2026-02-27",
  "last_checked": "2026-10-31",
  "sources": [
