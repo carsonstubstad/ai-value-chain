@@ -17,6 +17,7 @@ import json
 import os
 import sys
 import time
+import urllib.error
 import urllib.parse
 import urllib.request
 from datetime import datetime, timezone
@@ -62,7 +63,20 @@ def probe_gdelt():
         "timespan": "7d", "sort": "datedesc",
     }
     url = "https://api.gdeltproject.org/api/v2/doc/doc?" + urllib.parse.urlencode(params)
-    status, body = get(url)
+    # GDELT asks for at most one request every 5 seconds and often answers 429 to
+    # shared cloud runners, so back off and retry before reporting an error.
+    attempts = []
+    for wait in (0, 10, 30, 60):
+        time.sleep(wait)
+        try:
+            status, body = get(url)
+            break
+        except urllib.error.HTTPError as exc:
+            attempts.append(exc.code)
+            if exc.code != 429:
+                raise
+    else:
+        return {"status": "error", "endpoint": url, "reason": f"HTTP 429 on all {len(attempts)} attempts"}
     try:
         data = json.loads(body)
     except json.JSONDecodeError:
@@ -71,7 +85,7 @@ def probe_gdelt():
         {"title": a.get("title"), "url": a.get("url"), "domain": a.get("domain"), "seen": a.get("seendate")}
         for a in data.get("articles", [])
     ]
-    return {"status": "ok", "http": status, "endpoint": url, "count": len(items), "items": items}
+    return {"status": "ok", "http": status, "endpoint": url, "retries_429": len(attempts), "count": len(items), "items": items}
 
 
 def probe_epoch():
