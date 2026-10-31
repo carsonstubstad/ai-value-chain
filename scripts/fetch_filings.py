@@ -25,7 +25,7 @@ from datetime import datetime, timezone
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 FORMS = [("10-Q",), ("10-K", "20-F", "40-F")]
 CLOSED = {"closed", "terminated", "superseded"}
-EXTRA = {"debt_or_gpu_backed_loan": ["delayed draw"]}
+EXTRA = {"debt_or_gpu_backed_loan": ["delayed draw"], "jv_contribution": ["joint venture"]}
 WINDOW = 450
 MAX_PASSAGES = 60
 
@@ -130,7 +130,9 @@ def main():
                                 f"{f['accession'].replace('-', '')}/{f['doc']}")
                     time.sleep(0.3)
                     try:
-                        f["passages"] = passages(to_text(get(f["url"], ua)), entry["terms"])
+                        text = to_text(get(f["url"], ua))
+                        f["chars"] = len(text)
+                        f["passages"] = passages(text, entry["terms"])
                     except Exception as exc:
                         f["error"] = f"{type(exc).__name__}: {exc}"[:200]
                     rec["filings"].append(f)
