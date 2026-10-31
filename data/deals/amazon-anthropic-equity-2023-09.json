@@ -1,0 +1,20 @@
+{
+ "id": "amazon-anthropic-equity-2023-09",
+ "payer": "amazon",
+ "payee": "anthropic",
+ "type": "equity_investment",
+ "announced": "2023-09-25",
+ "amount_usd_high": 4000000000.0,
+ "amount_basis": "committed",
+ "amount_kind": "cap",
+ "confidence": "reported",
+ "status": "closed",
+ "summary": "Amazon invests up to $4B in Anthropic for a minority stake, starting with $1.25B.",
+ "as_of": "2024-11-22",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "techcrunch-amazon-anthropic-2023-09-25",
+  "ap-amazon-anthropic-2024-11-22"
+ ],
+ "notes": "AP reports Amazon's total at $8B by November 2024 including this round, which supports that the full $4B was invested."
+}

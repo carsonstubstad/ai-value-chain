@@ -1,0 +1,21 @@
+{
+ "id": "microsoft-openai-equity-2019",
+ "payer": "microsoft",
+ "payee": "openai",
+ "type": "equity_investment",
+ "announced": "2025-09-30",
+ "amount_usd_low": 13000000000.0,
+ "amount_usd_high": 13000000000.0,
+ "amount_basis": "committed",
+ "amount_kind": "multi_year_total",
+ "confidence": "filed",
+ "status": "closed",
+ "summary": "Microsoft's total funding commitments to OpenAI are $13B, of which $11.6B was funded by September 30, 2025; about a 27% stake after the October 2025 recapitalization.",
+ "as_of": "2025-09-30",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "msft-10q-2025-09-30",
+  "msft-openai-2025-10-28"
+ ],
+ "notes": "Cumulative commitments made in tranches since 2019, as reported in Microsoft's 10-Q. The announced date is the as-of date of that figure, not of any single tranche. The roughly $135B value of the stake is a valuation, not money paid, so it is not stored as an amount."
+}

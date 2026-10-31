@@ -1,0 +1,20 @@
+{
+ "id": "meta-alphabet-cloud-2025-08",
+ "payer": "meta",
+ "payee": "alphabet",
+ "type": "capacity_lease",
+ "announced": "2025-08-22",
+ "amount_usd_low": 10000000000.0,
+ "amount_basis": "committed",
+ "amount_kind": "multi_year_total",
+ "term_years": 6,
+ "confidence": "rumored",
+ "status": "announced",
+ "summary": "Meta reportedly signs a six-year Google Cloud deal worth over $10B, per one unnamed source. Neither company confirmed.",
+ "as_of": "2025-08-22",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "reuters-meta-google-2025-08-22"
+ ],
+ "notes": "Rumored: single unnamed source, hidden by default."
+}

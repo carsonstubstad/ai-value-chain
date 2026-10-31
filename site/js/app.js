@@ -6,9 +6,10 @@ const B = (v) => "$" + (v / 1e9).toFixed(v % 1e9 ? 1 : 0) + "B";
 export function amountText(d) {
   const lo = d.amount_usd_low, hi = d.amount_usd_high;
   if (lo == null && hi == null) return "not disclosed";
-  if (lo == null) return "up to " + B(hi);
-  if (hi == null) return "over " + B(lo);
-  return lo === hi ? B(lo) : B(lo) + " to " + B(hi);
+  const tag = d.syndicate_total ? " (syndicate total)" : "";
+  if (lo == null) return "up to " + B(hi) + tag;
+  if (hi == null) return "over " + B(lo) + tag;
+  return (lo === hi ? B(lo) : B(lo) + " to " + B(hi)) + tag;
 }
 
 const highEnd = (d) => d.amount_usd_high ?? d.amount_usd_low ?? 0;

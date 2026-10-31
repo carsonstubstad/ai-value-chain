@@ -1,0 +1,21 @@
+{
+ "id": "openai-microsoft-azure-2025-10",
+ "payer": "openai",
+ "payee": "microsoft",
+ "type": "purchase_commitment",
+ "announced": "2025-10-28",
+ "amount_usd_low": 250000000000.0,
+ "amount_usd_high": 250000000000.0,
+ "amount_basis": "committed",
+ "amount_kind": "multi_year_total",
+ "confidence": "company_stated",
+ "status": "signed",
+ "summary": "OpenAI commits to buy an incremental $250B of Azure services as part of its recapitalization.",
+ "as_of": "2026-04-27",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "msft-openai-2025-10-28",
+  "msft-openai-2026-04-27"
+ ],
+ "notes": "Term not stated. In April 2026 Microsoft's license became non-exclusive and OpenAI may serve products on any cloud; the April post states no change to this figure."
+}

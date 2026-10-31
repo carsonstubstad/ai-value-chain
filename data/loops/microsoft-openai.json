@@ -1,0 +1,12 @@
+{
+ "id": "microsoft-openai",
+ "name": "Microsoft and OpenAI",
+ "deals": [
+  "microsoft-openai-equity-2019",
+  "openai-microsoft-azure-2025-10",
+  "openai-microsoft-revshare-2026-04"
+ ],
+ "flagged_by": "automatic",
+ "explanation": "Microsoft funds OpenAI with equity, and OpenAI commits to buy Azure and pays Microsoft a revenue share.",
+ "last_checked": "2026-10-31"
+}

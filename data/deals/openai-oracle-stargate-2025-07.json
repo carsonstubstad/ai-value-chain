@@ -1,0 +1,17 @@
+{
+ "id": "openai-oracle-stargate-2025-07",
+ "payer": "openai",
+ "payee": "oracle",
+ "type": "capacity_lease",
+ "announced": "2025-07-22",
+ "amount_basis": "committed",
+ "confidence": "company_stated",
+ "status": "signed",
+ "summary": "OpenAI and Oracle agree to develop 4.5 GW of additional Stargate data center capacity in the US. No dollar value stated.",
+ "as_of": "2025-07-22",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "openai-oracle-2025-07-22"
+ ],
+ "notes": "Press reports put a dollar value on this deal; the company release does not, so none is stored."
+}

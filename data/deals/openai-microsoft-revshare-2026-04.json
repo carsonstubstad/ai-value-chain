@@ -1,0 +1,16 @@
+{
+ "id": "openai-microsoft-revshare-2026-04",
+ "payer": "openai",
+ "payee": "microsoft",
+ "type": "revenue_share",
+ "announced": "2026-04-27",
+ "amount_basis": "committed",
+ "confidence": "company_stated",
+ "status": "signed",
+ "summary": "OpenAI keeps paying Microsoft a revenue share through 2030 at the same percentage, subject to a total cap; Microsoft stops paying OpenAI a share. No figures stated.",
+ "as_of": "2026-04-27",
+ "last_checked": "2026-10-31",
+ "sources": [
+  "msft-openai-2026-04-27"
+ ]
+}

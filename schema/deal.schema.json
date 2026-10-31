@@ -135,6 +135,10 @@
   },
   "notes": {
    "type": "string"
+  },
+  "syndicate_total": {
+   "type": "boolean",
+   "description": "True when the amount is a whole multi-lender facility shown on the lead lender's edge (D25). Other lenders in the same facility get no amount."
   }
  }
 }

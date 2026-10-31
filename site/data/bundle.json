@@ -752,6 +752,65 @@
  "deals": [
   {
    "amount_basis": "committed",
+   "amount_kind": "one_time",
+   "amount_usd_high": 1000000000.0,
+   "amount_usd_low": 1000000000.0,
+   "announced": "2025-01-22",
+   "as_of": "2025-01-22",
+   "confidence": "reported",
+   "id": "alphabet-anthropic-equity-2025-01",
+   "last_checked": "2026-10-31",
+   "notes": "Google's earlier investments are not stored as separate edges yet because no primary source has been found.",
+   "payee": "anthropic",
+   "payer": "alphabet",
+   "sources": [
+    "bloomberg-google-anthropic-2025-01-22"
+   ],
+   "status": "announced",
+   "summary": "Google invests another $1B in Anthropic, on top of more than $2B invested earlier.",
+   "type": "equity_investment"
+  },
+  {
+   "amount_basis": "committed",
+   "amount_kind": "cap",
+   "amount_usd_high": 4000000000.0,
+   "announced": "2023-09-25",
+   "as_of": "2024-11-22",
+   "confidence": "reported",
+   "id": "amazon-anthropic-equity-2023-09",
+   "last_checked": "2026-10-31",
+   "notes": "AP reports Amazon's total at $8B by November 2024 including this round, which supports that the full $4B was invested.",
+   "payee": "anthropic",
+   "payer": "amazon",
+   "sources": [
+    "techcrunch-amazon-anthropic-2023-09-25",
+    "ap-amazon-anthropic-2024-11-22"
+   ],
+   "status": "closed",
+   "summary": "Amazon invests up to $4B in Anthropic for a minority stake, starting with $1.25B.",
+   "type": "equity_investment"
+  },
+  {
+   "amount_basis": "committed",
+   "amount_kind": "one_time",
+   "amount_usd_high": 4000000000.0,
+   "amount_usd_low": 4000000000.0,
+   "announced": "2024-11-22",
+   "as_of": "2024-11-22",
+   "confidence": "reported",
+   "id": "amazon-anthropic-equity-2024-11",
+   "last_checked": "2026-10-31",
+   "payee": "anthropic",
+   "payer": "amazon",
+   "sources": [
+    "ap-amazon-anthropic-2024-11-22"
+   ],
+   "status": "announced",
+   "summary": "Amazon invests another $4B in Anthropic, which names AWS its primary training partner.",
+   "type": "equity_investment"
+  },
+  {
+   "amount_basis": "committed",
    "amount_kind": "cap",
    "amount_usd_high": 25000000000.0,
    "amount_usd_low": 5000000000.0,
@@ -800,6 +859,23 @@
    "status": "announced",
    "summary": "Warrant for up to 160 million AMD shares, vesting with GPU deployments and AMD share-price targets. No dollar value stated.",
    "type": "warrant_or_equity_grant"
+  },
+  {
+   "amount_basis": "committed",
+   "announced": "2025-10-23",
+   "as_of": "2025-10-23",
+   "confidence": "company_stated",
+   "id": "anthropic-alphabet-tpu-2025-10",
+   "last_checked": "2026-10-31",
+   "notes": "Only 'tens of billions of dollars' is stated, so no amount is stored. Separate from Anthropic's TPU rack orders placed with Broadcom.",
+   "payee": "alphabet",
+   "payer": "anthropic",
+   "sources": [
+    "anthropic-google-tpu-2025-10-23"
+   ],
+   "status": "signed",
+   "summary": "Anthropic expands to up to one million Google Cloud TPUs, well over 1 GW coming online in 2026, worth tens of billions of dollars.",
+   "type": "capacity_lease"
   },
   {
    "amount_basis": "committed",
@@ -904,19 +980,23 @@
   },
   {
    "amount_basis": "committed",
+   "amount_kind": "cap",
+   "amount_usd_high": 7500000000.0,
+   "amount_usd_low": 7500000000.0,
    "announced": "2024-05-17",
    "as_of": "2024-05-17",
    "confidence": "company_stated",
    "id": "blackstone-coreweave-debt-2024-05",
    "last_checked": "2026-10-31",
-   "notes": "Facility total is $7.5B across many lenders; Blackstone's own share is not stated, so no amount is stored on this edge.",
+   "notes": "Syndicate total across all lenders, shown on the lead lender's edge (D25). Blackstone's own share is not stated. Other lenders get no separate amount, so nothing is double counted.",
    "payee": "coreweave",
    "payer": "blackstone",
    "sources": [
     "blackstone-coreweave-2024-05-17"
    ],
    "status": "signed",
-   "summary": "Blackstone funds lead a $7.5B debt facility for CoreWeave with Magnetar, Coatue and others.",
+   "summary": "Blackstone funds lead a $7.5B debt facility for CoreWeave with Magnetar, Coatue and others; the amount is the syndicate total.",
+   "syndicate_total": true,
    "type": "debt_or_gpu_backed_loan"
   },
   {
@@ -954,6 +1034,26 @@
    "status": "signed",
    "summary": "Crusoe books 29 GE Vernova gas turbine packages, nearly 1 GW, for AI data centers. No value stated.",
    "type": "purchase_commitment"
+  },
+  {
+   "amount_basis": "committed",
+   "amount_kind": "multi_year_total",
+   "amount_usd_low": 10000000000.0,
+   "announced": "2025-08-22",
+   "as_of": "2025-08-22",
+   "confidence": "rumored",
+   "id": "meta-alphabet-cloud-2025-08",
+   "last_checked": "2026-10-31",
+   "notes": "Rumored: single unnamed source, hidden by default.",
+   "payee": "alphabet",
+   "payer": "meta",
+   "sources": [
+    "reuters-meta-google-2025-08-22"
+   ],
+   "status": "announced",
+   "summary": "Meta reportedly signs a six-year Google Cloud deal worth over $10B, per one unnamed source. Neither company confirmed.",
+   "term_years": 6,
+   "type": "capacity_lease"
   },
   {
    "amount_basis": "committed",
@@ -1134,6 +1234,27 @@
   },
   {
    "amount_basis": "committed",
+   "amount_kind": "multi_year_total",
+   "amount_usd_high": 13000000000.0,
+   "amount_usd_low": 13000000000.0,
+   "announced": "2025-09-30",
+   "as_of": "2025-09-30",
+   "confidence": "filed",
+   "id": "microsoft-openai-equity-2019",
+   "last_checked": "2026-10-31",
+   "notes": "Cumulative commitments made in tranches since 2019, as reported in Microsoft's 10-Q. The announced date is the as-of date of that figure, not of any single tranche. The roughly $135B value of the stake is a valuation, not money paid, so it is not stored as an amount.",
+   "payee": "openai",
+   "payer": "microsoft",
+   "sources": [
+    "msft-10q-2025-09-30",
+    "msft-openai-2025-10-28"
+   ],
+   "status": "closed",
+   "summary": "Microsoft's total funding commitments to OpenAI are $13B, of which $11.6B was funded by September 30, 2025; about a 27% stake after the October 2025 recapitalization.",
+   "type": "equity_investment"
+  },
+  {
+   "amount_basis": "committed",
    "amount_kind": "cap",
    "amount_usd_high": 10000000000.0,
    "announced": "2025-11-18",
@@ -1230,6 +1351,26 @@
   },
   {
    "amount_basis": "committed",
+   "amount_kind": "multi_year_total",
+   "amount_usd_high": 38000000000.0,
+   "amount_usd_low": 38000000000.0,
+   "announced": "2025-11-03",
+   "as_of": "2025-11-03",
+   "confidence": "company_stated",
+   "id": "openai-amazon-compute-2025-11",
+   "last_checked": "2026-10-31",
+   "payee": "amazon",
+   "payer": "openai",
+   "sources": [
+    "openai-aws-2025-11-03"
+   ],
+   "status": "signed",
+   "summary": "OpenAI commits $38B over seven years for AWS compute on NVIDIA GPU clusters.",
+   "term_years": 7,
+   "type": "capacity_lease"
+  },
+  {
+   "amount_basis": "committed",
    "announced": "2025-10-06",
    "as_of": "2025-10-06",
    "confidence": "company_stated",
@@ -1315,6 +1456,60 @@
    ],
    "status": "signed",
    "summary": "OpenAI expands its CoreWeave contract by up to $6.5B, about $22.4B across three contracts.",
+   "type": "capacity_lease"
+  },
+  {
+   "amount_basis": "committed",
+   "amount_kind": "multi_year_total",
+   "amount_usd_high": 250000000000.0,
+   "amount_usd_low": 250000000000.0,
+   "announced": "2025-10-28",
+   "as_of": "2026-04-27",
+   "confidence": "company_stated",
+   "id": "openai-microsoft-azure-2025-10",
+   "last_checked": "2026-10-31",
+   "notes": "Term not stated. In April 2026 Microsoft's license became non-exclusive and OpenAI may serve products on any cloud; the April post states no change to this figure.",
+   "payee": "microsoft",
+   "payer": "openai",
+   "sources": [
+    "msft-openai-2025-10-28",
+    "msft-openai-2026-04-27"
+   ],
+   "status": "signed",
+   "summary": "OpenAI commits to buy an incremental $250B of Azure services as part of its recapitalization.",
+   "type": "purchase_commitment"
+  },
+  {
+   "amount_basis": "committed",
+   "announced": "2026-04-27",
+   "as_of": "2026-04-27",
+   "confidence": "company_stated",
+   "id": "openai-microsoft-revshare-2026-04",
+   "last_checked": "2026-10-31",
+   "payee": "microsoft",
+   "payer": "openai",
+   "sources": [
+    "msft-openai-2026-04-27"
+   ],
+   "status": "signed",
+   "summary": "OpenAI keeps paying Microsoft a revenue share through 2030 at the same percentage, subject to a total cap; Microsoft stops paying OpenAI a share. No figures stated.",
+   "type": "revenue_share"
+  },
+  {
+   "amount_basis": "committed",
+   "announced": "2025-07-22",
+   "as_of": "2025-07-22",
+   "confidence": "company_stated",
+   "id": "openai-oracle-stargate-2025-07",
+   "last_checked": "2026-10-31",
+   "notes": "Press reports put a dollar value on this deal; the company release does not, so none is stored.",
+   "payee": "oracle",
+   "payer": "openai",
+   "sources": [
+    "openai-oracle-2025-07-22"
+   ],
+   "status": "signed",
+   "summary": "OpenAI and Oracle agree to develop 4.5 GW of additional Stargate data center capacity in the US. No dollar value stated.",
    "type": "capacity_lease"
   },
   {
@@ -1525,6 +1720,18 @@
    "id": "microsoft-anthropic",
    "last_checked": "2026-10-31",
    "name": "Microsoft and Anthropic"
+  },
+  {
+   "deals": [
+    "microsoft-openai-equity-2019",
+    "openai-microsoft-azure-2025-10",
+    "openai-microsoft-revshare-2026-04"
+   ],
+   "explanation": "Microsoft funds OpenAI with equity, and OpenAI commits to buy Azure and pays Microsoft a revenue share.",
+   "flagged_by": "automatic",
+   "id": "microsoft-openai",
+   "last_checked": "2026-10-31",
+   "name": "Microsoft and OpenAI"
   }
  ],
  "sources": [
@@ -1558,6 +1765,24 @@
   },
   {
    "accessed": "2026-10-31",
+   "id": "anthropic-google-tpu-2025-10-23",
+   "kind": "company",
+   "label": "Release: Anthropic to expand use of Google Cloud TPUs",
+   "published": "2025-10-23",
+   "publisher": "Anthropic and Google Cloud",
+   "url": "https://www.nasdaq.com/press-release/anthropic-expand-use-google-cloud-tpus-and-services-2025-10-23"
+  },
+  {
+   "accessed": "2026-10-31",
+   "id": "ap-amazon-anthropic-2024-11-22",
+   "kind": "press",
+   "label": "AP: Amazon to invest an additional $4B in Anthropic",
+   "published": "2024-11-22",
+   "publisher": "Associated Press via ABC News",
+   "url": "https://abcnews.go.com/US/wireStory/amazon-invest-additional-4-billion-ai-startup-anthropic-116134356"
+  },
+  {
+   "accessed": "2026-10-31",
    "id": "asml-mistral-2025-09-09",
    "kind": "company",
    "label": "ASML release: Mistral AI strategic partnership and Series C",
@@ -1573,6 +1798,15 @@
    "published": "2024-05-17",
    "publisher": "Blackstone",
    "url": "https://www.blackstone.com/news/press/coreweave-secures-7-5-billion-debt-financing-facility-led-by-blackstone-and-magnetar/"
+  },
+  {
+   "accessed": "2026-10-31",
+   "id": "bloomberg-google-anthropic-2025-01-22",
+   "kind": "press",
+   "label": "Bloomberg: Google invests another $1B in Anthropic",
+   "published": "2025-01-22",
+   "publisher": "Bloomberg via Yahoo Finance",
+   "url": "https://finance.yahoo.com/news/google-invests-another-1-billion-065033997.html"
   },
   {
    "accessed": "2026-10-31",
@@ -1709,12 +1943,39 @@
   },
   {
    "accessed": "2026-10-31",
+   "filing_form": "10-Q",
+   "id": "msft-10q-2025-09-30",
+   "kind": "filing",
+   "label": "Microsoft 10-Q for the quarter ended September 30, 2025",
+   "publisher": "Microsoft",
+   "url": "https://www.sec.gov/Archives/edgar/data/789019/000119312525256321/msft-20250930.htm"
+  },
+  {
+   "accessed": "2026-10-31",
    "id": "msft-nvda-anthropic-2025-11-18",
    "kind": "company",
    "label": "Microsoft blog: Microsoft, NVIDIA and Anthropic partnerships",
    "published": "2025-11-18",
    "publisher": "Microsoft",
    "url": "https://blogs.microsoft.com/blog/2025/11/18/microsoft-nvidia-and-anthropic-announce-strategic-partnerships/"
+  },
+  {
+   "accessed": "2026-10-31",
+   "id": "msft-openai-2025-10-28",
+   "kind": "company",
+   "label": "Microsoft blog: next chapter of the OpenAI partnership",
+   "published": "2025-10-28",
+   "publisher": "Microsoft",
+   "url": "https://blogs.microsoft.com/blog/2025/10/28/the-next-chapter-of-the-microsoft-openai-partnership/"
+  },
+  {
+   "accessed": "2026-10-31",
+   "id": "msft-openai-2026-04-27",
+   "kind": "company",
+   "label": "Microsoft blog: next phase of the OpenAI partnership",
+   "published": "2026-04-27",
+   "publisher": "Microsoft",
+   "url": "https://blogs.microsoft.com/blog/2026/04/27/the-next-phase-of-the-microsoft-openai-partnership/"
   },
   {
    "accessed": "2026-10-31",
@@ -1791,6 +2052,15 @@
   },
   {
    "accessed": "2026-10-31",
+   "id": "openai-aws-2025-11-03",
+   "kind": "company",
+   "label": "OpenAI release: $38B multi-year AWS partnership",
+   "published": "2025-11-03",
+   "publisher": "OpenAI",
+   "url": "https://openai.com/index/aws-and-openai-partnership/"
+  },
+  {
+   "accessed": "2026-10-31",
    "id": "openai-broadcom-2025-10-13",
    "kind": "company",
    "label": "OpenAI release: 10 GW of OpenAI-designed accelerators with Broadcom",
@@ -1800,12 +2070,30 @@
   },
   {
    "accessed": "2026-10-31",
+   "id": "openai-oracle-2025-07-22",
+   "kind": "company",
+   "label": "OpenAI release: Stargate adds 4.5 GW with Oracle",
+   "published": "2025-07-22",
+   "publisher": "OpenAI",
+   "url": "https://openai.com/index/stargate-advances-with-partnership-with-oracle/"
+  },
+  {
+   "accessed": "2026-10-31",
    "id": "register-nvidia-intel-2025-12-29",
    "kind": "press",
    "label": "The Register: NVIDIA completes Intel share purchase",
    "published": "2025-12-29",
    "publisher": "The Register",
    "url": "https://www.theregister.com/2025/12/29/nvidia_intel_5_billion/"
+  },
+  {
+   "accessed": "2026-10-31",
+   "id": "reuters-meta-google-2025-08-22",
+   "kind": "press",
+   "label": "Reuters: Meta signs over $10B Google cloud deal, one source says",
+   "published": "2025-08-22",
+   "publisher": "Reuters via BNN Bloomberg",
+   "url": "https://www.bnnbloomberg.ca/business/2025/08/22/meta-signs-over-us10-billion-cloud-deal-with-google-source-says-2/"
   },
   {
    "accessed": "2026-10-31",
@@ -2161,6 +2449,15 @@
    "published": "2025-08-19",
    "publisher": "SoftBank Group",
    "url": "https://group.softbank/en/news/press/20250819"
+  },
+  {
+   "accessed": "2026-10-31",
+   "id": "techcrunch-amazon-anthropic-2023-09-25",
+   "kind": "press",
+   "label": "TechCrunch: Amazon to invest up to $4B in Anthropic",
+   "published": "2023-09-25",
+   "publisher": "TechCrunch",
+   "url": "https://techcrunch.com/2023/09/25/amazon-to-invest-up-to-4-billion-in-ai-startup-anthropic"
   },
   {
    "accessed": "2026-10-31",

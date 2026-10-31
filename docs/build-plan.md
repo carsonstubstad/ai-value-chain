@@ -10,8 +10,8 @@ Approved at Gate 1 (D16 to D20). Each session is bounded, ends with the validato
 | 4 | Companies | 47 company records; CIKs and tickers from SEC via Actions | Flags only | Medium | Done |
 | 5 | Deals: upstream | Equipment, chip design, foundry, memory | Flags only | Heavy | Done |
 | 6 | Deals: systems, power, data centers | Includes neocloud debt; Epoch CSV for campuses | Flags only | Heavy | Done |
-| 7 | Deals: hyperscale and labs | Densest layer, most loops | Flags only | Heavy | Next, waits for Carson |
-| 8 | Deals: capital rail | Equity, credit and public money into every layer | Flags only | Heavy | |
+| 7 | Deals: hyperscale and labs | Densest layer, most loops | Flags only | Heavy | Done |
+| 8 | Deals: capital rail | Equity, credit and public money into every layer | Flags only | Heavy | Next, waits for Carson |
 | 9 | Loops | Automatic detection, hand tagging, one-line explanations | Flags only | Medium | |
 | 10 | Spot check | 20 records chosen at random, checked by a fresh session | Accept (Gate 3) | Medium | |
 | 11 | Overview and company card | | Nothing | Medium | |
