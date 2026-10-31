@@ -1,0 +1,48 @@
+id,name,layer,secondary,hq_country,ownership,why
+asml,ASML,equipment,,NL,public,Sole supplier of EUV lithography; the clearest single chokepoint in the chain
+applied-materials,Applied Materials,equipment,,US,public,Broadest equipment vendor; US anchor for the layer
+tokyo-electron,Tokyo Electron,equipment,,JP,public,Largest Japanese toolmaker; global coverage
+lam-research,Lam Research,equipment,,US,public,Etch and deposition with direct HBM and memory exposure
+nvidia,Nvidia,chip_design,capital,US,public,Sits on nearly every loop as supplier and investor; the center of the map
+amd,AMD,chip_design,,US,public,"Second GPU supplier; its lab supply agreement reportedly includes equity warrants, a loop candidate"
+broadcom,Broadcom,chip_design,systems,US,public,"Custom accelerators for hyperscalers and labs, plus networking silicon"
+arm,Arm,chip_design,,GB,public,"CPU IP across every layer; SoftBank-controlled, linking the capital rail"
+intel,Intel,chip_design,foundry,US,public,Equity stakes from the US government and Nvidia make it a cross-layer flow in its own right; foundry as secondary tag
+tsmc,TSMC,foundry,,TW,public,Fabricates and packages nearly every leading-edge AI chip; CoWoS capacity is a chain-wide constraint
+sk-hynix,SK Hynix,memory,,KR,public,HBM leader and principal supplier to Nvidia
+samsung,Samsung,memory,foundry,KR,public,DRAM and HBM at scale; foundry as secondary tag
+micron,Micron,memory,,US,public,"US HBM supplier; CHIPS Act recipient, a capital-rail edge"
+foxconn,Foxconn (Hon Hai),systems,,TW,public,Largest AI server and rack assembler; Taiwan coverage
+supermicro,Supermicro,systems,,US,public,AI server pure play; close to the neocloud layer
+dell,Dell,systems,,US,public,AI server supplier to labs and neoclouds; the enterprise route to market
+arista,Arista,systems,,US,public,Data center switching for hyperscalers
+coherent,Coherent,systems,,US,public,"Optical interconnect, the networking bottleneck inside the data center"
+vertiv,Vertiv,power,,US,public,Power and thermal equipment for AI data centers
+ge-vernova,GE Vernova,power,,US,public,Gas turbines and grid equipment; the generation backlog story
+constellation,Constellation,power,,US,public,Nuclear power agreements with hyperscalers
+vistra,Vistra,power,,US,public,Power agreements and co-located capacity for data centers
+coreweave,CoreWeave,data_centers,,US,public,"The archetypal neocloud; GPU-backed debt, hyperscaler and lab contracts, Nvidia equity"
+nebius,Nebius,data_centers,,NL,public,Hyperscaler capacity contracts; Europe-origin coverage
+crusoe,Crusoe,data_centers,,US,private,Builder of flagship lab campuses
+lambda,Lambda,data_centers,,US,private,GPU cloud with lab and hyperscaler contracts
+digital-realty,Digital Realty,data_centers,,US,public,The landlord layer: colocation REIT leasing to hyperscalers
+stargate,Stargate (JV),data_centers,,US,joint_venture,"Multi-party compute venture; the single node that ties labs, capital and cloud together"
+microsoft,Microsoft,hyperscale,labs,US,public,Largest external lab funder and compute supplier; Azure
+amazon,Amazon,hyperscale,labs,US,public,AWS; lab investor with compute flowing back
+alphabet,Alphabet,hyperscale,labs;chip_design,US,public,"Google Cloud, TPUs, DeepMind; lab as secondary tag"
+oracle,Oracle,hyperscale,,US,public,Lab compute contracts and Stargate role; the fastest-changing balance sheet in the layer
+meta,Meta,hyperscale,labs,US,public,Own-use capex at hyperscale; lab as secondary tag; data center financing structures
+openai,OpenAI,labs,,US,private,Largest buyer of compute and the hub of the best-known loops
+anthropic,Anthropic,labs,,US,private,Hyperscaler-funded lab with compute flowing back; same sourcing bar as every other row
+xai,xAI,labs,hyperscale,US,private,Lab that owns its compute; debt and equity raises; hyperscale as secondary tag
+mistral,Mistral,labs,,FR,private,European frontier lab; global coverage
+salesforce,Salesforce,applications,,US,public,Enterprise AI buyer and investor; shows where model revenue lands
+perplexity,Perplexity,applications,,US,private,Consumer app funded by chip and capital players; pays labs and clouds for inference
+anysphere,Anysphere (Cursor),applications,,US,private,Largest coding application by reported revenue; a major lab customer
+palantir,Palantir,applications,,US,public,Enterprise and government AI platform; the application-layer name executives ask about most
+softbank,SoftBank Group,capital,,JP,public,"Largest external lab backer, Stargate partner, Arm owner"
+mgx,MGX,capital,,AE,private,"Gulf sovereign-linked investor across labs, neoclouds and Stargate"
+blue-owl,Blue Owl,capital,,US,public,Private credit financing data center campuses
+blackstone,Blackstone,capital,data_centers,US,public,Largest data center owner through QTS; private credit
+brookfield,Brookfield,capital,power,CA,public,Power and data center infrastructure capital
+us-government,US Government,capital,,US,government,Grants and equity into chips and foundry; the only public-sector node
