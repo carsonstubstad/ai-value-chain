@@ -1,5 +1,5 @@
 {
- "run_at": "2026-10-31T18:39:24+00:00",
+ "run_at": "2026-10-31T20:01:31+00:00",
  "sources": {
   "sec": {
    "status": "ok",
@@ -37,13 +37,13 @@
      "url": "https://www.sec.gov/Archives/edgar/data/1045810/000192109426001040/xsl144X01/primary_doc.xml"
     }
    ],
-   "seconds": 0.06
+   "seconds": 0.05
   },
   "gdelt": {
    "status": "ok",
    "http": 200,
    "endpoint": "https://api.gdeltproject.org/api/v2/doc/doc?query=%22OpenAI%22+%22Nvidia%22+sourcelang%3Aenglish&mode=artlist&format=json&maxrecords=10&timespan=7d&sort=datedesc",
-   "retries_429": 0,
+   "retries_429": 1,
    "count": 9,
    "items": [
     {
@@ -101,21 +101,21 @@
      "seen": "20261024T210000Z"
     }
    ],
-   "seconds": 10.12
+   "seconds": 47.76
   },
   "gdelt_files": {
    "status": "ok",
    "http": 200,
    "endpoint": "http://data.gdeltproject.org/gdeltv2/lastupdate.txt",
    "latest_files": [
-    "http://data.gdeltproject.org/gdeltv2/20261031184500.export.CSV.zip",
-    "http://data.gdeltproject.org/gdeltv2/20261031184500.mentions.CSV.zip",
-    "http://data.gdeltproject.org/gdeltv2/20261031184500.gkg.csv.zip"
+    "http://data.gdeltproject.org/gdeltv2/20261031200000.export.CSV.zip",
+    "http://data.gdeltproject.org/gdeltv2/20261031200000.mentions.CSV.zip",
+    "http://data.gdeltproject.org/gdeltv2/20261031200000.gkg.csv.zip"
    ],
    "bytes": [
-    32593,
-    68501,
-    3004887
+    30198,
+    65866,
+    2698091
    ],
    "seconds": 0.07
   },
@@ -150,7 +150,7 @@
     "OpenAI Stargate Abilene",
     "Google Pryor (North)"
    ],
-   "seconds": 0.42
+   "seconds": 0.1
   }
  }
 }
