@@ -68,8 +68,9 @@ export function loopView(loop, idx, conf) {
   const equity = new Set(["equity_investment", "warrant_or_equity_grant", "jv_contribution"]);
   const first = cos.find((c) => deals.some((d) => d.payer === c && equity.has(d.type))) || cos[0];
   const order = first ? [first, ...cos.filter((c) => c !== first)] : cos;
-  const size = deals.filter((d) => !d.contingent).reduce((t, d) => t + highEnd(d), 0);
-  return { loop, deals, cos: order, closed: closed && deals.length >= 2, size };
+  const sum = (ds) => ds.filter((d) => !d.contingent).reduce((t, d) => t + highEnd(d), 0);
+  const put = deals.filter((d) => d.payer === first), back = deals.filter((d) => d.payer !== first);
+  return { loop, deals, cos: order, closed: closed && deals.length >= 2, size: sum(deals), put, back, putAmt: sum(put), backAmt: sum(back) };
 }
 
 export function isoWeek(iso) {

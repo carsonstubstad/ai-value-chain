@@ -3,7 +3,7 @@
 
 import {
   esc, money, amountText, highEnd, hasAmount, basisStyle, MARK, LABEL, TYPE_SHORT, FAMILY, VIEW_KEYS,
-  REGION_LABEL, applyFilters, isFiltered, staleness, fmtDate, reach, layerFlows, loopView, isoWeek, weekRange,
+  REGION_LABEL, applyFilters, isFiltered, staleness, fmtDate, reach, layerFlows, loopView, isoWeek, weekRange, parseState,
 } from "./lib.js";
 import { chainHero, loopDiagram, loopBars, companyDiagram, flowsChart, amountWords } from "./charts.js";
 
@@ -48,9 +48,17 @@ const masthead = (ctx) => {
 // ---------- Filters: one line, the rest in a drawer ----------
 
 const toggle = (group, v, label, on) =>
-  `<button type="button" class="tg" data-toggle="${group}" data-v="${v}" aria-pressed="${on}">${esc(label)}</button>`;
+  `<button type="button" class="chip" data-toggle="${group}" data-v="${v}" aria-pressed="${on}">${esc(label)}</button>`;
 const pick = (field, v, label, on) =>
-  `<button type="button" class="tg" data-set="${field}" data-v="${v}" aria-pressed="${on}">${esc(label)}</button>`;
+  `<button type="button" class="chip" data-set="${field}" data-v="${v}" aria-pressed="${on}">${esc(label)}</button>`;
+// A view switch (width, ranking) is a link styled as a chip, so the choice lives in the URL.
+const viewChip = (href, label, on) => `<a class="chip" href="${href}" aria-current="${on}">${esc(label)}</a>`;
+const sel = (inner) => `<span class="sel">${inner}</span>`;
+
+// Buttons (D53): one primary per page; the quiet one sits beside it.
+const ARROW = `<svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7h9M7.5 3.5 11 7l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+const DOWN = `<svg viewBox="0 0 14 14" aria-hidden="true"><path d="M7 2v8M3.5 6.5 7 10l3.5-3.5M2.5 12.5h9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+const button = (label, href, kind = "", icon = ARROW, extra = "") => `<a class="btn${kind ? " " + kind : ""}" href="${href}"${extra}>${esc(label)}${icon}</a>`;
 const options = (pairs, cur, none) =>
   `<option value="">${esc(none)}</option>` + pairs.map(([v, l]) => `<option value="${esc(v)}"${v === cur ? " selected" : ""}>${esc(l)}</option>`).join("");
 
@@ -64,10 +72,10 @@ export function renderControls(ctx) {
   <input id="f-q" type="search" data-field="q" value="${esc(s.q)}" placeholder="Company" aria-label="Search by company" autocomplete="off">
   <details class="more"${extra ? " open" : ""}><summary>More filters${extra ? ` (${extra})` : ""}</summary><div class="drawer">
     <span class="grp">${pick("since", "all", "Any time", s.since === "all")}${pick("since", "24m", "24 months", s.since === "24m")}${pick("since", "12m", "12 months", s.since === "12m")}</span>
-    <select data-field="family" aria-label="Deal type">${options(data.taxonomy.deal_families.map((f) => [f.id, f.label]), s.family, "All types")}</select>
-    <select data-field="min" aria-label="Smallest amount">${options([1, 10, 50, 100].map((n) => [String(n), `$${n}B or more`]), String(s.min || ""), "Any amount")}</select>
-    <select data-field="own" aria-label="Ownership">${options(Object.entries(LABEL.ownership), s.own, "Any owner")}</select>
-    <select data-field="region" aria-label="Headquarters">${options(Object.entries(REGION_LABEL), s.region, "Anywhere")}</select>
+    ${sel(`<select data-field="family" aria-label="Deal type">${options(data.taxonomy.deal_families.map((f) => [f.id, f.label]), s.family, "All types")}</select>`)}
+    ${sel(`<select data-field="min" aria-label="Smallest amount">${options([1, 10, 50, 100].map((n) => [String(n), `$${n}B or more`]), String(s.min || ""), "Any amount")}</select>`)}
+    ${sel(`<select data-field="own" aria-label="Ownership">${options(Object.entries(LABEL.ownership), s.own, "Any owner")}</select>`)}
+    ${sel(`<select data-field="region" aria-label="Headquarters">${options(Object.entries(REGION_LABEL), s.region, "Anywhere")}</select>`)}
   </div></details>
   <span class="count" id="count">${countLine(ctx)}</span>
 </div>`;
@@ -96,31 +104,101 @@ function changeRow(ctx, e) {
 const sortedEvents = (ctx) => [...ctx.data.events].filter((e) => ctx.idx.deals[e.deal]).sort((a, b) => b.date.localeCompare(a.date) || a.id.localeCompare(b.id));
 
 export function renderOverview(ctx) {
-  const { data, idx, s, shown } = ctx;
+  // The Overview has no filters (D51): it always shows the default view, rumors hidden.
+  const { data, idx, s } = ctx;
+  const shown = applyFilters(ctx.visible, parseState(""), idx);
   const flows = layerFlows(shown, idx);
   const hero = chainHero(ctx, flows, { w: s.w, rib: s.rib, qs: ctx.qs, qsWith: ctx.qsWith });
   const picked = s.rib && flows.find((f) => f.key === s.rib);
   const ribPanel = picked ? `<section class="ribdeals" aria-label="Deals in the picked ribbon"><h2>${esc(idx.layers[picked.from].label)} to ${esc(idx.layers[picked.to].label)}</h2><ul class="rows">${[...picked.deals].sort((a, b) => highEnd(b) - highEnd(a)).map((d) => dealRow(ctx, d)).join("")}</ul></section>` : "";
   const loops = loopViews(ctx).slice(0, 3);
-  const minis = loops.map((v) => `<div class="loop"><h3><a href="#/loops${ctx.qs}">${esc(v.loop.name)}</a></h3><p class="line">${esc(v.loop.line)}</p>${loopDiagram(ctx, v)}</div>`).join("");
+  const minis = loops.map((v) => `<div class="loop"><h3><a href="#/loops#loop-${esc(v.loop.id)}">${esc(v.loop.name)}</a></h3>${loopDiagram(ctx, v)}</div>`).join("");
   const evs = sortedEvents(ctx).slice(0, 5);
   const top = shown.filter((d) => hasAmount(d) && !d.contingent).sort((a, b) => highEnd(b) - highEnd(a) || a.id.localeCompare(b.id)).slice(0, 10);
   const pairs = {};
   for (const d of top) pairs[d.payer + d.payee] = (pairs[d.payer + d.payee] || 0) + 1;
   const topRows = top.map((d) => `<li class="frow" title="${esc(d.summary)}"><span>${companyLink(ctx, d.payer)} <span class="to">to</span> ${companyLink(ctx, d.payee)}${pairs[d.payer + d.payee] > 1 ? ` <span class="yr">${esc(d.announced.slice(0, 4))}</span>` : ""}</span><span class="amt">${amountLink(ctx, d)}</span></li>`).join("");
-  const wq = (v) => ctx.qsWith("w", v);
-  return `${masthead(ctx)}
-  <header class="col"><h1>Who pays whom to build AI</h1><p class="state">${esc(data.state?.text || "")}</p></header>
-  <div id="controls"></div>
+  const items = findings(ctx).items.map((f) => `<li><p class="big">${esc(f.fig)}</p><p>${esc(f.text)}</p><p class="ev"><a href="${esc(f.href)}">${esc(f.evid)}</a></p></li>`).join("");
+  return `<header class="hero-top">${masthead(ctx)}
+    <h1>Who pays whom to build AI</h1><p class="state">${esc(data.state?.text || "")}</p>
+    <ul class="findings" aria-label="Three things to know">${items}</ul>
+    <div class="actions">${button("Follow the money", "#/flows")}${button("Download the data", "#/data", "quiet", DOWN)}</div>
+  </header>
   <section class="hero" aria-label="The chain">
-    <p class="toggle">Width: <a href="#/${wq("")}" aria-current="${s.w !== "count"}">announced ceilings, not cash</a><span class="sep">|</span><a href="#/${wq("count")}" aria-current="${s.w === "count"}">deal count</a></p>
+    <h2>Who pays whom, by layer</h2>
     ${shown.length ? `<figure class="fig">${hero}</figure>` : `<p class="empty">No deals match these filters.</p>`}
-    <p class="legend">Color: payer's layer family · hatched: caps and multi-year totals · dotted: undisclosed · click a ribbon for its deals</p>
+    <p class="legend">Width: announced ceilings, not cash · hatched: caps and multi-year totals · dotted: undisclosed</p>
     ${ribPanel}
   </section>
   ${loops.length ? `<section><h2>Three largest loops</h2><div class="loops">${minis}</div></section>` : ""}
   <section><h2>What changed</h2><ul class="rows">${evs.map((e) => changeRow(ctx, e)).join("")}</ul></section>
   <section class="col"><h2>Top 10 flows</h2>${top.length ? `<ul class="rows">${topRows}</ul>` : `<p class="empty">No deals match these filters.</p>`}</section>`;
+}
+
+// ---------- The three findings (D51): computed from the records, never typed ----------
+
+// Plain nouns for a layer as payer or payee, so a finding reads as a sentence.
+const NOUN = { equipment: "equipment makers", chip_design: "chipmakers", foundry: "foundries", memory: "memory makers", systems: "system makers",
+  power: "power suppliers", data_centers: "data center builders", hyperscale: "clouds", labs: "labs", applications: "app makers", capital: "investors" };
+const cap1 = (t) => t.charAt(0).toUpperCase() + t.slice(1);
+const CEILING_KINDS = new Set(["cap", "multi_year_total"]);
+const monthYear = (iso) => fmtDate(iso).split(" ").slice(1).join(" ");
+
+export function findings(ctx) {
+  const { idx } = ctx;
+  const shown = applyFilters(ctx.visible, parseState(""), idx);
+  const drift = [];
+  const items = [];
+  // 1. The largest layer flow by announced ceilings (guarantees left out, D33).
+  const flow = layerFlows(shown, idx).filter((f) => f.total > 0).sort((a, b) => b.total - a.total || a.key.localeCompare(b.key))[0];
+  if (flow) {
+    const ceil = flow.deals.some((d) => CEILING_KINDS.has(d.amount_kind) || (d.amount_usd_high && d.amount_usd_high !== d.amount_usd_low));
+    const kind = ceil ? "of announced ceilings" : flow.paid === flow.n ? "paid" : "committed";
+    items.push({ key: "flow", value: flow.total, id: flow.key, fig: money(flow.total),
+      text: `${cap1(NOUN[flow.from])} ${flow.paid ? "pay" : "promise"} ${NOUN[flow.to]} the chain's largest flow: ${flow.n} deals ${kind}, ${flow.paid ? `${flow.paid} paid` : "none recorded as paid"}.`,
+      href: `#/?rib=${encodeURIComponent(flow.key)}`, evid: `See the ${idx.layers[flow.from].label} to ${idx.layers[flow.to].label} ribbon` });
+  }
+  // 2. The largest paid deal, and whether every paid deal is equity.
+  const paid = shown.filter((d) => d.amount_basis === "paid" && hasAmount(d));
+  const top = [...paid].sort((a, b) => highEnd(b) - highEnd(a) || a.id.localeCompare(b.id))[0];
+  if (top) {
+    const equity = paid.every((d) => ["equity_investment", "warrant_or_equity_grant"].includes(d.type));
+    if (!equity) drift.push("not every paid deal is equity");
+    const [a, b] = [idx.companies[top.payer].name, idx.companies[top.payee].name];
+    const how = LABEL.confidence[top.confidence].toLowerCase();
+    items.push({ key: "paid", value: highEnd(top), id: top.id, count: paid.length, fig: money(highEnd(top)),
+      text: equity ? `All ${paid.length} paid deals are equity stakes; the largest is ${a}'s stake in ${b}, ${how}.`
+        : `${paid.length} deals are recorded as paid; the largest is ${a} to ${b}, ${how}.`,
+      href: `#/company/${encodeURIComponent(top.payee)}`, evid: `See the deal, ${a} to ${b}, ${monthYear(top.announced)}` });
+  }
+  // 3. The loop with the most promised back.
+  const loop = ctx.data.loops.map((l) => loopView(l, idx, parseState("").conf)).filter((v) => v.closed)
+    .sort((x, y) => y.backAmt - x.backAmt || y.putAmt - x.putAmt || x.loop.name.localeCompare(y.loop.name))[0];
+  if (loop) {
+    const backers = [...new Set(loop.back.map((d) => d.payer))];
+    const who = backers.length === 1 ? idx.companies[backers[0]].name : "the others";
+    const backPaid = loop.back.some((d) => d.amount_basis === "paid");
+    items.push({ key: "loop", value: loop.backAmt, id: loop.loop.id, fig: money(loop.backAmt),
+      text: `The largest loop is ${loop.loop.name}: ${who} promised it back against ${money(loop.putAmt)} put in, ${backPaid ? "part of it paid" : "none recorded as paid"}.`,
+      href: `#/loops#loop-${loop.loop.id}`, evid: `See the ${loop.loop.name} loop` });
+  }
+  for (const f of items) if (f.text.split(/\s+/).length > 20) drift.push(`finding ${f.key} is over 20 words`);
+  if (items.length !== 3) drift.push(`${items.length} findings, expected 3`);
+  return { items, drift };
+}
+
+// ---------- Data page (D53): the bundle and a deals CSV, both rebuilt by bundle.py ----------
+
+export function renderData(ctx) {
+  const { data } = ctx;
+  const epoch = data.sources.some((s) => /epoch/i.test(s.publisher || ""));
+  return `${masthead(ctx)}
+  <header class="col"><h1>The data behind the site</h1><p class="state">${data.deals.length} deals, ${data.companies.length} companies and ${data.sources.length} sources, every figure with its source.</p></header>
+  <ul class="files">
+    <li><span><span class="what">Deals, one row each</span><br><span class="meta">deals.csv · payer, payee, type, amounts, basis, sourcing, status, dates, source</span></span>${button("Download the CSV", "data/deals.csv", "", DOWN, " download")}</li>
+    <li><span><span class="what">Everything the site draws</span><br><span class="meta">bundle.json · companies, deals, loops, sources, changes</span></span>${button("Download the JSON", "data/bundle.json", "quiet", DOWN, " download")}</li>
+  </ul>
+  <p class="meta col">Rumors are included and marked. Ranges stay as low and high; caps are never summed.${epoch ? " Some records credit Epoch AI." : ""} Data as of ${esc(fmtDate(ctx.idx.asOf))}.</p>`;
 }
 
 // ---------- Company card ----------
@@ -177,9 +255,9 @@ export function renderFlows(ctx) {
   <header class="col"><h1>${focus ? `Tracing ${esc(idx.companies[focus].name)}` : "Money flows"}</h1></header>
   <div id="controls"></div>
   <p class="toggle">
-    <label class="tracepick">Trace <select data-field="focus" aria-label="Trace a company">${options(companyOptions, focus, "a company")}</select></label>
-    <span class="sep">|</span>Width: <a href="#/flows${ctx.qsWith("w", "")}" aria-current="${s.w !== "count"}">ceilings</a> <a href="#/flows${ctx.qsWith("w", "count")}" aria-current="${s.w === "count"}">count</a>
-    <span class="sep">|</span><a href="#/flows${ctx.qsWith("na", s.na ? "" : "1")}" aria-current="${!!s.na}">${noAmount} deals with no amount</a>
+    ${sel(`<select data-field="focus" aria-label="Trace a company">${options(companyOptions, focus, "Trace a company")}</select>`)}
+    ${viewChip(`#/flows${ctx.qsWith("w", "")}`, "Ceilings", s.w !== "count")}${viewChip(`#/flows${ctx.qsWith("w", "count")}`, "Deal count", s.w === "count")}
+    ${viewChip(`#/flows${ctx.qsWith("na", s.na ? "" : "1")}`, `${noAmount} with no amount`, !!s.na)}
     ${open.size && !focus ? `<span class="sep">|</span><a href="#/flows${ctx.qsWith("open", [])}">Close all layers</a>` : ""}${focus ? `<span class="sep">|</span><a href="#/flows${ctx.qsWith("focus", "")}">Clear the trace</a>` : ""}
   </p>
   ${shown.length ? `<figure class="fig">${chart}</figure>` : `<p class="empty">No deals match these filters.</p>`}

@@ -23,6 +23,7 @@ const ROUTES = [
   ["flows-no-amount", "#/flows?na=1"],
   ["loops", "#/loops"],
   ["changes", "#/changes"],
+  ["data", "#/data"],
 ];
 const SIZES = { desktop: { width: 1280, height: 900 }, phone: { width: 390, height: 844 } };
 const problems = [];
@@ -47,7 +48,7 @@ for (const [size, viewport] of Object.entries(SIZES)) {
       if (r.overflow > 1) problems.push(`${name} ${size}/${scheme}: page scrolls sideways by ${r.overflow}px`);
       if (r.view < 50 || r.failed) problems.push(`${name} ${size}/${scheme}: view is empty or failed`);
       if (r.fonts.length) problems.push(`${name} ${size}/${scheme}: fonts not loaded: ${r.fonts.join(", ")}`);
-      if (scheme === "dark" && r.bg !== "rgb(22, 24, 27)") problems.push(`${name} ${size}/${scheme}: dark mode not applied (${r.bg})`);
+      if (scheme === "dark" && r.bg !== "rgb(23, 25, 28)") problems.push(`${name} ${size}/${scheme}: dark mode not applied (${r.bg})`);
       if (scheme === "light" || name === "overview" || name === "flows")
         await page.screenshot({ path: `${out}/${size}-${scheme}-${name}.jpg`, type: "jpeg", quality: 70, fullPage: true });
     }
@@ -79,10 +80,29 @@ await page.fill("#f-q", "nvidia");
 await page.waitForFunction(() => location.hash.includes("q=nvidia"), null, { timeout: 3000 }).catch(() => problems.push("second search did not reach the URL"));
 await page.click('[data-reset]');
 await page.waitForFunction(() => !location.hash.includes("q=") && location.hash.includes("rib=")).catch(() => problems.push("reset did not clear the filters or lost the picked ribbon"));
-await page.click("#theme"); // auto to light
-await page.click("#theme"); // light to dark
+await page.click('[data-theme-set="dark"]');
 const theme = await page.evaluate(() => document.documentElement.dataset.theme);
-if (theme !== "dark") problems.push(`theme button did not set dark (${theme})`);
+if (theme !== "dark") problems.push(`theme segment did not set dark (${theme})`);
+if ((await page.getAttribute('[data-theme-set="dark"]', "aria-pressed")) !== "true") problems.push("theme segment did not mark Dark as picked");
+// The Overview hero: three findings, each with an evidence link that opens its record.
+await page.goto(BASE + "#/");
+await page.waitForSelector(".findings li");
+if ((await page.locator(".findings li").count()) !== 3) problems.push("the Overview does not show three findings");
+await page.locator(".findings .ev a").nth(2).click();
+await page.waitForFunction(() => location.hash.startsWith("#/loops")).catch(() => problems.push("loop finding link did not open Loops"));
+await page.waitForFunction(() => window.scrollY > 0).catch(() => problems.push("loop finding link did not scroll to its loop"));
+// Tooltip: hovering a deal row shows the ink tooltip with the row's summary.
+await page.goto(BASE + "#/company/openai");
+await page.waitForSelector(".drow");
+await page.hover(".drow");
+if (await page.locator("#tip").isHidden()) problems.push("hovering a deal row showed no tooltip");
+// Data page: both downloads are served.
+await page.goto(BASE + "#/data");
+for (const f of ["data/deals.csv", "data/bundle.json"]) {
+  const res = await page.request.get(BASE + f);
+  if (!res.ok()) problems.push(`${f} is not served (${res.status()})`);
+}
+if (!(await page.locator('a.btn[href="data/deals.csv"]').count())) problems.push("the Data page has no CSV button");
 await page.goto(BASE + "#/flows");
 await page.selectOption('select[data-field="focus"]', "openai");
 await page.waitForFunction(() => location.hash.includes("focus=openai")).catch(() => problems.push("trace picker did not set focus"));
@@ -100,4 +120,4 @@ if (problems.length) {
   console.log(`browser: ${problems.length} problems`);
   process.exit(1);
 }
-console.log(`browser: ${ROUTES.length} pages x 2 sizes x 2 themes and 10 interactions, 0 problems`);
+console.log(`browser: ${ROUTES.length} pages x 2 sizes x 2 themes and 15 interactions, 0 problems`);

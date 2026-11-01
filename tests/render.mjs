@@ -3,7 +3,7 @@
 // Run: node tests/render.mjs  (no packages needed)
 
 import { readFileSync } from "node:fs";
-import { index, parseState, stateQuery, applyFilters } from "../site/js/lib.js";
+import { index, parseState, stateQuery, applyFilters, esc } from "../site/js/lib.js";
 import * as V from "../site/js/views.js";
 
 const data = JSON.parse(readFileSync(new URL("../site/data/bundle.json", import.meta.url)));
@@ -37,6 +37,7 @@ for (const q of STATES) {
   run(`flows ?${q}`, () => V.renderFlows(ctx));
   run(`loops ?${q}`, () => V.renderLoops(ctx));
   run(`changes ?${q}`, () => V.renderChanges(ctx));
+  run(`data ?${q}`, () => V.renderData(ctx));
   run(`foot ?${q}`, () => V.renderFoot(ctx));
   for (const c of data.companies) run(`company/${c.id} ?${q}`, () => V.renderCompany(ctx, c.id));
   // The filter state must survive a trip through the URL.
@@ -70,9 +71,57 @@ if (words(ov) >= 250) problems.push(`overview: ${words(ov)} words, budget is und
 budgets("loops", V.renderLoops(c0));
 budgets("flows", V.renderFlows(c0));
 budgets("changes", V.renderChanges(c0));
+budgets("data", V.renderData(c0));
 for (const c of data.companies) budgets(`company/${c.id}`, V.renderCompany(c0, c.id));
 const foot = V.renderFoot(c0);
 if ((foot.match(/<p[\s>]/g) || []).length !== 1) problems.push("footer is not one line");
+
+
+// The three Overview findings (D51) are recomputed here from the bundle, independently of views.js.
+{
+  const { items, drift } = V.findings(c0);
+  for (const d of drift) problems.push(`findings: ${d}`);
+  const base = def.filter((d) => idx.companies[d.payer] && idx.companies[d.payee]);
+  const hi = (d) => d.amount_usd_high ?? d.amount_usd_low ?? 0;
+  const pairs = {};
+  const has = (d) => d.amount_usd_low != null || d.amount_usd_high != null;
+  for (const d of base) if (!d.contingent && has(d)) {
+    const k = idx.companies[d.payer].layer + ">" + idx.companies[d.payee].layer;
+    pairs[k] = (pairs[k] || 0) + hi(d);
+  }
+  const [bigKey, bigVal] = Object.entries(pairs).sort((a, b) => b[1] - a[1])[0];
+  const paid = base.filter((d) => d.amount_basis === "paid" && has(d));
+  const topPaid = Math.max(...paid.map(hi));
+  const loopBack = Math.max(...data.loops.map((l) => {
+    const ds = l.deals.map((id) => idx.deals[id]).filter((d) => d && d.confidence !== "rumored");
+    // Kept independent of lib.js: the equity payer is first, everything else is money back.
+    const eq = new Set(["equity_investment", "warrant_or_equity_grant", "jv_contribution"]);
+    const cos = [...new Set(ds.flatMap((d) => [d.payer, d.payee]))];
+    const first = cos.find((c) => ds.some((d) => d.payer === c && eq.has(d.type))) || cos[0];
+    return ds.filter((d) => d.payer !== first && !d.contingent).reduce((t, d) => t + hi(d), 0);
+  }));
+  const by = Object.fromEntries(items.map((f) => [f.key, f]));
+  if (by.flow?.id !== bigKey || by.flow?.value !== bigVal) problems.push(`finding 1: says ${by.flow?.id} ${by.flow?.value}, records give ${bigKey} ${bigVal}`);
+  if (by.paid?.value !== topPaid || by.paid?.count !== paid.length) problems.push(`finding 2: says ${by.paid?.value} of ${by.paid?.count}, records give ${topPaid} of ${paid.length}`);
+  if (by.loop?.value !== loopBack) problems.push(`finding 3: says ${by.loop?.value}, records give ${loopBack}`);
+  for (const f of items) if (!ov.includes(esc(f.fig)) || !ov.includes(f.href.replace(/&/g, "&amp;"))) problems.push(`finding ${f.key} is not on the Overview`);
+}
+
+// Stylesheet rules (D49): hex colors only in the token blocks; the pop only in its five places.
+{
+  const css = readFileSync(new URL("../site/css/site.css", import.meta.url), "utf8");
+  const outside = css.slice(0, css.indexOf("/* tokens:light */")) + css.slice(css.indexOf("/* tokens:end */"));
+  const hexes = outside.replace(/\/\*[\s\S]*?\*\//g, "").match(/#[0-9a-fA-F]{3,8}\b/g);
+  if (hexes) problems.push(`site.css: hex colors outside the token blocks: ${hexes.join(" ")}`);
+  const POP_OK = /^(\.top|\.navin a\[aria-current="page"\]|a:hover|\.link:hover|\.more summary:hover|(a|button|summary|input|select):focus-visible|\.findings \.big|\.btn.*|:root)$/;
+  for (const m of outside.replace(/\/\*[\s\S]*?\*\//g, "").matchAll(/([^{}]+)\{([^{}]*)\}/g)) {
+    if (!/--pop|--paid/.test(m[2])) continue;
+    for (const sel of m[1].split(",").map((x) => x.trim())) {
+      if (/--paid/.test(m[2]) && /^\.shape\.paid$/.test(sel)) continue;
+      if (!POP_OK.test(sel)) problems.push(`site.css: the pop is used outside its five places, in ${sel}`);
+    }
+  }
+}
 
 // The state line (D41) is recounted from the records: Labs paying for compute.
 const COMPUTE = ["hyperscale", "chip_design", "data_centers", "memory"];

@@ -3,19 +3,21 @@
 // URL hash, so every view can be linked. Reads data/bundle.json; no third-party requests.
 
 import { index, parseState, stateQuery, DEFAULTS } from "./lib.js";
-import { makeCtx, renderControls, countLine, renderOverview, renderCompany, renderFlows, renderLoops, renderChanges, renderFoot } from "./views.js";
+import { makeCtx, renderControls, countLine, renderOverview, renderCompany, renderFlows, renderLoops, renderChanges, renderData, renderFoot } from "./views.js";
 
 const $ = (id) => document.getElementById(id);
 let data, idx;
 
 function route() {
   const raw = location.hash.replace(/^#/, "") || "/";
-  const [path, query] = raw.split("?");
+  const [pathAnchor, query] = raw.split("?");
+  // A second # names a spot on the page, as in #/loops#loop-microsoft-openai.
+  const [path, anchor] = pathAnchor.split("#");
   const parts = path.split("/").filter(Boolean);
-  return { page: parts[0] || "overview", id: parts[1] ? decodeURIComponent(parts[1]) : "", s: parseState(query) };
+  return { page: parts[0] || "overview", id: parts[1] ? decodeURIComponent(parts[1]) : "", anchor: anchor || "", s: parseState(query) };
 }
 
-const TITLES = { overview: "", company: "", flows: "Money flows", loops: "Loops", changes: "What changed" };
+const TITLES = { overview: "", company: "", flows: "Money flows", loops: "Loops", changes: "What changed", data: "The data" };
 
 function render(keepControls) {
   const r = route();
@@ -26,6 +28,7 @@ function render(keepControls) {
     flows: () => renderFlows(ctx),
     loops: () => renderLoops(ctx),
     changes: () => renderChanges(ctx),
+    data: () => renderData(ctx),
   };
   const page = views[r.page] ? r.page : "overview";
   // Each filtered page places the filters right after its own answer (a #controls slot).
@@ -42,6 +45,8 @@ function render(keepControls) {
   }
   const name = page === "company" ? idx.companies[r.id]?.name : TITLES[page];
   document.title = (name ? name + ", " : "") + "AI Value Chain Tracker";
+  adoptTitles($("view"));
+  if (r.anchor) document.getElementById(r.anchor)?.scrollIntoView();
 }
 
 function go(change, replace) {
@@ -82,26 +87,54 @@ function onChange(e) {
   go({ [f]: f === "min" ? Number(e.target.value) || 0 : e.target.value });
 }
 
-// Theme: follows the system until the reader picks one; the choice is kept on this device only.
+// Theme: a three-way segment (D53). Follows the system until the reader picks; kept on this device only.
 const THEMES = ["auto", "light", "dark"];
 function applyTheme(t) {
   if (t === "auto") document.documentElement.removeAttribute("data-theme");
   else document.documentElement.setAttribute("data-theme", t);
-  const b = $("theme");
-  if (b) b.textContent = { auto: "Theme: auto", light: "Theme: light", dark: "Theme: dark" }[t];
+  for (const b of document.querySelectorAll("[data-theme-set]")) b.setAttribute("aria-pressed", String(b.dataset.themeSet === t));
 }
 function storedTheme() {
   try { return THEMES.includes(localStorage.getItem("theme")) ? localStorage.getItem("theme") : "auto"; } catch { return "auto"; }
 }
 
+// Tooltip: the same two lines as each title, drawn ink on paper with the item first.
+// Titles move to data-tip so the browser's own tooltip does not show as well; an SVG
+// <title> stays in place for screen readers and its text is copied to the parent link.
+function adoptTitles(root) {
+  for (const el of root.querySelectorAll("[title]")) { el.dataset.tip = el.getAttribute("title"); el.removeAttribute("title"); }
+  for (const t of root.querySelectorAll("svg title")) {
+    const p = t.parentElement;
+    if (!p || p.dataset.tip) continue;
+    p.dataset.tip = t.textContent;
+    p.setAttribute("aria-label", t.textContent.replace(/\n/g, ", "));
+    t.remove();
+  }
+}
+function showTip(e) {
+  const tip = $("tip"), el = e.target.closest?.("[data-tip]");
+  if (!el) { tip.hidden = true; return; }
+  const [head, ...rest] = el.dataset.tip.split("\n");
+  tip.innerHTML = "";
+  const b = document.createElement("b");
+  b.textContent = head;
+  tip.append(b);
+  if (rest.length) tip.append(rest.join(" "));
+  tip.hidden = false;
+  const w = tip.offsetWidth, h = tip.offsetHeight;
+  tip.style.left = Math.max(8, Math.min(window.innerWidth - w - 8, e.clientX + 12)) + "px";
+  tip.style.top = (e.clientY - h - 12 < 8 ? e.clientY + 18 : e.clientY - h - 12) + "px";
+}
+
 async function main() {
-  let theme = storedTheme();
-  applyTheme(theme);
-  $("theme").addEventListener("click", () => {
-    theme = THEMES[(THEMES.indexOf(theme) + 1) % THEMES.length];
-    try { localStorage.setItem("theme", theme); } catch { /* private window: the choice lasts this page only */ }
-    applyTheme(theme);
+  applyTheme(storedTheme());
+  for (const b of document.querySelectorAll("[data-theme-set]")) b.addEventListener("click", () => {
+    const t = b.dataset.themeSet;
+    try { localStorage.setItem("theme", t); } catch { /* private window: the choice lasts this page only */ }
+    applyTheme(t);
   });
+  document.addEventListener("pointermove", showTip);
+  document.addEventListener("scroll", () => { $("tip").hidden = true; }, { passive: true });
   try {
     data = await (await fetch("data/bundle.json")).json();
   } catch {
@@ -115,8 +148,8 @@ async function main() {
   let last = location.hash.split("?")[0];
   window.addEventListener("hashchange", () => {
     const path = location.hash.split("?")[0];
-    render();
     if (path !== last) window.scrollTo(0, 0);
+    render();
     last = path;
   });
   render();
