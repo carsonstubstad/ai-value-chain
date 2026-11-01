@@ -35,9 +35,16 @@ function render(keepControls) {
   // Each filtered page places the filters right after its own answer (a #controls slot).
   // While the reader types a search, the live filter box is moved across, so it keeps focus.
   const live = keepControls ? document.querySelector("#controls .controls") : null;
+  // Moving the box detaches it for a moment, which blurs it, so focus and caret are put back.
+  const typed = live && live.contains(document.activeElement) ? document.activeElement : null;
+  const caret = typed ? [typed.selectionStart, typed.selectionEnd] : null;
   $("view").innerHTML = views[page]();
   const slot = $("controls");
-  if (slot && live) { slot.appendChild(live); $("count").innerHTML = countLine(ctx, page); }
+  if (slot && live) {
+    slot.appendChild(live);
+    $("count").innerHTML = countLine(ctx, page);
+    if (typed) { typed.focus({ preventScroll: true }); try { typed.setSelectionRange(...caret); } catch { /* not a text box */ } }
+  }
   else if (slot) slot.innerHTML = renderControls(ctx, page);
   $("foot").innerHTML = renderFoot(ctx);
   for (const a of document.querySelectorAll("[data-nav]")) {
