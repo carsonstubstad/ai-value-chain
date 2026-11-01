@@ -222,3 +222,7 @@ __marimo__/
 # The static site lives in site/ (P07); keep it tracked despite the mkdocs rule above.
 !site/
 node_modules/
+
+# Design rounds: keep every round6 screenshot, only the contact sheets for earlier rounds (D11)
+mockups/round[345]/png/*-desktop-*.png
+mockups/round[345]/png/*-phone-*.png
