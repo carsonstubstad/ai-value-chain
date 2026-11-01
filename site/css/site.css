@@ -214,7 +214,7 @@ svg a.chip-a:hover text { text-decoration: underline }
 .tnote { font: 400 12px/1.4 var(--mono); color: var(--muted) }
 .trow svg, .loop svg { display: block; width: 100%; height: auto; overflow: visible }
 .trow .line { margin: 8px 0 0; font-size: 13px; color: var(--ink-2); max-width: 760px }
-.ticon { flex: none }
+svg.ticon, .trow svg.ticon, .loop svg.ticon { flex: none; display: inline-block; width: 30px; height: 20px }
 .lrows li { grid-template-columns: minmax(0, 1fr) auto }
 .lrows .who { display: flex; align-items: center; gap: 10px }
 .lrows .num { font-size: 15px }
