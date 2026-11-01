@@ -514,11 +514,24 @@ def arc_marks(path, fam, w, style, frac):
     col = "var(--muted)" if style == "contingent" else "var(--%s)" % fam
     dash = ' stroke-dasharray="5 3"' if style == "cap" else ""
     s = ('<path d="%s" fill="none" stroke="%s" stroke-width="%.1f"%s/>'
-         '<path d="%s" fill="none" stroke="var(--paper)" stroke-width="%.1f"/>' % (path, col, w, dash, path, w - 2.6))
+         '<path d="%s" fill="none" stroke="var(--paper)" stroke-width="%.1f"/>'
+         '<path d="%s" fill="none" stroke="%s" stroke-width="%.1f" opacity=".14"/>'
+         % (path, col, w, dash, path, w - 2.6, path, col, w - 2.6))
     if frac:
-        s += ('<path d="%s" fill="none" stroke="%s" stroke-width="%.1f" pathLength="100" stroke-dasharray="%.1f 100"/>'
-              % (path, col, w - 2.6, 100 * frac))
+        s += '<path d="%s" fill="none" stroke="%s" stroke-width="%.1f"/>' % (part_of(path, frac), col, w - 2.6)
     return s
+
+
+def part_of(path, t):
+    """The first share t of a one-segment cubic path (de Casteljau split), for paid to date."""
+    n = [float(x) for x in re.findall(r"-?[0-9.]+", path)]
+    p0, p1, p2, p3 = (n[0], n[1]), (n[2], n[3]), (n[4], n[5]), (n[6], n[7])
+    lerp = lambda a, b: (a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t)
+    q0, q1 = lerp(p0, p1), lerp(p1, p2)
+    q2 = lerp(p2, p3)
+    r0, r1 = lerp(q0, q1), lerp(q1, q2)
+    e = lerp(r0, r1)
+    return "M%.1f %.1f C%.1f %.1f %.1f %.1f %.1f %.1f" % (p0 + q0 + r0 + e)
 
 
 def loop_side(D, deals_ab):

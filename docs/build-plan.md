@@ -16,7 +16,13 @@ Approved at Gate 1 (D16 to D20). Each session is bounded, ends with the validato
 | 10 | Spot check | 20 records chosen at random, checked by a fresh session | Accept (Gate 3) | Medium | Done |
 | 11 | Overview and company card | State line, deal counts, chain rail, top flows, largest deals; company card with money in and out | Nothing | Medium | Done |
 | 12 | Money flows and trace | Layer columns, one line per deal, trace up and down from any company | Nothing | Medium | Done |
-| 13 | Loops, what changed, filters, mobile, dark | Loop cards, dated change log, URL filters, phone layout, theme button | Accept (Gate 4) | Medium | Done, waits on Gate 4 |
+| 13 | Loops, what changed, filters, mobile, dark | Loop cards, dated change log, URL filters, phone layout, theme button | Accept (Gate 4) | Medium | Done; Gate 4 not passed (D33 to D39) |
+| 13a | Design spec and mockups | docs/design-spec.md, two Overview mockups and a loop card in mockups/, three state-line candidates | Pick a mockup and a state line (Gate 4a) | Medium | Done, waits on Gate 4a |
+| 13b | Schema and build | paid_to_date fields, required amount_kind, contingent guarantees, layer_flows.json, loop numbers at build, NVIDIA spelling, the no-amount count | Nothing | Medium | |
+| 13c | Loops and Overview hero | Two-way loop diagrams and the picked hero, built to the spec | Nothing | Heavy (Carson told first) | |
+| 13d | Money flows | Layer level by default, bundled lines, Capital rail, trace isolates | Nothing | Medium | |
+| 13e | Words, fonts, phone | Word budgets enforced by the render test, self-hosted fonts in the site, phone pass | Accept (Gate 4 again) | Medium | |
+| 13f | Seed benched companies | Skipped until Carson asks (D34) | | | Skipped |
 | 14 | Launch pages | Method, About the data, README, changelog, first weekly entry; check Epoch terms (O12) | Yes to Pages (Gate 5) | Light | |
 
 Bench (promote up to three only with a sourced edge to a tracked company): Core Scientific, Humain, Bloom Energy first; then KLA, Cisco, Schneider Electric, Eaton, Oklo, Equinix, Thrive Capital, Alibaba, DeepSeek.
