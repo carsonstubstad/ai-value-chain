@@ -110,6 +110,16 @@ Settled questions. Do not reopen without Carson. Add a dated line for every new 
 - D46 (13b) The no-amount count is 25 deals with no US dollar figure: 24 undisclosed plus ASML into Mistral, which is stated in euros only. The brief's 28 could not be reproduced from the records.
 - D47 NVIDIA is spelled in capitals everywhere.
 
+## Round 6 pick (2026-11-01, Carson picked round 6 and approved sessions 14a to 14e)
+- D48 Design: round 6 mockups are the build reference (mockups/round6). Supersedes D40 (arc hero), D33's hatching and D42, the dashed clause of D36, and the Gate 4a loop form.
+- D49 Color: light default with paper #fafaf9 and ink #16202e, charcoal dark mode; the three chain families on one blue ramp (hw #0f3d8a, infra #2f7fd8, model #5aa0e6; dark #3f7fe0, #7fb0f2, #bcd4f7), Capital slate; vermilion #cc3215 (dark #ff6a3d) is the only accent, in the five places listed in docs/design-spec.md. Refines D43; supersedes D38 (links are ink, blue belongs to the whole chain).
+- D50 Encodings: three only. Width = amount; solid = paid, with paid-to-date drawn solid inside committed; outline = committed. Caps and multi-year totals are words in the label; a layer sum that contains any is labeled "ceilings". Guarantees drawn grey, never counted in widths or rankings. No hatching or dashes. Sourcing stays the F/S/R marker.
+- D51 Overview: no filters; hero order is masthead, headline, state line, three computed findings with evidence links, two buttons, sankey, three largest loops, deal-count concentration, what changed, top 10. The company directory moves to a Companies page with the chain wheel.
+- D52 Loops: one racetrack per loop, ranked by promised back, one scale per page; the row header states both sides with the ceilings, paid or committed word.
+- D53 Controls: chips, one primary button per page, a three-way theme segment, 4px radius on controls and company boxes only. A Data page serves the bundle and a deals CSV.
+- D54 (14d) The Overview's What changed shows 4 rows, not the mockup's 5, so the page stays under the D39 cap of 250 words once "Who the deals run through" is in (248 words). Carson went ahead with 14e on that recommendation. The word counter treats a ledger of bars as a chart, as the mockup's counter does.
+- D55 (14d, follows D48) Company cards carry no filter chips, as in the mockup; filters set on Money flows still carry over through links, and a card says how many deals they hide, with a Reset.
+
 ## Proposed at Gate 2 (2026-10-31), settled 2026-11-01 (O14)
 - P21 Company list: the 47 in data/companies-list.csv stand. Bench promotion order if a sourced edge appears: Core Scientific, Humain, Bloom Energy.
 - P22 Schema: six JSON Schemas in schema/ plus data/taxonomy.json. Financials are JSON records like the rest, not a CSV, so one validator covers everything.
