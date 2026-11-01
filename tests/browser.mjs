@@ -22,6 +22,7 @@ const ROUTES = [
   ["flows-open-labs", "#/flows?open=labs"],
   ["flows-no-amount", "#/flows?na=1"],
   ["loops", "#/loops"],
+  ["companies", "#/companies"],
   ["changes", "#/changes"],
   ["data", "#/data"],
 ];
@@ -46,12 +47,14 @@ for (const [size, viewport] of Object.entries(SIZES)) {
         sankey: !!document.querySelector(".desk-only svg")?.getBoundingClientRect().width,
         ledger: !!document.querySelector(".phone-only .ledger")?.getBoundingClientRect().width,
         trackShown: [...document.querySelectorAll(".trow svg")].some((e) => e.getBoundingClientRect().width > 0),
+        wheel: !!document.querySelector("svg.wheel")?.getBoundingClientRect().width,
         fonts: ["500 44px Newsreader", "400 15px \"IBM Plex Sans\"", "400 12px \"IBM Plex Mono\""].filter((f) => !document.fonts.check(f)),
       }));
       if (r.overflow > 1) problems.push(`${name} ${size}/${scheme}: page scrolls sideways by ${r.overflow}px`);
       if (r.view < 50 || r.failed) problems.push(`${name} ${size}/${scheme}: view is empty or failed`);
       if (/^(overview|flows)/.test(name) && r.sankey !== (size === "desktop")) problems.push(`${name} ${size}/${scheme}: sankey ${r.sankey ? "shown" : "hidden"}`);
       if (name === "loops" && !r.trackShown) problems.push(`${name} ${size}/${scheme}: no racetrack shown`);
+      if (name === "companies" && r.wheel !== (size === "desktop")) problems.push(`${name} ${size}/${scheme}: wheel ${r.wheel ? "shown" : "hidden"}`);
       if (/^(overview|flows)/.test(name) && r.ledger !== (size === "phone")) problems.push(`${name} ${size}/${scheme}: phone ledger ${r.ledger ? "shown" : "hidden"}`);
       if (r.fonts.length) problems.push(`${name} ${size}/${scheme}: fonts not loaded: ${r.fonts.join(", ")}`);
       if (scheme === "dark" && r.bg !== "rgb(23, 25, 28)") problems.push(`${name} ${size}/${scheme}: dark mode not applied (${r.bg})`);
@@ -101,6 +104,25 @@ await page.waitForFunction(() => window.scrollY > 0).catch(() => problems.push("
 if (!(await page.locator(".trow").count())) problems.push("Loops shows no racetracks");
 await page.click('a.chip[href*="rank=put"]');
 await page.waitForFunction(() => location.hash.includes("rank=put")).catch(() => problems.push("rank chip did not reach the URL"));
+// Companies: the search and the chips narrow the directory and reach the URL; the card's primary button traces.
+await page.goto(BASE + "#/companies");
+await page.waitForSelector(".dir");
+const allCo = await page.locator(".dir li").count();
+await page.fill("#f-cq", "nv");
+await page.waitForFunction(() => location.hash.includes("cq=nv"), null, { timeout: 3000 }).catch(() => problems.push("company search did not reach the URL"));
+const nv = await page.locator(".dir li").count();
+if (!(nv > 0 && nv < allCo)) problems.push(`company search did not narrow the directory (${nv} of ${allCo})`);
+if ((await page.evaluate(() => document.activeElement?.id)) !== "f-cq") problems.push("company search lost focus while typing");
+await page.goto(BASE + "#/companies");
+await page.click('[data-toggle="co"][data-v="private"]');
+await page.waitForFunction(() => location.hash.includes("co=private")).catch(() => problems.push("Private chip did not reach the URL"));
+if ((await page.locator(".dir li").count()) >= allCo) problems.push("Private chip did not narrow the directory");
+if ((await page.getAttribute('[data-nav="companies"]', "aria-current")) !== "page") problems.push("Companies is not marked in the nav");
+await page.goto(BASE + "#/company/openai");
+await page.waitForSelector("a.btn");
+if ((await page.getAttribute('[data-nav="companies"]', "aria-current")) !== "page") problems.push("a company card does not mark Companies in the nav");
+await page.click("header a.btn");
+await page.waitForFunction(() => location.hash.startsWith("#/flows") && location.hash.includes("focus=openai")).catch(() => problems.push("Trace its money did not trace the company"));
 // Tooltip: hovering a deal row shows the ink tooltip with the row's summary.
 await page.goto(BASE + "#/company/openai");
 await page.waitForSelector(".drow");
@@ -131,4 +153,4 @@ if (problems.length) {
   console.log(`browser: ${problems.length} problems`);
   process.exit(1);
 }
-console.log(`browser: ${ROUTES.length} pages x 2 sizes x 2 themes and 24 interaction checks, 0 problems`);
+console.log(`browser: ${ROUTES.length} pages x 2 sizes x 2 themes and 32 interaction checks, 0 problems`);

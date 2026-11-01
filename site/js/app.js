@@ -3,7 +3,7 @@
 // URL hash, so every view can be linked. Reads data/bundle.json; no third-party requests.
 
 import { index, parseState, stateQuery, DEFAULTS } from "./lib.js";
-import { makeCtx, renderControls, countLine, renderOverview, renderCompany, renderFlows, renderLoops, renderChanges, renderData, renderFoot } from "./views.js";
+import { makeCtx, renderControls, countLine, renderOverview, renderCompany, renderCompanies, renderFlows, renderLoops, renderChanges, renderData, renderFoot } from "./views.js";
 
 const $ = (id) => document.getElementById(id);
 let data, idx;
@@ -17,7 +17,7 @@ function route() {
   return { page: parts[0] || "overview", id: parts[1] ? decodeURIComponent(parts[1]) : "", anchor: anchor || "", s: parseState(query) };
 }
 
-const TITLES = { overview: "", company: "", flows: "Money flows", loops: "Loops", changes: "What changed", data: "The data" };
+const TITLES = { overview: "", company: "", companies: "Companies", flows: "Money flows", loops: "Loops", changes: "What changed", data: "The data" };
 
 function render(keepControls) {
   const r = route();
@@ -25,6 +25,7 @@ function render(keepControls) {
   const views = {
     overview: () => renderOverview(ctx),
     company: () => renderCompany(ctx, r.id),
+    companies: () => renderCompanies(ctx),
     flows: () => renderFlows(ctx),
     loops: () => renderLoops(ctx),
     changes: () => renderChanges(ctx),
@@ -36,12 +37,13 @@ function render(keepControls) {
   const live = keepControls ? document.querySelector("#controls .controls") : null;
   $("view").innerHTML = views[page]();
   const slot = $("controls");
-  if (slot && live) { slot.appendChild(live); $("count").innerHTML = countLine(ctx); }
-  else if (slot) slot.innerHTML = renderControls(ctx);
+  if (slot && live) { slot.appendChild(live); $("count").innerHTML = countLine(ctx, page); }
+  else if (slot) slot.innerHTML = renderControls(ctx, page);
   $("foot").innerHTML = renderFoot(ctx);
   for (const a of document.querySelectorAll("[data-nav]")) {
     a.href = `#/${a.dataset.nav === "overview" ? "" : a.dataset.nav}${ctx.qs}`;
-    a.setAttribute("aria-current", a.dataset.nav === page ? "page" : "false");
+    // A company card sits under Companies in the nav.
+    a.setAttribute("aria-current", a.dataset.nav === (page === "company" ? "companies" : page) ? "page" : "false");
   }
   const name = page === "company" ? idx.companies[r.id]?.name : TITLES[page];
   document.title = (name ? name + ", " : "") + "AI Value Chain Tracker";
@@ -68,7 +70,8 @@ function onClick(e) {
   if (t.dataset.toggle) {
     const k = t.dataset.toggle, v = t.dataset.v;
     const next = s[k].includes(v) ? s[k].filter((x) => x !== v) : [...s[k], v];
-    return go({ [k]: DEFAULTS[k].filter((x) => next.includes(x)).concat(next.filter((x) => !DEFAULTS[k].includes(x))) });
+    const base = DEFAULTS[k] || [];
+    return go({ [k]: base.filter((x) => next.includes(x)).concat(next.filter((x) => !base.includes(x))) });
   }
   go({ [t.dataset.set]: t.dataset.v });
 }
@@ -76,14 +79,14 @@ function onClick(e) {
 let typing;
 function onInput(e) {
   const f = e.target.dataset?.field;
-  if (f !== "q") return;
+  if (f !== "q" && f !== "cq") return;
   clearTimeout(typing);
-  typing = setTimeout(() => go({ q: e.target.value }, true), 200);
+  typing = setTimeout(() => go({ [f]: e.target.value }, true), 200);
 }
 
 function onChange(e) {
   const f = e.target.dataset?.field;
-  if (!f || f === "q") return;
+  if (!f || f === "q" || f === "cq") return;
   go({ [f]: f === "min" ? Number(e.target.value) || 0 : e.target.value });
 }
 

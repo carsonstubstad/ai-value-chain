@@ -3,9 +3,9 @@
 
 import {
   esc, money, amountText, highEnd, hasAmount, basisStyle, MARK, LABEL, TYPE_SHORT, FAMILY, VIEW_KEYS,
-  REGION_LABEL, applyFilters, isFiltered, staleness, fmtDate, layerFlows, loopView, isoWeek, weekRange, parseState,
+  REGION_LABEL, applyFilters, isFiltered, staleness, fmtDate, layerFlows, loopView, isoWeek, weekRange, parseState, CO_CHIPS,
 } from "./lib.js";
-import { sankey, sankeyEdges, ledger, LABEL_MIN, track, trackIcon, companyDiagram, amountWords } from "./charts.js";
+import { sankey, sankeyEdges, ledger, LABEL_MIN, track, trackIcon, companyDiagram, wheel, amountWords } from "./charts.js";
 
 // ctx = { data, idx, s, qs, qsWith }: qs carries the filters on every internal link; qsWith also
 // keeps the page's view state (trace, open layers, picked ribbon) and changes one key.
@@ -62,7 +62,8 @@ const button = (label, href, kind = "", icon = ARROW, extra = "") => `<a class="
 const options = (pairs, cur, none) =>
   `<option value="">${esc(none)}</option>` + pairs.map(([v, l]) => `<option value="${esc(v)}"${v === cur ? " selected" : ""}>${esc(l)}</option>`).join("");
 
-export function renderControls(ctx) {
+export function renderControls(ctx, page) {
+  if (page === "companies") return companyControls(ctx);
   const { s, data } = ctx;
   const extra = [s.family, s.min, s.own, s.region, s.since !== "all" ? s.since : ""].filter(Boolean).length;
   const SHORT = { filed: "Filed", company_stated: "Stated", reported: "Reported", rumored: "Rumors" };
@@ -81,7 +82,8 @@ export function renderControls(ctx) {
 </div>`;
 }
 
-export function countLine(ctx) {
+export function countLine(ctx, page) {
+  if (page === "companies") return companyCount(ctx);
   const all = ctx.visible.filter((d) => d.confidence !== "rumored").length;
   const reset = isFiltered(ctx.s) ? ` <button type="button" class="link" data-reset>Reset</button>` : "";
   return `${ctx.shown.length} of ${all} deals${reset}`;
@@ -153,7 +155,8 @@ export function renderOverview(ctx) {
   const loops = loopViews(ctx, "size", parseState("").conf).slice(0, 3);
   const scale = loopScale(loops);
   const minis = loops.map((v) => `<div class="loop"><h3>${trackIcon(ctx, v)}<a href="#/loops#loop-${esc(v.loop.id)}">${esc(v.loop.name)}</a></h3>${loopTracks(ctx, v, scale, true, "o")}</div>`).join("");
-  const evs = sortedEvents(ctx).slice(0, 5);
+  // Four rows, not the mockup's five: the run-through section brought the page to 260 words (D39 budget under 250).
+  const evs = sortedEvents(ctx).slice(0, 4);
   const top = shown.filter((d) => hasAmount(d) && !d.contingent).sort((a, b) => highEnd(b) - highEnd(a) || a.id.localeCompare(b.id)).slice(0, 10);
   const pairs = {};
   for (const d of top) pairs[d.payer + d.payee] = (pairs[d.payer + d.payee] || 0) + 1;
@@ -172,7 +175,8 @@ export function renderOverview(ctx) {
     ${ribPanel}
   </section>
   ${loops.length ? `<section><h2>Three largest loops</h2><div class="loops">${minis}</div></section>` : ""}
-  <section><h2>What changed</h2><ul class="rows">${evs.map((e) => changeRow(ctx, e)).join("")}</ul></section>
+  ${runThrough(ctx, shown)}
+  <section><h2><a href="#/changes">What changed</a></h2><ul class="rows">${evs.map((e) => changeRow(ctx, e)).join("")}</ul></section>
   <section class="col"><h2>Top 10 flows</h2>${top.length ? `<ul class="rows">${topRows}</ul>` : `<p class="empty">No deals match these filters.</p>`}</section>`;
 }
 
@@ -255,20 +259,82 @@ export function renderCompany(ctx, id) {
   const loops = loopViews(ctx).filter((v) => v.cos.includes(id));
   const st = staleness(c.last_checked, idx.asOf, data.taxonomy.stale_days);
   const facts = [idx.layers[c.layer]?.label, LABEL.ownership[c.ownership], `HQ ${c.hq_country}`, c.tickers?.length ? c.tickers.join(", ") : "", `checked ${fmtDate(c.last_checked)}`].filter(Boolean);
-  const list = (ds, side) => (ds.length ? `<ul class="rows">${ds.map((d) => dealRow(ctx, d, d[side], true)).join("")}</ul>` : `<p class="empty">None recorded.</p>`);
+  const list = (ds, side) => (ds.length ? `<ul class="rows">${ds.map((d) => dealRow(ctx, d, d[side])).join("")}</ul>` : `<p class="empty">None recorded.</p>`);
   const srcs = (c.sources || []).map((sid) => idx.sources[sid]).filter(Boolean).map((src) => `<a href="${esc(src.url)}" target="_blank" rel="noopener">${esc(src.publisher || src.label)}</a>`);
   return `${masthead(ctx)}
-  <header class="col"><h1>${esc(c.name)}</h1><p class="state">${esc(c.one_line)}</p>
-    <p class="meta"><span class="stale ${st}" aria-hidden="true"></span>${esc(facts.join(" · "))} · <a href="#/flows?${ctx.qs ? ctx.qs.slice(1) + "&" : ""}focus=${esc(id)}">trace its money</a></p></header>
-  <div id="controls"></div>
+  <header class="col"><h1><span class="dot ${fam(ctx, id)}" aria-hidden="true"></span>${esc(c.name)}</h1><p class="state">${esc(c.one_line)}</p>
+    <p class="meta facts"><span><span class="stale ${st}" aria-hidden="true"></span>${esc(facts.join(" · "))}</span>${button("Trace its money", `#/flows?${ctx.qs ? ctx.qs.slice(1) + "&" : ""}focus=${esc(id)}`)}</p></header>
   ${hidden ? `<p class="meta">${plural(hidden, "deal is", "deals are")} hidden by the filters. <button type="button" class="link" data-reset>Reset</button></p>` : ""}
-  ${out.length || inn.length ? `<figure class="fig small">${companyDiagram(ctx, id, inn, out)}</figure>` : ""}
+  ${out.length || inn.length ? `<figure class="fig small">${companyDiagram(ctx, id, inn, out)}</figure><p class="legend">${KEY} · F filed, S stated, R reported</p>` : ""}
   <section class="two">
     <div><h2>Money in <span class="n2">${inn.length}</span></h2>${list(inn, "payer")}</div>
     <div><h2>Money out <span class="n2">${out.length}</span></h2>${list(out, "payee")}</div>
   </section>
-  ${loops.length ? `<section class="col"><h2>Loops</h2><ul class="rows lrows">${loops.map((v) => { const sd = loopSides(v); return `<li><span class="who">${trackIcon(ctx, v)}<a href="#/loops${ctx.qs}#loop-${esc(v.loop.id)}">${esc(v.loop.name)}</a></span><span class="amt num">${esc(sd.put)} · ${esc(sd.back)}</span></li>`; }).join("")}</ul></section>` : ""}
+  ${loops.length ? `<section><h2>Loops <span class="n2">${loops.length}</span></h2><ul class="rows lrows">${loops.map((v) => `<li><span class="who">${trackIcon(ctx, v)}<a href="#/loops${ctx.qs}#loop-${esc(v.loop.id)}">${esc(v.loop.name)}</a></span><span class="ty">${esc(v.loop.line || "")}</span></li>`).join("")}</ul></section>` : ""}
   ${srcs.length ? `<p class="meta">Company sources: ${srcs.join(" · ")}</p>` : ""}`;
+}
+
+// ---------- Who the deals run through (HANDOFF 6): a count of deals, never a sum (P23) ----------
+
+export function dealCounts(deals) {
+  const cnt = new Map();
+  for (const d of deals) for (const [side, c] of [["out", d.payer], ["in", d.payee]]) {
+    if (!cnt.has(c)) cnt.set(c, { id: c, in: 0, out: 0 });
+    cnt.get(c)[side] += 1;
+  }
+  return [...cnt.values()].map((n) => ({ ...n, total: n.in + n.out })).sort((a, b) => b.total - a.total || a.id.localeCompare(b.id));
+}
+
+function runThrough(ctx, deals) {
+  const top = dealCounts(deals).slice(0, 8);
+  if (!top.length) return "";
+  const vmax = top[0].total;
+  const rows = top.map((n) => {
+    const k = `var(--${fam(ctx, n.id)})`, wi = (100 * n.in) / vmax, wo = (100 * n.out) / vmax;
+    const bar = `<svg viewBox="0 0 100 18" preserveAspectRatio="none" aria-hidden="true"><rect x="0" y="2" width="${wi.toFixed(2)}" height="14" fill="${k}"/>`
+      + `<rect x="${wi.toFixed(2)}" y="2" width="${wo.toFixed(2)}" height="14" fill="${k}" fill-opacity=".12" stroke="${k}" stroke-width="1" vector-effect="non-scaling-stroke"/></svg>`;
+    return `<li><span class="pair">${dot(ctx, n.id)}${companyLink(ctx, n.id)}</span><span class="barrow"><span class="bar">${bar}</span><span class="blabel"><span class="num">${n.total}</span> <span class="lw">${n.in} in · ${n.out} out</span></span></span></li>`;
+  }).join("");
+  return `<section><h2>Who the deals run through</h2><p class="legend">Deals per company: solid in, outline out.</p><ul class="ledger runs">${rows}</ul></section>`;
+}
+
+// ---------- Companies (D51): the chain wheel and the directory by layer ----------
+
+const dealtSet = (ctx) => new Set(ctx.visible.filter((d) => d.confidence !== "rumored").flatMap((d) => [d.payer, d.payee]));
+function companyMatch(ctx) {
+  const { s } = ctx, dealt = dealtSet(ctx), q = s.cq.trim().toLowerCase();
+  const owners = s.co.filter((x) => x !== "dealt");
+  return (c) => (!q || c.name.toLowerCase().includes(q) || c.id.includes(q))
+    && (!s.co.includes("dealt") || dealt.has(c.id)) && (!owners.length || owners.includes(c.ownership));
+}
+const CO_LABEL = { dealt: "Has a sourced deal", public: "Public", private: "Private" };
+function companyControls(ctx) {
+  const { s } = ctx;
+  return `<div class="controls" role="group" aria-label="Find a company">
+  <input id="f-cq" type="search" data-field="cq" value="${esc(s.cq)}" placeholder="Find a company" aria-label="Find a company" autocomplete="off">
+  <span class="grp">${CO_CHIPS.map((k) => toggle("co", k, CO_LABEL[k], s.co.includes(k))).join("")}</span>
+  <span class="count" id="count">${companyCount(ctx)}</span>
+</div>`;
+}
+function companyCount(ctx) {
+  const all = ctx.data.companies.length, n = ctx.data.companies.filter(companyMatch(ctx)).length;
+  return n === all ? plural(all, "company", "companies") : `${n} of ${all} companies`;
+}
+
+export function renderCompanies(ctx) {
+  const { data } = ctx;
+  const dealt = dealtSet(ctx), match = companyMatch(ctx);
+  const cols = data.taxonomy.layers.map((l) => {
+    const cs = data.companies.filter((c) => c.layer === l.id && match(c)).sort((a, b) => dealt.has(b.id) - dealt.has(a.id) || a.name.localeCompare(b.name));
+    if (!cs.length) return "";
+    return `<div class="lcol"><h3><span class="dot ${FAMILY[l.id]}" aria-hidden="true"></span>${esc(l.label)}</h3><ul>${cs.map((c) => `<li${dealt.has(c.id) ? "" : ` class="bench"`}><a href="#/company/${esc(c.id)}${ctx.qs}">${esc(c.name)}</a></li>`).join("")}</ul></div>`;
+  }).join("");
+  return `${masthead(ctx)}
+  <header class="col"><h1>Companies</h1><p class="state">${plural(data.companies.length, "company", "companies")} chosen to represent the chain; ${dealt.size} have at least one sourced deal.</p></header>
+  <div id="controls"></div>
+  <section class="desk-only wheelsec"><figure class="fig">${wheel(ctx, { dealt, match })}</figure>
+    <p class="legend">Chain order runs clockwise from ${esc(data.taxonomy.layers[0].label)} at the top; ${esc(data.taxonomy.layers.at(-1).label)} closes the circle. A dot marks a company with a sourced deal; muted names are tracked but have none yet.</p></section>
+  <section><h2>By layer</h2>${cols ? `<div class="dir">${cols}</div>` : `<p class="empty">No company matches. <a href="#/companies">Show all</a></p>`}</section>`;
 }
 
 // ---------- Money flows (13d) ----------

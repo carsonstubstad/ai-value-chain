@@ -14,7 +14,8 @@ let pages = 0;
 
 const STATES = ["", "conf=filed", "basis=paid", "since=12m", "layer=labs", "q=nvidia", "family=debt", "min=10",
   "own=private", "region=asia", "conf=filed,company_stated,reported,rumored", "q=zzzz", "focus=openai", "focus=nvidia&layer=labs",
-  "open=R%3Ahyperscale&focus=openai", "open=L%3Alabs,R%3Alabs", "open=capital&w=count", "w=count", "na=1", "rib=labs%3Ehyperscale", "rank=put", "rank=deals"];
+  "open=R%3Ahyperscale&focus=openai", "open=L%3Alabs,R%3Alabs", "open=capital&w=count", "w=count", "na=1", "rib=labs%3Ehyperscale", "rank=put", "rank=deals",
+  "cq=nv", "cq=zzzz", "co=dealt", "co=dealt,private", "co=public&cq=a"];
 
 function check(label, html) {
   pages++;
@@ -35,6 +36,8 @@ for (const q of STATES) {
   const s = parseState(q);
   const ctx = V.makeCtx(data, idx, s, stateQuery);
   run(`controls ?${q}`, () => V.renderControls(ctx));
+  run(`company controls ?${q}`, () => V.renderControls(ctx, "companies"));
+  run(`companies ?${q}`, () => V.renderCompanies(ctx));
   run(`overview ?${q}`, () => V.renderOverview(ctx));
   run(`flows ?${q}`, () => V.renderFlows(ctx));
   run(`loops ?${q}`, () => V.renderLoops(ctx));
@@ -54,8 +57,9 @@ if (def.some((d) => d.confidence === "rumored")) problems.push("default filters 
 
 // Word budgets (D39). Text is what a reader sees outside the charts: no svg or phone ledger, title text,
 // select options, the filter drawer or the F/S/R markers. A word has a letter or digit.
-// The phone ledger repeats the sankey in words, so it is counted once, as the chart (HANDOFF 6).
-const strip = (h) => h.replace(/<div class="phone-only">[\s\S]*?<\/div>/g, " ").replace(/<svg[\s\S]*?<\/svg>/g, " ").replace(/<select[\s\S]*?<\/select>/g, " ")
+// The phone ledger repeats the sankey in words, so it is counted once, as the chart (HANDOFF 6);
+// a ledger of bars is a chart, as the mockup counts it.
+const strip = (h) => h.replace(/<div class="phone-only">[\s\S]*?<\/div>/g, " ").replace(/<ul class="ledger[^"]*">[\s\S]*?<\/ul>/g, " ").replace(/<svg[\s\S]*?<\/svg>/g, " ").replace(/<select[\s\S]*?<\/select>/g, " ")
   .replace(/<details class="more"[\s\S]*?<\/details>/g, " ").replace(/<span class="mk"[^>]*>[^<]*<\/span>/g, " ");
 const words = (h) => strip(h).replace(/<[^>]+>/g, " ").replace(/&#39;/g, "'").replace(/&[a-z#0-9]+;/g, " ").split(/\s+/).filter((w) => /[A-Za-z0-9]/.test(w)).length;
 const inner = (h, re) => [...h.matchAll(re)].map((m) => m[1]);
@@ -100,6 +104,41 @@ for (const [label, html] of [["overview", ov], ["flows", V.renderFlows(c0)], ["f
     if (arrows !== n && !/outside the ring order/.test(desk)) problems.push(`loops: ${id} draws ${arrows} arrows for ${n} deals`);
     if (/url\(#h-/.test(body)) problems.push(`loops: ${id} uses hatching`);
   }
+}
+// Who the deals run through (HANDOFF 6): recounted here, a count of deals, never a sum.
+{
+  const n = {};
+  for (const d of def.filter((d) => idx.companies[d.payer] && idx.companies[d.payee])) for (const c of [d.payer, d.payee]) n[c] = (n[c] || 0) + 1;
+  const top = Object.entries(n).sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0])).slice(0, 8);
+  const sec = (ov.match(/<h2>Who the deals run through<\/h2>[\s\S]*?<\/section>/) || [""])[0];
+  const rows = [...sec.matchAll(/href="#\/company\/([^"?]+)[^"]*">[^<]*<\/a><\/span><span class="barrow">[\s\S]*?<span class="num">(\d+)<\/span>/g)].map((m) => [m[1], Number(m[2])]);
+  if (JSON.stringify(rows) !== JSON.stringify(top)) problems.push(`run-through: shows ${JSON.stringify(rows)}, records give ${JSON.stringify(top)}`);
+  if (/\$/.test(sec)) problems.push("run-through: shows money, it is a count");
+}
+// Companies (D51): every company once in the directory, benched names are those with no sourced deal,
+// the wheel names every company and is desktop only; the directory has left the Overview.
+{
+  const cp = V.renderCompanies(c0);
+  const dir = (cp.match(/<div class="dir">([\s\S]*)<\/section>/) || ["", ""])[1];
+  const ids = [...dir.matchAll(/href="#\/company\/([^"?]+)/g)].map((m) => m[1]);
+  if (ids.length !== data.companies.length || new Set(ids).size !== ids.length) problems.push(`companies: directory lists ${ids.length} of ${data.companies.length}`);
+  const dealt = new Set(def.filter((d) => idx.companies[d.payer] && idx.companies[d.payee]).flatMap((d) => [d.payer, d.payee]));
+  const bench = [...dir.matchAll(/<li class="bench"><a href="#\/company\/([^"?]+)/g)].map((m) => m[1]);
+  if (bench.length !== data.companies.length - dealt.size || bench.some((b) => dealt.has(b))) problems.push("companies: benched names do not match the records");
+  if (!/<section class="desk-only wheelsec">[\s\S]*?<svg class="wheel"/.test(cp)) problems.push("companies: the wheel is missing or not desktop only");
+  const wheelNames = (cp.match(/<svg class="wheel"[\s\S]*?<\/svg>/) || [""])[0].match(/class="chip-a cname/g) || [];
+  if (wheelNames.length !== data.companies.length) problems.push(`companies: the wheel names ${wheelNames.length} companies`);
+  if (/class="dir"/.test(ov)) problems.push("overview: still carries the company directory");
+  budgets("companies", cp);
+  const few = V.renderCompanies(V.makeCtx(data, idx, parseState("co=private"), stateQuery));
+  const fewIds = [...((few.match(/<div class="dir">([\s\S]*)<\/section>/) || ["", ""])[1]).matchAll(/href="#\/company\/([^"?]+)/g)].map((m) => m[1]);
+  if (fewIds.length !== data.companies.filter((c) => c.ownership === "private").length) problems.push("companies: the Private chip does not narrow the directory");
+}
+// One primary button per page (D53), and the company card carries Trace its money.
+for (const [label, html] of [["overview", ov], ["flows", V.renderFlows(c0)], ["loops", V.renderLoops(c0)], ["companies", V.renderCompanies(c0)], ["data", V.renderData(c0)], ...data.companies.map((c) => [`company/${c.id}`, V.renderCompany(c0, c.id)])]) {
+  const n = (html.match(/class="btn"/g) || []).length;
+  if (n > 1) problems.push(`${label}: ${n} primary buttons`);
+  if (label.startsWith("company/") && !/class="btn" href="#\/flows\?[^"]*focus=/.test(html)) problems.push(`${label}: no Trace its money button`);
 }
 budgets("loops", V.renderLoops(c0));
 budgets("flows", V.renderFlows(c0));

@@ -18,23 +18,6 @@ function partOf(path, t) {
   return `M${p0.map(f1).join(" ")} C${[...q0, ...r0, ...e].map(f1).join(" ")}`;
 }
 
-// One deal drawn along a path by basis (D50): paid solid, committed outline (caps and ranges too,
-// named in the label), paid to date as a fill inside the outline, guarantees as a grey outline, no amount dotted.
-export function mark(path, layer, w, d) {
-  const c = col(layer);
-  if (!w) return `<path d="${path}" fill="none" stroke="${c}" stroke-width="1" stroke-dasharray="2 3"/>`;
-  const st = basisStyle(d);
-  if (st === "paid") return `<path d="${path}" fill="none" stroke="${c}" stroke-width="${f1(w)}"/>`;
-  w = Math.max(w, 5);
-  const k = st === "contingent" ? "var(--muted)" : c;
-  let s = `<path d="${path}" fill="none" stroke="${k}" stroke-width="${f1(w)}"/>`
-    + `<path d="${path}" fill="none" stroke="var(--paper)" stroke-width="${f1(w - 2.6)}"/>`
-    + `<path d="${path}" fill="none" stroke="${k}" stroke-width="${f1(w - 2.6)}" opacity=".14"/>`;
-  const top = highEnd(d);
-  if (d.paid_to_date_usd && top) s += `<path d="${partOf(path, Math.min(1, d.paid_to_date_usd / top))}" fill="none" stroke="${k}" stroke-width="${f1(w - 2.6)}"/>`;
-  return s;
-}
-
 // Amount words for a label: "$11.8B of $13B paid", "$38B multi-year", "up to $100B", "undisclosed".
 export function amountWords(d) {
   if (d.paid_to_date_usd && highEnd(d)) return { amt: `${money(d.paid_to_date_usd)} of ${money(highEnd(d))} paid`, kind: "" };
@@ -349,23 +332,76 @@ export function trackIcon(ctx, v) {
 
 // ---------- Company card: money in on the left, money out on the right, top 5 each ----------
 
+// As in mockups/round6/build.py: paid is a solid line; committed is a pale band with a thin line
+// down its middle, with paid to date drawn solid from the tail; a guarantee in grey; no amount dotted.
+function curve(path, k, w, d) {
+  if (!w) return `<path d="${path}" fill="none" stroke="${k}" stroke-width=".9" stroke-dasharray="2 3"/>`;
+  if (basisStyle(d) === "paid") return `<path d="${path}" fill="none" stroke="${k}" stroke-width="${f1(w)}"/>`;
+  let s = `<path d="${path}" fill="none" stroke="${k}" stroke-width="${f1(w)}" opacity=".18"/><path d="${path}" fill="none" stroke="${k}" stroke-width="1.2"/>`;
+  const top = highEnd(d);
+  if (d.paid_to_date_usd && top) s += `<path d="${partOf(path, Math.min(1, d.paid_to_date_usd / top))}" fill="none" stroke="${k}" stroke-width="${f1(w)}"/>`;
+  return s;
+}
+
 export function companyDiagram(ctx, id, inn, out) {
   const { idx } = ctx;
   const W = 640, cx = W / 2, top5 = (ds) => ds.slice(0, 5);
   const li = top5(inn), lo = top5(out), rows = Math.max(li.length, lo.length, 1);
-  const H = 26 + rows * 34, cy = H / 2;
-  const vmax = Math.max(1, ...[...li, ...lo].map(highEnd));
-  const wOf = (d) => (hasAmount(d) ? Math.max(basisStyle(d) === "paid" ? 2 : 5, (12 * highEnd(d)) / vmax) : 0);
+  const H = 26 + rows * 36, cy = H / 2;
+  const vmax = Math.max(1, ...[...li, ...lo].filter((d) => !d.contingent).map(highEnd));
+  const wOf = (d) => (hasAmount(d) ? Math.max(2, (14 * highEnd(d)) / vmax) : 0);
   const side = (ds, left) => ds.map((d, i) => {
-    const other = left ? d.payer : d.payee, y = 20 + i * 34 + (rows - ds.length) * 17;
-    const x = left ? 150 : W - 150;
+    const other = left ? d.payer : d.payee, y = 20 + i * 36 + (rows - ds.length) * 18;
+    const x = left ? 150 : W - 150, tx = left ? x - 8 : x + 8, anchor = left ? "end" : "start";
     const p = left ? `M${x} ${y} C${f1((x + cx) / 2)} ${y} ${f1((x + cx) / 2)} ${f1(cy)} ${cx - 8} ${f1(cy)}`
       : `M${cx + 8} ${f1(cy)} C${f1((x + cx) / 2)} ${f1(cy)} ${f1((x + cx) / 2)} ${y} ${x} ${y}`;
-    const o = idx.companies[other];
-    return `<g>${dealTip(ctx, d)}${mark(p, idx.companies[d.payer].layer, wOf(d), d)}</g>`
-      + `<a href="#/company/${esc(other)}${ctx.qs}" class="chip-a"><text class="chip" x="${left ? x - 8 : x + 8}" y="${y - 3}" text-anchor="${left ? "end" : "start"}">${esc(o.name)}</text></a>`
-      + label(left ? x - 8 : x + 8, y + 12, d, left ? "end" : "start", 12);
+    const k = d.contingent ? "var(--muted)" : col(idx.companies[d.payer].layer);
+    const { amt, kind } = amountWords(d);
+    const words = kind && kind !== "one-time" ? `${amt}, ${kind}` : amt;
+    return `<g>${dealTip(ctx, d)}${curve(p, k, wOf(d), d)}</g>`
+      + `<a href="#/company/${esc(other)}${ctx.qs}" class="chip-a"><text class="chip" x="${tx}" y="${y - 3}" text-anchor="${anchor}">${esc(idx.companies[other].name)}</text></a>`
+      + `<text class="n halo" x="${tx}" y="${y + 12}" text-anchor="${anchor}" style="font-size:12px">${esc(words)}<tspan class="mk" dx="4">${MARK[d.confidence]}</tspan></text>`;
   }).join("");
   return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Largest deals in and out">${side(li, true)}${side(lo, false)}<circle cx="${cx}" cy="${f1(cy)}" r="8" fill="${col(idx.companies[id].layer)}"/>`
     + `<text class="lab" x="150" y="${H - 2}" text-anchor="end">money in</text><text class="lab" x="${W - 150}" y="${H - 2}">money out</text></svg>`;
+}
+
+// ---------- The chain wheel (Companies page, desktop only) ----------
+
+const polar = (cx, cy, r, deg) => [cx + r * Math.cos((deg * Math.PI) / 180), cy + r * Math.sin((deg * Math.PI) / 180)];
+function arcPath(cx, cy, r, a0, a1) {
+  const [x0, y0] = polar(cx, cy, r, a0), [x1, y1] = polar(cx, cy, r, a1);
+  return `M${f1(x0)} ${f1(y0)} A${f1(r)} ${f1(r)} 0 ${a1 - a0 > 180 ? 1 : 0} 1 ${f1(x1)} ${f1(y1)}`;
+}
+
+// One arc per layer in chain order (clockwise from Equipment at the top, Capital closing the circle),
+// one dot per company with a sourced deal, names set along the radius and linked to their cards.
+// opts: { dealt: Set of company ids, match(c): false dims a name the page's search or chips leave out }
+export function wheel(ctx, opts = {}) {
+  const { data, idx } = ctx, size = 680, cx = size / 2, cy = size / 2, R = size / 2 - 112, pad = 2.6;
+  const dealt = opts.dealt || new Set(), match = opts.match || (() => true);
+  const chain = data.taxonomy.layers.map((l) => l.id);
+  const slots = chain.map((l) => [l, data.companies.filter((c) => c.layer === l)]).filter(([, cs]) => cs.length);
+  const total = slots.reduce((n, [, cs]) => n + cs.length, 0);
+  let a = -90;
+  const out = [];
+  for (const [l, cs] of slots) {
+    const span = ((360 - pad * slots.length) * cs.length) / total, m = a + span / 2;
+    out.push(`<path d="${arcPath(cx, cy, R, a, a + span)}" fill="none" stroke="${col(l)}" stroke-width="10"/>`);
+    const [lx, ly] = polar(cx, cy, R - 22, m), cos = Math.cos((m * Math.PI) / 180);
+    out.push(`<text class="layer halo" x="${f1(lx)}" y="${f1(ly + 4)}" text-anchor="${Math.abs(cos) < 0.35 ? "middle" : cos < 0 ? "start" : "end"}" style="font-size:11px">${esc(idx.layers[l].label)}</text>`);
+    const sorted = [...cs].sort((p, q) => dealt.has(q.id) - dealt.has(p.id) || p.name.localeCompare(q.name));
+    sorted.forEach((c, j) => {
+      const ca = a + (span * (j + 0.5)) / cs.length, on = dealt.has(c.id);
+      const [x, y] = polar(cx, cy, R, ca), [tx, ty] = polar(cx, cy, R + 12, ca);
+      const flip = Math.cos((ca * Math.PI) / 180) < 0, rot = ca + (flip ? 180 : 0);
+      if (on) out.push(`<circle cx="${f1(x)}" cy="${f1(y)}" r="3.4" fill="var(--ink)" stroke="var(--paper)" stroke-width="1.5"/>`);
+      out.push(`<a href="#/company/${esc(c.id)}${ctx.qs}" class="chip-a cname${match(c) ? "" : " faded"}"><text class="${on ? "chip" : "bench"}" x="${f1(tx)}" y="${f1(ty)}" text-anchor="${flip ? "end" : "start"}" dominant-baseline="middle" transform="rotate(${f1(rot)} ${f1(tx)} ${f1(ty)})" style="font-size:10.5px">${esc(c.name)}</text></a>`);
+    });
+    a += span + pad;
+  }
+  out.push(`<text class="n" x="${cx}" y="${cy - 6}" text-anchor="middle" style="font-size:30px">${total}</text>`);
+  out.push(`<text class="lab" x="${cx}" y="${cy + 14}" text-anchor="middle">companies in ${slots.length} layers</text>`);
+  out.push(`<text class="lab" x="${cx}" y="${cy + 32}" text-anchor="middle">${dealt.size} with a sourced deal</text>`);
+  return `<svg class="wheel" viewBox="0 0 ${size} ${size}" role="img" aria-label="The chain as a wheel">${out.join("")}</svg>`;
 }

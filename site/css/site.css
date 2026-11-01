@@ -215,9 +215,29 @@ svg a.chip-a:hover text { text-decoration: underline }
 .trow svg, .loop svg { display: block; width: 100%; height: auto; overflow: visible }
 .trow .line { margin: 8px 0 0; font-size: 13px; color: var(--ink-2); max-width: 760px }
 svg.ticon, .trow svg.ticon, .loop svg.ticon { flex: none; display: inline-block; width: 30px; height: 20px }
-.lrows li { grid-template-columns: minmax(0, 1fr) auto }
+.lrows li { grid-template-columns: 280px minmax(0, 1fr); max-width: 860px; align-items: center }
 .lrows .who { display: flex; align-items: center; gap: 10px }
-.lrows .num { font-size: 15px }
+.lrows .ty { text-align: left }
+
+/* Company card (HANDOFF 5): the layer dot in the h1, the primary button on the facts line */
+h1 .dot { width: 14px; height: 14px; margin-right: 12px; vertical-align: 6px }
+.facts { display: flex; gap: 8px 14px; align-items: center; flex-wrap: wrap }
+
+/* Companies: the chain wheel (desktop only) and the directory by layer */
+svg.wheel { display: block; width: 100%; max-width: 680px; height: auto; margin: 0 auto; overflow: visible }
+.wheelsec { margin-top: 8px }
+@media (max-width: 1023px) { svg.wheel .cname { display: none } }
+.dir { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px 32px }
+.lcol h3 { font: 500 16px/1.3 var(--serif); margin: 0 0 6px }
+.lcol ul { list-style: none; margin: 0; padding: 0 }
+.lcol li { padding: 3px 0; font-size: 14px }
+.lcol a { text-decoration: none; color: var(--ink) }
+.lcol a:hover { text-decoration: underline }
+.lcol .bench a { color: var(--muted) }
+
+/* Who the deals run through: a count per company on the ledger's grid */
+.runs .bar svg { height: 18px }
+.runs .blabel .num { font-size: 15px }
 
 /* The sankey on desktop, the ranked ledger on phones (HANDOFF 6) */
 .phone-only { display: none }
@@ -264,4 +284,6 @@ svg a.node:hover text { text-decoration: underline }
   .ledger li { grid-template-columns: 1fr; gap: 4px; padding: 10px 0 }
   .ledger .barrow { grid-template-columns: 1fr }
   .ledger .blabel { order: -1; white-space: normal }
+  .lrows li { grid-template-columns: 1fr }
+  .dir { grid-template-columns: 1fr 1fr; gap: 16px 20px }
 }
