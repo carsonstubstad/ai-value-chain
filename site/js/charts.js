@@ -27,8 +27,8 @@ function partOf(path, t) {
   return `M${p0.map(f1).join(" ")} C${[...q0, ...r0, ...e].map(f1).join(" ")}`;
 }
 
-// One deal drawn along a path by basis (D36): paid solid, committed outline, cap or range dashed
-// outline, paid to date as a fill inside the outline, guarantees as a grey outline, no amount dotted.
+// One deal drawn along a path by basis (D50): paid solid, committed outline (caps and ranges too,
+// named in the label), paid to date as a fill inside the outline, guarantees as a grey outline, no amount dotted.
 export function mark(path, layer, w, d) {
   const c = col(layer);
   if (!w) return `<path d="${path}" fill="none" stroke="${c}" stroke-width="1" stroke-dasharray="2 3"/>`;
@@ -36,7 +36,7 @@ export function mark(path, layer, w, d) {
   if (st === "paid") return `<path d="${path}" fill="none" stroke="${c}" stroke-width="${f1(w)}"/>`;
   w = Math.max(w, 5);
   const k = st === "contingent" ? "var(--muted)" : c;
-  let s = `<path d="${path}" fill="none" stroke="${k}" stroke-width="${f1(w)}"${st === "cap" ? ' stroke-dasharray="5 3"' : ""}/>`
+  let s = `<path d="${path}" fill="none" stroke="${k}" stroke-width="${f1(w)}"/>`
     + `<path d="${path}" fill="none" stroke="var(--paper)" stroke-width="${f1(w - 2.6)}"/>`
     + `<path d="${path}" fill="none" stroke="${k}" stroke-width="${f1(w - 2.6)}" opacity=".14"/>`;
   const top = highEnd(d);
@@ -185,7 +185,7 @@ export function sankey(ctx, deals, opts = {}) {
     for (const l of new Set(rs.filter((r) => r.company).map((r) => r.layer))) {
       const xs = rs.filter((r) => r.company && r.layer === l);
       const y0 = Math.min(...xs.map((r) => r.y)), y1 = Math.max(...xs.map((r) => r.y + r.h));
-      const bx = side === "R" ? rightX + NODE_W + 112 : leftX - 120;
+      const bx = side === "R" ? rightX + NODE_W + 92 : leftX - 96;
       parts.push(`<line x1="${bx}" x2="${bx}" y1="${f1(y0)}" y2="${f1(y1)}" stroke="var(--rule)"/><text class="layer halo" x="${side === "R" ? bx + 6 : bx - 6}" y="${f1((y0 + y1) / 2 + 4)}"${side === "L" ? ' text-anchor="end"' : ""}>${esc(idx.layers[l].label)}</text>`);
     }
   }

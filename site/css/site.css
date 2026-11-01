@@ -154,7 +154,7 @@ svg .strong { font-weight: 600 }
 svg .n { font-family: var(--serif); font-weight: 600; font-size: 13px; fill: var(--ink) }
 svg .mk { font-family: var(--mono); font-size: 11px; fill: var(--muted) }
 svg .halo { paint-order: stroke; stroke: var(--paper); stroke-width: 4px; stroke-linejoin: round }
-svg a { cursor: pointer }
+svg a { cursor: pointer; text-decoration: none }
 svg a.rib:hover path, svg a.edge:hover path { opacity: 1 }
 svg a.faded { opacity: .1 }
 svg a.chip-a:hover text { text-decoration: underline }
@@ -222,6 +222,7 @@ svg a.node:hover text { text-decoration: underline }
 .ledger .barrow { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 10px; align-items: center }
 .ledger .blabel { white-space: nowrap; font-size: 12px; color: var(--ink-2) }
 .ledger .blabel .num { font-size: 13px; color: var(--ink) }
+.ledger .blabel .lw { font-family: var(--mono) }
 .ledger li.both { border-left: 2px solid var(--ink); padding-left: 10px }
 .trace .actions { margin-top: 14px }
 
