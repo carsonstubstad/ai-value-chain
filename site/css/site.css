@@ -224,7 +224,7 @@ h1 .dot { width: 14px; height: 14px; margin-right: 12px; vertical-align: 6px }
 .facts { display: flex; gap: 8px 14px; align-items: center; flex-wrap: wrap }
 
 /* Companies: the chain wheel (desktop only) and the directory by layer */
-svg.wheel { display: block; width: 100%; max-width: 680px; height: auto; margin: 0 auto; overflow: visible }
+.fig svg.wheel { display: block; width: 100%; min-width: 0; max-width: 680px; height: auto; margin: 0 auto; overflow: visible }
 .wheelsec { margin-top: 8px }
 @media (max-width: 1023px) { svg.wheel .cname { display: none } }
 .dir { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px 32px }
