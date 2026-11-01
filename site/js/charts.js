@@ -90,8 +90,10 @@ export function chainHero(ctx, flows, opts = {}) {
     for (const c of cs) {
       const k = deg[c.id] || 0;
       const href = `#/company/${esc(c.id)}${opts.qs || ""}`;
-      if (k) parts.push(`<a href="${href}" class="chip-a">${tip(c.name, plural(k, "deal", "deals"))}<circle cx="${f1(x0 + 4)}" cy="${y - 4}" r="${f1(2.2 + 1.1 * Math.sqrt(k))}" fill="${col(l)}"/><text class="chip" x="${f1(x0 + 12)}" y="${y}">${esc(c.name)}</text></a>`);
-      else parts.push(`<a href="${href}" class="chip-a">${tip(c.name, "No sourced deal yet")}<text class="bench" x="${f1(x0 + 12)}" y="${y}">${esc(c.name)}</text></a>`);
+      // A long name in a column drops its bracketed part so it stays inside the column.
+      const nm = c.name.length * 6.1 > cw - 14 ? c.name.replace(/\s*\(.*\)$/, "") : c.name;
+      if (k) parts.push(`<a href="${href}" class="chip-a">${tip(c.name, plural(k, "deal", "deals"))}<circle cx="${f1(x0 + 4)}" cy="${y - 4}" r="${f1(2.2 + 1.1 * Math.sqrt(k))}" fill="${col(l)}"/><text class="chip" x="${f1(x0 + 12)}" y="${y}">${esc(nm)}</text></a>`);
+      else parts.push(`<a href="${href}" class="chip-a">${tip(c.name, "No sourced deal yet")}<text class="bench" x="${f1(x0 + 12)}" y="${y}">${esc(nm)}</text></a>`);
       y += 19;
     }
     chipsBottom = Math.max(chipsBottom, y);
@@ -119,7 +121,7 @@ export function chainHero(ctx, flows, opts = {}) {
     if (f.from === f.to) { a -= 18; z += 18; }
     const up = isUp(f), depth = depthOf(f), w = width(f);
     let g = "";
-    if (!w) g = `<path d="${arc(a, z, y0, depth, up)}" fill="none" stroke="${col(f.from)}" stroke-width="1" stroke-dasharray="2 3"/>`;
+    if (!w) g = `<path d="${arc(a, z, y0, depth, up)}" fill="none" stroke="${col(f.from)}" stroke-width="1" stroke-dasharray="2 3"/><path d="${arc(a, z, y0, depth, up)}" fill="none" stroke="transparent" stroke-width="12"/>`;
     else {
       const wc = byCount ? w : (w * f.cash) / f.total, wh = w - wc;
       if (wh > 0.05) g += `<path d="${arc(a, z, y0, depth + wc / 2, up)}" fill="none" stroke="url(#h-${fam(f.from)})" stroke-width="${f1(wh)}"/>`;
@@ -248,10 +250,11 @@ export function loopBars(ctx, v, W = 640) {
       let s = st === "paid" ? `<rect x="${f1(x)}" y="0" width="${f1(Math.max(1, w - 2))}" height="22" fill="${k}"/>`
         : `<rect x="${f1(x + 0.75)}" y="0.75" width="${f1(Math.max(1, w - 3.5))}" height="20.5" fill="none" stroke="${k}" stroke-width="1.5"${st === "cap" ? ' stroke-dasharray="5 3"' : ""}/>`;
       if (st !== "paid" && d.paid_to_date_usd) s += `<rect x="${f1(x + 2.5)}" y="2.5" width="${f1(Math.max(0, (w - 7) * Math.min(1, d.paid_to_date_usd / highEnd(d))))}" height="17" fill="${k}"/>`;
-      const out = `<g>${dealTip(ctx, d)}${s}${w > 70 ? label(x, 40, d, "start") : ""}</g>`;
+      const out = `<g>${dealTip(ctx, d)}${s}${w > 70 || r.ds.length === 1 ? label(x, 40, d, "start") : ""}</g>`;
       x += w;
       return out;
     }).join("");
+    if (!r.ds.length) return `<p class="meta barlab">${esc(idx.companies[r.c].name)}: ${plural(r.none, "deal", "deals")}${v.cos.length === 2 && r.c === v.cos[1] ? " back" : " out"}, no amount disclosed</p>`;
     const none = r.none ? `<span class="meta"> plus ${plural(r.none, "deal", "deals")} with no amount</span>` : "";
     return `<p class="meta barlab">${esc(r.lab)}${none}</p>${r.ds.length ? `<svg class="bar" viewBox="0 0 ${W} 46" role="img" aria-label="${esc(r.lab)}">${HATCH}${segs}</svg>` : ""}`;
   }).join("");
@@ -326,14 +329,14 @@ export function flowsChart(ctx, deals, opts) {
   }
   const capOpen = opts.open.has("capital");
   const caps = capOpen ? members("capital") : [];
-  caps.forEach((c, i) => { pos[c.id] = [70 + (i * (W - 140)) / Math.max(1, caps.length - 1), railY]; });
+  caps.forEach((c, i) => { pos[c.id] = [150 + (i * (W - 210)) / Math.max(1, caps.length - 1), railY]; });
   const parts = [HATCH];
   cols.forEach((l) => {
     const on = opts.open.has(l);
     parts.push(`<a href="#/flows${opts.qsWith("open", on ? [...opts.open].filter((x) => x !== l) : [...opts.open, l])}" class="chip-a">${tip(idx.layers[l].label, on ? "Close to the layer" : "Open to its companies")}<text class="layer" x="${f1(cx[l])}" y="18" text-anchor="middle">${esc(idx.layers[l].label)}${on ? " −" : " +"}</text></a>`);
   });
   const lit = opts.lit;
-  const edges = [];
+  const edges = [], tags = [];
   for (const g of list.sort((x, y) => width(y) - width(x))) {
     const la = layerOfUnit(g.a), lb = layerOfUnit(g.b);
     const fromCap = la === "capital", toCap = lb === "capital";
@@ -360,10 +363,15 @@ export function flowsChart(ctx, deals, opts) {
     const stroke = !w ? `stroke="${col(la)}" stroke-width="1" stroke-dasharray="2 3"` : `stroke="${col(la)}" stroke-width="${f1(w)}"`;
     const target = g.a.startsWith("L:") ? `#/flows${opts.qsWith("open", [...new Set([...opts.open, la, lb])])}` : `#/flows${opts.qsWith("focus", g.a)}`;
     edges.push(`<a href="${target}" class="edge${on ? (lit ? " lit" : "") : " faded"}">${tip(head, second)}<path d="${path}" fill="none" ${stroke} opacity="${w ? ".8" : ".7"}"/><path d="${path}" fill="none" stroke="transparent" stroke-width="${f1(Math.max(10, w + 6))}"/></a>`);
-    if (lit && on) {
-      const mid = [(p1[0] + p2[0]) / 2, fromCap || toCap ? (p1[1] + p2[1]) / 2 : (p1[1] + p2[1]) / 2 + (CHAIN.indexOf(lb) < CHAIN.indexOf(la) ? -1 : 1) * Math.min(upSpace - 10, 18 + 0.2 * Math.abs(p2[0] - p1[0]))];
+    // Amounts: on a trace, the focus company's own lines; otherwise bundles of $20B or more.
+    const direct = lit ? g.a === opts.focus || g.b === opts.focus : (byCount ? g.deals.length >= 5 : g.total >= 20e9);
+    if (on && direct && (g.total || g.deals.length > 1)) {
+      const m = path.match(/-?[\d.]+/g).map(Number); // M x y C x y x y x y: the curve's midpoint
+      const mx = (m[0] + 3 * m[2] + 3 * m[4] + m[6]) / 8, my = (m[1] + 3 * m[3] + 3 * m[5] + m[7]) / 8;
       const d0 = g.deals.length === 1 ? g.deals[0] : null;
-      edges.push(d0 ? label(mid[0], mid[1] + 4, d0, "middle", 12) : `<text class="n halo" x="${f1(mid[0])}" y="${f1(mid[1] + 4)}" text-anchor="middle">${g.total ? esc(money(g.total)) : ""}<tspan class="lab" dx="4">${plural(g.deals.length, "deal", "deals")}</tspan></text>`);
+      const txt = d0 ? `${amountWords(d0).amt} ${amountWords(d0).kind || ""} F` : `${money(g.total)} ${g.deals.length} deals`;
+      tags.push({ x: mx, y: my + 4, w: txt.length * 6.6 + 8, svg: (y) => (d0 ? label(mx, y, d0, "middle", 12)
+        : `<text class="n halo" x="${f1(mx)}" y="${f1(y)}" text-anchor="middle">${g.total ? esc(money(g.total)) : ""}<tspan class="lab" dx="4">${plural(g.deals.length, "deal", "deals")}</tspan></text>`) });
     }
   }
   parts.push(...edges);
@@ -378,6 +386,15 @@ export function flowsChart(ctx, deals, opts) {
       const c = idx.companies[u], isF = u === opts.focus;
       parts.push(`<a href="#/flows${opts.qsWith("focus", isF ? "" : u)}" class="chip-a${faded ? " faded" : ""}">${tip(c.name, isF ? "Clear the trace" : "Trace its money")}<circle cx="${f1(x)}" cy="${f1(y)}" r="${isF ? 7 : 5}" fill="${col(layer)}" stroke="var(--paper)" stroke-width="2"/><text class="chip halo${isF ? " strong" : ""}" x="${f1(x + 9)}" y="${f1(y + 4)}">${esc(c.name.length > 16 ? c.name.slice(0, 15) + "." : c.name)}</text></a>`);
     }
+  }
+  // Labels last, nudged off each other; one that still collides is left to the tooltip.
+  const placed = [];
+  const hit = (t, y) => placed.some((p) => Math.abs(p.x - t.x) < (p.w + t.w) / 2 && Math.abs(p.y - y) < 15);
+  for (const t of tags) {
+    const y = [0, 15, -15, 30, -30].map((dy) => t.y + dy).find((yy) => !hit(t, yy));
+    if (y === undefined) continue;
+    placed.push({ x: t.x, y, w: t.w });
+    parts.push(t.svg(y));
   }
   parts.push(`<line x1="0" x2="${W}" y1="${f1(railY)}" y2="${f1(railY)}" stroke="var(--cap)" stroke-width="3"/>`);
   parts.push(`<a href="#/flows${opts.qsWith("open", capOpen ? [...opts.open].filter((x) => x !== "capital") : [...opts.open, "capital"])}" class="chip-a">${tip(idx.layers.capital.label, capOpen ? "Close to the layer" : "Open to its companies")}<text class="layer" x="0" y="${f1(railY + 20)}">${esc(idx.layers.capital.label)}${capOpen ? " −" : " +"}</text></a>`);

@@ -173,4 +173,5 @@ svg a.chip-a:hover text { text-decoration: underline }
   .rows li { grid-template-columns: minmax(0, 1fr) auto }
   .rows .ty { grid-row: 2; grid-column: 1 }
   .themebtn { margin-left: 0 }
+  .hero .toggle::after, .view > .toggle::after { content: "Swipe the chart sideways"; display: block; margin-top: 4px; color: var(--muted) }
 }
