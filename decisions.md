@@ -89,12 +89,22 @@ Settled questions. Do not reopen without Carson. Add a dated line for every new 
 - D31 Next is the status sweep (O16): check every open deal against the latest 10-Q or 10-K of a party that files with the SEC, then stop and report before sessions 11 to 13.
 - D32 (2026-10-31, "Yes, run to Gate 4") A filing figure outranks a press release figure for the same deal, so the Blackstone-led CoreWeave facility is $7.6B per CoreWeave's 10-K. PR #9 merged. Sessions 11 to 13 approved back to back; stop at Gate 4. Pages stays off.
 
-## Proposed at Gate 2 (2026-10-31), awaiting Carson's feedback
+## Gate 4 not passed (2026-11-01, Carson's Gate 4 brief and "Go with both picks")
+- D33 Layer ribbon width is the sum of each deal's high end, labeled "announced ceilings, not cash", and hatched where a cap or multi-year total is included. Deal count is available as a toggle.
+- D34 Companies with no sourced deal stay benched for now; a layer with none shows as "tracked, no sourced flows yet". Session 13f (seeding them) is skipped until Carson asks for it.
+- D35 Loops respect the confidence filter only.
+- D36 Basis is encoded by shape (paid solid, committed outline, cap or range dashed outline, paid to date as a fill inside committed); sourcing is a small marker beside the amount (F, S, R). Supersedes the line-style scheme for sourcing; P04 stands (color means layer only).
+- D37 Fonts are self-hosted from the repo (Newsreader, IBM Plex Sans, IBM Plex Mono); no third-party requests.
+- D38 Links use a neutral color; blue belongs to the Chip design layer only.
+- D39 Word budgets from the Gate 4 brief are enforced by the render test: page headline 6 words or fewer, state line 20 or fewer, no explanatory paragraph under a headline, Overview visible text under 250 words excluding chart labels, deal rows show counterparty, type and amount only, loop card one line of 15 words or fewer, caveats once per page, legend and footer one line each, tooltips two lines with the item first.
+- PR #10 stays unmerged. Sessions 13a to 13e run before Gate 4 is reviewed again; 13a stops at Gate 4a (design spec, two mockups, three state-line candidates; Carson picks).
+- O14 and O06 confirmed as proposed: P21 to P23 are settled, and paid data stays at $0.
+
+## Proposed at Gate 2 (2026-10-31), settled 2026-11-01 (O14)
 - P21 Company list: the 47 in data/companies-list.csv stand. Bench promotion order if a sourced edge appears: Core Scientific, Humain, Bloom Energy.
 - P22 Schema: six JSON Schemas in schema/ plus data/taxonomy.json. Financials are JSON records like the rest, not a CSV, so one validator covers everything.
 - P23 Loop sides are shown gross each way and never netted when either side is a cap or multi-year total. Company rankings use the largest single deal, never a sum of caps.
 
 ## Open (need Carson)
-- O14 Confirm P21 to P23 (PRs merged per D23).
-- O06 Paid data: $0 through the MVP; revisit after two months of weekly updates.
 - O12 Epoch AI terms of use: confirm before Gate 5 (the downloads page states no license).
+- O17 Gate 4a: pick a mockup (A or B) and one of three state-line candidates.
