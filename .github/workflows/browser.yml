@@ -1,7 +1,7 @@
 name: browser
 
 # Loads the site in a real browser at desktop and phone widths, in light and dark,
-# and saves screenshots to the fetch branch under screens/ for review. Not a deploy.
+# checks the design mockups in mockups/, and saves screenshots to the fetch branch under screens/ for review. Not a deploy.
 
 on:
   push:
@@ -9,6 +9,8 @@ on:
     paths:
       - site/**
       - tests/browser.mjs
+      - mockups/**
+      - tests/mockups.mjs
       - .github/workflows/browser.yml
   workflow_dispatch:
 
@@ -36,6 +38,12 @@ jobs:
           python3 -m http.server 8000 --directory site > /dev/null 2>&1 &
           sleep 1
           node tests/browser.mjs "$RUNNER_TEMP/screens"
+      - name: Serve the repo root and check the Gate 4a mockups
+        if: always()
+        run: |
+          python3 -m http.server 8001 > /dev/null 2>&1 &
+          sleep 1
+          node tests/mockups.mjs "$RUNNER_TEMP/screens"
       - name: Commit screenshots to the fetch branch
         if: always()
         run: |
