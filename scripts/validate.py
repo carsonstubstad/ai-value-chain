@@ -24,7 +24,7 @@ import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 EM_DASH = chr(0x2014)
-TEXT_EXT = {".md", ".py", ".json", ".yml", ".yaml", ".html", ".css", ".js", ".txt", ".csv"}
+TEXT_EXT = {".md", ".py", ".json", ".yml", ".yaml", ".html", ".css", ".js", ".mjs", ".txt", ".csv"}
 
 
 def tracked_files():

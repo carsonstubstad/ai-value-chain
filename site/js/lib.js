@@ -25,7 +25,7 @@ export const LABEL = {
   confidence: { filed: "Filed", company_stated: "Company-stated", reported: "Reported", rumored: "Rumored" },
   basis: { committed: "Committed", paid: "Paid", estimated: "Estimated" },
   kind: { cap: "cap", multi_year_total: "multi-year total", annual_run_rate: "annual run-rate", one_time: "one-time" },
-  ownership: { public: "Public", private: "Private", government: "Government" },
+  ownership: { public: "Public", private: "Private", joint_venture: "Joint venture", government: "Government" },
   status: { announced: "Announced", signed: "Signed", closed: "Closed", terminated: "Terminated", superseded: "Superseded" },
 };
 export const typeLabel = (t) => t.replace(/_/g, " ").replace(/\bgpu\b/g, "GPU").replace(/\bjv\b/g, "JV").replace(/^./, (c) => c.toUpperCase());
