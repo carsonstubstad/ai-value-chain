@@ -2,6 +2,18 @@
 
 As of 1 Nov 2026. Branch `claude/project-thread-6qiz8r`, draft PR #10. Written from the code and data on that branch.
 
+## Gate 4 update (1 Nov 2026)
+
+Sections 2 to 5 below describe the site as it stood before the Gate 4 redesign. Since then, sessions 13a to 13e rebuilt it to `docs/design-spec.md` with Carson's Gate 4a picks (mockup B, state line 1; D40 to D47):
+
+- Overview: masthead, six-word headline, the picked state line, one-line filters, the two-way chain (suppliers above, investing below, Capital rail), the three largest loops, five latest changes, top 10 flows.
+- Loops: one header caveat, two-company arcs or a three-company triangle, "put in" and "promised back" bars on one scale, a 15-word line per loop.
+- Company card: a small in/out diagram (top 5 each side), rows of counterparty, type and amount with one grey line.
+- Money flows: layers by default, open a layer by clicking it, trace dims the rest to 10% and labels the traced company's own lines; no-amount lines behind a toggle.
+- What changed: grouped by ISO week with a layer dot and an outline-to-solid mark when a deal becomes paid.
+- Newsreader, IBM Plex Sans and IBM Plex Mono, self-hosted; four layer-family colors; claret for paid only.
+- The render test enforces the word budgets (D39) and recounts the state line from the records (D41).
+
 ## 1. Answer first
 
 - The data and all five site pages are built. Sessions 1 to 13 of 14 are done, and the site is waiting on Carson's Gate 4 look.
