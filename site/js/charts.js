@@ -1,5 +1,5 @@
-// SVG builders for the round 6 design (mockups/round6): the sankey and its phone ledger, loop
-// diagrams and the company in and out diagram. Pure functions returning strings.
+// SVG builders for the round 6 design (mockups/round6): the sankey and its phone ledger, the loop
+// racetracks and the company in and out diagram. Pure functions returning strings.
 
 import { esc, money, amountText, highEnd, hasAmount, basisStyle, flowWord, MARK, LABEL, TYPE_SHORT, FAMILY } from "./lib.js";
 
@@ -8,15 +8,6 @@ const plural = (n, one, many) => `${n} ${n === 1 ? one : many}`;
 const fam = (layer) => FAMILY[layer] || "hw";
 const col = (layer) => `var(--${fam(layer)})`;
 const tip = (a, b) => `<title>${esc(a)}${b ? "\n" + esc(b) : ""}</title>`;
-
-export const HATCH = `<defs>${["hw", "infra", "model", "cap"].map((f) =>
-  `<pattern id="h-${f}" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="5" height="5" fill="var(--paper)"/><rect width="2.2" height="5" fill="var(--${f})"/></pattern>`).join("")}</defs>`;
-
-// A cubic arc from x1 to x2 on the line y0, bulging up or down by about `depth`.
-const arc = (x1, x2, y0, depth, up) => {
-  const c = y0 + (up ? -1 : 1) * depth * 1.33;
-  return `M${f1(x1)} ${f1(y0)} C${f1(x1)} ${f1(c)} ${f1(x2)} ${f1(c)} ${f1(x2)} ${f1(y0)}`;
-};
 
 // The first share t of a one-segment cubic path, for paid to date.
 function partOf(path, t) {
@@ -215,91 +206,145 @@ export function ledger(ctx, flows, opts = {}) {
   }).join("")}</ul>`;
 }
 
-// ---------- Loops ----------
+// ---------- Loops: the racetrack (round 6, D52) ----------
 
-// Two companies: A left, B right, top arcs A to B, bottom arcs B to A, one arc per deal.
-// Three companies: a triangle with one curved arc per deal.
-export function loopDiagram(ctx, v, opts = {}) {
-  const { idx } = ctx;
-  const big = !!opts.big, W = opts.W || 340, fs = big ? 1.25 : 1;
-  const scale = opts.scaleMax || 250e9, wmax = opts.wmax || 14;
-  const wOf = (d) => (hasAmount(d) ? Math.max(basisStyle(d) === "paid" ? 2 : 5, (wmax * highEnd(d)) / scale) : 0);
-  const name = (c) => idx.companies[c].name;
-  if (v.cos.length === 2) {
-    const [a, b] = v.cos, pad = big ? 96 : 78, xa = pad, xb = W - pad;
-    const side = (p) => v.deals.filter((d) => d.payer === p).sort((x, y) => highEnd(x) - highEnd(y));
-    const stack = (ds, up) => {
-      const marks = [], labs = [];
-      let depth = 18 * fs;
-      for (const d of ds) {
-        const w = wOf(d);
-        depth += w / 2;
-        const p = arc(xa, xb, 0, depth, up);
-        marks.push(`<g>${dealTip(ctx, d)}${mark(p, idx.companies[d.payer].layer, w, d)}</g>`);
-        labs.push(label(W / 2, up ? -depth - w / 2 - 3 : depth + w / 2 + 13 * fs, d, "middle", Math.round(13 * fs)));
-        depth += w / 2 + 15 * fs;
-      }
-      return { marks, labs, depth };
-    };
-    const t = stack(side(a), true), btm = stack(side(b), false);
-    const yc = t.depth + 18, H = yc + btm.depth + 8;
-    const ends = [[xa, a, "end"], [xb, b, "start"]].map(([x, c, anc]) =>
-      `<circle cx="${x}" cy="0" r="${f1(4.5 * fs)}" fill="${col(idx.companies[c].layer)}"/><text class="layer" x="${x + (anc === "end" ? -9 : 9)}" y="4" text-anchor="${anc}"${big ? ' style="font-size:15px"' : ""}>${esc(name(c))}</text>`).join("");
-    return `<svg viewBox="0 0 ${W} ${Math.round(H)}" role="img" aria-label="${esc(v.loop.name)}">${HATCH}<g transform="translate(0 ${f1(yc)})">${t.marks.join("")}${btm.marks.join("")}${t.labs.join("")}${btm.labs.join("")}${ends}</g></svg>`;
-  }
-  // Triangle: first company top left, second top right, third at the bottom.
-  const H = big ? 330 : 250, P = {};
-  const pts = [[W * 0.2, 46], [W * 0.8, 46], [W * 0.5, H - 46]];
-  v.cos.slice(0, 3).forEach((c, i) => { P[c] = pts[i]; });
-  const pairs = {};
-  for (const d of v.deals) (pairs[d.payer + ">" + d.payee] ||= []).push(d);
-  const marks = [], labs = [];
-  for (const ds of Object.values(pairs)) {
-    ds.sort((x, y) => highEnd(x) - highEnd(y));
-    let bend = 16;
-    for (const d of ds) {
-      const [x1, y1] = P[d.payer], [x2, y2] = P[d.payee], w = wOf(d);
-      const mx = (x1 + x2) / 2, my = (y1 + y2) / 2, dx = x2 - x1, dy = y2 - y1, len = Math.hypot(dx, dy);
-      const nx = dy / len, ny = -dx / len; // left of travel, so the two directions part
-      bend += w / 2;
-      const c1 = [mx + nx * bend * 1.6, my + ny * bend * 1.6];
-      const p = `M${f1(x1)} ${f1(y1)} C${f1(c1[0])} ${f1(c1[1])} ${f1(c1[0])} ${f1(c1[1])} ${f1(x2)} ${f1(y2)}`;
-      marks.push(`<g>${dealTip(ctx, d)}${mark(p, idx.companies[d.payer].layer, w, d)}</g>`);
-      labs.push(label(mx + nx * (bend * 1.2 + 10), my + ny * (bend * 1.2 + 10) + 4, d, "middle", Math.round(12 * fs)));
-      bend += w / 2 + 14;
-    }
-  }
-  const ends = v.cos.slice(0, 3).map((c) => { const [x, y] = P[c]; const below = y > H / 2;
-    return `<circle cx="${f1(x)}" cy="${f1(y)}" r="${f1(4.5 * fs)}" fill="${col(idx.companies[c].layer)}"/><text class="layer" x="${f1(x)}" y="${f1(below ? y + 22 : y - 12)}" text-anchor="middle">${esc(name(c))}</text>`; }).join("");
-  return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(v.loop.name)}">${HATCH}${marks.join("")}${labs.join("")}${ends}</svg>`;
+// An axis-aligned arrow from (x0, y0) to (x1, y1), w thick, with a head. Returns the outline path.
+function arrowPath(x0, y0, x1, y1, w) {
+  const len = Math.hypot(x1 - x0, y1 - y0) || 1, dx = (x1 - x0) / len, dy = (y1 - y0) / len, nx = -dy, ny = dx;
+  const head = Math.min(len * 0.45, Math.max(7, Math.min(16, w * 1.2 + 5))), hw = w / 2, hh = hw + head * 0.6;
+  const hx = x1 - dx * head, hy = y1 - dy * head;
+  const pts = [[x0 + nx * hw, y0 + ny * hw], [hx + nx * hw, hy + ny * hw], [hx + nx * hh, hy + ny * hh], [x1, y1],
+    [hx - nx * hh, hy - ny * hh], [hx - nx * hw, hy - ny * hw], [x0 - nx * hw, y0 - ny * hw]];
+  return "M" + pts.map((p) => p.map(f1).join(" ")).join(" L") + " Z";
 }
 
-// Stacked bars on one scale, one per company, segmented by deal. A comparison, never a net.
-export function loopBars(ctx, v, W = 640) {
+// One deal as an arrow (D50): solid = paid; outline with a light fill = committed, with paid to date
+// filled from the tail; a dotted hairline with a small open head = no amount; grey = guarantee.
+function dealArrow(ctx, d, x0, y0, x1, y1, w, uid) {
+  const k = d.contingent ? "var(--muted)" : col(ctx.idx.companies[d.payer].layer);
+  if (!hasAmount(d)) {
+    const len = Math.hypot(x1 - x0, y1 - y0) || 1, dx = (x1 - x0) / len, dy = (y1 - y0) / len;
+    const hp = `M${f1(x1 - dx * 6 - dy * 4)} ${f1(y1 - dy * 6 + dx * 4)} L${f1(x1)} ${f1(y1)} L${f1(x1 - dx * 6 + dy * 4)} ${f1(y1 - dy * 6 - dx * 4)}`;
+    return `<path d="M${f1(x0)} ${f1(y0)} L${f1(x1)} ${f1(y1)}" fill="none" stroke="${k}" stroke-width=".9" stroke-dasharray="2 3"/><path d="${hp}" fill="none" stroke="${k}" stroke-width="1"/>`;
+  }
+  const body = arrowPath(x0, y0, x1, y1, w);
+  if (basisStyle(d) === "paid") return `<path d="${body}" fill="${k}"/>`;
+  let s = `<path d="${body}" fill="${k}" fill-opacity=".12" stroke="${k}" stroke-width="1.2" stroke-linejoin="round"/>`;
+  if (d.paid_to_date_usd && highEnd(d)) {
+    const t = Math.min(1, d.paid_to_date_usd / highEnd(d));
+    const ex = x0 + (x1 - x0) * t, ey = y0 + (y1 - y0) * t, m = w + 20;
+    const rx = Math.min(x0, ex) - (x0 === x1 ? m : 0), ry = Math.min(y0, ey) - (y0 === y1 ? m : 0);
+    const rw = Math.abs(ex - x0) + (x0 === x1 ? 2 * m : 0), rh = Math.abs(ey - y0) + (y0 === y1 ? 2 * m : 0);
+    s += `<clipPath id="${uid}"><rect x="${f1(rx)}" y="${f1(ry)}" width="${f1(rw)}" height="${f1(rh)}"/></clipPath><path d="${body}" fill="${k}" clip-path="url(#${uid})"/>`;
+  }
+  return s;
+}
+
+// The arrow's label: amount (with caps and multi-year in words), deal type lighter, F/S/R marker.
+// The phone form keeps the amount alone.
+function trackLabel(d, x, y, anchor, size, short) {
+  const { amt, kind } = amountWords(d);
+  const a = short ? amt : kind && kind !== "one-time" ? `${amt}, ${kind}` : amt;
+  const ty = short ? "" : `<tspan class="lab" dx="5" style="font-weight:400">${esc(TYPE_SHORT[d.type])}</tspan>`;
+  return `<text class="n halo" x="${f1(x)}" y="${f1(y)}" text-anchor="${anchor}" style="font-size:${size}px">${esc(a)}${ty}<tspan class="mk" dx="4">${MARK[d.confidence]}</tspan></text>`;
+}
+
+// opts: { W, wmax, scaleMax, compact, phone }. Company boxes in a row (two, or three for a ring), money
+// clockwise: top arrows out along the row, bottom arrows back. Thickness = amount on one scale per page,
+// 1.5px floor. On a phone a three-company ring stacks vertically: down the right side, back up the left.
+export function track(ctx, v, opts = {}) {
   const { idx } = ctx;
-  const rows = v.cos.map((c, i) => {
-    const ds = v.deals.filter((d) => d.payer === c && hasAmount(d)).sort((x, y) => highEnd(y) - highEnd(x));
-    const promised = ds.length && ds.every((d) => d.amount_basis !== "paid");
-    const lab = v.cos.length === 2 && i === 1 ? `${idx.companies[c].name} ${promised ? "promised back" : "paid back"}` : `${idx.companies[c].name} put in`;
-    return { c, ds, lab, none: v.deals.filter((d) => d.payer === c && !hasAmount(d)).length };
-  });
-  const vmax = Math.max(1, ...rows.map((r) => r.ds.reduce((t, d) => t + highEnd(d), 0)));
-  return rows.map((r) => {
-    let x = 0;
-    const segs = r.ds.map((d) => {
-      const w = (W * highEnd(d)) / vmax, layer = idx.companies[d.payer].layer, st = basisStyle(d);
-      const k = st === "contingent" ? "var(--muted)" : col(layer);
-      let s = st === "paid" ? `<rect x="${f1(x)}" y="0" width="${f1(Math.max(1, w - 2))}" height="22" fill="${k}"/>`
-        : `<rect x="${f1(x + 0.75)}" y="0.75" width="${f1(Math.max(1, w - 3.5))}" height="20.5" fill="none" stroke="${k}" stroke-width="1.5"${st === "cap" ? ' stroke-dasharray="5 3"' : ""}/>`;
-      if (st !== "paid" && d.paid_to_date_usd) s += `<rect x="${f1(x + 2.5)}" y="2.5" width="${f1(Math.max(0, (w - 7) * Math.min(1, d.paid_to_date_usd / highEnd(d))))}" height="17" fill="${k}"/>`;
-      const out = `<g>${dealTip(ctx, d)}${s}${w > 70 || r.ds.length === 1 ? label(x, 40, d, "start") : ""}</g>`;
-      x += w;
-      return out;
-    }).join("");
-    if (!r.ds.length) return `<p class="meta barlab">${esc(idx.companies[r.c].name)}: ${plural(r.none, "deal", "deals")}${v.cos.length === 2 && r.c === v.cos[1] ? " back" : " out"}, no amount disclosed</p>`;
-    const none = r.none ? `<span class="meta"> plus ${plural(r.none, "deal", "deals")} with no amount</span>` : "";
-    return `<p class="meta barlab">${esc(r.lab)}${none}</p>${r.ds.length ? `<svg class="bar" viewBox="0 0 ${W} 46" role="img" aria-label="${esc(r.lab)}">${HATCH}${segs}</svg>` : ""}`;
-  }).join("");
+  const W = opts.W || 1080, wmax = opts.wmax || 26, scale = opts.scaleMax || 250e9, compact = !!opts.compact, phone = !!opts.phone;
+  const cos = v.cos, n = cos.length, uid = `t${opts.uid || ""}${v.loop.id.replace(/[^a-z0-9]/gi, "")}`;
+  const th = (d) => (!hasAmount(d) ? 0.9 : Math.max(1.5, (wmax * highEnd(d)) / scale));
+  const between = (a, b) => v.deals.filter((d) => d.payer === a && d.payee === b).sort((x, y) => highEnd(y) - highEnd(x));
+  const fwd = cos.slice(0, -1).map((c, i) => [i, i + 1, between(c, cos[i + 1])]);
+  const back = [[n - 1, 0, between(cos[n - 1], cos[0])]];
+  const drawn = new Set([...fwd, ...back].flatMap(([, , ds]) => ds.map((d) => d.id)));
+  const stray = v.deals.filter((d) => !drawn.has(d.id));
+  const out = [];
+  const fs = compact ? 11 : 12.5, lh = compact ? 12 : 14;
+  const tipFor = (d) => dealTip(ctx, d);
+  const box = (c, x, y, bw, bh) => {
+    const k = col(idx.companies[c].layer);
+    return `<a href="#/company/${esc(c)}${ctx.qs}" class="chip-a">${tip(idx.companies[c].name, "Open the company card")}<rect x="${f1(x)}" y="${f1(y)}" width="${bw}" height="${bh}" rx="3" fill="var(--wash)" stroke="${k}" stroke-width="1.5"/>`
+      + `<circle cx="${f1(x + 14)}" cy="${f1(y + bh / 2)}" r="4" fill="${k}"/><text class="layer" x="${f1(x + 26)}" y="${f1(y + bh / 2 + 4)}" style="font-size:${compact || phone ? 12 : 13}px">${esc(idx.companies[c].name)}</text></a>`;
+  };
+  if (phone && n === 3) {
+    const BW = 132, BH = 30, bx = (W - BW) / 2;
+    const gapOf = (ds) => Math.max(64, ds.length * (lh + 4) + 28);
+    const ys = [8];
+    for (const [, , ds] of fwd) ys.push(ys[ys.length - 1] + BH + gapOf(ds));
+    const H = ys[n - 1] + BH + 8;
+    let xr = bx + BW + 14;
+    // Down the right side, one column of arrows per hop, labels to their right.
+    for (const [i, j, ds] of fwd) {
+      let x = bx + BW + 14, ly = (ys[i] + BH + ys[j]) / 2 - ((ds.length - 1) * (lh + 2)) / 2 + 4;
+      for (const [m, d] of ds.entries()) {
+        const w = th(d); x += w / 2;
+        out.push(`<g>${tipFor(d)}${dealArrow(ctx, d, x, ys[i] + BH / 2, x, ys[j] + BH / 2, w, `${uid}r${i}${m}`)}</g>`);
+        x += w / 2 + 6;
+      }
+      xr = Math.max(xr, x);
+      ds.forEach((d, m) => out.push(trackLabel(d, x + 2, ly + m * (lh + 2), "start", 11, true)));
+    }
+    // Back up the left side.
+    for (const [i, j, ds] of back) {
+      let x = bx - 14, ly = (ys[j] + ys[i] + BH) / 2 - ((ds.length - 1) * (lh + 2)) / 2 + 4;
+      for (const [m, d] of ds.entries()) {
+        const w = th(d); x -= w / 2;
+        out.push(`<g>${tipFor(d)}${dealArrow(ctx, d, x, ys[i] + BH / 2, x, ys[j] + BH / 2, w, `${uid}l${m}`)}</g>`);
+        x -= w / 2 + 6;
+      }
+      ds.forEach((d, m) => out.push(trackLabel(d, x - 2, ly + m * (lh + 2), "end", 11, true)));
+    }
+    cos.forEach((c, i) => out.push(box(c, bx, ys[i], BW, BH)));
+    return `<svg viewBox="0 0 ${W} ${f1(H)}" role="img" aria-label="${esc(v.loop.name)}">${out.join("")}</svg>`;
+  }
+  const [BW, BH] = phone ? [n > 2 ? 92 : 112, 30] : compact ? [118, 30] : [150, 36];
+  const gap = n > 1 ? (W - n * BW) / (n - 1) : 0;
+  const xs = cos.map((c, i) => i * (BW + gap));
+  const sideH = (hops) => Math.max(0, ...hops.map(([, , ds]) => ds.reduce((t, d) => t + th(d) + 6 + lh, 0))) + 22;
+  const topH = sideH(fwd), botH = sideH(back), by = topH, H = topH + BH + botH + (stray.length ? 18 : 8);
+  for (const [i, j, ds] of fwd) {
+    const x0 = xs[i] + BW + 6, x1 = xs[j] - 6;
+    let y = by - 10;
+    for (const [m, d] of ds.entries()) {
+      const w = th(d); y -= w / 2;
+      out.push(`<g>${tipFor(d)}${dealArrow(ctx, d, x0, y, x1, y, w, `${uid}f${i}${m}`)}</g>`);
+      out.push(trackLabel(d, (x0 + x1) / 2, y - w / 2 - 5, "middle", fs, phone));
+      y -= w / 2 + 6 + lh;
+    }
+  }
+  for (const [i, j, ds] of back) {
+    let x0 = xs[j] + BW / 2, x1 = xs[i] + BW / 2;
+    if (n === 2) { x0 = xs[0] + BW + 6; x1 = xs[1] - 6; }
+    let y = by + BH + 10;
+    for (const [m, d] of ds.entries()) {
+      const w = th(d); y += w / 2;
+      if (n > 2) {
+        // Drop from the last box and rise into the first, so the arrow runs along the bottom.
+        const k = d.contingent ? "var(--muted)" : col(idx.companies[d.payer].layer), dash = hasAmount(d) ? "" : ' stroke-dasharray="2 3"';
+        out.push(`<path d="M${f1(x1)} ${by + BH} V${f1(y)}" fill="none" stroke="${k}" stroke-width="1"${dash}/><path d="M${f1(x0)} ${by + BH} V${f1(y)}" fill="none" stroke="${k}" stroke-width="1"${dash}/>`);
+      }
+      out.push(`<g>${tipFor(d)}${dealArrow(ctx, d, x1, y, x0, y, w, `${uid}b${m}`)}</g>`);
+      out.push(trackLabel(d, (x0 + x1) / 2, y + w / 2 + lh, "middle", fs, phone));
+      y += w / 2 + 6 + lh;
+    }
+  }
+  cos.forEach((c, i) => out.push(box(c, xs[i], by, BW, BH)));
+  if (stray.length) out.push(`<text class="lab" x="0" y="${f1(H - 2)}">${plural(stray.length, "deal", "deals")} outside the ring order not drawn</text>`);
+  return `<svg viewBox="-2 0 ${W + 4} ${f1(H)}" role="img" aria-label="${esc(v.loop.name)}">${out.join("")}</svg>`;
+}
+
+// Row icon: two boxes, an arrow over and an arrow back, thick when paid.
+export function trackIcon(ctx, v) {
+  const a = v.cos[0], b = v.cos[v.cos.length - 1];
+  const ka = col(ctx.idx.companies[a].layer), kb = col(ctx.idx.companies[b].layer);
+  const up = v.put.some((d) => basisStyle(d) === "paid"), dn = v.back.some((d) => basisStyle(d) === "paid");
+  return `<svg class="ticon" width="30" height="20" viewBox="0 0 30 20" aria-hidden="true"><rect x="1" y="7" width="7" height="7" rx="1.5" fill="${ka}"/><rect x="22" y="7" width="7" height="7" rx="1.5" fill="${kb}"/>`
+    + `<path d="M9 5h11" stroke="${ka}" stroke-width="${up ? 2.6 : 1}"/><path d="M18 3l3 2-3 2" fill="none" stroke="${ka}" stroke-width="1.2"/>`
+    + `<path d="M21 16H10" stroke="${kb}" stroke-width="${dn ? 2.6 : 1}"/><path d="M12 14l-3 2 3 2" fill="none" stroke="${kb}" stroke-width="1.2"/></svg>`;
 }
 
 // ---------- Company card: money in on the left, money out on the right, top 5 each ----------
@@ -321,6 +366,6 @@ export function companyDiagram(ctx, id, inn, out) {
       + `<a href="#/company/${esc(other)}${ctx.qs}" class="chip-a"><text class="chip" x="${left ? x - 8 : x + 8}" y="${y - 3}" text-anchor="${left ? "end" : "start"}">${esc(o.name)}</text></a>`
       + label(left ? x - 8 : x + 8, y + 12, d, left ? "end" : "start", 12);
   }).join("");
-  return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Largest deals in and out">${HATCH}${side(li, true)}${side(lo, false)}<circle cx="${cx}" cy="${f1(cy)}" r="8" fill="${col(idx.companies[id].layer)}"/>`
+  return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Largest deals in and out">${side(li, true)}${side(lo, false)}<circle cx="${cx}" cy="${f1(cy)}" r="8" fill="${col(idx.companies[id].layer)}"/>`
     + `<text class="lab" x="150" y="${H - 2}" text-anchor="end">money in</text><text class="lab" x="${W - 150}" y="${H - 2}">money out</text></svg>`;
 }

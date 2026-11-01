@@ -5,7 +5,7 @@ import {
   esc, money, amountText, highEnd, hasAmount, basisStyle, MARK, LABEL, TYPE_SHORT, FAMILY, VIEW_KEYS,
   REGION_LABEL, applyFilters, isFiltered, staleness, fmtDate, layerFlows, loopView, isoWeek, weekRange, parseState,
 } from "./lib.js";
-import { sankey, sankeyEdges, ledger, LABEL_MIN, loopDiagram, loopBars, companyDiagram, amountWords } from "./charts.js";
+import { sankey, sankeyEdges, ledger, LABEL_MIN, track, trackIcon, companyDiagram, amountWords } from "./charts.js";
 
 // ctx = { data, idx, s, qs, qsWith }: qs carries the filters on every internal link; qsWith also
 // keeps the page's view state (trace, open layers, picked ribbon) and changes one key.
@@ -89,9 +89,38 @@ export function countLine(ctx) {
 
 // ---------- Overview (D40) ----------
 
-function loopViews(ctx) {
-  return ctx.data.loops.map((l) => loopView(l, ctx.idx, ctx.s.conf)).filter((v) => v.closed).sort((a, b) => b.size - a.size || a.loop.name.localeCompare(b.loop.name));
+// Loops (D35: the sourcing filter only). By default ranked by size; the Loops page ranks by what was
+// promised back, then put in, then name (D52, HANDOFF 7.5), or by deals.
+const RANKS = {
+  size: (a, b) => b.size - a.size || a.loop.name.localeCompare(b.loop.name),
+  back: (a, b) => b.backAmt - a.backAmt || b.putAmt - a.putAmt || a.loop.name.localeCompare(b.loop.name),
+  put: (a, b) => b.putAmt - a.putAmt || b.backAmt - a.backAmt || a.loop.name.localeCompare(b.loop.name),
+  deals: (a, b) => b.deals.length - a.deals.length || b.backAmt - a.backAmt || a.loop.name.localeCompare(b.loop.name),
+};
+function loopViews(ctx, rank = "size", conf = ctx.s.conf) {
+  return ctx.data.loops.map((l) => loopView(l, ctx.idx, conf)).filter((v) => v.closed).sort(RANKS[rank]);
 }
+// One scale for every loop on a page: the largest deal in them sets the thickest arrow.
+const loopScale = (views) => Math.max(1, ...views.flatMap((v) => v.deals.filter((d) => !d.contingent).map(highEnd)));
+// "$13B in, ceilings" and "$250B back, ceilings": each side with the word for what it is made of (D52).
+function loopSides(v) {
+  const word = (ds) => {
+    const a = ds.filter((d) => hasAmount(d) && !d.contingent);
+    if (a.some((d) => d.amount_kind !== "one_time")) return "ceilings";
+    return a.length && a.every((d) => d.amount_basis === "paid") ? "paid" : "committed";
+  };
+  const put = v.putAmt ? `${money(v.putAmt)} in, ${word(v.put)}` : "no amount in";
+  const back = v.backAmt ? `${money(v.backAmt)} back, ${word(v.back)}` : "no amount back";
+  const notes = [];
+  const cont = v.deals.filter((d) => d.contingent);
+  if (cont.length) notes.push(`${cont.map((d) => `${amountText(d)} guarantee`).join(", ")} in grey, not counted`);
+  const na = v.deals.filter((d) => !hasAmount(d) && !d.contingent).length;
+  if (na) notes.push(`${plural(na, "deal", "deals")} with no amount, dotted`);
+  return { put, back, notes };
+}
+const loopTracks = (ctx, v, scale, compact, uid = "") => compact
+  ? `<div class="desk-only">${track(ctx, v, { W: 330, wmax: 18, scaleMax: scale, compact: true, uid: uid + "d" })}</div><div class="phone-only">${track(ctx, v, { W: 358, wmax: 16, scaleMax: scale, compact: true, phone: true, uid: uid + "p" })}</div>`
+  : `<div class="desk-only">${track(ctx, v, { W: 1080, wmax: 26, scaleMax: scale, uid: uid + "d" })}</div><div class="phone-only">${track(ctx, v, { W: 358, wmax: 16, scaleMax: scale, phone: true, uid: uid + "p" })}</div>`;
 
 function changeRow(ctx, e) {
   const d = ctx.idx.deals[e.deal];
@@ -121,8 +150,9 @@ export function renderOverview(ctx) {
   const hero = sankey(ctx, shown, { rib: s.rib, ribLink: (e) => ribLink(e.key), nodeLink: (side, r) => `#/flows?open=${encodeURIComponent(`${side}:${r.id}`)}` });
   const picked = s.rib && flows.find((f) => f.key === s.rib);
   const ribPanel = picked ? `<section class="ribdeals" aria-label="Deals in the picked ribbon"><h2>${esc(idx.layers[picked.from].label)} to ${esc(idx.layers[picked.to].label)}</h2><ul class="rows">${[...picked.deals].sort((a, b) => highEnd(b) - highEnd(a)).map((d) => dealRow(ctx, d)).join("")}</ul></section>` : "";
-  const loops = loopViews(ctx).slice(0, 3);
-  const minis = loops.map((v) => `<div class="loop"><h3><a href="#/loops#loop-${esc(v.loop.id)}">${esc(v.loop.name)}</a></h3>${loopDiagram(ctx, v)}</div>`).join("");
+  const loops = loopViews(ctx, "size", parseState("").conf).slice(0, 3);
+  const scale = loopScale(loops);
+  const minis = loops.map((v) => `<div class="loop"><h3>${trackIcon(ctx, v)}<a href="#/loops#loop-${esc(v.loop.id)}">${esc(v.loop.name)}</a></h3>${loopTracks(ctx, v, scale, true, "o")}</div>`).join("");
   const evs = sortedEvents(ctx).slice(0, 5);
   const top = shown.filter((d) => hasAmount(d) && !d.contingent).sort((a, b) => highEnd(b) - highEnd(a) || a.id.localeCompare(b.id)).slice(0, 10);
   const pairs = {};
@@ -237,7 +267,7 @@ export function renderCompany(ctx, id) {
     <div><h2>Money in <span class="n2">${inn.length}</span></h2>${list(inn, "payer")}</div>
     <div><h2>Money out <span class="n2">${out.length}</span></h2>${list(out, "payee")}</div>
   </section>
-  ${loops.length ? `<section><h2>Loops</h2><div class="loops">${loops.map((v) => `<div class="loop"><h3><a href="#/loops${ctx.qs}">${esc(v.loop.name)}</a></h3><p class="line">${esc(v.loop.line)}</p>${loopDiagram(ctx, v)}</div>`).join("")}</div></section>` : ""}
+  ${loops.length ? `<section class="col"><h2>Loops</h2><ul class="rows lrows">${loops.map((v) => { const sd = loopSides(v); return `<li><span class="who">${trackIcon(ctx, v)}<a href="#/loops${ctx.qs}#loop-${esc(v.loop.id)}">${esc(v.loop.name)}</a></span><span class="amt num">${esc(sd.put)} · ${esc(sd.back)}</span></li>`; }).join("")}</ul></section>` : ""}
   ${srcs.length ? `<p class="meta">Company sources: ${srcs.join(" · ")}</p>` : ""}`;
 }
 
@@ -285,16 +315,30 @@ export function renderFlows(ctx) {
 // ---------- Loops (D35: the confidence filter only) ----------
 
 export function renderLoops(ctx) {
-  const views = loopViews(ctx);
+  const { s } = ctx;
+  const rank = s.rank || "back";
+  const views = loopViews(ctx, rank);
   const deals = new Set(views.flatMap((v) => v.deals.map((d) => d.id)));
-  const on = {};
-  for (const v of views) for (const c of v.cos) on[c] = (on[c] || 0) + 1;
-  const lead = Object.entries(on).sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0])).slice(0, 2).map(([c, n]) => `${ctx.idx.companies[c].name} on ${n}`);
-  const cards = views.map((v) => `<article class="loop card" id="loop-${esc(v.loop.id)}"><h2>${esc(v.loop.name)}</h2><p class="line">${esc(v.loop.line)}</p>${loopDiagram(ctx, v, { W: 500, big: true, scaleMax: 250e9, wmax: 22 })}${loopBars(ctx, v, 500)}</article>`).join("");
+  const scale = loopScale(views);
+  const SHORT = { filed: "Filed", company_stated: "Stated", reported: "Reported", rumored: "Rumors" };
+  const BY = { back: "what was promised back", put: "what was put in", deals: "number of deals" };
+  const rankChip = (r, label) => viewChip(`#/loops${ctx.qsWith("rank", r === "back" ? "" : r)}`, label, rank === r);
+  const rows = views.map((v) => {
+    const sd = loopSides(v);
+    return `<article class="trow" id="loop-${esc(v.loop.id)}"><div class="thead"><h2>${trackIcon(ctx, v)}<a href="#/loops${ctx.qs}#loop-${esc(v.loop.id)}">${esc(v.loop.name)}</a></h2>`
+      + `<p class="tsum"><span class="num">${esc(sd.put)}</span><span class="sep"></span><span class="num">${esc(sd.back)}</span>${sd.notes.length ? `<span class="tnote"> · ${esc(sd.notes.join(" · "))}</span>` : ""}</p></div>`
+      + `${loopTracks(ctx, v, scale, false)}<p class="line">${esc(v.loop.line)}</p></article>`;
+  }).join("");
   return `${masthead(ctx)}
-  <header class="col"><h1>Loops</h1><p class="state">${views.length} loops, ${deals.size} deals${lead.length ? ", " + lead.join(", ") : ""}.</p>
-  <p class="caveat">Nets are not shown: caps, ranges and multi-year totals cannot be netted against cash.</p></header>
-  ${views.length ? `<div class="cards">${cards}</div>` : `<p class="empty">No loop is complete with this sourcing filter.</p>`}`;
+  <header class="col"><h1>Loops</h1><p class="state">${plural(views.length, "loop", "loops")}, ${plural(deals.size, "deal", "deals")}, ranked by ${BY[rank]}.</p></header>
+  <div class="controls" role="group" aria-label="Filters">
+    <span class="grp">${["filed", "company_stated", "reported", "rumored"].map((c) => toggle("conf", c, SHORT[c], s.conf.includes(c))).join("")}</span>
+    <span class="grp"><span class="meta">Rank by</span>${rankChip("back", "promised back")}${rankChip("put", "put in")}${rankChip("deals", "deals")}</span>
+    <span class="count">${plural(views.length, "loop", "loops")}</span>
+  </div>
+  <p class="caveat">Top arrows carry money out along the ring, bottom arrows bring it back; thickness is the amount, on one scale for every loop. Nets are not shown: caps, ranges and multi-year totals cannot be netted against cash.</p>
+  <p class="legend">${KEY} · dotted: no amount · grey: guarantee, not counted</p>
+  ${views.length ? `<div class="tracks">${rows}</div>` : `<p class="empty">No loop is complete with this sourcing filter.</p>`}`;
 }
 
 // ---------- What changed ----------

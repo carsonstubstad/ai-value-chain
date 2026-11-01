@@ -45,11 +45,13 @@ for (const [size, viewport] of Object.entries(SIZES)) {
         bg: getComputedStyle(document.body).backgroundColor,
         sankey: !!document.querySelector(".desk-only svg")?.getBoundingClientRect().width,
         ledger: !!document.querySelector(".phone-only .ledger")?.getBoundingClientRect().width,
+        trackShown: [...document.querySelectorAll(".trow svg")].some((e) => e.getBoundingClientRect().width > 0),
         fonts: ["500 44px Newsreader", "400 15px \"IBM Plex Sans\"", "400 12px \"IBM Plex Mono\""].filter((f) => !document.fonts.check(f)),
       }));
       if (r.overflow > 1) problems.push(`${name} ${size}/${scheme}: page scrolls sideways by ${r.overflow}px`);
       if (r.view < 50 || r.failed) problems.push(`${name} ${size}/${scheme}: view is empty or failed`);
       if (/^(overview|flows)/.test(name) && r.sankey !== (size === "desktop")) problems.push(`${name} ${size}/${scheme}: sankey ${r.sankey ? "shown" : "hidden"}`);
+      if (name === "loops" && !r.trackShown) problems.push(`${name} ${size}/${scheme}: no racetrack shown`);
       if (/^(overview|flows)/.test(name) && r.ledger !== (size === "phone")) problems.push(`${name} ${size}/${scheme}: phone ledger ${r.ledger ? "shown" : "hidden"}`);
       if (r.fonts.length) problems.push(`${name} ${size}/${scheme}: fonts not loaded: ${r.fonts.join(", ")}`);
       if (scheme === "dark" && r.bg !== "rgb(23, 25, 28)") problems.push(`${name} ${size}/${scheme}: dark mode not applied (${r.bg})`);
@@ -95,6 +97,10 @@ if ((await page.locator(".findings li").count()) !== 3) problems.push("the Overv
 await page.locator(".findings .ev a").nth(2).click();
 await page.waitForFunction(() => location.hash.startsWith("#/loops")).catch(() => problems.push("loop finding link did not open Loops"));
 await page.waitForFunction(() => window.scrollY > 0).catch(() => problems.push("loop finding link did not scroll to its loop"));
+// Loops: racetracks ranked, and the Rank by chips reach the URL.
+if (!(await page.locator(".trow").count())) problems.push("Loops shows no racetracks");
+await page.click('a.chip[href*="rank=put"]');
+await page.waitForFunction(() => location.hash.includes("rank=put")).catch(() => problems.push("rank chip did not reach the URL"));
 // Tooltip: hovering a deal row shows the ink tooltip with the row's summary.
 await page.goto(BASE + "#/company/openai");
 await page.waitForSelector(".drow");
@@ -125,4 +131,4 @@ if (problems.length) {
   console.log(`browser: ${problems.length} problems`);
   process.exit(1);
 }
-console.log(`browser: ${ROUTES.length} pages x 2 sizes x 2 themes and 22 interaction checks, 0 problems`);
+console.log(`browser: ${ROUTES.length} pages x 2 sizes x 2 themes and 24 interaction checks, 0 problems`);

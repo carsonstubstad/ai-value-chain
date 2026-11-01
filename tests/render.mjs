@@ -14,7 +14,7 @@ let pages = 0;
 
 const STATES = ["", "conf=filed", "basis=paid", "since=12m", "layer=labs", "q=nvidia", "family=debt", "min=10",
   "own=private", "region=asia", "conf=filed,company_stated,reported,rumored", "q=zzzz", "focus=openai", "focus=nvidia&layer=labs",
-  "open=R%3Ahyperscale&focus=openai", "open=L%3Alabs,R%3Alabs", "open=capital&w=count", "w=count", "na=1", "rib=labs%3Ehyperscale"];
+  "open=R%3Ahyperscale&focus=openai", "open=L%3Alabs,R%3Alabs", "open=capital&w=count", "w=count", "na=1", "rib=labs%3Ehyperscale", "rank=put", "rank=deals"];
 
 function check(label, html) {
   pages++;
@@ -86,6 +86,20 @@ for (const [label, html] of [["overview", ov], ["flows", V.renderFlows(c0)], ["f
   const want = shown0.filter((d) => !d.contingent && hasAmount(d)).reduce((t, d) => t + Math.max(d.amount_usd_low || 0, d.amount_usd_high || 0), 0);
   const got = sankeyEdges(c0, shown0).reduce((t, e) => t + e.v, 0);
   if (Math.abs(want - got) > 1) problems.push(`sankey widths sum to ${got}, the records give ${want}`);
+}
+// Racetracks (D52): one arrow per deal on the desktop track, ranked by what was promised back.
+{
+  const lp = V.renderLoops(c0);
+  const arts = [...lp.matchAll(/<article class="trow" id="loop-([^"]+)">([\s\S]*?)<\/article>/g)];
+  if (!arts.length) problems.push("loops: no racetracks");
+  for (const [, id, body] of arts) {
+    const loop = data.loops.find((l) => l.id === id);
+    const n = loop.deals.filter((x) => idx.deals[x] && idx.deals[x].confidence !== "rumored").length;
+    const desk = (body.match(/<div class="desk-only">([\s\S]*?)<\/div>/) || ["", ""])[1];
+    const arrows = (desk.match(/<g><title>/g) || []).length;
+    if (arrows !== n && !/outside the ring order/.test(desk)) problems.push(`loops: ${id} draws ${arrows} arrows for ${n} deals`);
+    if (/url\(#h-/.test(body)) problems.push(`loops: ${id} uses hatching`);
+  }
 }
 budgets("loops", V.renderLoops(c0));
 budgets("flows", V.renderFlows(c0));

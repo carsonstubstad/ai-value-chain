@@ -134,7 +134,7 @@ export function parseState(query) {
     q: p.get("q") || "", family: p.get("family") || "", min: Number(p.get("min")) || 0,
     own: p.get("own") || "", region: p.get("region") || "", focus: p.get("focus") || "",
     rib: p.get("rib") || "", w: p.get("w") === "count" ? "count" : "", open: p.has("open") ? p.get("open").split(",").filter(Boolean) : [],
-    na: p.get("na") === "1" ? "1" : "",
+    na: p.get("na") === "1" ? "1" : "", rank: ["put", "deals"].includes(p.get("rank")) ? p.get("rank") : "",
   };
 }
 
@@ -143,14 +143,14 @@ export function stateQuery(s) {
   for (const k of ["basis", "conf"]) if (s[k].join() !== DEFAULTS[k].join()) p.set(k, s[k].join(","));
   for (const k of ["since", "layer", "q", "family", "own", "region", "focus"]) if (s[k] && s[k] !== DEFAULTS[k]) p.set(k, s[k]);
   if (s.min) p.set("min", String(s.min));
-  for (const k of ["rib", "w", "na"]) if (s[k]) p.set(k, s[k]);
+  for (const k of ["rib", "w", "na", "rank"]) if (s[k]) p.set(k, s[k]);
   if (s.open?.length) p.set("open", s.open.join(","));
   const q = p.toString();
   return q ? "?" + q : "";
 }
 
-// View state (trace, picked ribbon, width toggle, open layers) is not a filter.
-export const VIEW_KEYS = { focus: "", rib: "", w: "", open: [], na: "" };
+// View state (trace, picked ribbon, width toggle, open layers, loop ranking) is not a filter.
+export const VIEW_KEYS = { focus: "", rib: "", w: "", open: [], na: "", rank: "" };
 export const isFiltered = (s) => stateQuery({ ...s, ...VIEW_KEYS }) !== "";
 
 export function sinceDate(since, asOf) {

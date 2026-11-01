@@ -203,10 +203,21 @@ svg a.chip-a:hover text { text-decoration: underline }
 .loops { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px }
 .loop .line { margin: 0 0 6px; font-size: 14px; color: var(--ink-2) }
 .loop svg { width: 100%; height: auto; display: block }
-.cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 56px 48px; margin-top: 32px }
-.card h2 { margin-bottom: 2px }
-.barlab { margin: 10px 0 2px }
-.bar { width: 100%; height: auto; display: block }
+.loop h3 { display: flex; align-items: center; gap: 8px }
+/* Racetracks (D52): one row per loop, one scale for the page */
+.tracks { margin-top: 16px }
+.trow { padding: 22px 0 18px; border-top: 1px solid var(--rule) }
+.thead { display: flex; justify-content: space-between; align-items: baseline; gap: 8px 16px; flex-wrap: wrap; margin-bottom: 8px }
+.thead h2 { display: flex; align-items: center; gap: 10px; margin: 0; font-size: 20px }
+.tsum { margin: 0; font-size: 13px; color: var(--ink-2) }
+.tsum .sep { display: inline-block; width: 1px; height: 12px; background: var(--rule); margin: 0 10px; vertical-align: -1px }
+.tnote { font: 400 12px/1.4 var(--mono); color: var(--muted) }
+.trow svg, .loop svg { display: block; width: 100%; height: auto; overflow: visible }
+.trow .line { margin: 8px 0 0; font-size: 13px; color: var(--ink-2); max-width: 760px }
+.ticon { flex: none }
+.lrows li { grid-template-columns: minmax(0, 1fr) auto }
+.lrows .who { display: flex; align-items: center; gap: 10px }
+.lrows .num { font-size: 15px }
 
 /* The sankey on desktop, the ranked ledger on phones (HANDOFF 6) */
 .phone-only { display: none }
@@ -241,7 +252,8 @@ svg a.node:hover text { text-decoration: underline }
   .findings li { padding-bottom: 16px }
   .findings .big { font-size: 36px }
   section { margin-top: 40px }
-  .loops, .cards, .two { grid-template-columns: 1fr; gap: 32px }
+  .loops, .two { grid-template-columns: 1fr; gap: 32px }
+  .trow svg text { font-size: 11px }
   .count { margin-left: 0 }
   .rows li { grid-template-columns: minmax(0, 1fr) auto }
   .rows .ty { grid-row: 2; grid-column: 1 }
