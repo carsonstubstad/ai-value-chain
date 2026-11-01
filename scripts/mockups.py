@@ -50,7 +50,7 @@ def esc(s):
 def money(v):
     if v >= 1e9:
         b = v / 1e9
-        return "$%sB" % (("%.1f" % b).rstrip("0").rstrip(".") if b < 10 else "%.0f" % b)
+        return "$%sB" % (("%.1f" % b).rstrip("0").rstrip(".") if b < 100 else "%.0f" % b)
     return "$%.0fM" % (v / 1e6)
 
 
@@ -181,10 +181,10 @@ svg .chip { font-size: 11px; }
 svg .n { font-family: "Newsreader", Georgia, serif; font-weight: 600; font-size: 13px; fill: var(--ink); }
 svg .mk { font-family: "IBM Plex Mono", monospace; font-size: 12px; fill: var(--muted); }
 svg .halo { paint-order: stroke; stroke: var(--paper); stroke-width: 4px; stroke-linejoin: round; }
-.hw { fill: var(--hw); stroke: var(--hw); color: var(--hw); }
-.infra { fill: var(--infra); stroke: var(--infra); color: var(--infra); }
-.model { fill: var(--model); stroke: var(--model); color: var(--model); }
-.cap { fill: var(--cap); stroke: var(--cap); color: var(--cap); }
+.hw { color: var(--hw); }
+.infra { color: var(--infra); }
+.model { color: var(--model); }
+.cap { color: var(--cap); }
 .loops { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 12px; }
 .loop h3 { font: 500 18px/1.2 "Newsreader", Georgia, serif; margin: 0 0 2px; }
 .loop p { margin: 0 0 6px; font-size: 14px; color: var(--ink-2); }
@@ -278,7 +278,7 @@ def chips(D, layer, x0, y0, step=21, wrap_w=88):
         k = D.deg[c["id"]]
         if k:
             r = 2.2 + 1.1 * math.sqrt(k)
-            out.append('<g><title>%s\n%d deal%s</title><circle class="%s" cx="%.1f" cy="%.1f" r="%.1f"/>'
+            out.append('<g><title>%s\n%d deal%s</title><circle class="%s" fill="currentColor" cx="%.1f" cy="%.1f" r="%.1f"/>'
                        '<text class="chip" x="%.1f" y="%.1f">%s</text></g>'
                        % (esc(c["name"]), k, "" if k == 1 else "s", fam, x0 + 5, y - 4, r, x0 + 14, y, esc(c["name"])))
         else:
@@ -310,7 +310,7 @@ def hero_a(D):
         x0 = cw * i + 4
         fam = FAMILY[l]
         parts.append('<text class="layer" x="%.1f" y="14">%s</text>' % (x0, esc(D.layers[l])))
-        parts.append('<rect class="%s" x="%.1f" y="22" width="%.1f" height="3" stroke="none"/>' % (fam, x0, cw - 10))
+        parts.append('<rect class="%s" fill="currentColor" x="%.1f" y="22" width="%.1f" height="3"/>' % (fam, x0, cw - 10))
         s, y = chips(D, l, x0, 46)
         parts.append(s)
         ybottom = max(ybottom, y)
@@ -361,7 +361,7 @@ def hero_a(D):
         fam = FAMILY[f["from"]]
         if sub["kind"] == "none":
             d = "M%.1f %.1f C%.1f %.1f %.1f %.1f %.1f %.1f" % (x1, y0, x1, y0 + depth * 1.33, x2, y0 + depth * 1.33, x2, y0)
-            parts.append('<path class="%s" d="%s" fill="none" stroke-width="0.9" stroke-dasharray="2 3" opacity=".7">%s</path>'
+            parts.append('<path class="%s" d="%s" fill="none" stroke="currentColor" stroke-width="0.9" stroke-dasharray="2 3" opacity=".7">%s</path>'
                          % (fam, d, ribbon_title(D, f)))
         else:
             fill = "var(--%s)" % fam if sub["kind"] == "cash" else "url(#h-%s)" % fam
@@ -369,7 +369,11 @@ def hero_a(D):
                          % (tapered(x1, x2, sub["w"], sub["wt"], y0, depth), fill, fam, ribbon_title(D, f)))
         if sub["kind"] != "none" and f["total"] >= 20e9 and sub is next(s for s in subs if s["f"] is f):
             labels.append(((x1 + x2) / 2, y0 + depth + (sub["w"] + sub["wt"]) / 4 + 15, f))
-    for x, y, f in labels:
+    placed = []
+    for x, y, f in sorted(labels, key=lambda t: t[1]):
+        while any(abs(x - px) < 100 and abs(y - py) < 16 for px, py in placed):
+            y += 16
+        placed.append((x, y))
         parts.append('<text class="n halo" x="%.1f" y="%.1f" text-anchor="middle">%s'
                      '<tspan class="lab" dx="4">%d deal%s</tspan></text>'
                      % (x, y, money(f["total"]), f["n"], "" if f["n"] == 1 else "s"))
@@ -428,7 +432,7 @@ def hero_b(D):
         path = arc_band(a, z, y0, depth, up)
         w = width_of(f["total"], WMAX, vmax)
         if not w:
-            arcs.append('<path class="%s" d="%s" fill="none" stroke-width=".9" stroke-dasharray="2 3" opacity=".7">%s</path>'
+            arcs.append('<path class="%s" d="%s" fill="none" stroke="currentColor" stroke-width=".9" stroke-dasharray="2 3" opacity=".7">%s</path>'
                         % (fam, path, ribbon_title(D, f)))
             continue
         wc = w * f["cash"] / f["total"]
@@ -448,13 +452,13 @@ def hero_b(D):
     for l in CHAIN:
         r = 3 + 1.6 * math.sqrt(deg_layer[l])
         if deg_layer[l]:
-            parts.append('<circle class="%s" cx="%.1f" cy="%.1f" r="%.1f" stroke="var(--paper)" stroke-width="2"/>'
+            parts.append('<circle class="%s" fill="currentColor" cx="%.1f" cy="%.1f" r="%.1f" stroke="var(--paper)" stroke-width="2"/>'
                          % (FAMILY[l], cx[l], y0, r))
         else:
             parts.append('<circle cx="%.1f" cy="%.1f" r="3" fill="var(--paper)" stroke="var(--muted)"/>' % (cx[l], y0))
     rail_y = y0 + low_depth + 34
     parts.append('<text class="lab" x="0" y="%.1f">investing, left to right</text>' % (y0 + low_depth - 2))
-    parts.append('<line class="cap" x1="0" x2="%d" y1="%.1f" y2="%.1f" stroke-width="3"/>' % (W, rail_y, rail_y))
+    parts.append('<line class="cap" stroke="currentColor" x1="0" x2="%d" y1="%.1f" y2="%.1f" stroke-width="3"/>' % (W, rail_y, rail_y))
     capnames = sorted((c for c in D.co.values() if c["layer"] == "capital"), key=lambda c: -D.deg[c["id"]])
     parts.append('<text class="layer" x="0" y="%.1f">Capital</text>' % (rail_y + 20))
     parts.append('<text class="chip" x="62" y="%.1f">%s</text>' % (rail_y + 20, esc(" · ".join(c["name"] for c in capnames))))
@@ -467,7 +471,7 @@ def hero_b(D):
         w = width_of(f["total"], WMAX, vmax)
         fam = FAMILY[f["from"]]
         if not w:
-            parts.append('<line class="%s" x1="%.1f" x2="%.1f" y1="%.1f" y2="%.1f" stroke-width=".9" stroke-dasharray="2 3" opacity=".7">%s</line>'
+            parts.append('<line class="%s" stroke="currentColor" x1="%.1f" x2="%.1f" y1="%.1f" y2="%.1f" stroke-width=".9" stroke-dasharray="2 3" opacity=".7">%s</line>'
                          % (fam, x, x, rail_y, y0 + 8, ribbon_title(D, f)))
             continue
         wc = w * f["cash"] / f["total"]
@@ -503,7 +507,7 @@ def arc_marks(path, fam, w, style, frac):
     """Basis by shape (D36): paid solid, committed outline, cap or range dashed outline,
     paid to date a fill inside the outline, contingent a grey outline."""
     if not w:
-        return '<path d="%s" fill="none" class="%s" stroke-width="1" stroke-dasharray="2 3"/>' % (path, fam)
+        return '<path d="%s" fill="none" class="%s" stroke="currentColor" stroke-width="1" stroke-dasharray="2 3"/>' % (path, fam)
     if style == "paid":
         return '<path d="%s" fill="none" stroke="var(--%s)" stroke-width="%.1f"/>' % (path, fam, w)
     w = max(w, 5)
@@ -524,9 +528,8 @@ def loop_side(D, deals_ab):
 def arc_label(d):
     pt = PAID_TO_DATE.get(d["id"])
     if pt and high(d):
-        amt = "%s of %s paid" % (money(pt), money(high(d)))
-    else:
-        amt = amount_words(d)
+        return "%s of %s paid" % (money(pt), money(high(d))), "", MARK[d["confidence"]]
+    amt = amount_words(d)
     kind = "" if amt == "undisclosed" else " " + KIND_WORD[d.get("amount_kind")]
     if amt.startswith("up to") and kind == " up to":
         kind = ""
@@ -546,7 +549,7 @@ def loop_svg(D, loop, W=340, scale_max=250e9, wmax=14, big=False):
     a, b = cos
     if not any(D.dl[x]["payer"] == a and D.dl[x]["type"] in ("equity_investment", "warrant_or_equity_grant") for x in ids):
         a, b = b, a
-    pad = 70 if big else 54
+    pad = 96 if big else 78
     xa, xb = pad, W - pad
     fs = 1.25 if big else 1
     top = loop_side(D, [D.dl[x] for x in ids if D.dl[x]["payer"] == a])
@@ -585,7 +588,7 @@ def loop_svg(D, loop, W=340, scale_max=250e9, wmax=14, big=False):
                  '<tspan class="lab" dx="4">%s</tspan><tspan class="mk" dx="4">%s</tspan></text>'
                  % (W / 2, depth + w / 2 + 13 * fs, 13 * fs, esc(amt), esc(kind), mk))
     for x, c, anchor in ((xa, a, "end"), (xb, b, "start")):
-        body += '<circle class="%s" cx="%.1f" cy="0" r="%.1f"/>' % (FAMILY[D.layer(c)], x, 4.5 * fs)
+        body += '<circle class="%s" fill="currentColor" cx="%.1f" cy="0" r="%.1f"/>' % (FAMILY[D.layer(c)], x, 4.5 * fs)
         body += ('<text class="layer" x="%.1f" y="4" text-anchor="%s" style="font-size:%.0fpx">%s</text>'
                  % (x + (-9 if anchor == "end" else 9), anchor, 12 * fs, esc(D.name(c))))
     body += "</g>"
