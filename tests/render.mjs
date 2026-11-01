@@ -49,10 +49,40 @@ run("company/unknown", () => V.renderCompany(V.makeCtx(data, idx, parseState("")
 const def = applyFilters(data.deals, parseState(""), idx);
 if (def.some((d) => d.confidence === "rumored")) problems.push("default filters show a rumor");
 
-// Every loop gets either a net figure or a reason there is none.
-const ctx0 = V.makeCtx(data, idx, parseState(""), stateQuery);
-for (const l of data.loops) if (!V.netText(l, ctx0).why) problems.push(`loop ${l.id}: no net text`);
+// Word budgets (D39). Text is what a reader sees outside the charts: no svg, title text,
+// select options, the filter drawer or the F/S/R markers. A word has a letter or digit.
+const strip = (h) => h.replace(/<svg[\s\S]*?<\/svg>/g, " ").replace(/<select[\s\S]*?<\/select>/g, " ")
+  .replace(/<details class="more"[\s\S]*?<\/details>/g, " ").replace(/<span class="mk"[^>]*>[^<]*<\/span>/g, " ");
+const words = (h) => strip(h).replace(/<[^>]+>/g, " ").replace(/&#39;/g, "'").replace(/&[a-z#0-9]+;/g, " ").split(/\s+/).filter((w) => /[A-Za-z0-9]/.test(w)).length;
+const inner = (h, re) => [...h.matchAll(re)].map((m) => m[1]);
+function budgets(label, html) {
+  for (const t of inner(html, /<h1>([\s\S]*?)<\/h1>/g)) if (words(t) > 6) problems.push(`${label}: headline over 6 words: ${t}`);
+  for (const t of inner(html, /<p class="state">([\s\S]*?)<\/p>/g)) if (words(t) > 20) problems.push(`${label}: state line over 20 words`);
+  for (const t of inner(html, /<p class="line">([\s\S]*?)<\/p>/g)) if (words(t) > 15) problems.push(`${label}: loop line over 15 words: ${t}`);
+  for (const t of inner(html, /title="([^"]*)"/g)) if (t.split("\n").length > 2) problems.push(`${label}: tooltip over 2 lines`);
+  if (/class="lede"/.test(html)) problems.push(`${label}: explanatory paragraph`);
+  if ((html.match(/cannot be netted/g) || []).length > 1) problems.push(`${label}: netting caveat more than once`);
+}
+const c0 = V.makeCtx(data, idx, parseState(""), stateQuery);
+const ov = V.renderOverview(c0);
+budgets("overview", ov);
+if (words(ov) >= 250) problems.push(`overview: ${words(ov)} words, budget is under 250`);
+budgets("loops", V.renderLoops(c0));
+budgets("flows", V.renderFlows(c0));
+budgets("changes", V.renderChanges(c0));
+for (const c of data.companies) budgets(`company/${c.id}`, V.renderCompany(c0, c.id));
+const foot = V.renderFoot(c0);
+if ((foot.match(/<p[\s>]/g) || []).length !== 1) problems.push("footer is not one line");
 
+// The state line (D41) is recounted from the records: Labs paying for compute.
+const COMPUTE = ["hyperscale", "chip_design", "data_centers", "memory"];
+const compute = data.deals.filter((d) => d.confidence !== "rumored" && idx.companies[d.payer]?.layer === "labs"
+  && ["purchase_commitment", "capacity_lease"].includes(d.type) && COMPUTE.includes(idx.companies[d.payee]?.layer));
+const m = /committed to (\d+) compute deals/.exec(data.state?.text || "");
+if (!m || Number(m[1]) !== compute.length) problems.push(`state line says ${m?.[1]} compute deals, records give ${compute.length}`);
+if (compute.some((d) => d.amount_basis === "paid") && /none is recorded as paid/.test(data.state.text)) problems.push("state line says none paid, a record is paid");
+
+export { words, strip };
 if (problems.length) {
   console.log(problems.slice(0, 40).join("\n"));
   console.log(`render: ${problems.length} problems in ${pages} renders`);

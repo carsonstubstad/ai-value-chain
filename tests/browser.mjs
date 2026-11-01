@@ -16,7 +16,11 @@ const ROUTES = [
   ["company-openai", "#/company/openai"],
   ["company-tsmc", "#/company/tsmc"],
   ["flows", "#/flows"],
+  ["overview-ribbon", "#/?rib=labs%3Ehyperscale"],
+  ["overview-count", "#/?w=count"],
   ["flows-trace-coreweave", "#/flows?focus=coreweave"],
+  ["flows-open-labs", "#/flows?open=labs"],
+  ["flows-no-amount", "#/flows?na=1"],
   ["loops", "#/loops"],
   ["changes", "#/changes"],
 ];
@@ -32,15 +36,18 @@ for (const [size, viewport] of Object.entries(SIZES)) {
     for (const [name, hash] of ROUTES) {
       await page.goto(BASE + hash);
       await page.waitForSelector("#foot p", { timeout: 10000 }).catch(() => problems.push(`${name} ${size}/${scheme}: never finished loading`));
+      await page.evaluate(() => document.fonts.ready);
       const r = await page.evaluate(() => ({
         overflow: document.documentElement.scrollWidth - window.innerWidth,
         view: document.getElementById("view").innerText.length,
         failed: document.getElementById("view").innerText.includes("could not be loaded"),
         bg: getComputedStyle(document.body).backgroundColor,
+        fonts: ["500 44px Newsreader", "400 15px \"IBM Plex Sans\"", "400 12px \"IBM Plex Mono\""].filter((f) => !document.fonts.check(f)),
       }));
       if (r.overflow > 1) problems.push(`${name} ${size}/${scheme}: page scrolls sideways by ${r.overflow}px`);
       if (r.view < 50 || r.failed) problems.push(`${name} ${size}/${scheme}: view is empty or failed`);
-      if (scheme === "dark" && r.bg !== "rgb(14, 17, 22)") problems.push(`${name} ${size}/${scheme}: dark mode not applied (${r.bg})`);
+      if (r.fonts.length) problems.push(`${name} ${size}/${scheme}: fonts not loaded: ${r.fonts.join(", ")}`);
+      if (scheme === "dark" && r.bg !== "rgb(22, 24, 27)") problems.push(`${name} ${size}/${scheme}: dark mode not applied (${r.bg})`);
       if (scheme === "light" || name === "overview" || name === "flows")
         await page.screenshot({ path: `${out}/${size}-${scheme}-${name}.jpg`, type: "jpeg", quality: 70, fullPage: true });
     }
@@ -60,20 +67,27 @@ if (!page.url().includes("conf=")) problems.push("chip click did not reach the U
 await page.fill("#f-q", "nvidia");
 await page.waitForFunction(() => location.hash.includes("q=nvidia"), null, { timeout: 3000 }).catch(() => problems.push("search did not reach the URL"));
 const afterSearch = await page.textContent("#count");
-if (!/Showing \d+ deals? of/.test(afterSearch)) problems.push(`count line looks wrong: ${afterSearch}`);
-await page.click('.step[data-v="labs"]');
-await page.waitForFunction(() => location.hash.includes("layer=labs")).catch(() => problems.push("rail click did not set the layer"));
+if (!/^\d+ of \d+ deals/.test(afterSearch.trim())) problems.push(`count line looks wrong: ${afterSearch}`);
 await page.click('[data-reset]');
-await page.waitForFunction(() => !location.hash.includes("?")).catch(() => problems.push("reset did not clear the filters"));
+await page.waitForFunction(() => !location.hash.includes("?")).catch(() => problems.push("reset did not clear the search"));
+await page.locator("a.rib").first().click();
+await page.waitForFunction(() => location.hash.includes("rib=")).catch(() => problems.push("ribbon click did not pick a ribbon"));
+if (!(await page.locator(".ribdeals li").count())) problems.push("picked ribbon listed no deals");
+await page.fill("#f-q", "nvidia");
+await page.waitForFunction(() => location.hash.includes("q=nvidia"), null, { timeout: 3000 }).catch(() => problems.push("second search did not reach the URL"));
+await page.click('[data-reset]');
+await page.waitForFunction(() => !location.hash.includes("q=") && location.hash.includes("rib=")).catch(() => problems.push("reset did not clear the filters or lost the picked ribbon"));
 await page.click("#theme"); // auto to light
 await page.click("#theme"); // light to dark
 const theme = await page.evaluate(() => document.documentElement.dataset.theme);
 if (theme !== "dark") problems.push(`theme button did not set dark (${theme})`);
 await page.goto(BASE + "#/flows");
-await page.selectOption("#f-focus", "openai");
+await page.selectOption('select[data-field="focus"]', "openai");
 await page.waitForFunction(() => location.hash.includes("focus=openai")).catch(() => problems.push("trace picker did not set focus"));
-const lit = await page.locator("path.edge.lit").count();
+const lit = await page.locator("a.edge.lit").count();
 if (!lit) problems.push("trace highlighted no lines");
+await page.locator('a[href*="open="]').first().click();
+await page.waitForFunction(() => location.hash.includes("open=")).catch(() => problems.push("layer click did not open a layer"));
 await page.click('a[href*="#/company/"]');
 await page.waitForFunction(() => location.hash.startsWith("#/company/")).catch(() => problems.push("company link did not open a card"));
 await page.screenshot({ path: `${out}/desktop-dark-interaction-end.jpg`, type: "jpeg", quality: 70 });
@@ -84,4 +98,4 @@ if (problems.length) {
   console.log(`browser: ${problems.length} problems`);
   process.exit(1);
 }
-console.log(`browser: ${ROUTES.length} pages x 2 sizes x 2 themes and 8 interactions, 0 problems`);
+console.log(`browser: ${ROUTES.length} pages x 2 sizes x 2 themes and 10 interactions, 0 problems`);

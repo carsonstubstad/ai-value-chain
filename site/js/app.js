@@ -1,5 +1,5 @@
-// Router and wiring. Pages: overview (D21: chain rail with the state line on top),
-// company card, money flows with trace, loops, what changed. All state lives in the
+// Router and wiring. Pages: overview (D40: the two-way chain), company card, money flows
+// by layer with trace (13d), loops, what changed. All state lives in the
 // URL hash, so every view can be linked. Reads data/bundle.json; no third-party requests.
 
 import { index, parseState, stateQuery, DEFAULTS } from "./lib.js";
