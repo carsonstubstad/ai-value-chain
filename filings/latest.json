@@ -1,5 +1,5 @@
 {
- "run_at": "2026-10-31T21:32:35+00:00",
+ "run_at": "2026-11-01T17:26:30+00:00",
  "companies": {
   "alphabet": {
    "cik": "0001652044",
@@ -42,8 +42,6 @@
     "OpenAI"
    ],
    "deals": [
-    "amazon-anthropic-equity-2023-09",
-    "amazon-anthropic-equity-2024-11",
     "amazon-anthropic-equity-2026-04",
     "anthropic-aws-spend-2026-04",
     "openai-amazon-compute-2025-11",
@@ -585,13 +583,12 @@
    "terms": [
     "Blackstone",
     "Meta",
-    "Nvidia",
+    "NVIDIA",
     "OpenAI",
     "delayed draw"
    ],
    "deals": [
     "blackstone-coreweave-debt-2024-05",
-    "coreweave-openai-equity-2025-03",
     "meta-coreweave-compute-2025-09",
     "nvidia-coreweave-capacity-2025-09",
     "openai-coreweave-compute-2025-03",
@@ -652,7 +649,7 @@
       },
       {
        "terms": [
-        "Nvidia",
+        "NVIDIA",
         "delayed draw"
        ],
        "text": "nderwriting discounts and commissions. In April 2025, the underwriters exercised a portion of their over-allotment option 47 Table of Contents and purchased from us an additional approximately 2 million shares of our Class A common stock at the public offering price, which resulted in net proceeds to us of $68 million after deducting the underwriting discounts and commissions. In January 2026, we entered into a securities purchase agreement with NVIDIA Corporation for a private placement of approximately 23 million shares of our Class A common stock at a purchase price of $87.20 per share, for aggregate gross proceeds of $2.0 billion. The par value of the shares issued was recorded to Class A common stock, with the remainder recorded to additional paid-in capital. In April 2026, we issued approximately 9 million shares of our Class A common stock in a private placement at a price of $109.00 per share, for aggregate gross proceeds of $1.0 billion. The par value of the shares issued was recorded to Class A common stock, with the remainder recorded to additional paid-in capital. Debt Financing As of June 30, 2026, we had $13.6 billion outstanding under our delayed draw term loan facilities. These delayed draw term loan facilities are collateralized with the assets underlying the contributed contracts and the pledged contractual cash flows, generally from investment grade counterparties. They are drawn as we build infrastructure to support customer requirements, and amortize over time as contracted cash flows are generated in a regular and predictable manner, with excess cash made available to us. As of June 30, 2026, we had $16.6 billion aggregate ou"
@@ -678,37 +675,37 @@
       },
       {
        "terms": [
-        "Nvidia"
+        "NVIDIA"
        ],
        "text": "facture the components we use to build the technology infrastructure underlying our platform. We have a limited number of suppliers that we use to procure and configure significant components of the technology infrastructure that we use to operate our platform and provide our solutions and services to our customers. For example, as a result of our obligations in our current customer contracts, all of the GPUs used in our infrastructure today are NVIDIA GPUs. Additionally, for the year ended December 31, 2025, three suppliers accounted for 23%, 20%, and 17% of total purchases, for the year ended December 31, 2024, three suppliers accounted for 46%, 16%, and 14% of total purchases, and for the year ended December 31, 2023, three suppliers accounted for 57%, 22%, and 11% of total purchases. Utilizing a limited number of suppliers of the components for our technology infrastructure exposes us to r"
       },
       {
        "terms": [
-        "Nvidia"
+        "NVIDIA"
        ],
        "text": "nent availability and contractual performance obligations, including where specified components are required; • shifts in market-leading technologies away from those offered by our current suppliers that could impact our ability to offer our customers the solutions and services that they are seeking, including due to any potential time, investment and resources that may be required in the future to adjust to use or development of alternatives to NVIDIA GPUs; • reduced control over production costs and constraints based on the then current availability, terms, and pricing of these components, including due to supply constraints and increasing costs that we and others in our industry have seen for components such as GPUs, storage and memory components; • limited ability to control aspects of the quality, performance, quantity, and cost of our infrastructure or of its components; • the potential"
       },
       {
        "terms": [
-        "Nvidia"
+        "NVIDIA"
        ],
        "text": "urther, because we often submit purchase orders to our suppliers according to stated lead times and generally order only what we need to fulfill customer requirements, any delay from our suppliers may result in our inability to provide our infrastructure and platform to our customers on a timely basis and fulfill our contractual requirements under our customer contracts. Additionally, our current customers have contractually specified our use of NVIDIA GPUs. If we are required to change suppliers, our ability to meet our obligations to our customers, including scheduled compute access, could be adversely affected and our solutions may not perform, which could cause the loss of sales from existing or potential customers, delayed revenue, or an increase in our costs, which could adversely affect our margins and other financial results. Any production or shipping interruption for any reason, such"
       },
       {
        "terms": [
-        "Nvidia"
+        "NVIDIA"
        ],
        "text": "s may not be able to satisfy such requirements. In addition, our network or our suppliers' networks might be unable to achieve or maintain data transmission capacity high enough to effectively deliver our services. Moreover, our suppliers themselves rely on a complex network of third-party suppliers for semiconductor manufacturing, hardware components, and other critical inputs, which introduces additional risks to our supply chain. For example, NVIDIA relies on suppliers such as Taiwan Semiconductor Manufacturing Company for semiconductor fabrication and other manufacturers for compute and networking components. Any disruption in the operations of these upstream suppliers, whether due to equipment failures, geopolitical factors such as the growing potential for military conflict between China and Taiwan, or subcomponent or raw material supply chain constraints, could affect our suppliers' abi"
       },
       {
        "terms": [
-        "Nvidia"
+        "NVIDIA"
        ],
        "text": "grow our business, we must continue to attract new customers in a cost-effective manner and enable these customers to realize the benefits associated with our platform. We may experience difficulties demonstrating to customers the value of our platform and any new solutions and services that we offer. As we develop and introduce new solutions and services and add new and upgraded components of our platform (such as our expected deployment of the NVIDIA Rubin platform in the second half of 2026), we face the risk that customers may not value or be willing to adopt these newer offerings, and may forgo adopting one or more newer generations of our existing offerings. Regardless of the improved features or superior performance of the newer offerings, customers may be unwilling to adopt our platform due to design or pricing constraints, among other reasons. Even if customers choose to adopt our pla"
       },
       {
        "terms": [
-        "Nvidia"
+        "NVIDIA"
        ],
        "text": "tional services, our business, operating results, financial condition, and prospects could be adversely affected. We have in the past, and may in the future, enter into collaborations or strategic alliances with third parties in connection with the development, operation, and enhancements to our platform and the provision of our solutions and services. For example, in January 2026, we announced that we entered into a collaboration framework with NVIDIA Corporation to expand our long-standing complementary relationship to advance AI adoption at global scale. Identifying strategic relationships with third parties, and negotiating and documenting relationships with them, may be time-consuming and complex and may distract management. Moreover, we may be delayed, or may not be successful, in achieving the objectives that we anticipate as a result of such strategic relationships. In evaluating count"
       }
@@ -787,56 +784,56 @@
       },
       {
        "terms": [
-        "Nvidia"
+        "NVIDIA"
        ],
        "text": "property and equipment and operating lease right-of-use assets because many of these assets cannot be readily moved and are relatively illiquid, subjecting them to geographic risk. As of December 31, 2025 and 2024, 88 % and 90 %, respectively, of the Company's long-lived assets were located in the United States, with no other single country accounting for more than 10% of these assets. 131 Table of Contents 16. Subsequent Events In January 2026, NVIDIA Corporation invested $ 2 billion in the Company's Class A common stock at a purchase price of $ 87.20 per share. In January 2026, the Company entered into additional financing agreements with an OEM. The financing agreements have an aggregate notional balance of $ 1.5 billion. The financing arrangements have terms of three years . The Company granted a security interest for the financed equipment. In January and February 2026, the Company execut"
       },
       {
        "terms": [
-        "Nvidia"
+        "NVIDIA"
        ],
        "text": "tructures. Foundational Infrastructure. Our purpose-built foundational infrastructure maximizes performance with first-to-market Graphics Processing Unit (\"GPU\") clusters, ultra-high density, and high-speed interconnects, supporting complex AI workloads while improving efficiency and lowering total cost of ownership. Our track record and ability to 6 Table of Contents deploy the industry's most advanced hardware and architectures first—including NVIDIA GB200 and GB300 NVL72 systems for mission-critical AI—gives our customers a measurable edge in performance, efficiency, and scale. CoreWeave clusters also use cutting edge CPUs, including AMD and Intel chips, to power compute-intensive projects and to help our customers get more out of GPU compute. Our data center fabric is designed to harness the full potential of each GPU and to maximize performance from the newest architectures. It integrates state-of-the-art networking technology, including NVIDIA Quantum-X800(XDR) enabling 800Gbps of connectivity, NVIDIA Quantum-2 InfiniBand interconnect and NVIDIA Spectrum-X with RoCE or RDMA over Converged Ethernet for ultra-low-latency connectivity between racks of GPUs. To ensure sustainability, many of CoreWeave's data centers draw on renewable energy, deploy advanced closed-loop liquid cooling systems, and pilot innovative projects—such as heat recapture to supply excess heat to nearby homes and industrial facilities. This powerful, proven infrastructure enables exceptional results for our customers. In recent benchmarking through NVIDIA's Exemplar Cloud program, we demonstrated improvements on system model flop utilization (“MFU”) over reference targets for both training and inference workloads. For training, our infrastructure enables superior utilization compared to reference targets. For inference, our platform met or exceeded benchmark tests across inference tasks, such as reasoning and generation, demonstrating CoreWeave's consistent performance and faster scaling for every stage of AI deployment. We continue to extend and enhance our foundational infrastructure with the latest GPU and CPU innovations, and expect to be among the first cloud providers to deploy the NVIDIA Rubin platform, expanding our support for large-scale inference, reasoning, and agentic AI. Data and Storage. CoreWeave's purpose-built storage combines exascale, AI-optimized object and file storage with GPU-local caching and Local Tier Acceleration (LOTA TM ) to deliver high-throughput data access, cross-cloud reach, and predictable economics for training and inference. Our customers rely on our fast, resilient, and easy-to-use storage solutio"
       },
       {
        "terms": [
-        "Nvidia"
+        "NVIDIA"
        ],
        "text": "reased power per rack, driving significantly greater cooling requirements. Our advanced closed-loop liquid cooling systems address these demands by enabling higher power density and closer rack placement, and significantly reducing water consumption. This approach enables our data centers to support and deploy the latest generation of chips at scale and for us to be among the first to bring them to market at scale—with a track record of bringing NVIDIA GPUs to market first, including GB200, GB300, and RTX Pro 6000 systems. As compute density continues to increase, these same design principles position our data centers to support future chip generations, and looking ahead, CoreWeave is expected to be among the first cloud providers to deploy the NVIDIA Rubin platform, offering customers greater flexibility and choice as AI systems scale. To support our continued growth and scale, we are making sustained investments in both our supply chain and labor force. While the chip remains at the core of delivering AI data centers, the supporting equipment is equally critical to bringing compute to life. As a result, we have continued to evolve and expand not only our component supply chain, but also our"
       },
       {
        "terms": [
-        "Nvidia"
+        "NVIDIA"
        ],
        "text": "facture the components we use to build the technology infrastructure underlying our platform. We have a limited number of suppliers that we use to procure and configure significant components of the technology infrastructure that we use to operate our platform and provide our solutions and services to our customers. For example, as a result of our obligations in our current customer contracts, all of the GPUs used in our infrastructure today are NVIDIA GPUs. Additionally, for the year ended December 31, 2025, three suppliers accounted for 23%, 20%, and 17% of total purchases, for the year ended December 31, 2024, three suppliers accounted for 46%, 16%, and 14% of total purchases, and for the year ended December 31, 2023, three suppliers account for 57%, 22%, and 11% of total purchases. Utilizing a limited number of suppliers of the components for our technology infrastructure exposes us to ris"
       },
       {
        "terms": [
-        "Nvidia"
+        "NVIDIA"
        ],
        "text": "urther, because we often submit purchase orders to our suppliers according to stated lead times and generally order only what we need to fulfill customer requirements, any delay from our suppliers may result in our inability to provide our infrastructure and platform to our customers on a timely basis and fulfill our contractual requirements under our customer contracts. Additionally, our current customers have contractually specified our use of NVIDIA GPUs. If we are required to change suppliers, our ability to meet our obligations to our customers, including scheduled compute access, could be adversely affected and our solutions may not perform, which could cause the loss of sales from existing or potential customers, delayed revenue, or an increase in our costs, which could adversely affect our margins and other financial results. Any production or shipping interruption for any reason, such"
       },
       {
        "terms": [
-        "Nvidia"
+        "NVIDIA"
        ],
        "text": "satisfy such requirements. In addition, our network or our suppliers' networks might be unable to achieve or maintain data transmission capacity high enough to effectively deliver our services. 15 Table of Contents Moreover, our suppliers themselves rely on a complex network of third-party suppliers for semiconductor manufacturing, hardware components, and other critical inputs, which introduces additional risks to our supply chain. For example, NVIDIA relies on suppliers such as Taiwan Semiconductor Manufacturing Company for semiconductor fabrication and other manufacturers for compute and networking components. Any disruption in the operations of these upstream suppliers, whether due to equipment failures, geopolitical factors such as the growing potential for military conflict between China and Taiwan, or subcomponent or raw material supply chain constraints, could affect our suppliers' abi"
       },
       {
        "terms": [
-        "Nvidia"
+        "NVIDIA"
        ],
        "text": "must continue to attract new customers in a cost-effective manner and enable these customers to realize the benefits associated with our platform. We may experience difficulties demonstrating to customers the value of our platform and any new solutions and services that we offer. As we develop and introduce new solutions and 30 Table of Contents services and add new and upgraded components of our platform (such as our expected deployment of the NVIDIA Rubin platform in the second half of 2026), we face the risk that customers may not value or be willing to adopt these newer offerings, and may forgo adopting one or more newer generations of our existing offerings. Regardless of the improved features or superior performance of the newer offerings, customers may be unwilling to adopt our platform due to design or pricing constraints, among other reasons. Even if customers choose to adopt our pla"
       },
       {
        "terms": [
-        "Nvidia"
+        "NVIDIA"
        ],
        "text": "tional services, our business, operating results, financial condition, and prospects could be adversely affected. We have in the past, and may in the future, enter into collaborations or strategic alliances with third parties in connection with the development, operation, and enhancements to our platform and the provision of our solutions and services. For example, in January 2026, we announced that we entered into a collaboration framework with NVIDIA Corporation to expand our long-standing complementary relationship to advance AI adoption at global scale. Identifying strategic relationships with third parties, and negotiating and documenting relationships with them, may be time-consuming and complex and may distract management. Moreover, we may be delayed, or may not be successful, in achieving the 36 Table of Contents objectives that we anticipate as a result of such strategic relationships"
       },
       {
        "terms": [
         "Meta",
-        "Nvidia",
+        "NVIDIA",
         "OpenAI"
        ],
        "text": "025 10.33 Termination of Director Nomination Rights between CoreWeave, Inc. and CW Opportunity 2 LP, Magnetar Constellation Master Fund, Ltd, Magnetar Capital Master Fund Ltd and Longhorn Special Opportunities Fund LP, dated November 6, 2025 X 10.34†^ Master Services Agreement between CoreWeave, Inc. and Microsoft Corporation, dated February 22, 2023 S-1 333-285512 10.23 March 3, 2025 10.35†^ Master Services Agreement between CoreWeave, Inc. and OpenAI OpCo, LLC, dated March 7, 2025 S-1/A 333-285512 10.24 March 12, 2025 10.36†^ Master Services Agreement between CoreWeave, Inc. and OpenAI OpCo, LLC, dated May 8, 2025 8-K 001-42563 10.1 September 25, 2025 10.37 Stock Issuance Agreement between CoreWeave, Inc. and OpenAI OpCo, LLC, dated March 7, 2025 S-1/A 333-285512 10.25 March 12, 2025 10.38†^ Master Services Agreement between CoreWeave, Inc. and NVIDIA Corporation, dated April 10, 2023 S-4/A 333-289742 10.31 September 25, 2025 10.39†^ Master Services Agreement between CoreWeave, Inc. and Meta Platforms, Inc., dated December 10, 2023 8-K 001-42563 10.1 September 30, 2025 10.40 Form of Base Capped Call Confirmation 8-K 001-42563 10.1 December 11, 2025 10.41 Form of Additional Capped Call Confirmation 8-K 001-42563 10.2 December 11, 2025 10.42#†^ L etter Agreement between CoreWeave, Inc. and Nitin Agrawal X 10.43#†^ Letter Agreement between CoreWeave, Inc. and Jon Jones X 16.1 L etter Regarding Change in Accountants S-1/A 333-285512 16."
@@ -1047,8 +1044,8 @@
     "Blue Owl",
     "Constellation",
     "CoreWeave",
+    "NVIDIA",
     "Nebius",
-    "Nvidia",
     "Vistra",
     "joint venture"
    ],
@@ -1060,6 +1057,7 @@
     "meta-constellation-ppa-2025-06",
     "meta-coreweave-compute-2025-09",
     "meta-nebius-compute-2025-11",
+    "meta-nebius-compute-2026-03",
     "meta-nvidia-gpus-2026-02",
     "meta-vistra-ppa-2026-01"
    ],
@@ -1432,6 +1430,7 @@
    ],
    "deals": [
     "meta-nebius-compute-2025-11",
+    "meta-nebius-compute-2026-03",
     "microsoft-nebius-capacity-2025-09"
    ],
    "filings": [
@@ -1522,6 +1521,7 @@
     "nvidia-coreweave-capacity-2025-09",
     "nvidia-openai-equity-2025-09",
     "nvidia-openai-equity-2026-02",
+    "nvidia-openai-guarantee-2026-08",
     "openai-nvidia-systems-2025-09"
    ],
    "filings": [
