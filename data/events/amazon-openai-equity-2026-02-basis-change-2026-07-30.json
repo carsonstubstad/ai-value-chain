@@ -1,0 +1,15 @@
+{
+ "id": "amazon-openai-equity-2026-02-basis-change-2026-07-30",
+ "date": "2026-07-30",
+ "kind": "basis_change",
+ "companies": [
+  "amazon",
+  "openai"
+ ],
+ "deal": "amazon-openai-equity-2026-02",
+ "summary": "Amazon's 10-Q shows its OpenAI investment funded, so the deal is closed and paid.",
+ "confidence": "filed",
+ "sources": [
+  "amazon-10q-2026-q2"
+ ]
+}

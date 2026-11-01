@@ -1,0 +1,15 @@
+{
+ "id": "amd-openai-warrant-2025-10-status-change-2026-02-04",
+ "date": "2026-02-04",
+ "kind": "status_change",
+ "companies": [
+  "amd",
+  "openai"
+ ],
+ "deal": "amd-openai-warrant-2025-10",
+ "summary": "AMD's 10-K describes the signed OpenAI warrant agreement, so the deal moves to signed and filed.",
+ "confidence": "filed",
+ "sources": [
+  "amd-10k-2025"
+ ]
+}

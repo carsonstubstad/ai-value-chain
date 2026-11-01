@@ -1,0 +1,64 @@
+name: browser
+
+# Loads the site in a real browser at desktop and phone widths, in light and dark,
+# checks the design mockups in mockups/, and saves screenshots to the fetch branch under screens/ for review. Not a deploy.
+
+on:
+  push:
+    branches: ["claude/**"]
+    paths:
+      - site/**
+      - tests/browser.mjs
+      - mockups/**
+      - tests/mockups.mjs
+      - .github/workflows/browser.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: fetch-branch
+  cancel-in-progress: false
+
+jobs:
+  pages:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install Playwright and Chromium
+        run: |
+          npm install --no-save playwright@1.48.2
+          npx playwright install --with-deps chromium
+      - name: Serve the site and check every page
+        run: |
+          python3 -m http.server 8000 --directory site > /dev/null 2>&1 &
+          sleep 1
+          node tests/browser.mjs "$RUNNER_TEMP/screens"
+      - name: Serve the repo root and check the Gate 4a mockups
+        if: always()
+        run: |
+          python3 -m http.server 8001 > /dev/null 2>&1 &
+          sleep 1
+          node tests/mockups.mjs "$RUNNER_TEMP/screens"
+      - name: Commit screenshots to the fetch branch
+        if: always()
+        run: |
+          [ -d "$RUNNER_TEMP/screens" ] || exit 0
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm -rf node_modules package-lock.json
+          if git fetch --depth 1 origin fetch 2>/dev/null; then
+            git checkout -B fetch FETCH_HEAD
+          else
+            git checkout --orphan fetch
+            git rm -rf --quiet .
+          fi
+          rm -rf screens && mkdir -p screens
+          cp "$RUNNER_TEMP"/screens/* screens/
+          git add -A screens
+          git commit -m "browser screenshots: ${GITHUB_SHA::7} on ${GITHUB_REF_NAME}" || echo "No change"
+          git push origin fetch

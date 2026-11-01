@@ -17,5 +17,8 @@
   "amazon-anthropic-2026-04-20",
   "amazon-10q-2026-q3"
  ],
- "notes": "Amazon's 10-Q shows $10.0B invested in Anthropic preferred stock in the first nine months of 2026, so $10B of the $25B was funded by September 30, 2026."
+ "notes": "Amazon's 10-Q shows $10.0B invested in Anthropic preferred stock in the first nine months of 2026, so $10B of the $25B was funded by September 30, 2026.",
+ "paid_to_date_usd": 10000000000.0,
+ "paid_as_of": "2026-09-30",
+ "paid_source": "amazon-10q-2026-q3"
 }

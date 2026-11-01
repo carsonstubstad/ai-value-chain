@@ -1,0 +1,15 @@
+{
+ "id": "amazon-anthropic-equity-2024-11-basis-change-2026-10-30",
+ "date": "2026-10-30",
+ "kind": "basis_change",
+ "companies": [
+  "amazon",
+  "anthropic"
+ ],
+ "deal": "amazon-anthropic-equity-2024-11",
+ "summary": "Amazon's 10-Q confirms its second Anthropic round as funded, so it is closed and paid.",
+ "confidence": "filed",
+ "sources": [
+  "amazon-10q-2026-q3"
+ ]
+}

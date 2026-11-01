@@ -13,5 +13,6 @@
  "sources": [
   "anthropic-google-tpu-2025-10-23"
  ],
- "notes": "Only 'tens of billions of dollars' is stated, so no amount is stored. Separate from Anthropic's TPU rack orders placed with Broadcom."
+ "notes": "Only 'tens of billions of dollars' is stated, so no amount is stored. Separate from Anthropic's TPU rack orders placed with Broadcom.",
+ "amount_kind": "undisclosed"
 }
