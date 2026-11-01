@@ -12,12 +12,12 @@ mkdirSync(out, { recursive: true });
 const BASE = "http://localhost:8000/";
 const ROUTES = [
   ["overview", "#/"],
-  ["overview-labs-filed", "#/?conf=filed&layer=labs"],
+  ["flows-mockup", "#/flows?open=R%3Ahyperscale&focus=openai"],
   ["company-openai", "#/company/openai"],
   ["company-tsmc", "#/company/tsmc"],
   ["flows", "#/flows"],
   ["overview-ribbon", "#/?rib=labs%3Ehyperscale"],
-  ["overview-count", "#/?w=count"],
+  ["flows-count", "#/flows?w=count"],
   ["flows-trace-coreweave", "#/flows?focus=coreweave"],
   ["flows-open-labs", "#/flows?open=labs"],
   ["flows-no-amount", "#/flows?na=1"],
@@ -43,10 +43,14 @@ for (const [size, viewport] of Object.entries(SIZES)) {
         view: document.getElementById("view").innerText.length,
         failed: document.getElementById("view").innerText.includes("could not be loaded"),
         bg: getComputedStyle(document.body).backgroundColor,
+        sankey: !!document.querySelector(".desk-only svg")?.getBoundingClientRect().width,
+        ledger: !!document.querySelector(".phone-only .ledger")?.getBoundingClientRect().width,
         fonts: ["500 44px Newsreader", "400 15px \"IBM Plex Sans\"", "400 12px \"IBM Plex Mono\""].filter((f) => !document.fonts.check(f)),
       }));
       if (r.overflow > 1) problems.push(`${name} ${size}/${scheme}: page scrolls sideways by ${r.overflow}px`);
       if (r.view < 50 || r.failed) problems.push(`${name} ${size}/${scheme}: view is empty or failed`);
+      if (/^(overview|flows)/.test(name) && r.sankey !== (size === "desktop")) problems.push(`${name} ${size}/${scheme}: sankey ${r.sankey ? "shown" : "hidden"}`);
+      if (/^(overview|flows)/.test(name) && r.ledger !== (size === "phone")) problems.push(`${name} ${size}/${scheme}: phone ledger ${r.ledger ? "shown" : "hidden"}`);
       if (r.fonts.length) problems.push(`${name} ${size}/${scheme}: fonts not loaded: ${r.fonts.join(", ")}`);
       if (scheme === "dark" && r.bg !== "rgb(23, 25, 28)") problems.push(`${name} ${size}/${scheme}: dark mode not applied (${r.bg})`);
       if (scheme === "light" || name === "overview" || name === "flows")
@@ -110,7 +114,8 @@ const lit = await page.locator("a.edge.lit").count();
 if (!lit) problems.push("trace highlighted no lines");
 await follow('svg a[href*="open="]');
 await page.waitForFunction(() => location.hash.includes("open=")).catch(() => problems.push("layer click did not open a layer"));
-await page.click('.rows a[href*="#/company/"]');
+await page.click("details.list summary");
+await page.click('details.list .rows a[href*="#/company/"]');
 await page.waitForFunction(() => location.hash.startsWith("#/company/")).catch(() => problems.push("company link did not open a card"));
 await page.screenshot({ path: `${out}/desktop-dark-interaction-end.jpg`, type: "jpeg", quality: 70 });
 await browser.close();
@@ -120,4 +125,4 @@ if (problems.length) {
   console.log(`browser: ${problems.length} problems`);
   process.exit(1);
 }
-console.log(`browser: ${ROUTES.length} pages x 2 sizes x 2 themes and 21 interaction checks, 0 problems`);
+console.log(`browser: ${ROUTES.length} pages x 2 sizes x 2 themes and 22 interaction checks, 0 problems`);

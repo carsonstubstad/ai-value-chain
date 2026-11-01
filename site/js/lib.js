@@ -40,23 +40,29 @@ export const FAMILY = {
 export const CHAIN = ["equipment", "chip_design", "foundry", "memory", "systems", "power", "data_centers", "hyperscale", "labs", "applications"];
 const CEILING = new Set(["cap", "multi_year_total", "annual_run_rate"]);
 
-// Layer to layer flows (D33): width is the sum of each deal's largest stated figure, split into
-// one-time money (solid) and ceilings (hatched). Guarantees count as deals but not in the width.
+// Layer to layer flows (D33): width is the sum of each deal's largest stated figure, kept as one-time
+// money and ceilings so the label can say which (D50). Guarantees count as deals but not in the width.
 export function layerFlows(deals, idx) {
   const m = new Map();
   for (const d of deals) {
     const a = idx.companies[d.payer].layer, b = idx.companies[d.payee].layer, k = a + ">" + b;
-    if (!m.has(k)) m.set(k, { from: a, to: b, key: k, deals: [], cash: 0, ceil: 0, contingent: 0, paid: 0 });
+    if (!m.has(k)) m.set(k, { from: a, to: b, key: k, deals: [], cash: 0, ceil: 0, contingent: 0, paid: 0, paidAmt: 0, noamt: 0 });
     const f = m.get(k);
     f.deals.push(d);
     if (d.amount_basis === "paid") f.paid++;
     if (d.contingent) { f.contingent++; continue; }
-    if (!hasAmount(d)) continue;
+    if (!hasAmount(d)) { f.noamt++; continue; }
     if (d.amount_kind === "one_time") f.cash += highEnd(d); else f.ceil += highEnd(d);
+    // Paid share (D50): paid deals in full, plus what is recorded as paid to date on committed ones.
+    f.paidAmt += d.amount_basis === "paid" ? highEnd(d) : d.paid_to_date_usd || 0;
   }
   return [...m.values()].map((f) => ({ ...f, n: f.deals.length, total: f.cash + f.ceil }))
     .sort((a, b) => b.total - a.total || b.n - a.n || a.key.localeCompare(b.key));
 }
+
+// The word for what a width is made of (D50): ceilings when any cap or multi-year total is in it,
+// paid when all of it is paid, otherwise committed.
+export const flowWord = (f) => (f.ceil > 0 ? "ceilings" : f.total > 0 && f.paidAmt >= f.total ? "paid" : "committed");
 
 // Loop numbers (D35: loops respect the confidence filter only). Ranked by the sum of largest
 // stated figures with guarantees left out; the sum orders cards and is never shown.

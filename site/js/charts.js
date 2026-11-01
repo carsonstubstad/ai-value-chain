@@ -1,7 +1,7 @@
-// SVG builders for the design in docs/design-spec.md: the two-way chain (D40), loop diagrams,
-// the company in and out diagram and the money flows chart. Pure functions returning strings.
+// SVG builders for the round 6 design (mockups/round6): the sankey and its phone ledger, loop
+// diagrams and the company in and out diagram. Pure functions returning strings.
 
-import { esc, money, amountText, highEnd, hasAmount, basisStyle, MARK, LABEL, TYPE_SHORT, FAMILY, CHAIN } from "./lib.js";
+import { esc, money, amountText, highEnd, hasAmount, basisStyle, flowWord, MARK, LABEL, TYPE_SHORT, FAMILY } from "./lib.js";
 
 const f1 = (n) => (Math.round(n * 10) / 10).toString();
 const plural = (n, one, many) => `${n} ${n === 1 ? one : many}`;
@@ -60,117 +60,159 @@ const label = (x, y, d, anchor = "middle", size) => {
 const dealTip = (ctx, d) => tip(`${ctx.idx.companies[d.payer].name} to ${ctx.idx.companies[d.payee].name}, ${amountText(d)}`,
   `${TYPE_SHORT[d.type]}, ${LABEL.basis[d.amount_basis].toLowerCase()}, ${LABEL.confidence[d.confidence].toLowerCase()}`);
 
-// ---------- The two-way chain (D40) ----------
+// ---------- The sankey (round 6, D50): payers on the left, payees on the right ----------
 
-export function chainHero(ctx, flows, opts = {}) {
-  const { idx, data, shown } = ctx;
-  const W = 1080, cw = W / CHAIN.length, WMAX = 22;
-  const cx = Object.fromEntries(CHAIN.map((l, i) => [l, cw * i + cw / 2]));
-  const deg = {}, layerDeg = {};
-  for (const d of shown) {
-    for (const c of [d.payer, d.payee]) deg[c] = (deg[c] || 0) + 1;
-    for (const l of [idx.companies[d.payer].layer, idx.companies[d.payee].layer]) layerDeg[l] = (layerDeg[l] || 0) + 1;
+// Ribbon height = cash plus announced ceilings (D33's sum of high ends), 2px floor; with w=count,
+// height = deals. Colour = payer family. Committed = outlined band with a light fill; paid = a solid
+// band along the top edge to the paid share. Guarantees are left out of widths. No hatching, no dashes.
+// opts: { open: Set of "L:layer" or "R:layer" shown as companies, lit: company id, w, rib,
+//         ribLink(e), nodeLink(side, row), H }
+export const LABEL_MIN = 5e9;
+
+export function sankeyEdges(ctx, deals, open = new Set(), byCount = false) {
+  const { idx } = ctx;
+  const unit = (side, c) => {
+    const l = idx.companies[c].layer;
+    return open.has(`${side}:${l}`) ? c : l;
+  };
+  const m = new Map();
+  for (const d of deals) {
+    const cont = !!d.contingent, amt = hasAmount(d) && !cont;
+    const src = unit("L", d.payer), dst = unit("R", d.payee), k = src + ">" + dst;
+    if (!m.has(k)) m.set(k, { key: k, src, dst, from: idx.companies[d.payer].layer, to: idx.companies[d.payee].layer, deals: [], v: 0, paid: 0, ceil: 0, n: 0, paidN: 0 });
+    const e = m.get(k);
+    e.deals.push(d);
+    e.n++;
+    if (d.amount_basis === "paid") e.paidN++;
+    if (byCount) continue;
+    if (!amt) continue;
+    e.v += highEnd(d);
+    if (d.amount_kind !== "one_time") e.ceil += highEnd(d);
+    e.paid += d.amount_basis === "paid" ? highEnd(d) : d.paid_to_date_usd || 0;
   }
+  const out = [...m.values()];
+  if (byCount) for (const e of out) { e.v = e.n; e.paid = e.paidN; }
+  return out;
+}
+
+const edgeWord = (e) => (e.ceil > 0 ? "ceilings" : e.v > 0 && e.paid >= e.v ? "paid" : "committed");
+export const edgeLabel = (e, byCount) => (byCount ? plural(e.n, "deal", "deals") : `${money(e.v)} ${edgeWord(e)} · ${plural(e.n, "deal", "deals")}`);
+
+export function sankey(ctx, deals, opts = {}) {
+  const { idx } = ctx;
+  const open = opts.open || new Set(), byCount = opts.w === "count";
+  const W = 1080, NODE_W = 12, GAP = 16, MINW = 2, leftX = 176, rightX = 896;
+  const all = sankeyEdges(ctx, deals, open, byCount);
+  const edges = all.filter((e) => e.v > 0);
+  const name = (u) => (idx.layers[u] ? idx.layers[u].label : idx.companies[u].name);
+  const layerOf = (u) => (idx.layers[u] ? u : idx.companies[u].layer);
+  const rows = (side) => {
+    const r = new Map();
+    for (const e of edges) {
+      const u = side === "L" ? e.src : e.dst;
+      if (!r.has(u)) r.set(u, { id: u, layer: layerOf(u), label: name(u), company: !idx.layers[u], v: 0, edges: [] });
+      r.get(u).v += e.v;
+      r.get(u).edges.push(e);
+    }
+    // Payers ranked by what they pay, payees by what they are paid: loop pairs then run as parallel bands.
+    return [...r.values()].sort((a, b) => b.v - a.v || a.label.localeCompare(b.label));
+  };
+  const L = rows("L"), R = rows("R");
+  if (!edges.length) return "";
+  const nRows = Math.max(L.length, R.length);
+  const H = Math.max(opts.H || 700, 460 + GAP * (nRows - 1));
+  const total = Math.max(L.reduce((t, r) => t + r.v, 0), R.reduce((t, r) => t + r.v, 0));
+  const k = (H - 40 - GAP * (nRows - 1)) / total;
+  const wpx = (v) => Math.max(MINW, v * k);
+  const place = (rs) => { let y = 20; for (const r of rs) { r.h = r.edges.reduce((t, e) => t + wpx(e.v), 0); r.y = y; y += r.h + GAP; } };
+  place(L); place(R);
+  const yL = new Map(L.map((r) => [r.id, r])), yR = new Map(R.map((r) => [r.id, r]));
+  // Inside a node, order ribbons by the other end, to limit crossings.
+  for (const r of L) { r.edges.sort((a, b) => yR.get(a.dst).y - yR.get(b.dst).y); let y = r.y; for (const e of r.edges) { e.sy = y; y += wpx(e.v); } }
+  for (const r of R) { r.edges.sort((a, b) => yL.get(a.src).y - yL.get(b.src).y); let y = r.y; for (const e of r.edges) { e.dy = y; y += wpx(e.v); } }
+  const x0 = leftX + NODE_W, x1 = rightX, mx = (x0 + x1) / 2;
+  const band = (ya, yb, w) => `M${x0} ${f1(ya)} C${mx} ${f1(ya)} ${mx} ${f1(yb)} ${x1} ${f1(yb)} L${x1} ${f1(yb + w)} C${mx} ${f1(yb + w)} ${mx} ${f1(ya + w)} ${x0} ${f1(ya + w)} Z`;
+  const line = (ya, yb) => `M${x0} ${f1(ya)} C${mx} ${f1(ya)} ${mx} ${f1(yb)} ${x1} ${f1(yb)}`;
+  const lit = opts.lit, rib = opts.rib;
+  const parts = [], labels = [];
+  for (const e of [...edges].sort((a, b) => b.v - a.v)) {
+    const w = wpx(e.v), c = col(e.from), ya = e.sy, yb = e.dy;
+    const on = lit ? e.deals.some((d) => d.payer === lit || d.payee === lit) : rib ? e.key === rib : true;
+    const cls = `rib edge${lit || rib ? (on ? " lit" : " faded") : ""}`;
+    let g;
+    if (w <= 3) g = `<path d="${line(ya + w / 2, yb + w / 2)}" fill="none" stroke="${c}" stroke-width="${f1(w)}"/>`;
+    else {
+      g = `<path d="${band(ya, yb, w)}" fill="${c}" fill-opacity=".12" stroke="${c}" stroke-width="1.2"/>`;
+      if (e.paid > 0) g += `<path d="${band(ya, yb, w * Math.min(1, e.paid / e.v))}" fill="${c}"/>`;
+    }
+    // A wider invisible stroke makes thin ribbons easy to point at.
+    g += `<path d="${line(ya + w / 2, yb + w / 2)}" fill="none" stroke="transparent" stroke-width="${f1(Math.max(10, w))}"/>`;
+    const head = `${name(e.src)} pays ${name(e.dst)}, ${byCount ? plural(e.n, "deal", "deals") : `${money(e.v)} ${edgeWord(e)}`}`;
+    const paidBit = byCount ? `${e.paidN} paid` : `${e.paidN} paid${e.paid > 0 && e.paid < e.v ? `, ${money(e.paid)} of it paid to date` : ""}`;
+    const cont = e.deals.filter((d) => d.contingent).length;
+    const second = byCount ? paidBit : `${plural(e.n, "deal", "deals")}, ${paidBit}${cont ? `; ${plural(cont, "guarantee", "guarantees")} not in the width` : ""}`;
+    parts.push(`<a href="${opts.ribLink ? opts.ribLink(e) : "#/flows"}" class="${cls}">${tip(head, second)}${g}</a>`);
+    if (byCount ? e.n < 3 : e.v < LABEL_MIN) continue;
+    const txt = edgeLabel(e, byCount);
+    if (w >= 12) labels.push({ x: mx, y: (ya + yb) / 2 + w / 2 + 4, t: txt, anchor: "middle", col: "mid", on });
+    else labels.push({ x: x1 - 10, y: yb + w / 2 + 4, t: txt, anchor: "end", col: "end", on });
+  }
+  // Sweep labels 16px apart within each column, then keep the stack inside the frame.
+  for (const cn of ["mid", "end"]) {
+    const ls = labels.filter((l) => l.col === cn).sort((a, b) => a.y - b.y);
+    for (let i = 1; i < ls.length; i++) if (ls[i].y - ls[i - 1].y < 16) ls[i].y = ls[i - 1].y + 16;
+    for (let i = ls.length - 1; i >= 0; i--) {
+      const limit = i === ls.length - 1 ? H - 24 : ls[i + 1].y - 16;
+      if (ls[i].y > limit) ls[i].y = limit;
+    }
+  }
+  for (const l of labels) parts.push(`<text class="small halo" x="${f1(l.x)}" y="${f1(l.y)}" text-anchor="${l.anchor}"${l.on ? "" : ' opacity=".3"'}>${esc(l.t)}</text>`);
+  const node = (side, r) => {
+    const x = side === "L" ? leftX : rightX;
+    const tx = side === "L" ? leftX - 8 : rightX + NODE_W + 8;
+    const faded = lit && r.company && r.id !== lit && !r.edges.some((e) => e.deals.some((d) => d.payer === lit || d.payee === lit));
+    const t = r.company ? tip(r.label, r.id === lit ? "Clear the trace" : "Trace its money") : tip(r.label, open.has(`${side}:${r.id}`) ? "Close to the layer" : "Open to its companies");
+    const href = opts.nodeLink ? opts.nodeLink(side, r) : "#/flows";
+    return `<a href="${href}" class="chip-a node${faded ? " faded" : ""}">${t}<rect x="${x}" y="${f1(r.y)}" width="${NODE_W}" height="${f1(Math.max(r.h, 2))}" fill="${col(r.layer)}"/>`
+      + `<rect x="${side === "L" ? 0 : rightX}" y="${f1(r.y - 4)}" width="${side === "L" ? leftX + NODE_W : W - rightX}" height="${f1(Math.max(r.h, 14) + 4)}" fill="transparent"/>`
+      + `<text class="${r.company ? "chip" : "layer"} halo${r.id === lit ? " strong" : ""}" x="${tx}" y="${f1(r.y + Math.min(r.h, 14) / 2 + 4)}"${side === "L" ? ' text-anchor="end"' : ""}>${esc(r.label)}</text></a>`;
+  };
+  for (const r of L) parts.push(node("L", r));
+  for (const r of R) parts.push(node("R", r));
+  // An open layer gets a bracket with its name beside its companies.
+  for (const side of ["L", "R"]) {
+    const rs = side === "L" ? L : R;
+    for (const l of new Set(rs.filter((r) => r.company).map((r) => r.layer))) {
+      const xs = rs.filter((r) => r.company && r.layer === l);
+      const y0 = Math.min(...xs.map((r) => r.y)), y1 = Math.max(...xs.map((r) => r.y + r.h));
+      const bx = side === "R" ? rightX + NODE_W + 112 : leftX - 120;
+      parts.push(`<line x1="${bx}" x2="${bx}" y1="${f1(y0)}" y2="${f1(y1)}" stroke="var(--rule)"/><text class="layer halo" x="${side === "R" ? bx + 6 : bx - 6}" y="${f1((y0 + y1) / 2 + 4)}"${side === "L" ? ' text-anchor="end"' : ""}>${esc(idx.layers[l].label)}</text>`);
+    }
+  }
+  parts.push(`<text class="lab" x="${x0}" y="${H - 2}" text-anchor="end">pays</text><text class="lab" x="${x1}" y="${H - 2}">is paid</text>`);
+  return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Who pays whom, by layer">${parts.join("")}</svg>`;
+}
+
+// ---------- The phone ledger: one row per layer pair, bars on a shared scale ----------
+
+export function ledger(ctx, flows, opts = {}) {
+  const { idx } = ctx;
   const byCount = opts.w === "count";
-  const vmax = Math.max(1, ...flows.map((f) => (byCount ? f.n : f.total)));
-  const width = (f) => (byCount ? Math.max(1.6, (WMAX * f.n) / vmax) : f.total ? Math.max(1.6, (WMAX * f.total) / vmax) : 0);
-  const parts = [HATCH];
-
-  // Company chips: dot area by degree; benched companies muted (D34).
-  let chipsBottom = 0;
-  CHAIN.forEach((l, i) => {
-    const x0 = cw * i + 6;
-    parts.push(`<text class="layer" x="${f1(x0)}" y="14">${esc(idx.layers[l].label)}</text>`);
-    const cs = data.companies.filter((c) => c.layer === l).sort((a, b) => (deg[b.id] || 0) - (deg[a.id] || 0) || a.name.localeCompare(b.name));
-    let y = 36;
-    if (!cs.some((c) => deg[c.id])) {
-      parts.push(`<text class="bench" x="${f1(x0)}" y="${y}">tracked, no</text><text class="bench" x="${f1(x0)}" y="${y + 14}">sourced flows yet</text>`);
-      y += 34;
-    }
-    for (const c of cs) {
-      const k = deg[c.id] || 0;
-      const href = `#/company/${esc(c.id)}${opts.qs || ""}`;
-      // A long name in a column drops its bracketed part so it stays inside the column.
-      const nm = c.name.length * 6.1 > cw - 14 ? c.name.replace(/\s*\(.*\)$/, "") : c.name;
-      if (k) parts.push(`<a href="${href}" class="chip-a">${tip(c.name, plural(k, "deal", "deals"))}<circle cx="${f1(x0 + 4)}" cy="${y - 4}" r="${f1(2.2 + 1.1 * Math.sqrt(k))}" fill="${col(l)}"/><text class="chip" x="${f1(x0 + 12)}" y="${y}">${esc(nm)}</text></a>`);
-      else parts.push(`<a href="${href}" class="chip-a">${tip(c.name, "No sourced deal yet")}<text class="bench" x="${f1(x0 + 12)}" y="${y}">${esc(nm)}</text></a>`);
-      y += 19;
-    }
-    chipsBottom = Math.max(chipsBottom, y);
-  });
-
-  const isUp = (f) => CHAIN.indexOf(f.to) < CHAIN.indexOf(f.from);
-  const depthOf = (f) => Math.min(150, 14 + 0.26 * Math.abs(cx[f.to] - cx[f.from]));
-  const chainFlows = flows.filter((f) => f.from !== "capital" && f.to !== "capital");
-  const upMax = Math.max(40, ...chainFlows.filter(isUp).map((f) => depthOf(f) + width(f)));
-  const lowMax = Math.max(40, ...chainFlows.filter((f) => !isUp(f)).map((f) => depthOf(f) + width(f)));
-  const y0 = chipsBottom + 26 + upMax;
-  const railY = y0 + lowMax + 34;
-  parts.push(`<line x1="0" x2="${W}" y1="${f1(y0)}" y2="${f1(y0)}" stroke="var(--ink-2)"/>`);
-  parts.push(`<text class="lab" x="0" y="${f1(y0 - upMax + 4)}">paying suppliers, right to left</text>`);
-  parts.push(`<text class="lab" x="0" y="${f1(y0 + lowMax - 2)}">investing, left to right</text>`);
-
-  const labels = [];
-  const ribbonLink = (f) => `#/${opts.page || ""}${opts.qsWith ? opts.qsWith("rib", opts.rib === f.key ? "" : f.key) : ""}`;
-  const ribbonTip = (f) => tip(`${idx.layers[f.from].label} to ${idx.layers[f.to].label}: ${plural(f.n, "deal", "deals")}`,
-    f.total ? `${money(f.total)} in announced ceilings, ${f.paid} paid${f.contingent ? `; ${plural(f.contingent, "guarantee", "guarantees")} not in the width` : ""}` : "No amount disclosed");
-  const dim = (f) => (opts.rib && opts.rib !== f.key ? ' opacity=".25"' : "");
-
-  for (const f of [...chainFlows].sort((a, b) => Math.abs(cx[b.to] - cx[b.from]) - Math.abs(cx[a.to] - cx[a.from]))) {
-    let a = cx[f.from], z = cx[f.to];
-    if (f.from === f.to) { a -= 18; z += 18; }
-    const up = isUp(f), depth = depthOf(f), w = width(f);
-    let g = "";
-    if (!w) g = `<path d="${arc(a, z, y0, depth, up)}" fill="none" stroke="${col(f.from)}" stroke-width="1" stroke-dasharray="2 3"/><path d="${arc(a, z, y0, depth, up)}" fill="none" stroke="transparent" stroke-width="12"/>`;
-    else {
-      const wc = byCount ? w : (w * f.cash) / f.total, wh = w - wc;
-      if (wh > 0.05) g += `<path d="${arc(a, z, y0, depth + wc / 2, up)}" fill="none" stroke="url(#h-${fam(f.from)})" stroke-width="${f1(wh)}"/>`;
-      if (wc > 0.05) g += `<path d="${arc(a, z, y0, depth - wh / 2, up)}" fill="none" stroke="${col(f.from)}" stroke-width="${f1(wc)}"/>`;
-      // A wider invisible stroke makes thin ribbons easy to click.
-      g += `<path d="${arc(a, z, y0, depth, up)}" fill="none" stroke="transparent" stroke-width="${f1(Math.max(12, w + 6))}"/>`;
-    }
-    parts.push(`<a href="${ribbonLink(f)}" class="rib"${dim(f)}>${ribbonTip(f)}${g}</a>`);
-    if ((byCount ? f.n >= 5 : f.total >= 20e9)) labels.push([(a + z) / 2, y0 + (up ? -1 : 1) * (depth + w / 2 + 8) + (up ? 0 : 10), f]);
-  }
-  for (const l of CHAIN) {
-    const k = layerDeg[l] || 0;
-    parts.push(k ? `<circle cx="${f1(cx[l])}" cy="${f1(y0)}" r="${f1(3 + 1.6 * Math.sqrt(k))}" fill="${col(l)}" stroke="var(--paper)" stroke-width="2"/>`
-      : `<circle cx="${f1(cx[l])}" cy="${f1(y0)}" r="3" fill="var(--paper)" stroke="var(--muted)"/>`);
-  }
-  // Capital rail with ribbons rising into the layers it funds.
-  parts.push(`<line x1="0" x2="${W}" y1="${f1(railY)}" y2="${f1(railY)}" stroke="var(--cap)" stroke-width="3"/>`);
-  const capCos = data.companies.filter((c) => c.layer === "capital").sort((a, b) => (deg[b.id] || 0) - (deg[a.id] || 0) || a.name.localeCompare(b.name));
-  parts.push(`<text class="layer" x="0" y="${f1(railY + 20)}">${esc(idx.layers.capital.label)}</text>`);
-  let rx = 64;
-  for (const c of capCos) {
-    const t = c.name, w = t.length * 6.2 + 14;
-    parts.push(`<a href="#/company/${esc(c.id)}${opts.qs || ""}" class="chip-a">${tip(t, plural(deg[c.id] || 0, "deal", "deals"))}<text class="${deg[c.id] ? "chip" : "bench"}" x="${f1(rx)}" y="${f1(railY + 20)}">${esc(t)}</text></a>`);
-    rx += w;
-  }
-  for (const f of flows.filter((f) => f.from === "capital" || f.to === "capital")) {
-    const other = f.from === "capital" ? f.to : f.from;
-    if (!(other in cx)) continue;
-    const x = cx[other] + (f.from === "capital" ? 14 : -14), w = width(f), h = railY - y0 - 8;
-    let g = "";
-    if (!w) g = `<line x1="${f1(x)}" x2="${f1(x)}" y1="${f1(railY)}" y2="${f1(y0 + 8)}" stroke="${col(f.from)}" stroke-width="1" stroke-dasharray="2 3"/>`;
-    else {
-      const wc = byCount ? w : (w * f.cash) / f.total, wh = w - wc;
-      if (wc > 0.05) g += `<rect x="${f1(x - w / 2)}" y="${f1(y0 + 8)}" width="${f1(wc)}" height="${f1(h)}" fill="${col(f.from)}"/>`;
-      if (wh > 0.05) g += `<rect x="${f1(x - w / 2 + wc)}" y="${f1(y0 + 8)}" width="${f1(wh)}" height="${f1(h)}" fill="url(#h-${fam(f.from)})"/>`;
-    }
-    g += `<rect x="${f1(x - 7)}" y="${f1(y0 + 8)}" width="14" height="${f1(h)}" fill="transparent"/>`;
-    parts.push(`<a href="${ribbonLink(f)}" class="rib"${dim(f)}>${ribbonTip(f)}${g}</a>`);
-    if (byCount ? f.n >= 5 : f.total >= 20e9) labels.push([x + w / 2 + 4, railY - 10, f, "start"]);
-  }
-  const placed = [];
-  for (const [x, y0l, f, anchor] of labels.sort((a, b) => a[1] - b[1])) {
-    let y = y0l;
-    while (placed.some(([px, py]) => Math.abs(x - px) < 100 && Math.abs(y - py) < 16)) y += 16;
-    placed.push([x, y]);
-    const v = byCount ? plural(f.n, "deal", "deals") : money(f.total);
-    parts.push(`<text class="n halo" x="${f1(x)}" y="${f1(y)}" text-anchor="${anchor || "middle"}">${esc(v)}${byCount ? "" : `<tspan class="lab" dx="4">${plural(f.n, "deal", "deals")}</tspan>`}</text>`);
-  }
-  return `<svg viewBox="0 0 ${W} ${Math.round(railY + 30)}" role="img" aria-label="The AI value chain on one line: payments to suppliers arc above, investment arcs below, Capital along the bottom">${parts.join("")}</svg>`;
+  const val = (f) => (byCount ? f.n : f.total);
+  const rows = flows.filter((f) => val(f) > 0).sort((a, b) => val(b) - val(a) || a.key.localeCompare(b.key));
+  if (!rows.length) return "";
+  const vmax = Math.max(...rows.map(val));
+  const keys = new Set(rows.map((f) => f.key));
+  return `<ul class="ledger">${rows.map((f) => {
+    const w = Math.max(0.4, (100 * val(f)) / vmax);
+    const pw = byCount ? (100 * f.paid) / vmax : (100 * f.paidAmt) / vmax;
+    const c = col(f.from);
+    const both = opts.both !== false && keys.has(f.to + ">" + f.from);
+    const bar = `<svg viewBox="0 0 100 22" preserveAspectRatio="none" aria-hidden="true"><rect x="0" y="4" width="${w.toFixed(2)}" height="14" fill="${c}" fill-opacity=".12" stroke="${c}" stroke-width="1" vector-effect="non-scaling-stroke"/>${pw > 0 ? `<rect x="0" y="4" width="${Math.min(w, pw).toFixed(2)}" height="14" fill="${c}"/>` : ""}</svg>`;
+    const lab = byCount ? `<span class="num">${plural(f.n, "deal", "deals")}</span>` : `<span class="num">${money(f.total)}</span> <span class="lw">${flowWord(f)} · ${plural(f.n, "deal", "deals")}</span>`;
+    return `<li${both ? ' class="both"' : ""}><a class="pair" href="${opts.link ? opts.link(f) : "#/flows"}"><span class="dot ${fam(f.from)}"></span>${esc(idx.layers[f.from].label)} <span class="to">pays</span> ${esc(idx.layers[f.to].label)}</a>`
+      + `<span class="barrow"><span class="bar">${bar}</span><span class="blabel">${lab}</span></span></li>`;
+  }).join("")}</ul>`;
 }
 
 // ---------- Loops ----------
@@ -281,126 +323,4 @@ export function companyDiagram(ctx, id, inn, out) {
   }).join("");
   return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Largest deals in and out">${HATCH}${side(li, true)}${side(lo, false)}<circle cx="${cx}" cy="${f1(cy)}" r="8" fill="${col(idx.companies[id].layer)}"/>`
     + `<text class="lab" x="150" y="${H - 2}" text-anchor="end">money in</text><text class="lab" x="${W - 150}" y="${H - 2}">money out</text></svg>`;
-}
-
-// ---------- Money flows (13d): layer level by default, a layer opens to its companies ----------
-
-// opts: { open: Set of layers shown as companies, lit: Set of deal ids or null, focus, qsWith(key, value), qs, na, w }
-export function flowsChart(ctx, deals, opts) {
-  const { idx, data } = ctx;
-  const used = new Set(deals.flatMap((d) => [idx.companies[d.payer].layer, idx.companies[d.payee].layer]));
-  const cols = CHAIN.filter((l) => used.has(l) || !["systems", "applications"].includes(l));
-  const W = 1080, cw = W / cols.length;
-  const cx = Object.fromEntries(cols.map((l, i) => [l, cw * i + cw / 2]));
-  const unitOf = (c) => (opts.open.has(idx.companies[c].layer) ? c : "L:" + idx.companies[c].layer);
-  // Largest deal, then degree, orders companies inside an open layer.
-  const big = {}, deg = {};
-  for (const d of deals) for (const c of [d.payer, d.payee]) { big[c] = Math.max(big[c] || 0, d.contingent ? 0 : highEnd(d)); deg[c] = (deg[c] || 0) + 1; }
-  const members = (l) => data.companies.filter((c) => c.layer === l && deg[c.id]).sort((a, b) => (big[b.id] || 0) - (big[a.id] || 0) || deg[b.id] - deg[a.id] || a.name.localeCompare(b.name));
-  const rowH = 24;
-  const stackN = Math.max(1, ...cols.filter((l) => opts.open.has(l)).map((l) => members(l).length));
-  // Bundles: one line per pair of units, width by announced ceilings (D33) or by count.
-  const bundles = new Map();
-  for (const d of deals) {
-    if (!hasAmount(d) && !opts.na) continue;
-    const a = unitOf(d.payer), b = unitOf(d.payee);
-    if (a === b) continue;
-    const k = a + ">" + b;
-    if (!bundles.has(k)) bundles.set(k, { a, b, deals: [], total: 0, paid: 0 });
-    const g = bundles.get(k);
-    g.deals.push(d);
-    if (!d.contingent && hasAmount(d)) g.total += highEnd(d);
-    if (d.amount_basis === "paid") g.paid++;
-  }
-  const list = [...bundles.values()];
-  const byCount = opts.w === "count";
-  const vmax = Math.max(1, ...list.map((g) => (byCount ? g.deals.length : g.total)));
-  const width = (g) => (byCount ? 1.4 + (10 * g.deals.length) / vmax : g.total ? 1.4 + 10 * Math.sqrt(g.total / vmax) : 0);
-  const layerOfUnit = (u) => (u.startsWith("L:") ? u.slice(2) : idx.companies[u].layer);
-  const upSpace = 150, lowSpace = 150;
-  const midY = 40 + upSpace + (stackN * rowH) / 2;
-  const railY = midY + (stackN * rowH) / 2 + lowSpace + 20;
-  const pos = {};
-  for (const l of cols) {
-    if (opts.open.has(l)) {
-      const ms = members(l);
-      ms.forEach((c, i) => { pos[c.id] = [cx[l], midY + (i - (ms.length - 1) / 2) * rowH]; });
-    } else pos["L:" + l] = [cx[l], midY];
-  }
-  const capOpen = opts.open.has("capital");
-  const caps = capOpen ? members("capital") : [];
-  caps.forEach((c, i) => { pos[c.id] = [150 + (i * (W - 210)) / Math.max(1, caps.length - 1), railY]; });
-  const parts = [HATCH];
-  cols.forEach((l) => {
-    const on = opts.open.has(l);
-    parts.push(`<a href="#/flows${opts.qsWith("open", on ? [...opts.open].filter((x) => x !== l) : [...opts.open, l])}" class="chip-a">${tip(idx.layers[l].label, on ? "Close to the layer" : "Open to its companies")}<text class="layer" x="${f1(cx[l])}" y="18" text-anchor="middle">${esc(idx.layers[l].label)}${on ? " −" : " +"}</text></a>`);
-  });
-  const lit = opts.lit;
-  const edges = [], tags = [];
-  for (const g of list.sort((x, y) => width(y) - width(x))) {
-    const la = layerOfUnit(g.a), lb = layerOfUnit(g.b);
-    const fromCap = la === "capital", toCap = lb === "capital";
-    let p1 = pos[g.a], p2 = pos[g.b];
-    if (fromCap && !p1) p1 = [cx[lb] + 12, railY];
-    if (toCap && !p2) p2 = [cx[la] - 12, railY];
-    if (!p1 || !p2) continue;
-    const w = width(g);
-    const on = !lit || g.deals.some((d) => lit.has(d.id));
-    let path;
-    if (fromCap || toCap) {
-      const my = (p1[1] + p2[1]) / 2;
-      path = `M${f1(p1[0])} ${f1(p1[1])} C${f1(p1[0])} ${f1(my)} ${f1(p2[0])} ${f1(my)} ${f1(p2[0])} ${f1(p2[1])}`;
-    } else {
-      const up = CHAIN.indexOf(lb) < CHAIN.indexOf(la) || (la === lb && p2[1] < p1[1]);
-      const depth = Math.min(upSpace - 10, 18 + 0.2 * Math.abs(p2[0] - p1[0]) + (la === lb ? 20 : 0)) * 1.33 * (up ? -1 : 1);
-      const ex = la === lb ? 26 : 0;
-      path = `M${f1(p1[0])} ${f1(p1[1])} C${f1(p1[0] + ex)} ${f1(p1[1] + depth)} ${f1(p2[0] + ex)} ${f1(p2[1] + depth)} ${f1(p2[0])} ${f1(p2[1])}`;
-    }
-    const lab = (u) => (u.startsWith("L:") ? idx.layers[u.slice(2)].label : idx.companies[u].name);
-    const head = `${lab(g.a)} to ${lab(g.b)}: ${plural(g.deals.length, "deal", "deals")}`;
-    const second = g.deals.length === 1 ? `${amountText(g.deals[0])}, ${LABEL.basis[g.deals[0].amount_basis].toLowerCase()}, ${LABEL.confidence[g.deals[0].confidence].toLowerCase()}`
-      : g.total ? `${money(g.total)} in announced ceilings, ${g.paid} paid` : "No amount disclosed";
-    const stroke = !w ? `stroke="${col(la)}" stroke-width="1" stroke-dasharray="2 3"` : `stroke="${col(la)}" stroke-width="${f1(w)}"`;
-    const target = g.a.startsWith("L:") ? `#/flows${opts.qsWith("open", [...new Set([...opts.open, la, lb])])}` : `#/flows${opts.qsWith("focus", g.a)}`;
-    edges.push(`<a href="${target}" class="edge${on ? (lit ? " lit" : "") : " faded"}">${tip(head, second)}<path d="${path}" fill="none" ${stroke} opacity="${w ? ".8" : ".7"}"/><path d="${path}" fill="none" stroke="transparent" stroke-width="${f1(Math.max(10, w + 6))}"/></a>`);
-    // Amounts: on a trace, the focus company's own lines; otherwise bundles of $20B or more.
-    const direct = lit ? g.a === opts.focus || g.b === opts.focus : (byCount ? g.deals.length >= 5 : g.total >= 20e9);
-    if (on && direct && (g.total || g.deals.length > 1)) {
-      const m = path.match(/-?[\d.]+/g).map(Number); // M x y C x y x y x y: the curve's midpoint
-      const mx = (m[0] + 3 * m[2] + 3 * m[4] + m[6]) / 8, my = (m[1] + 3 * m[3] + 3 * m[5] + m[7]) / 8;
-      const d0 = g.deals.length === 1 ? g.deals[0] : null;
-      const txt = d0 ? `${amountWords(d0).amt} ${amountWords(d0).kind || ""} F` : `${money(g.total)} ${g.deals.length} deals`;
-      tags.push({ x: mx, y: my + 4, w: txt.length * 6.6 + 8, svg: (y) => (d0 ? label(mx, y, d0, "middle", 12)
-        : `<text class="n halo" x="${f1(mx)}" y="${f1(y)}" text-anchor="middle">${g.total ? esc(money(g.total)) : ""}<tspan class="lab" dx="4">${plural(g.deals.length, "deal", "deals")}</tspan></text>`) });
-    }
-  }
-  parts.push(...edges);
-  // Nodes on top of the lines.
-  for (const [u, [x, y]] of Object.entries(pos)) {
-    const layer = layerOfUnit(u);
-    if (layer === "capital") continue;
-    const faded = lit && !(u.startsWith("L:") ? false : opts.litNodes?.has(u));
-    if (u.startsWith("L:")) {
-      parts.push(`<a href="#/flows${opts.qsWith("open", [...opts.open, layer])}" class="chip-a${lit ? " faded" : ""}">${tip(idx.layers[layer].label, "Open to its companies")}<circle cx="${f1(x)}" cy="${f1(y)}" r="8" fill="${col(layer)}" stroke="var(--paper)" stroke-width="2"/></a>`);
-    } else {
-      const c = idx.companies[u], isF = u === opts.focus;
-      parts.push(`<a href="#/flows${opts.qsWith("focus", isF ? "" : u)}" class="chip-a${faded ? " faded" : ""}">${tip(c.name, isF ? "Clear the trace" : "Trace its money")}<circle cx="${f1(x)}" cy="${f1(y)}" r="${isF ? 7 : 5}" fill="${col(layer)}" stroke="var(--paper)" stroke-width="2"/><text class="chip halo${isF ? " strong" : ""}" x="${f1(x + 9)}" y="${f1(y + 4)}">${esc(c.name.length > 16 ? c.name.slice(0, 15) + "." : c.name)}</text></a>`);
-    }
-  }
-  // Labels last, nudged off each other; one that still collides is left to the tooltip.
-  const placed = [];
-  const hit = (t, y) => placed.some((p) => Math.abs(p.x - t.x) < (p.w + t.w) / 2 && Math.abs(p.y - y) < 15);
-  for (const t of tags) {
-    const y = [0, 15, -15, 30, -30].map((dy) => t.y + dy).find((yy) => !hit(t, yy));
-    if (y === undefined) continue;
-    placed.push({ x: t.x, y, w: t.w });
-    parts.push(t.svg(y));
-  }
-  parts.push(`<line x1="0" x2="${W}" y1="${f1(railY)}" y2="${f1(railY)}" stroke="var(--cap)" stroke-width="3"/>`);
-  parts.push(`<a href="#/flows${opts.qsWith("open", capOpen ? [...opts.open].filter((x) => x !== "capital") : [...opts.open, "capital"])}" class="chip-a">${tip(idx.layers.capital.label, capOpen ? "Close to the layer" : "Open to its companies")}<text class="layer" x="0" y="${f1(railY + 20)}">${esc(idx.layers.capital.label)}${capOpen ? " −" : " +"}</text></a>`);
-  for (const c of caps) {
-    const [x] = pos[c.id], isF = c.id === opts.focus, faded = lit && !opts.litNodes?.has(c.id);
-    parts.push(`<a href="#/flows${opts.qsWith("focus", isF ? "" : c.id)}" class="chip-a${faded ? " faded" : ""}">${tip(c.name, isF ? "Clear the trace" : "Trace its money")}<circle cx="${f1(x)}" cy="${f1(railY)}" r="5" fill="var(--cap)" stroke="var(--paper)" stroke-width="2"/><text class="chip" x="${f1(x)}" y="${f1(railY + 20)}" text-anchor="middle">${esc(c.name)}</text></a>`);
-  }
-  return `<svg viewBox="0 0 ${W} ${Math.round(railY + 30)}" role="img" aria-label="Money flows between layers${opts.open.size ? " and companies" : ""}">${parts.join("")}</svg>`;
 }

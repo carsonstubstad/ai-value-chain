@@ -3,9 +3,9 @@
 
 import {
   esc, money, amountText, highEnd, hasAmount, basisStyle, MARK, LABEL, TYPE_SHORT, FAMILY, VIEW_KEYS,
-  REGION_LABEL, applyFilters, isFiltered, staleness, fmtDate, reach, layerFlows, loopView, isoWeek, weekRange, parseState,
+  REGION_LABEL, applyFilters, isFiltered, staleness, fmtDate, layerFlows, loopView, isoWeek, weekRange, parseState,
 } from "./lib.js";
-import { chainHero, loopDiagram, loopBars, companyDiagram, flowsChart, amountWords } from "./charts.js";
+import { sankey, sankeyEdges, ledger, LABEL_MIN, loopDiagram, loopBars, companyDiagram, amountWords } from "./charts.js";
 
 // ctx = { data, idx, s, qs, qsWith }: qs carries the filters on every internal link; qsWith also
 // keeps the page's view state (trace, open layers, picked ribbon) and changes one key.
@@ -103,12 +103,22 @@ function changeRow(ctx, e) {
 
 const sortedEvents = (ctx) => [...ctx.data.events].filter((e) => ctx.idx.deals[e.deal]).sort((a, b) => b.date.localeCompare(a.date) || a.id.localeCompare(b.id));
 
+// The sankey key (D50) and the small-ribbon count folded into it (HANDOFF 7.2).
+const KEY = "Width: announced ceilings, not cash · solid: paid · outline: committed";
+function smallLine(ctx, deals, open) {
+  const n = sankeyEdges(ctx, deals, open).filter((e) => e.v > 0 && e.v < LABEL_MIN).length;
+  return `${plural(n, "ribbon", "ribbons")} under $5B unlabeled`;
+}
+// Open layers are "L:layer" (payer side) or "R:layer" (payee side); a bare layer opens both sides.
+const openSet = (list) => new Set(list.flatMap((x) => (x.includes(":") ? [x] : [`L:${x}`, `R:${x}`])));
+
 export function renderOverview(ctx) {
   // The Overview has no filters (D51): it always shows the default view, rumors hidden.
   const { data, idx, s } = ctx;
   const shown = applyFilters(ctx.visible, parseState(""), idx);
   const flows = layerFlows(shown, idx);
-  const hero = chainHero(ctx, flows, { w: s.w, rib: s.rib, qs: ctx.qs, qsWith: ctx.qsWith });
+  const ribLink = (key) => `#/${ctx.qsWith("rib", s.rib === key ? "" : key)}`;
+  const hero = sankey(ctx, shown, { rib: s.rib, ribLink: (e) => ribLink(e.key), nodeLink: (side, r) => `#/flows?open=${encodeURIComponent(`${side}:${r.id}`)}` });
   const picked = s.rib && flows.find((f) => f.key === s.rib);
   const ribPanel = picked ? `<section class="ribdeals" aria-label="Deals in the picked ribbon"><h2>${esc(idx.layers[picked.from].label)} to ${esc(idx.layers[picked.to].label)}</h2><ul class="rows">${[...picked.deals].sort((a, b) => highEnd(b) - highEnd(a)).map((d) => dealRow(ctx, d)).join("")}</ul></section>` : "";
   const loops = loopViews(ctx).slice(0, 3);
@@ -117,7 +127,7 @@ export function renderOverview(ctx) {
   const top = shown.filter((d) => hasAmount(d) && !d.contingent).sort((a, b) => highEnd(b) - highEnd(a) || a.id.localeCompare(b.id)).slice(0, 10);
   const pairs = {};
   for (const d of top) pairs[d.payer + d.payee] = (pairs[d.payer + d.payee] || 0) + 1;
-  const topRows = top.map((d) => `<li class="frow" title="${esc(d.summary)}"><span>${companyLink(ctx, d.payer)} <span class="to">to</span> ${companyLink(ctx, d.payee)}${pairs[d.payer + d.payee] > 1 ? ` <span class="yr">${esc(d.announced.slice(0, 4))}</span>` : ""}</span><span class="amt">${amountLink(ctx, d)}</span></li>`).join("");
+  const topRows = top.map((d) => `<li class="frow" title="${esc(d.summary)}"><span>${companyLink(ctx, d.payer)} <span class="to">to</span> ${companyLink(ctx, d.payee)}${pairs[d.payer + d.payee] > 1 ? ` <span class="mk">${esc(d.announced.slice(0, 4))}</span>` : ""}</span><span class="amt">${amountLink(ctx, d)}</span></li>`).join("");
   const items = findings(ctx).items.map((f) => `<li><p class="big">${esc(f.fig)}</p><p>${esc(f.text)}</p><p class="ev"><a href="${esc(f.href)}">${esc(f.evid)}</a></p></li>`).join("");
   return `<header class="hero-top">${masthead(ctx)}
     <h1>Who pays whom to build AI</h1><p class="state">${esc(data.state?.text || "")}</p>
@@ -126,8 +136,9 @@ export function renderOverview(ctx) {
   </header>
   <section class="hero" aria-label="The chain">
     <h2>Who pays whom, by layer</h2>
-    ${shown.length ? `<figure class="fig">${hero}</figure>` : `<p class="empty">No deals match these filters.</p>`}
-    <p class="legend">Width: announced ceilings, not cash · hatched: caps and multi-year totals · dotted: undisclosed</p>
+    <div class="desk-only"><figure class="fig">${hero}</figure></div>
+    <div class="phone-only">${ledger(ctx, flows, { link: (f) => ribLink(f.key) })}</div>
+    <p class="legend">${KEY} · ${smallLine(ctx, shown)}</p>
     ${ribPanel}
   </section>
   ${loops.length ? `<section><h2>Three largest loops</h2><div class="loops">${minis}</div></section>` : ""}
@@ -235,35 +246,40 @@ export function renderCompany(ctx, id) {
 export function renderFlows(ctx) {
   const { data, idx, s, shown } = ctx;
   const focus = s.focus && idx.companies[s.focus] ? s.focus : "";
-  const down = focus ? reach(shown, focus, "down") : null;
-  const up = focus ? reach(shown, focus, "up") : null;
-  const lit = focus ? new Set([...down.edges, ...up.edges]) : null;
-  const litNodes = focus ? new Set([focus, ...down.companies, ...up.companies]) : null;
-  // A trace opens every layer it passes through, so the lit lines run company to company.
-  const open = new Set(s.open);
-  if (focus) for (const cid of litNodes) open.add(idx.companies[cid].layer);
-  const chart = flowsChart(ctx, shown, { open, lit, litNodes, focus, na: s.na, w: s.w, qsWith: ctx.qsWith });
-  const hiddenLayers = ["systems", "applications"].filter((l) => !shown.some((d) => [idx.companies[d.payer].layer, idx.companies[d.payee].layer].includes(l)));
+  const open = openSet(s.open);
+  const toggleOpen = (k) => ctx.qsWith("open", open.has(k) ? [...open].filter((x) => x !== k) : [...open, k]);
+  const ribLink = (e) => {
+    // A layer to layer ribbon opens both its ends; a ribbon from or to a company traces that company.
+    if (idx.layers[e.src] && idx.layers[e.dst]) return `#/flows${ctx.qsWith("open", [...new Set([...open, `L:${e.src}`, `R:${e.dst}`])])}`;
+    return `#/flows${ctx.qsWith("focus", idx.layers[e.src] ? e.dst : e.src)}`;
+  };
+  const nodeLink = (side, r) => `#/flows${r.company ? ctx.qsWith("focus", r.id === focus ? "" : r.id) : toggleOpen(`${side}:${r.id}`)}`;
+  const chart = sankey(ctx, shown, { open, lit: focus, w: s.w, ribLink, nodeLink });
+  const flows = layerFlows(shown, idx);
   const companyOptions = [...data.companies].sort((a, b) => a.name.localeCompare(b.name)).map((c) => [c.id, c.name]);
   const noAmount = shown.filter((d) => !hasAmount(d)).length;
-  const direct = (side) => shown.filter((d) => d[side] === focus).sort((a, b) => highEnd(b) - highEnd(a));
-  const trace = focus ? `<section class="two">
-    <div><h2>Money in <span class="n2">${direct("payee").length}</span></h2><ul class="rows">${direct("payee").map((d) => dealRow(ctx, d, d.payer)).join("") || ""}</ul></div>
-    <div><h2>Money out <span class="n2">${direct("payer").length}</span></h2><ul class="rows">${direct("payer").map((d) => dealRow(ctx, d, d.payee)).join("") || ""}</ul></div></section>` : "";
-  const all = [...shown].sort((a, b) => highEnd(b) - highEnd(a) || a.id.localeCompare(b.id));
+  const fname = focus ? idx.companies[focus].name : "";
+  const opened = [...open].map((k) => { const [side, l] = k.split(":"); return idx.layers[l] ? `${idx.layers[l].label}, ${side === "L" ? "paying" : "paid"} side` : ""; }).filter(Boolean);
+  const bySize = (a, b) => highEnd(b) - highEnd(a) || a.id.localeCompare(b.id);
+  const mine = focus ? shown.filter((d) => d.payer === focus || d.payee === focus) : shown;
+  const listed = s.na ? mine.filter((d) => !hasAmount(d)) : mine;
+  const trace = focus ? `<section class="col trace"><h2>${esc(fname)}, money in and out</h2>
+    <figure class="fig small">${companyDiagram(ctx, focus, shown.filter((d) => d.payee === focus).sort(bySize), shown.filter((d) => d.payer === focus).sort(bySize))}</figure>
+    <p class="actions">${button("Full card", `#/company/${esc(focus)}${ctx.qs}`, "quiet")}<a href="#/flows${ctx.qsWith("focus", "")}">Clear the trace</a></p></section>` : "";
   return `${masthead(ctx)}
-  <header class="col"><h1>${focus ? `Tracing ${esc(idx.companies[focus].name)}` : "Money flows"}</h1></header>
+  <header class="col"><h1>${focus ? `Tracing ${esc(fname)}` : "Money flows"}</h1></header>
   <div id="controls"></div>
   <p class="toggle">
     ${sel(`<select data-field="focus" aria-label="Trace a company">${options(companyOptions, focus, "Trace a company")}</select>`)}
     ${viewChip(`#/flows${ctx.qsWith("w", "")}`, "Ceilings", s.w !== "count")}${viewChip(`#/flows${ctx.qsWith("w", "count")}`, "Deal count", s.w === "count")}
-    ${viewChip(`#/flows${ctx.qsWith("na", s.na ? "" : "1")}`, `${noAmount} with no amount`, !!s.na)}
-    ${open.size && !focus ? `<span class="sep">|</span><a href="#/flows${ctx.qsWith("open", [])}">Close all layers</a>` : ""}${focus ? `<span class="sep">|</span><a href="#/flows${ctx.qsWith("focus", "")}">Clear the trace</a>` : ""}
+    ${open.size ? `<span class="sep">|</span><span class="meta">Open: ${esc(opened.join("; "))}</span> <a href="#/flows${ctx.qsWith("open", [])}">Close all</a>` : ""}${focus ? `<span class="sep">|</span><a href="#/flows${ctx.qsWith("focus", "")}">Clear the trace</a>` : ""}
   </p>
-  ${shown.length ? `<figure class="fig">${chart}</figure>` : `<p class="empty">No deals match these filters.</p>`}
-  <p class="legend">Above the line: paying suppliers · below: investing · click a layer to open it, a company to trace it${hiddenLayers.length ? ` · ${hiddenLayers.map((l) => idx.layers[l].label).join(" and ")} hidden, no sourced flows yet` : ""}</p>
+  ${chart ? `<div class="desk-only"><figure class="fig">${chart}</figure></div>
+  <div class="phone-only">${ledger(ctx, flows, { w: s.w, both: false, link: (f) => `#/flows${ctx.qsWith("open", [`L:${f.from}`, `R:${f.to}`])}` })}</div>
+  <p class="legend">${s.w === "count" ? "Width: deals" : KEY}${focus ? ` · dimmed ribbons carry no ${esc(fname)} deal` : ""} · click a layer to open it, a company to trace it</p>
+  <p class="legend">${s.w === "count" ? "" : `${smallLine(ctx, shown, open)}. `}${noAmount ? `${plural(noAmount, "deal states", "deals state")} no amount: counted in deal counts, not in widths. <a href="#/flows${ctx.qsWith("na", s.na ? "" : "1")}">${s.na ? "List every deal" : "List them"}</a>` : ""}</p>` : `<p class="empty">No deals match these filters.</p>`}
   ${trace}
-  ${focus ? "" : `<details class="list col"><summary>All ${plural(shown.length, "flow", "flows")} as a list</summary><ul class="rows">${all.map((d) => dealRow(ctx, d)).join("")}</ul></details>`}`;
+  <details class="list col"${s.na ? " open" : ""}><summary>${s.na ? plural(listed.length, "deal with no amount", "deals with no amount") : `All ${plural(listed.length, focus ? `${fname} flow` : "flow", focus ? `${fname} flows` : "flows")}`} as a list</summary><ul class="rows">${[...listed].sort(bySize).map((d) => dealRow(ctx, d)).join("")}</ul></details>`;
 }
 
 // ---------- Loops (D35: the confidence filter only) ----------

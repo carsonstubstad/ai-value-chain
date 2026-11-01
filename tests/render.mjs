@@ -3,7 +3,8 @@
 // Run: node tests/render.mjs  (no packages needed)
 
 import { readFileSync } from "node:fs";
-import { index, parseState, stateQuery, applyFilters, esc } from "../site/js/lib.js";
+import { index, parseState, stateQuery, applyFilters, esc, hasAmount } from "../site/js/lib.js";
+import { sankeyEdges } from "../site/js/charts.js";
 import * as V from "../site/js/views.js";
 
 const data = JSON.parse(readFileSync(new URL("../site/data/bundle.json", import.meta.url)));
@@ -12,7 +13,8 @@ const problems = [];
 let pages = 0;
 
 const STATES = ["", "conf=filed", "basis=paid", "since=12m", "layer=labs", "q=nvidia", "family=debt", "min=10",
-  "own=private", "region=asia", "conf=filed,company_stated,reported,rumored", "q=zzzz", "focus=openai", "focus=nvidia&layer=labs"];
+  "own=private", "region=asia", "conf=filed,company_stated,reported,rumored", "q=zzzz", "focus=openai", "focus=nvidia&layer=labs",
+  "open=R%3Ahyperscale&focus=openai", "open=L%3Alabs,R%3Alabs", "open=capital&w=count", "w=count", "na=1", "rib=labs%3Ehyperscale"];
 
 function check(label, html) {
   pages++;
@@ -50,9 +52,10 @@ run("company/unknown", () => V.renderCompany(V.makeCtx(data, idx, parseState("")
 const def = applyFilters(data.deals, parseState(""), idx);
 if (def.some((d) => d.confidence === "rumored")) problems.push("default filters show a rumor");
 
-// Word budgets (D39). Text is what a reader sees outside the charts: no svg, title text,
+// Word budgets (D39). Text is what a reader sees outside the charts: no svg or phone ledger, title text,
 // select options, the filter drawer or the F/S/R markers. A word has a letter or digit.
-const strip = (h) => h.replace(/<svg[\s\S]*?<\/svg>/g, " ").replace(/<select[\s\S]*?<\/select>/g, " ")
+// The phone ledger repeats the sankey in words, so it is counted once, as the chart (HANDOFF 6).
+const strip = (h) => h.replace(/<div class="phone-only">[\s\S]*?<\/div>/g, " ").replace(/<svg[\s\S]*?<\/svg>/g, " ").replace(/<select[\s\S]*?<\/select>/g, " ")
   .replace(/<details class="more"[\s\S]*?<\/details>/g, " ").replace(/<span class="mk"[^>]*>[^<]*<\/span>/g, " ");
 const words = (h) => strip(h).replace(/<[^>]+>/g, " ").replace(/&#39;/g, "'").replace(/&[a-z#0-9]+;/g, " ").split(/\s+/).filter((w) => /[A-Za-z0-9]/.test(w)).length;
 const inner = (h, re) => [...h.matchAll(re)].map((m) => m[1]);
@@ -68,6 +71,22 @@ const c0 = V.makeCtx(data, idx, parseState(""), stateQuery);
 const ov = V.renderOverview(c0);
 budgets("overview", ov);
 if (words(ov) >= 250) problems.push(`overview: ${words(ov)} words, budget is under 250`);
+// The sankey (HANDOFF 6 and 9): labeled ribbons are $5B or more, no hatching or dashes, and every
+// deal with an amount is in a ribbon whose width sums to the layer flows.
+const toUsd = (t) => { const m = t.match(/^\$([\d.]+)([BMT])/); return m ? Number(m[1]) * { M: 1e6, B: 1e9, T: 1e12 }[m[2]] : NaN; };
+for (const [label, html] of [["overview", ov], ["flows", V.renderFlows(c0)], ["flows open", V.renderFlows(V.makeCtx(data, idx, parseState("open=R%3Ahyperscale&focus=openai"), stateQuery))]]) {
+  const svg = (html.match(/<svg viewBox="0 0 1080[\s\S]*?<\/svg>/) || [""])[0];
+  if (!svg) { problems.push(`${label}: no sankey`); continue; }
+  for (const t of inner(svg, /<text class="small halo"[^>]*>([^<]*)<\/text>/g)) if (!(toUsd(t) >= 5e9)) problems.push(`${label}: sankey label under $5B: ${t}`);
+  if (/stroke-dasharray|url\(#h-/.test(svg)) problems.push(`${label}: sankey uses dashes or hatching`);
+  if (!/class="phone-only"><ul class="ledger">/.test(html)) problems.push(`${label}: no phone ledger`);
+}
+{
+  const shown0 = applyFilters(c0.visible, parseState(""), idx);
+  const want = shown0.filter((d) => !d.contingent && hasAmount(d)).reduce((t, d) => t + Math.max(d.amount_usd_low || 0, d.amount_usd_high || 0), 0);
+  const got = sankeyEdges(c0, shown0).reduce((t, e) => t + e.v, 0);
+  if (Math.abs(want - got) > 1) problems.push(`sankey widths sum to ${got}, the records give ${want}`);
+}
 budgets("loops", V.renderLoops(c0));
 budgets("flows", V.renderFlows(c0));
 budgets("changes", V.renderChanges(c0));
