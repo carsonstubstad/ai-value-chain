@@ -1,6 +1,7 @@
 {
  "id": "amazon-openai",
  "name": "Amazon and OpenAI",
+ "line": "Amazon paid $50B into OpenAI; OpenAI promised $38B, then $100B, back in AWS compute.",
  "deals": [
   "amazon-openai-equity-2026-02",
   "openai-amazon-compute-2025-11",

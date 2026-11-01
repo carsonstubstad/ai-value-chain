@@ -13,5 +13,6 @@
  "sources": [
   "openai-oracle-2025-07-22"
  ],
- "notes": "Press reports put a dollar value on this deal; the company release does not, so none is stored."
+ "notes": "Press reports put a dollar value on this deal; the company release does not, so none is stored.",
+ "amount_kind": "undisclosed"
 }

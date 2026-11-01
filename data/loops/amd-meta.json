@@ -1,6 +1,7 @@
 {
  "id": "amd-meta",
  "name": "AMD and Meta",
+ "line": "AMD granted Meta a share warrant; Meta committed to buy AMD GPUs. No amounts disclosed.",
  "deals": [
   "amd-meta-warrant-2026-02",
   "meta-amd-gpus-2026-02"

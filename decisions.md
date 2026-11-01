@@ -100,6 +100,16 @@ Settled questions. Do not reopen without Carson. Add a dated line for every new 
 - PR #10 stays unmerged. Sessions 13a to 13e run before Gate 4 is reviewed again; 13a stops at Gate 4a (design spec, two mockups, three state-line candidates; Carson picks).
 - O14 and O06 confirmed as proposed: P21 to P23 are settled, and paid data stays at $0.
 
+## Gate 4a (2026-11-01, Carson: "B and line 1")
+- D40 Overview hero is mockup B: the ten chain layers on one line, paying suppliers arcing above, investment arcing below, Capital as a rail along the bottom.
+- D41 The state line is "OpenAI and Anthropic have committed to 17 compute deals with clouds and chipmakers; none is recorded as paid yet." The render test recounts both numbers and fails if the data drifts from the text.
+- D42 Hatching appears on ribbons only, for the share of a ribbon made of caps and multi-year totals (D33); it is removed everywhere else. Settles the conflict with the brief's removal list.
+- D43 Layers share four color families (hardware blue, infrastructure green, labs and applications berry, Capital ochre) because eleven hues fail the colorblind checks; blue covers all five hardware layers. Refines D38. Values are in docs/design-spec.md.
+- D44 (13b) amount_kind is required, with "undisclosed" when no amount is given in any currency. Anthropic's $30B Azure commitment has no stated term, so it is stored as a multi-year total (a commitment drawn down over time), not as one-time cash. Guarantees and backstops carry contingent: true. Paid to date is stored with its own as-of date and source (Microsoft to OpenAI $11.8B of $13B; Amazon to Anthropic $10B of up to $25B).
+- D45 (13b) Layer flows and loop numbers are computed from the filtered deals when a page renders (site/js/lib.js), not stored in a separate file, so they always follow the filters. The render test checks them.
+- D46 (13b) The no-amount count is 25 deals with no US dollar figure: 24 undisclosed plus ASML into Mistral, which is stated in euros only. The brief's 28 could not be reproduced from the records.
+- D47 NVIDIA is spelled in capitals everywhere.
+
 ## Proposed at Gate 2 (2026-10-31), settled 2026-11-01 (O14)
 - P21 Company list: the 47 in data/companies-list.csv stand. Bench promotion order if a sourced edge appears: Core Scientific, Humain, Bloom Energy.
 - P22 Schema: six JSON Schemas in schema/ plus data/taxonomy.json. Financials are JSON records like the rest, not a CSV, so one validator covers everything.
@@ -107,4 +117,3 @@ Settled questions. Do not reopen without Carson. Add a dated line for every new 
 
 ## Open (need Carson)
 - O12 Epoch AI terms of use: confirm before Gate 5 (the downloads page states no license).
-- O17 Gate 4a: pick a mockup (A or B) and one of three state-line candidates.

@@ -174,7 +174,26 @@ def check_references(records):
         edges[key] = rel
         if d.get("syndicate_total") and "amount_usd_high" not in d and "amount_usd_low" not in d:
             errors.append(f"{rel}: syndicate_total needs an amount (D25)")
+        has_amount = any(k in d for k in ("amount_usd_low", "amount_usd_high", "amount_native"))
+        if has_amount == (d.get("amount_kind") == "undisclosed"):
+            errors.append(f"{rel}: amount_kind is undisclosed exactly when no amount is given (13b)")
+        if (d.get("type") == "guarantee_or_backstop") != bool(d.get("contingent")):
+            errors.append(f"{rel}: guarantees and backstops, and only they, are contingent (13b)")
+        paid = [k for k in ("paid_to_date_usd", "paid_as_of", "paid_source") if k in d]
+        if paid and len(paid) != 3:
+            errors.append(f"{rel}: paid_to_date_usd, paid_as_of and paid_source go together")
+        if len(paid) == 3:
+            need(rel, "source", d["paid_source"], sources)
+            if d["paid_source"] not in d.get("sources", []):
+                errors.append(f"{rel}: paid_source must also be listed in sources")
+            if d.get("amount_basis") != "committed":
+                errors.append(f"{rel}: paid to date only applies to a committed deal")
+            top = d.get("amount_usd_high", d.get("amount_usd_low"))
+            if top is not None and d["paid_to_date_usd"] > top:
+                errors.append(f"{rel}: paid to date is above the amount")
     for rel, loop in records["loop"].values():
+        if len(loop.get("line", "").split()) > 15:
+            errors.append(f"{rel}: the loop line is over 15 words (D39)")
         pays, gets = set(), set()
         for did in loop.get("deals", []):
             need(rel, "deal", did, deals)

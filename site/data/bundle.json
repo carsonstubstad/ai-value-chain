@@ -275,7 +275,7 @@
    "last_checked": "2026-10-31",
    "layer": "data_centers",
    "name": "CoreWeave",
-   "one_line": "US GPU cloud that rents Nvidia capacity to labs and hyperscalers, financed largely with debt.",
+   "one_line": "US GPU cloud that rents NVIDIA capacity to labs and hyperscalers, financed largely with debt.",
    "ownership": "public",
    "sec_cik": "0001769628",
    "sources": [
@@ -366,7 +366,7 @@
    "last_checked": "2026-10-31",
    "layer": "chip_design",
    "name": "Intel",
-   "one_line": "Designs and makes CPUs and runs a contract foundry business; has the US government and Nvidia as shareholders.",
+   "one_line": "Designs and makes CPUs and runs a contract foundry business; has the US government and NVIDIA as shareholders.",
    "ownership": "public",
    "sec_cik": "0000050863",
    "secondary": [
@@ -507,7 +507,7 @@
    "id": "nvidia",
    "last_checked": "2026-10-31",
    "layer": "chip_design",
-   "name": "Nvidia",
+   "name": "NVIDIA",
    "one_line": "Designs the GPUs and networking at the core of most AI data centers, and invests across the chain.",
    "ownership": "public",
    "sec_cik": "0001045810",
@@ -845,6 +845,9 @@
    "id": "amazon-anthropic-equity-2026-04",
    "last_checked": "2026-10-31",
    "notes": "Amazon's 10-Q shows $10.0B invested in Anthropic preferred stock in the first nine months of 2026, so $10B of the $25B was funded by September 30, 2026.",
+   "paid_as_of": "2026-09-30",
+   "paid_source": "amazon-10q-2026-q3",
+   "paid_to_date_usd": 10000000000.0,
    "payee": "anthropic",
    "payer": "amazon",
    "sources": [
@@ -881,6 +884,7 @@
   },
   {
    "amount_basis": "committed",
+   "amount_kind": "undisclosed",
    "announced": "2026-02-24",
    "as_of": "2026-08-05",
    "confidence": "filed",
@@ -898,6 +902,7 @@
   },
   {
    "amount_basis": "committed",
+   "amount_kind": "undisclosed",
    "announced": "2025-10-06",
    "as_of": "2026-02-04",
    "confidence": "filed",
@@ -915,6 +920,7 @@
   },
   {
    "amount_basis": "committed",
+   "amount_kind": "undisclosed",
    "announced": "2025-10-23",
    "as_of": "2025-10-23",
    "confidence": "company_stated",
@@ -994,6 +1000,7 @@
   },
   {
    "amount_basis": "committed",
+   "amount_kind": "multi_year_total",
    "amount_usd_high": 30000000000.0,
    "amount_usd_low": 30000000000.0,
    "announced": "2025-11-18",
@@ -1001,6 +1008,7 @@
    "confidence": "company_stated",
    "id": "anthropic-microsoft-azure-2025-11",
    "last_checked": "2026-10-31",
+   "notes": "No term is stated. A compute purchase is drawn down over time, so the $30B is stored as a total commitment, not a one-time payment.",
    "payee": "microsoft",
    "payer": "anthropic",
    "sources": [
@@ -1057,6 +1065,7 @@
   },
   {
    "amount_basis": "committed",
+   "amount_kind": "undisclosed",
    "announced": "2025-05-21",
    "as_of": "2025-05-21",
    "confidence": "company_stated",
@@ -1115,6 +1124,7 @@
   },
   {
    "amount_basis": "committed",
+   "amount_kind": "undisclosed",
    "announced": "2025-07-22",
    "as_of": "2025-07-22",
    "confidence": "company_stated",
@@ -1152,6 +1162,7 @@
   },
   {
    "amount_basis": "committed",
+   "amount_kind": "undisclosed",
    "announced": "2026-02-24",
    "as_of": "2026-08-05",
    "confidence": "filed",
@@ -1170,9 +1181,11 @@
   },
   {
    "amount_basis": "committed",
+   "amount_kind": "undisclosed",
    "announced": "2025-10-21",
    "as_of": "2025-10-21",
    "confidence": "company_stated",
+   "contingent": true,
    "id": "meta-blue-owl-guarantee-2025-10",
    "last_checked": "2026-10-31",
    "payee": "blue-owl",
@@ -1186,6 +1199,7 @@
   },
   {
    "amount_basis": "committed",
+   "amount_kind": "undisclosed",
    "announced": "2025-06-03",
    "as_of": "2025-06-03",
    "confidence": "company_stated",
@@ -1263,6 +1277,7 @@
   },
   {
    "amount_basis": "committed",
+   "amount_kind": "undisclosed",
    "announced": "2026-02-17",
    "as_of": "2026-02-17",
    "confidence": "company_stated",
@@ -1279,6 +1294,7 @@
   },
   {
    "amount_basis": "committed",
+   "amount_kind": "undisclosed",
    "announced": "2026-01-09",
    "as_of": "2026-01-09",
    "confidence": "company_stated",
@@ -1296,6 +1312,7 @@
   },
   {
    "amount_basis": "committed",
+   "amount_kind": "undisclosed",
    "announced": "2025-01-21",
    "as_of": "2025-01-21",
    "confidence": "company_stated",
@@ -1331,6 +1348,7 @@
   },
   {
    "amount_basis": "committed",
+   "amount_kind": "undisclosed",
    "announced": "2024-05-01",
    "as_of": "2024-05-01",
    "confidence": "filed",
@@ -1347,6 +1365,7 @@
   },
   {
    "amount_basis": "committed",
+   "amount_kind": "undisclosed",
    "announced": "2024-09-20",
    "as_of": "2024-09-20",
    "confidence": "filed",
@@ -1364,6 +1383,7 @@
   },
   {
    "amount_basis": "committed",
+   "amount_kind": "undisclosed",
    "announced": "2025-11-03",
    "as_of": "2025-11-03",
    "confidence": "company_stated",
@@ -1409,6 +1429,9 @@
    "id": "microsoft-openai-equity-2019",
    "last_checked": "2026-10-31",
    "notes": "Cumulative commitments made in tranches since 2019, as reported in Microsoft's 10-Qs. The announced date is the as-of date of the first 10-Q figure used, not of any single tranche. The stake fell from about 27% after the October 2025 recapitalization to about 24% by September 30, 2026. The value of the stake is a valuation, not money paid, so it is not stored as an amount.",
+   "paid_as_of": "2026-03-31",
+   "paid_source": "msft-10q-2026-03-31",
+   "paid_to_date_usd": 11800000000.0,
    "payee": "openai",
    "payer": "microsoft",
    "sources": [
@@ -1447,6 +1470,7 @@
    "announced": "2025-09-09",
    "as_of": "2025-09-09",
    "confidence": "filed",
+   "contingent": true,
    "id": "nvidia-coreweave-capacity-2025-09",
    "last_checked": "2026-10-31",
    "notes": "A backstop: NVIDIA pays only for capacity CoreWeave cannot sell. Subject to termination and delivery terms.",
@@ -1546,6 +1570,7 @@
    "announced": "2026-08-26",
    "as_of": "2026-08-26",
    "confidence": "filed",
+   "contingent": true,
    "id": "nvidia-openai-guarantee-2026-08",
    "last_checked": "2026-10-31",
    "notes": "NVIDIA's 10-Q says it entered the guarantees in August 2026; the announced date is the filing date. They take effect as each of nine data centers opens, from NVIDIA's fiscal 2029, pay out only on tenant default, and shrink as OpenAI pays its leases. The landlord is an SB Energy affiliate, not a tracked company.",
@@ -1604,6 +1629,7 @@
   },
   {
    "amount_basis": "committed",
+   "amount_kind": "undisclosed",
    "announced": "2025-10-06",
    "as_of": "2026-02-04",
    "confidence": "filed",
@@ -1621,6 +1647,7 @@
   },
   {
    "amount_basis": "committed",
+   "amount_kind": "undisclosed",
    "announced": "2025-10-13",
    "as_of": "2025-10-13",
    "confidence": "company_stated",
@@ -1715,6 +1742,7 @@
   },
   {
    "amount_basis": "committed",
+   "amount_kind": "undisclosed",
    "announced": "2026-04-27",
    "as_of": "2026-04-27",
    "confidence": "company_stated",
@@ -1731,6 +1759,7 @@
   },
   {
    "amount_basis": "committed",
+   "amount_kind": "undisclosed",
    "announced": "2025-09-22",
    "as_of": "2025-09-22",
    "confidence": "company_stated",
@@ -1748,6 +1777,7 @@
   },
   {
    "amount_basis": "committed",
+   "amount_kind": "undisclosed",
    "announced": "2025-07-22",
    "as_of": "2025-07-22",
    "confidence": "company_stated",
@@ -1765,6 +1795,7 @@
   },
   {
    "amount_basis": "committed",
+   "amount_kind": "undisclosed",
    "announced": "2025-10-01",
    "as_of": "2025-10-01",
    "confidence": "company_stated",
@@ -1782,6 +1813,7 @@
   },
   {
    "amount_basis": "committed",
+   "amount_kind": "undisclosed",
    "announced": "2025-10-01",
    "as_of": "2025-10-01",
    "confidence": "company_stated",
@@ -1798,6 +1830,7 @@
   },
   {
    "amount_basis": "committed",
+   "amount_kind": "undisclosed",
    "announced": "2025-01-21",
    "as_of": "2025-01-21",
    "confidence": "company_stated",
@@ -1815,6 +1848,7 @@
   },
   {
    "amount_basis": "committed",
+   "amount_kind": "undisclosed",
    "announced": "2025-01-21",
    "as_of": "2025-01-21",
    "confidence": "company_stated",
@@ -1894,6 +1928,7 @@
   },
   {
    "amount_basis": "committed",
+   "amount_kind": "undisclosed",
    "announced": "2025-01-21",
    "as_of": "2025-01-21",
    "confidence": "company_stated",
@@ -2277,6 +2312,7 @@
    "flagged_by": "automatic",
    "id": "alphabet-anthropic",
    "last_checked": "2026-10-31",
+   "line": "Google put $1B into Anthropic; Anthropic rents Google TPUs for an undisclosed sum.",
    "name": "Google and Anthropic"
   },
   {
@@ -2290,6 +2326,7 @@
    "flagged_by": "automatic",
    "id": "amazon-anthropic",
    "last_checked": "2026-10-31",
+   "line": "Amazon has paid $8B and committed up to $25B more; Anthropic promised over $100B back.",
    "name": "Amazon and Anthropic"
   },
   {
@@ -2302,6 +2339,7 @@
    "flagged_by": "automatic",
    "id": "amazon-openai",
    "last_checked": "2026-10-31",
+   "line": "Amazon paid $50B into OpenAI; OpenAI promised $38B, then $100B, back in AWS compute.",
    "name": "Amazon and OpenAI"
   },
   {
@@ -2313,6 +2351,7 @@
    "flagged_by": "automatic",
    "id": "amd-meta",
    "last_checked": "2026-10-31",
+   "line": "AMD granted Meta a share warrant; Meta committed to buy AMD GPUs. No amounts disclosed.",
    "name": "AMD and Meta"
   },
   {
@@ -2324,6 +2363,7 @@
    "flagged_by": "automatic",
    "id": "amd-openai",
    "last_checked": "2026-10-31",
+   "line": "AMD granted OpenAI a share warrant; OpenAI committed to buy AMD GPUs. No amounts disclosed.",
    "name": "AMD and OpenAI"
   },
   {
@@ -2335,6 +2375,7 @@
    "flagged_by": "automatic",
    "id": "blue-owl-meta",
    "last_checked": "2026-10-31",
+   "line": "Blue Owl put $7B into Meta's Hyperion venture; Meta guarantees part of its value back.",
    "name": "Blue Owl and Meta"
   },
   {
@@ -2348,6 +2389,7 @@
    "flagged_by": "automatic",
    "id": "coreweave-nvidia-openai",
    "last_checked": "2026-10-31",
+   "line": "NVIDIA paid $2B for CoreWeave stock; CoreWeave gave OpenAI $350M; OpenAI buys NVIDIA systems.",
    "name": "NVIDIA, CoreWeave and OpenAI"
   },
   {
@@ -2361,6 +2403,7 @@
    "flagged_by": "automatic",
    "id": "coreweave-openai",
    "last_checked": "2026-10-31",
+   "line": "CoreWeave gave OpenAI $350M of stock; OpenAI signed three CoreWeave contracts, the largest $11.9B.",
    "name": "CoreWeave and OpenAI"
   },
   {
@@ -2372,6 +2415,7 @@
    "flagged_by": "automatic",
    "id": "microsoft-anthropic",
    "last_checked": "2026-10-31",
+   "line": "Microsoft committed up to $5B to Anthropic; Anthropic committed $30B to Azure.",
    "name": "Microsoft and Anthropic"
   },
   {
@@ -2384,6 +2428,7 @@
    "flagged_by": "automatic",
    "id": "microsoft-openai",
    "last_checked": "2026-10-31",
+   "line": "Microsoft has funded $11.8B of $13B; OpenAI promised $250B of Azure back.",
    "name": "Microsoft and OpenAI"
   },
   {
@@ -2397,6 +2442,7 @@
    "flagged_by": "automatic",
    "id": "nvidia-openai",
    "last_checked": "2026-10-31",
+   "line": "NVIDIA intends up to $100B and committed $30B; OpenAI plans 10 GW of NVIDIA systems.",
    "name": "NVIDIA and OpenAI"
   }
  ],
@@ -3517,8 +3563,8 @@
  ],
  "state": {
   "as_of": "2026-10-31",
-  "draft": true,
-  "text": "Most of the money tracked so far is promised, not yet paid."
+  "draft": false,
+  "text": "OpenAI and Anthropic have committed to 17 compute deals with clouds and chipmakers; none is recorded as paid yet."
  },
  "taxonomy": {
   "amount_basis": [

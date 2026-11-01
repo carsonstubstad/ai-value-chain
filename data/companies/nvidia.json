@@ -1,6 +1,6 @@
 {
  "id": "nvidia",
- "name": "Nvidia",
+ "name": "NVIDIA",
  "layer": "chip_design",
  "secondary": [
   "capital"

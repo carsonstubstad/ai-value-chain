@@ -3,14 +3,14 @@
 
 export const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
-const money = (v) => {
-  if (v >= 1e9) return "$" + +(v / 1e9).toFixed(v % 1e9 ? 1 : 0) + "B";
+export const money = (v) => {
+  if (v >= 1e9) return "$" + +(v / 1e9).toFixed(v >= 1e11 ? 0 : 1) + "B";
   return "$" + +(v / 1e6).toFixed(0) + "M";
 };
 
 export function amountText(d) {
   const lo = d.amount_usd_low, hi = d.amount_usd_high;
-  if (lo == null && hi == null) return "not disclosed";
+  if (lo == null && hi == null) return "undisclosed";
   const tag = d.syndicate_total ? " (syndicate total)" : "";
   if (lo == null) return "up to " + money(hi) + tag;
   if (hi == null) return "over " + money(lo) + tag;
@@ -21,12 +21,83 @@ export const highEnd = (d) => d.amount_usd_high ?? d.amount_usd_low ?? 0;
 export const hasAmount = (d) => d.amount_usd_high != null || d.amount_usd_low != null;
 export const isRange = (d) => d.amount_usd_low == null || d.amount_usd_high == null || d.amount_usd_high !== d.amount_usd_low || d.amount_kind === "cap";
 
+// Sourcing marker beside every amount (D36): F filed, S company-stated, R reported.
+export const MARK = { filed: "F", company_stated: "S", reported: "R", rumored: "?" };
+
+// Basis by shape (D36): paid solid, committed outline, cap or range dashed, guarantees grey.
+export function basisStyle(d) {
+  if (d.contingent) return "contingent";
+  if (d.amount_basis === "paid") return "paid";
+  if (hasAmount(d) && isRange(d)) return "cap";
+  return "committed";
+}
+
+// Layer families (spec section 4): position names the layer, hue names the family.
+export const FAMILY = {
+  equipment: "hw", chip_design: "hw", foundry: "hw", memory: "hw", systems: "hw",
+  power: "infra", data_centers: "infra", hyperscale: "infra", labs: "model", applications: "model", capital: "cap",
+};
+export const CHAIN = ["equipment", "chip_design", "foundry", "memory", "systems", "power", "data_centers", "hyperscale", "labs", "applications"];
+const CEILING = new Set(["cap", "multi_year_total", "annual_run_rate"]);
+
+// Layer to layer flows (D33): width is the sum of each deal's largest stated figure, split into
+// one-time money (solid) and ceilings (hatched). Guarantees count as deals but not in the width.
+export function layerFlows(deals, idx) {
+  const m = new Map();
+  for (const d of deals) {
+    const a = idx.companies[d.payer].layer, b = idx.companies[d.payee].layer, k = a + ">" + b;
+    if (!m.has(k)) m.set(k, { from: a, to: b, key: k, deals: [], cash: 0, ceil: 0, contingent: 0, paid: 0 });
+    const f = m.get(k);
+    f.deals.push(d);
+    if (d.amount_basis === "paid") f.paid++;
+    if (d.contingent) { f.contingent++; continue; }
+    if (!hasAmount(d)) continue;
+    if (d.amount_kind === "one_time") f.cash += highEnd(d); else f.ceil += highEnd(d);
+  }
+  return [...m.values()].map((f) => ({ ...f, n: f.deals.length, total: f.cash + f.ceil }))
+    .sort((a, b) => b.total - a.total || b.n - a.n || a.key.localeCompare(b.key));
+}
+
+// Loop numbers (D35: loops respect the confidence filter only). Ranked by the sum of largest
+// stated figures with guarantees left out; the sum orders cards and is never shown.
+export function loopView(loop, idx, conf) {
+  const deals = loop.deals.map((id) => idx.deals[id]).filter((d) => d && conf.includes(d.confidence));
+  const cos = [];
+  for (const d of deals) for (const c of [d.payer, d.payee]) if (!cos.includes(c)) cos.push(c);
+  const closed = cos.every((c) => deals.some((d) => d.payer === c) && deals.some((d) => d.payee === c));
+  const equity = new Set(["equity_investment", "warrant_or_equity_grant", "jv_contribution"]);
+  const first = cos.find((c) => deals.some((d) => d.payer === c && equity.has(d.type))) || cos[0];
+  const order = first ? [first, ...cos.filter((c) => c !== first)] : cos;
+  const size = deals.filter((d) => !d.contingent).reduce((t, d) => t + highEnd(d), 0);
+  return { loop, deals, cos: order, closed: closed && deals.length >= 2, size };
+}
+
+export function isoWeek(iso) {
+  const d = new Date(iso + "T00:00:00Z");
+  const day = (d.getUTCDay() + 6) % 7;
+  d.setUTCDate(d.getUTCDate() - day + 3);
+  const y = d.getUTCFullYear(), jan4 = new Date(Date.UTC(y, 0, 4));
+  return { year: y, week: 1 + Math.round(((d - jan4) / 864e5 - 3 + ((jan4.getUTCDay() + 6) % 7)) / 7) };
+}
+
+export function weekRange(iso) {
+  const d = new Date(iso + "T00:00:00Z");
+  const mon = new Date(d); mon.setUTCDate(d.getUTCDate() - ((d.getUTCDay() + 6) % 7));
+  const sun = new Date(mon); sun.setUTCDate(mon.getUTCDate() + 6);
+  return [mon.toISOString().slice(0, 10), sun.toISOString().slice(0, 10)];
+}
+
 export const LABEL = {
   confidence: { filed: "Filed", company_stated: "Company-stated", reported: "Reported", rumored: "Rumored" },
   basis: { committed: "Committed", paid: "Paid", estimated: "Estimated" },
-  kind: { cap: "cap", multi_year_total: "multi-year total", annual_run_rate: "annual run-rate", one_time: "one-time" },
+  kind: { cap: "up to", multi_year_total: "multi-year", annual_run_rate: "per year", one_time: "one-time", undisclosed: "undisclosed" },
   ownership: { public: "Public", private: "Private", joint_venture: "Joint venture", government: "Government" },
   status: { announced: "Announced", signed: "Signed", closed: "Closed", terminated: "Terminated", superseded: "Superseded" },
+};
+export const TYPE_SHORT = {
+  equity_investment: "equity", warrant_or_equity_grant: "warrant", jv_contribution: "JV stake", acquisition: "acquisition",
+  debt_or_gpu_backed_loan: "loan", guarantee_or_backstop: "guarantee", purchase_commitment: "purchase", capacity_lease: "compute lease",
+  cloud_credits: "cloud credits", power_supply_agreement: "power deal", revenue_share: "revenue share", government_grant_or_incentive: "grant",
 };
 export const typeLabel = (t) => t.replace(/_/g, " ").replace(/\bgpu\b/g, "GPU").replace(/\bjv\b/g, "JV").replace(/^./, (c) => c.toUpperCase());
 
@@ -55,6 +126,8 @@ export function parseState(query) {
     basis: list("basis"), conf: list("conf"), since: p.get("since") || "all", layer: p.get("layer") || "",
     q: p.get("q") || "", family: p.get("family") || "", min: Number(p.get("min")) || 0,
     own: p.get("own") || "", region: p.get("region") || "", focus: p.get("focus") || "",
+    rib: p.get("rib") || "", w: p.get("w") === "count" ? "count" : "", open: p.has("open") ? p.get("open").split(",").filter(Boolean) : [],
+    na: p.get("na") === "1" ? "1" : "",
   };
 }
 
@@ -63,11 +136,15 @@ export function stateQuery(s) {
   for (const k of ["basis", "conf"]) if (s[k].join() !== DEFAULTS[k].join()) p.set(k, s[k].join(","));
   for (const k of ["since", "layer", "q", "family", "own", "region", "focus"]) if (s[k] && s[k] !== DEFAULTS[k]) p.set(k, s[k]);
   if (s.min) p.set("min", String(s.min));
+  for (const k of ["rib", "w", "na"]) if (s[k]) p.set(k, s[k]);
+  if (s.open?.length) p.set("open", s.open.join(","));
   const q = p.toString();
   return q ? "?" + q : "";
 }
 
-export const isFiltered = (s) => stateQuery({ ...s, focus: "" }) !== "";
+// View state (trace, picked ribbon, width toggle, open layers) is not a filter.
+export const VIEW_KEYS = { focus: "", rib: "", w: "", open: [], na: "" };
+export const isFiltered = (s) => stateQuery({ ...s, ...VIEW_KEYS }) !== "";
 
 export function sinceDate(since, asOf) {
   const m = { "12m": 12, "24m": 24 }[since];

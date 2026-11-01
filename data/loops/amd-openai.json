@@ -1,6 +1,7 @@
 {
  "id": "amd-openai",
  "name": "AMD and OpenAI",
+ "line": "AMD granted OpenAI a share warrant; OpenAI committed to buy AMD GPUs. No amounts disclosed.",
  "deals": [
   "amd-openai-warrant-2025-10",
   "openai-amd-gpus-2025-10"

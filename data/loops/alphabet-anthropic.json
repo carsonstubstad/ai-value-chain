@@ -1,6 +1,7 @@
 {
  "id": "alphabet-anthropic",
  "name": "Google and Anthropic",
+ "line": "Google put $1B into Anthropic; Anthropic rents Google TPUs for an undisclosed sum.",
  "deals": [
   "alphabet-anthropic-equity-2025-01",
   "anthropic-alphabet-tpu-2025-10"
