@@ -237,7 +237,7 @@ h1 .dot { width: 14px; height: 14px; margin-right: 12px; vertical-align: 6px }
 
 /* Who the deals run through: a count per company on the ledger's grid */
 .runs .bar svg { height: 18px }
-.runs .blabel .num { font-size: 15px }
+.runs .blabel .num { font-size: 15px; margin-right: 4px }
 
 /* The sankey on desktop, the ranked ledger on phones (HANDOFF 6) */
 .phone-only { display: none }
