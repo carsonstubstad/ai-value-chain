@@ -59,7 +59,8 @@ for (const [size, viewport] of Object.entries(SIZES)) {
 // Interactions: a chip filters, search filters, the theme button overrides the system.
 const page = await browser.newPage({ viewport: SIZES.desktop });
 page.on("pageerror", (e) => problems.push(`interaction: page error ${e.message}`));
-await page.goto(BASE + "#/");
+// Filters live on Money flows, the Overview has none (D51).
+await page.goto(BASE + "#/flows");
 await page.waitForSelector("#count");
 const before = await page.textContent("#count");
 await page.click('[data-toggle="conf"][data-v="reported"]');
@@ -73,13 +74,12 @@ await page.click('[data-reset]');
 await page.waitForFunction(() => !location.hash.includes("?")).catch(() => problems.push("reset did not clear the search"));
 // Arcs are hollow, so their centre is empty: follow a ribbon's link the way a click would.
 const follow = async (sel) => { const h = await page.locator(sel).first().getAttribute("href"); await page.evaluate((x) => { location.hash = x; }, h); };
+await page.goto(BASE + "#/");
+await page.waitForSelector("a.rib");
+if (await page.locator("#count").count()) problems.push("the Overview still shows filters");
 await follow("a.rib");
 await page.waitForFunction(() => location.hash.includes("rib=")).catch(() => problems.push("ribbon click did not pick a ribbon"));
 if (!(await page.locator(".ribdeals li").count())) problems.push("picked ribbon listed no deals");
-await page.fill("#f-q", "nvidia");
-await page.waitForFunction(() => location.hash.includes("q=nvidia"), null, { timeout: 3000 }).catch(() => problems.push("second search did not reach the URL"));
-await page.click('[data-reset]');
-await page.waitForFunction(() => !location.hash.includes("q=") && location.hash.includes("rib=")).catch(() => problems.push("reset did not clear the filters or lost the picked ribbon"));
 await page.click('[data-theme-set="dark"]');
 const theme = await page.evaluate(() => document.documentElement.dataset.theme);
 if (theme !== "dark") problems.push(`theme segment did not set dark (${theme})`);
@@ -120,4 +120,4 @@ if (problems.length) {
   console.log(`browser: ${problems.length} problems`);
   process.exit(1);
 }
-console.log(`browser: ${ROUTES.length} pages x 2 sizes x 2 themes and 15 interactions, 0 problems`);
+console.log(`browser: ${ROUTES.length} pages x 2 sizes x 2 themes and 21 interaction checks, 0 problems`);
