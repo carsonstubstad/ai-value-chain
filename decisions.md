@@ -129,10 +129,13 @@ Settled questions. Do not reopen without Carson. Add a dated line for every new 
 - D58 (was proposed as P25 in 14f) The Overview sentence uses the records: "clouds have paid labs $79.8B of $102B", counting the $58B of deals recorded as paid plus $21.8B paid to date on two committed deals (Amazon into Anthropic, Microsoft into OpenAI), as the ribbon already draws. The records give 9 hairline flows under $20B, not the review's 7. The render test recounts both from the records.
 - D59 Epoch AI terms (closes O12): the data hub and dataset pages state CC BY 4.0 (checked 2026-11-02), so derived CSV and JSON may be republished on the public site with credit and a note of changes. Footer and Method line in session 14: "Includes data from Epoch AI (epoch.ai/data), licensed CC BY 4.0 (creativecommons.org/licenses/by/4.0). Changes made: filtered and summarized." Each record that uses Epoch data cites the dataset name, its page URL and the date accessed. Not checked: site-wide terms (none found) and the AI companies, AI chip sales and chip owners pages; check those pages before using their data.
 
+## Gate 4 passed (2026-11-02, Carson: "Yes" to passing Gate 4 and merging PR #10)
+- D60 Gate 4 is passed on the build at 8d2a495 (sessions 11 to 14f, round 6 design with the round 7 review). PR #10 merges to main. GitHub Pages stays off until Gate 5; session 14 (launch pages) starts only on Carson's word.
+
 ## Proposed at Gate 2 (2026-10-31), settled 2026-11-01 (O14)
 - P21 Company list: the 47 in data/companies-list.csv stand. Bench promotion order if a sourced edge appears: Core Scientific, Humain, Bloom Energy.
 - P22 Schema: six JSON Schemas in schema/ plus data/taxonomy.json. Financials are JSON records like the rest, not a CSV, so one validator covers everything.
 - P23 Loop sides are shown gross each way and never netted when either side is a cap or multi-year total. Company rankings use the largest single deal, never a sum of caps.
 
 ## Open (need Carson)
-- None. Next gates: Gate 4 pass and the merge of PR #10, then session 14 and Gate 5 (Pages).
+- None. Next: session 14 (launch pages) on Carson's word, then Gate 5 (Pages).
