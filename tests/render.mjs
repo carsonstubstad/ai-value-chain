@@ -43,6 +43,7 @@ for (const q of STATES) {
   run(`loops ?${q}`, () => V.renderLoops(ctx));
   run(`changes ?${q}`, () => V.renderChanges(ctx));
   run(`data ?${q}`, () => V.renderData(ctx));
+  run(`method ?${q}`, () => V.renderMethod(ctx));
   run(`foot ?${q}`, () => V.renderFoot(ctx));
   for (const c of data.companies) run(`company/${c.id} ?${q}`, () => V.renderCompany(ctx, c.id));
   // The filter state must survive a trip through the URL.
@@ -198,6 +199,32 @@ budgets("flows", V.renderFlows(c0));
 budgets("changes", V.renderChanges(c0));
 budgets("data", V.renderData(c0));
 for (const c of data.companies) budgets(`company/${c.id}`, V.renderCompany(c0, c.id));
+budgets("method", V.renderMethod(c0));
+// Method and About the data (session 14): every count is the records' count, and the Epoch AI credit (D59)
+// appears in full on Method and About, and as a link in the footer, exactly when a record cites Epoch AI.
+{
+  const m = V.renderMethod(c0), about = V.renderData(c0);
+  const n = (c) => data.deals.filter((d) => d.confidence === c).length;
+  for (const [c, label] of [["filed", "Filed"], ["company_stated", "Stated"], ["reported", "Reported"], ["rumored", "Rumored"]]) {
+    const re = new RegExp(`<b>${label}</b>[^<]*?\\. (\\d+) deals?\\.`);
+    const got = Number((m.match(re) || ["", "NaN"])[1]);
+    if (got !== n(c)) problems.push(`method: ${label} shows ${got}, the records give ${n(c)}`);
+  }
+  const types = data.taxonomy.deal_families.reduce((t, f) => t + f.types.length, 0);
+  if (!m.includes(`There are ${types} deal types in ${data.taxonomy.deal_families.length} families`)) problems.push("method: deal type count does not match the taxonomy");
+  if (!m.includes(`more than ${data.taxonomy.stale_days.amber} days old and grey after ${data.taxonomy.stale_days.grey}`)) problems.push("method: stale days do not match the taxonomy");
+  if (!about.includes(`${data.loops.length} loops`) || !about.includes(`${data.events.length} dated changes`)) problems.push("about: loop or change count does not match the records");
+  const LINE = "Includes data from Epoch AI";
+  const hasEpoch = data.sources.some((src) => /epoch/i.test(`${src.publisher || ""} ${src.url || ""}`));
+  for (const [label, html] of [["method", m], ["about", about]]) if (html.includes(LINE) !== hasEpoch) problems.push(`${label}: the Epoch AI credit does not match the records`);
+  const withEpoch = { ...data, sources: [...data.sources, { id: "epoch-test", publisher: "Epoch AI", kind: "press", url: "https://epoch.ai/data/data-centers" }] };
+  const ce = V.makeCtx(withEpoch, index(withEpoch), parseState(""), stateQuery);
+  for (const [label, html] of [["method", V.renderMethod(ce)], ["about", V.renderData(ce)]]) {
+    if (!html.includes(`${LINE} (<a href="https://epoch.ai/data"`) || !html.includes("Changes made: filtered and summarized.")) problems.push(`${label}: the Epoch AI credit is missing when a record cites Epoch`);
+  }
+  if (!V.renderFoot(ce).includes("includes Epoch AI data, CC BY 4.0")) problems.push("footer: no Epoch AI credit when a record cites Epoch");
+  if (!/href="#\/method"/.test(V.renderFoot(c0)) || !/href="#\/data#about"/.test(V.renderFoot(c0))) problems.push("footer: no link to Method or About the data");
+}
 const foot = V.renderFoot(c0);
 if ((foot.match(/<p[\s>]/g) || []).length !== 1) problems.push("footer is not one line");
 
