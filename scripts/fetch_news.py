@@ -3,8 +3,8 @@
 
 Runs in GitHub Actions on Sunday night Pacific (the sandbox cannot reach sec.gov). Standard
 library only. For every tracked company that files with the SEC it lists the current reports
-(8-K, and 6-K for foreign filers) filed in the last eight days, reads each main document as
-plain text and keeps short passages that name another tracked company or a dollar figure.
+(8-K, and 6-K for foreign filers) filed in the last eight days, reads each main document and
+its press release exhibits as plain text and keeps short passages that name another tracked company or a dollar figure.
 It also lists the records that have gone stale (last checked more than taxonomy.stale_days
 ago), because the significance rules count a stale record as news to check.
 
@@ -77,6 +77,13 @@ def recent_filings(sub, since):
     return out
 
 
+def exhibits(index):
+    """The press release exhibits (EX-99) listed in a filing's index.json, at most two."""
+    items = index.get("directory", {}).get("item", [])
+    names = [i["name"] for i in items if re.search(r"ex-?99", i.get("name", ""), re.IGNORECASE) and i["name"].lower().endswith((".htm", ".html", ".txt"))]
+    return sorted(names)[:2]
+
+
 def find(text, names, own):
     """Tracked partners named in the text (not the filer itself), and short passages around
     each mention, the ones with a dollar figure first."""
@@ -132,6 +139,8 @@ def self_test():
     recs = [{"id": "old", "last_checked": "2026-01-01"}, {"id": "new", "last_checked": "2026-10-30"}]
     assert [r["id"] for r in stale(recs, date(2026, 11, 2), 90)] == ["old"]
     assert to_text(b"<p>A&amp;B</p><script>x</script>").strip() == "A&B"
+    idx = {"directory": {"item": [{"name": "x.htm"}, {"name": "ex99-1.htm"}, {"name": "a-ex99_2.htm"}, {"name": "ex99-3.jpg"}, {"name": "R1.htm"}]}}
+    assert exhibits(idx) == ["a-ex99_2.htm", "ex99-1.htm"], exhibits(idx)
     print("fetch_news self-test passed")
 
 
@@ -169,6 +178,12 @@ def main():
                     time.sleep(0.3)
                     try:
                         text = to_text(get(f["url"], ua))
+                        # The news is usually in the press release exhibit, not the cover document.
+                        folder = f["url"].rsplit("/", 1)[0]
+                        f["exhibits"] = exhibits(json.loads(get(folder + "/index.json", ua)))
+                        for name in f["exhibits"]:
+                            time.sleep(0.3)
+                            text += " " + to_text(get(f"{folder}/{name}", ua))
                         f["partners"], f["passages"] = find(text, names, cid)
                         f["money"] = bool(MONEY.search(text))
                     except Exception as exc:
