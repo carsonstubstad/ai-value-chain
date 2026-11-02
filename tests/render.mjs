@@ -58,8 +58,9 @@ if (def.some((d) => d.confidence === "rumored")) problems.push("default filters 
 // Word budgets (D39). Text is what a reader sees outside the charts: no svg or phone ledger, title text,
 // select options, the filter drawer or the F/S/R markers. A word has a letter or digit.
 // The phone ledger repeats the sankey in words, so it is counted once, as the chart (HANDOFF 6);
-// a ledger of bars is a chart, as the mockup counts it.
-const strip = (h) => h.replace(/<div class="phone-only">[\s\S]*?<\/div>/g, " ").replace(/<ul class="ledger[^"]*">[\s\S]*?<\/ul>/g, " ").replace(/<svg[\s\S]*?<\/svg>/g, " ").replace(/<select[\s\S]*?<\/select>/g, " ")
+// a ledger of bars is a chart, as the mockup counts it. A chart's key line under it is a chart label
+// (D39 "excluding chart labels"; D56 proposed in 14f, when round 7 added two key lines).
+const strip = (h) => h.replace(/<p class="legend">[\s\S]*?<\/p>/g, " ").replace(/<div class="phone-only">[\s\S]*?<\/div>/g, " ").replace(/<ul class="ledger[^"]*">[\s\S]*?<\/ul>/g, " ").replace(/<svg[\s\S]*?<\/svg>/g, " ").replace(/<select[\s\S]*?<\/select>/g, " ")
   .replace(/<details class="more"[\s\S]*?<\/details>/g, " ").replace(/<span class="mk"[^>]*>[^<]*<\/span>/g, " ");
 const words = (h) => strip(h).replace(/<[^>]+>/g, " ").replace(/&#39;/g, "'").replace(/&[a-z#0-9]+;/g, " ").split(/\s+/).filter((w) => /[A-Za-z0-9]/.test(w)).length;
 const inner = (h, re) => [...h.matchAll(re)].map((m) => m[1]);
@@ -81,7 +82,9 @@ const toUsd = (t) => { const m = t.match(/^\$([\d.]+)([BMT])/); return m ? Numbe
 for (const [label, html] of [["overview", ov], ["flows", V.renderFlows(c0)], ["flows open", V.renderFlows(V.makeCtx(data, idx, parseState("open=R%3Ahyperscale&focus=openai"), stateQuery))]]) {
   const svg = (html.match(/<svg viewBox="0 0 1080[\s\S]*?<\/svg>/) || [""])[0];
   if (!svg) { problems.push(`${label}: no sankey`); continue; }
-  for (const t of inner(svg, /<text class="small halo"[^>]*>([^<]*)<\/text>/g)) if (!(toUsd(t) >= 5e9)) problems.push(`${label}: sankey label under $5B: ${t}`);
+  // Round 7 (1b): the Overview labels only ribbons of $20B or more; Money flows keeps every label of $5B or more.
+  const floor = label === "overview" ? 20e9 : 5e9;
+  for (const t of inner(svg, /<text class="small halo"[^>]*>([^<]*)<\/text>/g)) if (!(toUsd(t) >= floor)) problems.push(`${label}: sankey label under ${floor / 1e9}B: ${t}`);
   if (/stroke-dasharray|url\(#h-/.test(svg)) problems.push(`${label}: sankey uses dashes or hatching`);
   if (!/class="phone-only"><ul class="ledger">/.test(html)) problems.push(`${label}: no phone ledger`);
 }
@@ -90,6 +93,56 @@ for (const [label, html] of [["overview", ov], ["flows", V.renderFlows(c0)], ["f
   const want = shown0.filter((d) => !d.contingent && hasAmount(d)).reduce((t, d) => t + Math.max(d.amount_usd_low || 0, d.amount_usd_high || 0), 0);
   const got = sankeyEdges(c0, shown0).reduce((t, e) => t + e.v, 0);
   if (Math.abs(want - got) > 1) problems.push(`sankey widths sum to ${got}, the records give ${want}`);
+}
+// The Overview sankey (round 7, 1b), recounted from the records without the chart code: the layer flows
+// under $20B are hairlines and the line under the key counts them, and the one sentence on the chart
+// carries the largest flow and what came back the other way, paid of committed.
+{
+  const shown0 = applyFilters(c0.visible, parseState(""), idx);
+  const flow = {};
+  for (const d of shown0.filter((d) => !d.contingent && hasAmount(d))) {
+    const k = idx.companies[d.payer].layer + ">" + idx.companies[d.payee].layer;
+    const hi = Math.max(d.amount_usd_low || 0, d.amount_usd_high || 0);
+    flow[k] = flow[k] || { v: 0, paid: 0 };
+    flow[k].v += hi;
+    flow[k].paid += d.amount_basis === "paid" ? hi : d.paid_to_date_usd || 0;
+  }
+  const keys = Object.keys(flow).filter((k) => flow[k].v > 0);
+  const small = keys.filter((k) => flow[k].v < 20e9).length;
+  const svg = (ov.match(/<svg viewBox="0 0 1080[\s\S]*?<\/svg>/) || [""])[0];
+  const hairs = (svg.match(/stroke-width="1" opacity="\.4"/g) || []).length;
+  if (hairs !== small) problems.push(`overview: ${hairs} hairlines, the records give ${small} flows under $20B`);
+  if (!ov.includes(`${small} smaller flows are unlabeled; see <a href="#/flows">Money flows</a>.`)) problems.push(`overview: the line under the key does not count ${small} smaller flows`);
+  const big = keys.sort((a, b) => flow[b].v - flow[a].v)[0], [from, to] = big.split(">"), back = flow[`${to}>${from}`];
+  const fmt = (v) => "$" + (v >= 100e9 ? Math.round(v / 1e9) : Math.round(v / 1e8) / 10) + "B";
+  if (from === "labs" && to === "hyperscale" && back) {
+    const want = `Labs have promised clouds ${fmt(flow[big].v)}; clouds have paid labs ${fmt(back.paid)} of ${fmt(back.v)}.`;
+    const got = (svg.match(/<text class="note halo"[^>]*>([^<]*)<\/text>/) || ["", ""])[1];
+    if (got !== want) problems.push(`overview: the note reads "${got}", the records give "${want}"`);
+  } else problems.push(`overview: the largest flow is ${big}, the note test expects labs to clouds; recheck the sentence`);
+}
+// Loops by length (D52, round 7): on a two-company loop each arrow's length is its amount on the page's
+// one scale (the gap between the boxes), 56px for no amount; the ring keeps its racetrack.
+{
+  const lp = V.renderLoops(c0);
+  const gap = toUsd((lp.match(/the gap between the boxes is (\$[\d.]+[BMT])/) || ["", ""])[1]);
+  if (!(gap >= 250e9)) problems.push("loops: no scale in the legend");
+  const px = (1080 - 2 * 160) / gap;
+  let checked = 0;
+  for (const v of data.loops) {
+    const ds = v.deals.map((x) => idx.deals[x]).filter((d) => d && d.confidence !== "rumored");
+    if (new Set(ds.flatMap((d) => [d.payer, d.payee])).size !== 2) continue;
+    const art = (lp.match(new RegExp(`<article class="trow" id="loop-${v.id}">([\\s\\S]*?)</article>`)) || ["", ""])[1];
+    const desk = (art.match(/<div class="desk-only">([\s\S]*?)<\/div>/) || ["", ""])[1];
+    // The tip is the L point of a solid or outline arrow, the end of the H run for a dotted stub.
+    const got = [...desk.matchAll(/<g><title>[\s\S]*?<\/title><path d="M([\d.]+) [\d.]+ H([\d.]+)(?: V[\d.]+ L([\d.]+))?/g)]
+      .map((m) => Math.abs(Number(m[3] || m[2]) - Number(m[1]))).sort((a, b) => a - b);
+    const want = ds.map((d) => (hasAmount(d) ? Math.max(6, Math.max(d.amount_usd_low || 0, d.amount_usd_high || 0) * px) : 56)).sort((a, b) => a - b);
+    const ok = got.length === want.length && got.every((g, i) => Math.abs(g - want[i]) <= 0.2);
+    checked++;
+    if (!ok) problems.push(`loops: ${v.id} arrow lengths ${JSON.stringify(got.map(Math.round))}, the records give ${JSON.stringify(want.map(Math.round))}`);
+  }
+  if (checked < data.loops.length - 1) problems.push(`loops: only ${checked} two-company loops checked for length`);
 }
 // Racetracks (D52): one arrow per deal on the desktop track, ranked by what was promised back.
 {
@@ -179,18 +232,18 @@ if ((foot.match(/<p[\s>]/g) || []).length !== 1) problems.push("footer is not on
   for (const f of items) if (!ov.includes(esc(f.fig)) || !ov.includes(f.href.replace(/&/g, "&amp;"))) problems.push(`finding ${f.key} is not on the Overview`);
 }
 
-// Stylesheet rules (D49): hex colors only in the token blocks; the pop only in its five places.
+// Stylesheet rules (D49): hex colors only in the token blocks; the pop only in its three places.
 {
   const css = readFileSync(new URL("../site/css/site.css", import.meta.url), "utf8");
   const outside = css.slice(0, css.indexOf("/* tokens:light */")) + css.slice(css.indexOf("/* tokens:end */"));
   const hexes = outside.replace(/\/\*[\s\S]*?\*\//g, "").match(/#[0-9a-fA-F]{3,8}\b/g);
   if (hexes) problems.push(`site.css: hex colors outside the token blocks: ${hexes.join(" ")}`);
-  const POP_OK = /^(\.top|\.navin a\[aria-current="page"\]|a:hover|\.link:hover|\.more summary:hover|(a|button|summary|input|select):focus-visible|\.findings \.big|\.btn.*|:root)$/;
+  const POP_OK = /^(\.navin a\[aria-current="page"\]|a:hover|\.link:hover|\.more summary:hover|(a|button|summary|input|select):focus-visible|\.btn.*|:root)$/;
   for (const m of outside.replace(/\/\*[\s\S]*?\*\//g, "").matchAll(/([^{}]+)\{([^{}]*)\}/g)) {
     if (!/--pop|--paid/.test(m[2])) continue;
     for (const sel of m[1].split(",").map((x) => x.trim())) {
       if (/--paid/.test(m[2]) && /^\.shape\.paid$/.test(sel)) continue;
-      if (!POP_OK.test(sel)) problems.push(`site.css: the pop is used outside its five places, in ${sel}`);
+      if (!POP_OK.test(sel)) problems.push(`site.css: the pop is used outside its three places, in ${sel}`);
     }
   }
 }

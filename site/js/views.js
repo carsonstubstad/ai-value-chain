@@ -102,8 +102,12 @@ const RANKS = {
 function loopViews(ctx, rank = "size", conf = ctx.s.conf) {
   return ctx.data.loops.map((l) => loopView(l, ctx.idx, conf)).filter((v) => v.closed).sort(RANKS[rank]);
 }
-// One scale for every loop on a page: the largest deal in them sets the thickest arrow.
-const loopScale = (views) => Math.max(1, ...views.flatMap((v) => v.deals.filter((d) => !d.contingent).map(highEnd)));
+// One scale for every loop (D52, round 7): the gap between the two boxes is $250B, or the largest deal
+// rounded up to the next $50B if one ever outgrows it, so no arrow overruns its box.
+const loopScale = (views) => {
+  const top = Math.max(0, ...views.flatMap((v) => v.deals.filter((d) => !d.contingent).map(highEnd)));
+  return Math.max(250e9, Math.ceil(top / 50e9) * 50e9);
+};
 // "$13B in, ceilings" and "$250B back, ceilings": each side with the word for what it is made of (D52).
 function loopSides(v) {
   const word = (ds) => {
@@ -140,6 +144,26 @@ function smallLine(ctx, deals, open) {
   const n = sankeyEdges(ctx, deals, open).filter((e) => e.v > 0 && e.v < LABEL_MIN).length;
   return `${plural(n, "ribbon", "ribbons")} under $5B unlabeled`;
 }
+// The Overview sankey (round 7): ribbons under $20B are unlabeled hairlines; the line under the key counts them.
+export const OVERVIEW_MIN = 20e9;
+function minorLine(ctx, deals) {
+  const n = sankeyEdges(ctx, deals).filter((e) => e.v > 0 && e.v < OVERVIEW_MIN).length;
+  return n ? `${plural(n, "smaller flow is", "smaller flows are")} unlabeled; see <a href="#/flows">Money flows</a>.` : "";
+}
+// The one sentence on the Overview sankey, computed from the same layer flows as the ribbons: the largest
+// flow, and what has come back the other way (paid of committed).
+export function overviewNote(ctx, deals) {
+  const edges = sankeyEdges(ctx, deals).filter((e) => e.v > 0);
+  const big = [...edges].sort((a, b) => b.v - a.v || a.key.localeCompare(b.key))[0];
+  if (!big || !NOUN[big.src] || !NOUN[big.dst]) return "";
+  const verb = big.paid >= big.v ? "paid" : "promised";
+  const first = `${cap1(NOUN[big.src])} have ${verb} ${NOUN[big.dst]} ${money(big.v)}`;
+  const back = edges.find((e) => e.src === big.dst && e.dst === big.src);
+  if (!back) return `${first}.`;
+  const them = NOUN[big.src];
+  const tail = back.paid >= back.v ? `paid ${them} ${money(back.v)}` : back.paid > 0 ? `paid ${them} ${money(back.paid)} of ${money(back.v)}` : `promised ${them} ${money(back.v)}`;
+  return `${first}; ${NOUN[big.dst]} have ${tail}.`;
+}
 // Open layers are "L:layer" (payer side) or "R:layer" (payee side); a bare layer opens both sides.
 const openSet = (list) => new Set(list.flatMap((x) => (x.includes(":") ? [x] : [`L:${x}`, `R:${x}`])));
 
@@ -149,7 +173,9 @@ export function renderOverview(ctx) {
   const shown = applyFilters(ctx.visible, parseState(""), idx);
   const flows = layerFlows(shown, idx);
   const ribLink = (key) => `#/${ctx.qsWith("rib", s.rib === key ? "" : key)}`;
-  const hero = sankey(ctx, shown, { rib: s.rib, ribLink: (e) => ribLink(e.key), nodeLink: (side, r) => `#/flows?open=${encodeURIComponent(`${side}:${r.id}`)}` });
+  // Round 7 (D56): the Overview copy draws ribbons under $20B as hairlines and carries one sentence.
+  const hero = sankey(ctx, shown, { rib: s.rib, ribLink: (e) => ribLink(e.key), nodeLink: (side, r) => `#/flows?open=${encodeURIComponent(`${side}:${r.id}`)}`,
+    minor: OVERVIEW_MIN, note: overviewNote(ctx, shown) });
   const picked = s.rib && flows.find((f) => f.key === s.rib);
   const ribPanel = picked ? `<section class="ribdeals" aria-label="Deals in the picked ribbon"><h2>${esc(idx.layers[picked.from].label)} to ${esc(idx.layers[picked.to].label)}</h2><ul class="rows">${[...picked.deals].sort((a, b) => highEnd(b) - highEnd(a)).map((d) => dealRow(ctx, d)).join("")}</ul></section>` : "";
   const loops = loopViews(ctx, "size", parseState("").conf).slice(0, 3);
@@ -171,10 +197,10 @@ export function renderOverview(ctx) {
     <h2>Who pays whom, by layer</h2>
     <div class="desk-only"><figure class="fig">${hero}</figure></div>
     <div class="phone-only">${ledger(ctx, flows, { link: (f) => ribLink(f.key) })}</div>
-    <p class="legend">${KEY} · ${smallLine(ctx, shown)}</p>
+    <p class="legend">${KEY} · ${minorLine(ctx, shown)}</p>
     ${ribPanel}
   </section>
-  ${loops.length ? `<section><h2>Three largest loops</h2><div class="loops">${minis}</div></section>` : ""}
+  ${loops.length ? `<section><h2>Three largest loops</h2><div class="loops">${minis}</div><p class="legend">Arrow length is the amount; the gap between the boxes is ${money(scale)}.</p></section>` : ""}
   ${runThrough(ctx, shown)}
   <section><h2><a href="#/changes">What changed</a></h2><ul class="rows">${evs.map((e) => changeRow(ctx, e)).join("")}</ul></section>
   <section class="col"><h2>Top 10 flows</h2>${top.length ? `<ul class="rows">${topRows}</ul>` : `<p class="empty">No deals match these filters.</p>`}</section>`;
@@ -364,12 +390,14 @@ export function renderFlows(ctx) {
     <p class="actions">${button("Full card", `#/company/${esc(focus)}${ctx.qs}`, "quiet")}<a href="#/flows${ctx.qsWith("focus", "")}">Clear the trace</a></p></section>` : "";
   return `${masthead(ctx)}
   <header class="col"><h1>${focus ? `Tracing ${esc(fname)}` : "Money flows"}</h1></header>
+  <div class="ctlrow">
   <div id="controls"></div>
   <p class="toggle">
     ${sel(`<select data-field="focus" aria-label="Trace a company">${options(companyOptions, focus, "Trace a company")}</select>`)}
     ${viewChip(`#/flows${ctx.qsWith("w", "")}`, "Ceilings", s.w !== "count")}${viewChip(`#/flows${ctx.qsWith("w", "count")}`, "Deal count", s.w === "count")}
     ${open.size ? `<span class="sep">|</span><span class="meta">Open: ${esc(opened.join("; "))}</span> <a href="#/flows${ctx.qsWith("open", [])}">Close all</a>` : ""}${focus ? `<span class="sep">|</span><a href="#/flows${ctx.qsWith("focus", "")}">Clear the trace</a>` : ""}
   </p>
+  </div>
   ${chart ? `<div class="desk-only"><figure class="fig">${chart}</figure></div>
   <div class="phone-only">${ledger(ctx, flows, { w: s.w, both: false, link: (f) => `#/flows${ctx.qsWith("open", [`L:${f.from}`, `R:${f.to}`])}` })}</div>
   <p class="legend">${s.w === "count" ? "Width: deals" : KEY}${focus ? ` · dimmed ribbons carry no ${esc(fname)} deal` : ""} · click a layer to open it, a company to trace it</p>
@@ -392,7 +420,8 @@ export function renderLoops(ctx) {
   const rows = views.map((v) => {
     const sd = loopSides(v);
     return `<article class="trow" id="loop-${esc(v.loop.id)}"><div class="thead"><h2>${trackIcon(ctx, v)}<a href="#/loops${ctx.qs}#loop-${esc(v.loop.id)}">${esc(v.loop.name)}</a></h2>`
-      + `<p class="tsum"><span class="num">${esc(sd.put)}</span><span class="sep"></span><span class="num">${esc(sd.back)}</span>${sd.notes.length ? `<span class="tnote"> · ${esc(sd.notes.join(" · "))}</span>` : ""}</p></div>`
+      + `<p class="tsum"><span class="num">${esc(sd.put)}</span><span class="sep"></span><span class="num">${esc(sd.back)}</span></p></div>`
+      + (sd.notes.length ? `<p class="tnote">${esc(cap1(sd.notes.join(" · ")))}</p>` : "")
       + `${loopTracks(ctx, v, scale, false)}<p class="line">${esc(v.loop.line)}</p></article>`;
   }).join("");
   return `${masthead(ctx)}
@@ -402,8 +431,8 @@ export function renderLoops(ctx) {
     <span class="grp"><span class="meta">Rank by</span>${rankChip("back", "promised back")}${rankChip("put", "put in")}${rankChip("deals", "deals")}</span>
     <span class="count">${plural(views.length, "loop", "loops")}</span>
   </div>
-  <p class="caveat">Top arrows carry money out along the ring, bottom arrows bring it back; thickness is the amount, on one scale for every loop. Nets are not shown: caps, ranges and multi-year totals cannot be netted against cash.</p>
-  <p class="legend">${KEY} · dotted: no amount · grey: guarantee, not counted</p>
+  <p class="caveat">Arrow length is the amount, one scale for every loop. Nets are not shown: ceilings cannot be netted against cash.</p>
+  <p class="legend">Solid: paid · outline: committed, filled as paid · dotted: no amount · grey: guarantee, not counted · the gap between the boxes is ${money(scale)}${views.some((v) => v.cos.length > 2) ? " · the three-company ring keeps width for the amount" : ""}</p>
   ${views.length ? `<div class="tracks">${rows}</div>` : `<p class="empty">No loop is complete with this sourcing filter.</p>`}`;
 }
 

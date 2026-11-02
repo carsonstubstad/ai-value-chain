@@ -1,7 +1,7 @@
 /* Built to mockups/round6 (HANDOFF.md and spec.md). Neutral paper, navy-black ink, the chain on
-   one blue ramp with Capital in slate, and one vermilion pop in five places only: the hero figures,
-   the primary button and active nav underline, the paid square, link hover and focus rings, and
-   the 4px top rule. Hex colors live in the three token blocks below and nowhere else. */
+   one blue ramp with Capital in slate, and one vermilion pop in three places only (D49, round 7):
+   the primary button and active nav underline, the paid square and "now paid" glyph, and link
+   hover and focus rings. Hex colors live in the three token blocks below and nowhere else. */
 @font-face { font-family: "Newsreader"; font-weight: 400; font-display: swap; src: url("../fonts/newsreader-latin-400-normal.woff2") format("woff2"); }
 @font-face { font-family: "Newsreader"; font-weight: 500; font-display: swap; src: url("../fonts/newsreader-latin-500-normal.woff2") format("woff2"); }
 @font-face { font-family: "Newsreader"; font-weight: 600; font-display: swap; src: url("../fonts/newsreader-latin-600-normal.woff2") format("woff2"); }
@@ -60,8 +60,8 @@ a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visibl
 section { margin-top: 56px }
 header + section, #controls + section { margin-top: 0 }
 
-/* Navigation: the 4px pop rule, the wheel mark, pages, the theme segment */
-.top { border-top: 4px solid var(--pop); border-bottom: 1px solid var(--rule); background: var(--paper) }
+/* Navigation: the wheel mark, pages, the theme segment */
+.top { border-bottom: 1px solid var(--rule); background: var(--paper) }
 .navin { max-width: 1128px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 4px 20px; align-items: center;
   padding: 10px max(24px, env(safe-area-inset-right, 0px)) 8px max(24px, env(safe-area-inset-left, 0px)) }
 .navin a { font-size: 14px; color: var(--ink-2); text-decoration: none; padding: 2px 0; border-bottom: 2px solid transparent }
@@ -99,7 +99,7 @@ header .meta { margin-top: -6px }
 .findings { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin: 34px 0 24px; padding: 0; list-style: none; border-top: 1px solid var(--rule) }
 .findings li { padding: 20px 28px 4px 0; display: grid; gap: 6px; align-content: start }
 .findings li + li { border-left: 1px solid var(--rule); padding-left: 28px }
-.findings .big { font: 600 44px/1 var(--serif); letter-spacing: -.015em; color: var(--pop); margin: 0 }
+.findings .big { font: 600 44px/1 var(--serif); letter-spacing: -.015em; color: var(--ink); margin: 0 }
 .findings p { margin: 0; font-size: 14.5px; line-height: 1.45 }
 .findings .ev { margin-top: 2px; font: 13px var(--sans) }
 .findings .ev a { color: var(--ink-2) }
@@ -135,6 +135,10 @@ input[type="search"] { font: 13px var(--sans); color: var(--ink); background: va
 .drawer { display: flex; flex-wrap: wrap; gap: 8px 10px; align-items: center; padding: 10px 0 2px }
 .more[open] { flex-basis: 100% }
 .count { margin-left: auto }
+/* Money flows (round 7): the filters and the trace and width chips run as one wrapping row, count last */
+.ctlrow { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; font-size: 13px; color: var(--ink-2); margin: 0 0 24px }
+.ctlrow #controls, .ctlrow .controls, .ctlrow .toggle { display: contents }
+.ctlrow .count { order: 2 }
 
 /* Tooltip: ink on paper, two lines, the item first */
 .tip { position: fixed; z-index: 20; background: var(--ink); color: var(--paper); font: 12px/1.4 var(--sans); padding: 6px 9px; max-width: 280px; pointer-events: none; border-radius: 2px }
@@ -153,6 +157,8 @@ svg .chip { font-size: 11px; fill: var(--ink) }
 svg .strong { font-weight: 600 }
 svg .n { font-family: var(--serif); font-weight: 600; font-size: 13px; fill: var(--ink) }
 svg .mk { font-family: var(--mono); font-size: 11px; fill: var(--muted) }
+svg .tick { font: 400 10.5px/1 var(--mono); fill: var(--muted) }
+svg .note { font: 600 13px/1 var(--serif); fill: var(--ink) }
 svg .halo { paint-order: stroke; stroke: var(--paper); stroke-width: 4px; stroke-linejoin: round }
 svg a { cursor: pointer; text-decoration: none }
 svg a.rib:hover path, svg a.edge:hover path { opacity: 1 }
@@ -212,6 +218,7 @@ svg a.chip-a:hover text { text-decoration: underline }
 .tsum { margin: 0; font-size: 13px; color: var(--ink-2) }
 .tsum .sep { display: inline-block; width: 1px; height: 12px; background: var(--rule); margin: 0 10px; vertical-align: -1px }
 .tnote { font: 400 12px/1.4 var(--mono); color: var(--muted) }
+p.tnote { margin: -2px 0 8px }
 .trow svg, .loop svg { display: block; width: 100%; height: auto; overflow: visible }
 .trow .line { margin: 8px 0 0; font-size: 13px; color: var(--ink-2); max-width: 760px }
 svg.ticon, .trow svg.ticon, .loop svg.ticon { flex: none; display: inline-block; width: 30px; height: 20px }

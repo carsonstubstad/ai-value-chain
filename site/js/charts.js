@@ -113,8 +113,11 @@ export function sankey(ctx, deals, opts = {}) {
     const w = wpx(e.v), c = col(e.from), ya = e.sy, yb = e.dy;
     const on = lit ? e.deals.some((d) => d.payer === lit || d.payee === lit) : rib ? e.key === rib : true;
     const cls = `rib edge${lit || rib ? (on ? " lit" : " faded") : ""}`;
+    // On the Overview, ribbons under opts.minor are 1px hairlines at 40% with no label (round 7, 1b).
+    const minor = !byCount && opts.minor && e.v < opts.minor;
     let g;
-    if (w <= 3) g = `<path d="${line(ya + w / 2, yb + w / 2)}" fill="none" stroke="${c}" stroke-width="${f1(w)}"/>`;
+    if (minor) g = `<path d="${line(ya + w / 2, yb + w / 2)}" fill="none" stroke="${c}" stroke-width="1" opacity=".4"/>`;
+    else if (w <= 3) g = `<path d="${line(ya + w / 2, yb + w / 2)}" fill="none" stroke="${c}" stroke-width="${f1(w)}"/>`;
     else {
       g = `<path d="${band(ya, yb, w)}" fill="${c}" fill-opacity=".12" stroke="${c}" stroke-width="1.2"/>`;
       if (e.paid > 0) g += `<path d="${band(ya, yb, w * Math.min(1, e.paid / e.v))}" fill="${c}"/>`;
@@ -126,7 +129,7 @@ export function sankey(ctx, deals, opts = {}) {
     const cont = e.deals.filter((d) => d.contingent).length;
     const second = byCount ? paidBit : `${plural(e.n, "deal", "deals")}, ${paidBit}${cont ? `; ${plural(cont, "guarantee", "guarantees")} not in the width` : ""}`;
     parts.push(`<a href="${opts.ribLink ? opts.ribLink(e) : "#/flows"}" class="${cls}">${tip(head, second)}${g}</a>`);
-    if (byCount ? e.n < 3 : e.v < LABEL_MIN) continue;
+    if (minor || (byCount ? e.n < 3 : e.v < LABEL_MIN)) continue;
     const txt = edgeLabel(e, byCount);
     if (w >= 12) labels.push({ x: mx, y: (ya + yb) / 2 + w / 2 + 4, t: txt, anchor: "middle", col: "mid", on });
     else labels.push({ x: x1 - 10, y: yb + w / 2 + 4, t: txt, anchor: "end", col: "end", on });
@@ -139,6 +142,14 @@ export function sankey(ctx, deals, opts = {}) {
       const limit = i === ls.length - 1 ? H - 24 : ls[i + 1].y - 16;
       if (ls[i].y > limit) ls[i].y = limit;
     }
+  }
+  // One sentence tied to the largest ribbon, under its own label (round 7, 1b).
+  if (opts.note && !byCount) {
+    const big = [...edges].sort((a, b) => b.v - a.v)[0], w = wpx(big.v);
+    const midY = (big.sy + big.dy) / 2 + w / 2;
+    const ly = labels.find((l) => l.t === edgeLabel(big, false));
+    const ny = w >= 40 ? (ly ? ly.y : midY + 4) + 22 : big.dy + w + 18;
+    parts.push(`<text class="note halo" x="${f1(mx)}" y="${f1(ny)}" text-anchor="middle">${esc(opts.note)}</text>`);
   }
   for (const l of labels) parts.push(`<text class="small halo" x="${f1(l.x)}" y="${f1(l.y)}" text-anchor="${l.anchor}"${l.on ? "" : ' opacity=".3"'}>${esc(l.t)}</text>`);
   const node = (side, r) => {
@@ -232,7 +243,64 @@ function trackLabel(d, x, y, anchor, size, short) {
   return `<text class="n halo" x="${f1(x)}" y="${f1(y)}" text-anchor="${anchor}" style="font-size:${size}px">${esc(a)}${ty}<tspan class="mk" dx="4">${MARK[d.confidence]}</tspan></text>`;
 }
 
-// opts: { W, wmax, scaleMax, compact, phone }. Company boxes in a row (two, or three for a ring), money
+// Round 7 (D52): a two-company loop uses length for the amount. The gap between the boxes is the
+// scale (scaleMax spans it); each deal is one arrow of constant thickness. Top arrows leave the left
+// box and point right, bottom arrows leave the right box and point left; same-direction deals stack,
+// largest nearest the boxes. Faint ticks at $100B and $200B, labeled once; none on the Overview minis.
+function trackLen(ctx, v, opts, box, uid) {
+  const W = opts.W || 1080, scale = opts.scaleMax || 250e9, compact = !!opts.compact, small = compact || !!opts.phone;
+  const [a, b] = v.cos;
+  const [BW, BH] = small ? [96, 28] : [150, 36], TH = small ? 8 : 11, head = 8, lh = small ? 13 : 16;
+  const x0 = BW + 10, x1 = W - BW - 10, span = x1 - x0, px = span / scale;
+  const bySize = (p, q) => highEnd(q) - highEnd(p) || p.id.localeCompare(q.id);
+  const fwd = v.deals.filter((d) => d.payer === a).sort(bySize), back = v.deals.filter((d) => d.payer === b).sort(bySize);
+  const rowH = TH + 6 + lh, topH = fwd.length * rowH + 10, botH = back.length * rowH + 10;
+  const by = topH, H = topH + BH + botH + 6;
+  const out = [];
+  const arrow = (d, y, ltr, m) => {
+    const k = d.contingent ? "var(--muted)" : col(ctx.idx.companies[d.payer].layer);
+    const L = hasAmount(d) ? Math.max(6, highEnd(d) * px) : 56;
+    const sx = ltr ? x0 : x1, ex = ltr ? x0 + L : x1 - L, dir = ltr ? 1 : -1, t = TH / 2;
+    let g;
+    if (!hasAmount(d)) {
+      g = `<path d="M${f1(sx)} ${f1(y)} H${f1(ex)}" fill="none" stroke="${k}" stroke-width="1" stroke-dasharray="2 3"/>`
+        + `<path d="M${f1(ex - dir * 6)} ${f1(y - 4)} L${f1(ex)} ${f1(y)} L${f1(ex - dir * 6)} ${f1(y + 4)}" fill="none" stroke="${k}" stroke-width="1"/>`;
+    } else {
+      const hx = ex - dir * Math.min(head, L * 0.6);
+      const body = `M${f1(sx)} ${f1(y - t)} H${f1(hx)} V${f1(y - t - 4)} L${f1(ex)} ${f1(y)} L${f1(hx)} ${f1(y + t + 4)} V${f1(y + t)} H${f1(sx)} Z`;
+      if (basisStyle(d) === "paid") g = `<path d="${body}" fill="${k}"/>`;
+      else {
+        g = `<path d="${body}" fill="${k}" fill-opacity=".12" stroke="${k}" stroke-width="1.2" stroke-linejoin="round"/>`;
+        if (d.paid_to_date_usd && highEnd(d)) {
+          const pl = L * Math.min(1, d.paid_to_date_usd / highEnd(d)), cx0 = ltr ? sx : sx - pl, id = `${uid}${ltr ? "f" : "b"}${m}`;
+          g += `<clipPath id="${id}"><rect x="${f1(cx0)}" y="${f1(y - TH)}" width="${f1(pl)}" height="${f1(2 * TH)}"/></clipPath><path d="${body}" fill="${k}" clip-path="url(#${id})"/>`;
+        }
+      }
+    }
+    out.push(`<g>${dealTip(ctx, d)}${g}</g>`);
+    // The label sits past the head; when the arrow nearly fills the gap it sits above the arrow.
+    const fits = span - L > (small ? 90 : 170);
+    const [tx, ty, ta] = fits ? [ex + dir * 8, y + 4, ltr ? "start" : "end"] : [(sx + ex) / 2, y - t - 5, "middle"];
+    out.push(small ? `<text class="n halo" x="${f1(tx)}" y="${f1(ty)}" text-anchor="${ta}" style="font-size:11px">${esc(amountText(d))}<tspan class="mk" dx="4">${MARK[d.confidence]}</tspan></text>`
+      : trackLabel(d, tx, ty, ta, 12.5, false));
+  };
+  let y = by - 10 - TH / 2;
+  fwd.forEach((d, m) => { arrow(d, y, true, m); y -= rowH; });
+  y = by + BH + 10 + TH / 2;
+  back.forEach((d, m) => { arrow(d, y, false, m); y += rowH; });
+  if (!compact) {
+    [100e9, 200e9].filter((t) => t < scale).forEach((t) => {
+      const tx = x0 + t * px;
+      out.push(`<line x1="${f1(tx)}" x2="${f1(tx)}" y1="${by - 4}" y2="${by + BH + 4}" stroke="var(--rule)"/>`);
+      out.push(`<text class="tick" x="${f1(tx + 4)}" y="${f1(by + BH / 2 + 3)}">${money(t)}</text>`);
+    });
+  }
+  out.push(box(a, 0, by, BW, BH), box(b, W - BW, by, BW, BH));
+  return `<svg viewBox="-2 0 ${W + 4} ${f1(H)}" role="img" aria-label="${esc(v.loop.name)}">${out.join("")}</svg>`;
+}
+
+// opts: { W, wmax, scaleMax, compact, phone }. Two companies: trackLen, length = amount (D52, round 7).
+// Three companies (the one ring): boxes in a row, money
 // clockwise: top arrows out along the row, bottom arrows back. Thickness = amount on one scale per page,
 // 1.5px floor. On a phone a three-company ring stacks vertically: down the right side, back up the left.
 export function track(ctx, v, opts = {}) {
@@ -253,6 +321,7 @@ export function track(ctx, v, opts = {}) {
     return `<a href="#/company/${esc(c)}${ctx.qs}" class="chip-a">${tip(idx.companies[c].name, "Open the company card")}<rect x="${f1(x)}" y="${f1(y)}" width="${bw}" height="${bh}" rx="3" fill="var(--wash)" stroke="${k}" stroke-width="1.5"/>`
       + `<circle cx="${f1(x + 14)}" cy="${f1(y + bh / 2)}" r="4" fill="${k}"/><text class="layer" x="${f1(x + 26)}" y="${f1(y + bh / 2 + 4)}" style="font-size:${compact || phone ? 12 : 13}px">${esc(idx.companies[c].name)}</text></a>`;
   };
+  if (n === 2) return trackLen(ctx, v, opts, box, uid);
   if (phone && n === 3) {
     const BW = 132, BH = 30, bx = (W - BW) / 2;
     const gapOf = (ds) => Math.max(64, ds.length * (lh + 4) + 28);
