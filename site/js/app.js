@@ -3,7 +3,7 @@
 // URL hash, so every view can be linked. Reads data/bundle.json; no third-party requests.
 
 import { index, parseState, stateQuery, DEFAULTS } from "./lib.js";
-import { makeCtx, renderControls, countLine, renderOverview, renderCompany, renderCompanies, renderFlows, renderLoops, renderChanges, renderData, renderFoot } from "./views.js";
+import { makeCtx, renderControls, countLine, renderOverview, renderCompany, renderCompanies, renderFlows, renderLoops, renderChanges, renderData, renderMethod, renderFoot } from "./views.js";
 
 const $ = (id) => document.getElementById(id);
 let data, idx;
@@ -17,7 +17,7 @@ function route() {
   return { page: parts[0] || "overview", id: parts[1] ? decodeURIComponent(parts[1]) : "", anchor: anchor || "", s: parseState(query) };
 }
 
-const TITLES = { overview: "", company: "", companies: "Companies", flows: "Money flows", loops: "Loops", changes: "What changed", data: "The data" };
+const TITLES = { overview: "", company: "", companies: "Companies", flows: "Money flows", loops: "Loops", changes: "What changed", data: "About the data", method: "Method" };
 
 function render(keepControls) {
   const r = route();
@@ -30,6 +30,7 @@ function render(keepControls) {
     loops: () => renderLoops(ctx),
     changes: () => renderChanges(ctx),
     data: () => renderData(ctx),
+    method: () => renderMethod(ctx),
   };
   const page = views[r.page] ? r.page : "overview";
   // Each filtered page places the filters right after its own answer (a #controls slot).

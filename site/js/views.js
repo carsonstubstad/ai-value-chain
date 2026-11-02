@@ -260,16 +260,84 @@ export function findings(ctx) {
 
 // ---------- Data page (D53): the bundle and a deals CSV, both rebuilt by bundle.py ----------
 
+// The Epoch AI credit (D59), shown wherever a record uses Epoch data, in the footer and on Method.
+const REPO = "https://github.com/carsonstubstad/ai-value-chain";
+const usesEpoch = (data) => data.sources.some((src) => /epoch/i.test(`${src.publisher || ""} ${src.url || ""}`));
+const EPOCH_LINE = `Includes data from Epoch AI (<a href="https://epoch.ai/data" target="_blank" rel="noopener">epoch.ai/data</a>), licensed CC BY 4.0 (<a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">creativecommons.org/licenses/by/4.0</a>). Changes made: filtered and summarized.`;
+const count = (xs, f) => xs.reduce((m, x) => m.set(f(x), (m.get(f(x)) || 0) + 1), new Map());
+
 export function renderData(ctx) {
-  const { data } = ctx;
-  const epoch = data.sources.some((s) => /epoch/i.test(s.publisher || ""));
+  const { data, idx } = ctx;
+  const byConf = count(data.deals, (d) => d.confidence), byKind = count(data.sources, (src) => src.kind);
+  const KIND = { filing: "filings", company: "company releases and pages", press: "press reports", government: "government pages" };
+  const conf = ["filed", "company_stated", "reported", "rumored"].filter((c) => byConf.get(c)).map((c) => `${byConf.get(c)} ${LABEL.confidence[c].toLowerCase()}`).join(", ");
+  const kinds = [...byKind].sort((a, b) => b[1] - a[1]).map(([k, n]) => `${n} ${KIND[k] || k}`).join(", ");
+  const dealt = new Set(data.deals.filter((d) => d.confidence !== "rumored").flatMap((d) => [d.payer, d.payee]));
   return `${masthead(ctx)}
   <header class="col"><h1>The data behind the site</h1><p class="state">${data.deals.length} deals, ${data.companies.length} companies and ${data.sources.length} sources, every figure with its source.</p></header>
   <ul class="files">
     <li><span><span class="what">Deals, one row each</span><br><span class="meta">deals.csv · payer, payee, type, amounts, basis, sourcing, status, dates, source</span></span>${button("Download the CSV", "data/deals.csv", "", DOWN, " download")}</li>
     <li><span><span class="what">Everything the site draws</span><br><span class="meta">bundle.json · companies, deals, loops, sources, changes</span></span>${button("Download the JSON", "data/bundle.json", "quiet", DOWN, " download")}</li>
   </ul>
-  <p class="meta col">Rumors are included and marked. Ranges stay as low and high; caps are never summed.${epoch ? " Some records credit Epoch AI." : ""} Data as of ${esc(fmtDate(ctx.idx.asOf))}.</p>`;
+  <section class="col prose" id="about"><h2>About the data</h2>
+    <ul>
+      <li>${plural(data.companies.length, "company", "companies")} across ${plural(data.taxonomy.layers.length, "layer", "layers")} of the chain; ${dealt.size} have at least one sourced deal.</li>
+      <li>${plural(data.deals.length, "deal", "deals")} by sourcing: ${esc(conf)}. Rumors are in the files, marked, and hidden on the site until you turn them on.</li>
+      <li>${plural(data.loops.length, "loop", "loops")}, found by script from the deals, and ${plural(data.events.length, "dated change", "dated changes")} in What changed.</li>
+      <li>${plural(data.sources.length, "source", "sources")}: ${esc(kinds)}. Each records its publisher, link and the date it was read.</li>
+      <li>Ranges stay as a low and a high; caps and multi-year totals are marked and never summed as cash. Amounts are in US dollars; a deal stated only in another currency carries no dollar figure.</li>
+      <li>Public information only, data as of ${esc(fmtDate(idx.asOf))}. Not investment advice. <a href="#/method">How the tracker works</a>.</li>
+      <li>The data is free to reuse under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>: credit "AI Value Chain Tracker" with a link. The code is under the <a href="${REPO}/blob/main/LICENSE" target="_blank" rel="noopener">MIT License</a>.</li>
+    </ul>
+    ${usesEpoch(data) ? `<p class="meta">${EPOCH_LINE}</p>` : ""}
+  </section>`;
+}
+
+// ---------- Method (P01): how a deal is recorded, sized and checked, with the counts computed ----------
+
+export function renderMethod(ctx) {
+  const { data } = ctx;
+  const fams = data.taxonomy.deal_families.map((f) => f.label.toLowerCase());
+  const types = data.taxonomy.deal_families.reduce((t, f) => t + f.types.length, 0);
+  const byConf = count(data.deals, (d) => d.confidence);
+  const n = (c) => plural(byConf.get(c) || 0, "deal", "deals");
+  const st = data.taxonomy.stale_days;
+  const dealt = new Set(data.deals.filter((d) => d.confidence !== "rumored").flatMap((d) => [d.payer, d.payee]));
+  const li = (xs) => `<ul>${xs.map((x) => `<li>${x}</li>`).join("")}</ul>`;
+  return `${masthead(ctx)}
+  <header class="col"><h1>How the tracker works</h1><p class="state">Each of the ${data.deals.length} deals carries a source, a sourcing level, an as-of date and an amount basis.</p></header>
+  <section class="col prose"><h2>One deal, one line</h2>${li([
+    "A deal is one agreement between two tracked companies. It is drawn once, from the company that pays to the company that is paid.",
+    `There are ${types} deal types in ${fams.length} families: ${esc(fams.slice(0, -1).join(", "))} and ${esc(fams[fams.length - 1])}.`,
+    "Every amount links to the source it came from, and every record says when it was last checked.",
+  ])}</section>
+  <section class="col prose"><h2>How sure each figure is</h2>${li([
+    `<b>Filed</b> (F): in a regulatory filing, such as a 10-K, 10-Q or 8-K. ${n("filed")}.`,
+    `<b>Stated</b> (S): stated by one of the companies, in a release or on its site. ${n("company_stated")}.`,
+    `<b>Reported</b> (R): reported by the press with the outlet named, summarized in our own words. ${n("reported")}.`,
+    `<b>Rumored</b>: reported without a named source. Kept and marked, hidden until you turn rumors on. ${n("rumored")}.`,
+  ])}</section>
+  <section class="col prose"><h2>Amounts</h2>${li([
+    "A range keeps its low and its high. Charts size each deal by its high end.",
+    "Caps and multi-year totals are ceilings: the most that could be paid. A ribbon that adds them up is labeled ceilings, not cash.",
+    "Paid means the money has moved; committed means it is promised. Where a filing shows part of a commitment paid, that share is drawn solid.",
+    "Guarantees are drawn grey and never counted, because money moves only if something goes wrong.",
+    "A deal with no stated dollar figure counts in deal counts, not in widths or sums.",
+    "Loops are never netted: a ceiling one way cannot be set against cash the other way.",
+  ])}</section>
+  <section class="col prose"><h2>Loops and companies</h2>${li([
+    "A loop is two or three companies with money flowing out and back. A script finds them from every deal that is not rumored, terminated or superseded, and CI checks them on every change.",
+    `${plural(data.companies.length, "company was", "companies were")} chosen to represent the ${plural(data.taxonomy.layers.length, "layer", "layers")} of the chain; ${dealt.size} have at least one sourced deal. The rest are listed and benched until one does.`,
+  ])}</section>
+  <section class="col prose"><h2>Updates</h2>${li([
+    "Every week, scheduled jobs pull the tracked companies' new SEC filings and flag records that are due a check. A reviewed change set updates the data, and What changed records each move.",
+    `A company's dot turns amber when its record is more than ${st.amber} days old and grey after ${st.grey}.`,
+  ])}</section>
+  <section class="col prose" id="credits"><h2>Sources and credits</h2>${li([
+    "Filings come from SEC EDGAR, company figures from the companies' own releases and pages, and press figures from the outlet named, summarized in our own words with a link. No article text is copied, and nothing behind a paywall is scraped.",
+    usesEpoch(data) ? EPOCH_LINE : "No record uses Epoch AI data yet. When one does, its credit appears here and in the footer.",
+    "Public information only. Not investment advice, and no prices.",
+  ])}</section>`;
 }
 
 // ---------- Company card ----------
@@ -458,6 +526,5 @@ export function renderChanges(ctx) {
 
 export function renderFoot(ctx) {
   const { data } = ctx;
-  const epoch = data.sources.some((s) => /epoch/i.test(s.publisher || ""));
-  return `<p>${data.companies.length} companies · ${data.deals.length} deals · ${data.sources.length} sources${epoch ? " · some data from Epoch AI" : ""} · F filed, S stated, R reported · not investment advice · <a href="https://github.com/carsonstubstad/ai-value-chain">code and data</a></p>`;
+  return `<p>${data.companies.length} companies · ${data.deals.length} deals · ${data.sources.length} sources · F filed, S stated, R reported · not investment advice · <a href="#/method">Method</a> · <a href="#/data#about">About the data</a> · <a href="${REPO}">code (MIT) and data (CC BY 4.0)</a>${usesEpoch(data) ? ` · <a href="#/method#credits">includes Epoch AI data, CC BY 4.0</a>` : ""}</p>`;
 }

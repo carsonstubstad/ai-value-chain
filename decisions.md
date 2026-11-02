@@ -132,10 +132,21 @@ Settled questions. Do not reopen without Carson. Add a dated line for every new 
 ## Gate 4 passed (2026-11-02, Carson: "Yes" to passing Gate 4 and merging PR #10)
 - D60 Gate 4 is passed on the build at 8d2a495 (sessions 11 to 14f, round 6 design with the round 7 review). PR #10 merges to main. GitHub Pages stays off until Gate 5; session 14 (launch pages) starts only on Carson's word.
 
+## Session 14 (2026-11-02, Carson: "can you keep building?" after Gate 4)
+- D61 Launch pages: a Method page (#/method) and an About the data section on the Data page (#/data#about), both linked from the footer. Every count on them is computed from the records and recounted by the render test.
+- D62 The Epoch AI credit (D59) appears in full on Method and About the data, and as a short link in the footer ("includes Epoch AI data, CC BY 4.0"), exactly when a record cites Epoch AI; the footer stays one line (D39). No record cites Epoch today, so today Method says so instead.
+- D63 Weekly news gather (P16): fetch.yml's news job lists each tracked filer's 8-K and 6-K reports from the last eight days, with passages that name another tracked company or a dollar figure, capped at 30 and ranked partners first; it also lists records past the amber stale mark. Output goes to news/latest.json on the fetch branch. The Monday review that reads it is a Duet routine Carson sets up.
+- D64 CHANGELOG.md holds one entry a week, printed by scripts/changelog.py from the records; the first entry is week 44.
+- P26 (proposed, kept on the branch on the coordinator's recommendation while Carson has not said otherwise) Remove the vendored d3 and d3-sankey files: the site draws its own SVG and never loads them. This amends P07 and P08 (the site stays dependency-free). Done on the session 14 branch; reverting is one commit if he says no.
+- D65 (was proposed as P27; Carson: "Keep MIT and CC BY", 2026-11-02) Licenses: MIT for the code (`LICENSE`) and CC BY 4.0 for the data in `data/` and the bundle and CSV built from it (`LICENSE-DATA.md`), credited "AI Value Chain Tracker (github.com/carsonstubstad/ai-value-chain), CC BY 4.0". Fonts keep the OFL; linked documents belong to their publishers; Epoch-derived data keeps Epoch's own credit. Shown in the README, on About the data and in the footer.
+
+## Gate 5 passed (2026-11-02, Carson: "Pass Gate 5")
+- D66 Gate 5 is passed: PR #11 merges to main and the site goes public on GitHub Pages, deployed from main by .github/workflows/pages.yml (validator and bundle check first, then site/ is published as is). The Monday review routine (set Nov 2, first run Nov 9) opens a pull request each week and never merges or deploys; publishing a change still means Carson merging it.
+
 ## Proposed at Gate 2 (2026-10-31), settled 2026-11-01 (O14)
 - P21 Company list: the 47 in data/companies-list.csv stand. Bench promotion order if a sourced edge appears: Core Scientific, Humain, Bloom Energy.
 - P22 Schema: six JSON Schemas in schema/ plus data/taxonomy.json. Financials are JSON records like the rest, not a CSV, so one validator covers everything.
 - P23 Loop sides are shown gross each way and never netted when either side is a cap or multi-year total. Company rankings use the largest single deal, never a sum of caps.
 
 ## Open (need Carson)
-- None. Next: session 14 (launch pages) on Carson's word, then Gate 5 (Pages).
+- None.

@@ -25,6 +25,7 @@ const ROUTES = [
   ["companies", "#/companies"],
   ["changes", "#/changes"],
   ["data", "#/data"],
+  ["method", "#/method"],
 ];
 const SIZES = { desktop: { width: 1280, height: 900 }, phone: { width: 390, height: 844 } };
 const problems = [];
@@ -135,6 +136,12 @@ for (const f of ["data/deals.csv", "data/bundle.json"]) {
   if (!res.ok()) problems.push(`${f} is not served (${res.status()})`);
 }
 if (!(await page.locator('a.btn[href="data/deals.csv"]').count())) problems.push("the Data page has no CSV button");
+// Footer links: Method opens, and About the data lands on its section.
+await page.click('#foot a[href="#/method"]');
+await page.waitForFunction(() => location.hash === "#/method" && document.title.startsWith("Method")).catch(() => problems.push("footer Method link did not open Method"));
+await page.click('#foot a[href="#/data#about"]');
+await page.waitForFunction(() => location.hash === "#/data#about").catch(() => problems.push("footer About the data link did not open it"));
+if (!(await page.locator("#about h2").isVisible())) problems.push("About the data section is not shown");
 await page.goto(BASE + "#/flows");
 await page.selectOption('select[data-field="focus"]', "openai");
 await page.waitForFunction(() => location.hash.includes("focus=openai")).catch(() => problems.push("trace picker did not set focus"));
@@ -153,4 +160,4 @@ if (problems.length) {
   console.log(`browser: ${problems.length} problems`);
   process.exit(1);
 }
-console.log(`browser: ${ROUTES.length} pages x 2 sizes x 2 themes and 32 interaction checks, 0 problems`);
+console.log(`browser: ${ROUTES.length} pages x 2 sizes x 2 themes and 35 interaction checks, 0 problems`);
