@@ -23,6 +23,6 @@ Approved at Gate 1 (D16 to D20). Each session is bounded, ends with the validato
 | 13d | Money flows | Layer level by default, bundled lines, Capital rail, trace isolates | Nothing | Medium | Done |
 | 13e | Words, fonts, phone | Word budgets enforced by the render test, self-hosted fonts in the site, phone pass | Accept (Gate 4 again) | Medium | Done, waits on Gate 4 |
 | 13f | Seed benched companies | Skipped until Carson asks (D34) | | | Skipped |
-| 14 | Launch pages | Method, About the data, README, changelog, first weekly entry; check Epoch terms (O12) | Yes to Pages (Gate 5) | Light | Done, waits on Gate 5 (D61 to D64) |
+| 14 | Launch pages | Method, About the data, README, changelog, first weekly entry; check Epoch terms (O12) | Yes to Pages (Gate 5) | Light | Done; Gate 5 passed (D66) |
 
 Bench (promote up to three only with a sourced edge to a tracked company): Core Scientific, Humain, Bloom Energy first; then KLA, Cisco, Schneider Electric, Eaton, Oklo, Equinix, Thrive Capital, Alibaba, DeepSeek.

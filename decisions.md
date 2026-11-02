@@ -140,10 +140,13 @@ Settled questions. Do not reopen without Carson. Add a dated line for every new 
 - P26 (proposed, kept on the branch on the coordinator's recommendation while Carson has not said otherwise) Remove the vendored d3 and d3-sankey files: the site draws its own SVG and never loads them. This amends P07 and P08 (the site stays dependency-free). Done on the session 14 branch; reverting is one commit if he says no.
 - D65 (was proposed as P27; Carson: "Keep MIT and CC BY", 2026-11-02) Licenses: MIT for the code (`LICENSE`) and CC BY 4.0 for the data in `data/` and the bundle and CSV built from it (`LICENSE-DATA.md`), credited "AI Value Chain Tracker (github.com/carsonstubstad/ai-value-chain), CC BY 4.0". Fonts keep the OFL; linked documents belong to their publishers; Epoch-derived data keeps Epoch's own credit. Shown in the README, on About the data and in the footer.
 
+## Gate 5 passed (2026-11-02, Carson: "Pass Gate 5")
+- D66 Gate 5 is passed: PR #11 merges to main and the site goes public on GitHub Pages, deployed from main by .github/workflows/pages.yml (validator and bundle check first, then site/ is published as is). The Monday review routine (set Nov 2, first run Nov 9) opens a pull request each week and never merges or deploys; publishing a change still means Carson merging it.
+
 ## Proposed at Gate 2 (2026-10-31), settled 2026-11-01 (O14)
 - P21 Company list: the 47 in data/companies-list.csv stand. Bench promotion order if a sourced edge appears: Core Scientific, Humain, Bloom Energy.
 - P22 Schema: six JSON Schemas in schema/ plus data/taxonomy.json. Financials are JSON records like the rest, not a CSV, so one validator covers everything.
 - P23 Loop sides are shown gross each way and never netted when either side is a cap or multi-year total. Company rankings use the largest single deal, never a sum of caps.
 
 ## Open (need Carson)
-- Gate 5: Carson's yes to merging PR #11 and turning on GitHub Pages, with the Monday review routine set up.
+- None.

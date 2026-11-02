@@ -1,0 +1,39 @@
+name: pages
+
+# Publishes site/ to GitHub Pages (Gate 5, D66). Runs on main only, after a merge Carson approved.
+# Pages must be set to deploy from GitHub Actions (Settings, Pages, Source) for this to publish.
+on:
+  push:
+    branches: [main]
+    paths:
+      - site/**
+      - .github/workflows/pages.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check before publishing
+        run: |
+          python3 scripts/validate.py
+          python3 scripts/bundle.py --check
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+      - id: deployment
+        uses: actions/deploy-pages@v4
