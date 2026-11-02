@@ -394,7 +394,7 @@ export function renderFlows(ctx) {
   <div id="controls"></div>
   <p class="toggle">
     ${sel(`<select data-field="focus" aria-label="Trace a company">${options(companyOptions, focus, "Trace a company")}</select>`)}
-    ${viewChip(`#/flows${ctx.qsWith("w", "")}`, "Ceilings", s.w !== "count")}${viewChip(`#/flows${ctx.qsWith("w", "count")}`, "Deal count", s.w === "count")}
+    <span class="grp">${viewChip(`#/flows${ctx.qsWith("w", "")}`, "Ceilings", s.w !== "count")}${viewChip(`#/flows${ctx.qsWith("w", "count")}`, "Deal count", s.w === "count")}</span>
     ${open.size ? `<span class="sep">|</span><span class="meta">Open: ${esc(opened.join("; "))}</span> <a href="#/flows${ctx.qsWith("open", [])}">Close all</a>` : ""}${focus ? `<span class="sep">|</span><a href="#/flows${ctx.qsWith("focus", "")}">Clear the trace</a>` : ""}
   </p>
   </div>

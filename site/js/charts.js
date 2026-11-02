@@ -292,7 +292,8 @@ function trackLen(ctx, v, opts, box, uid) {
     [100e9, 200e9].filter((t) => t < scale).forEach((t) => {
       const tx = x0 + t * px;
       out.push(`<line x1="${f1(tx)}" x2="${f1(tx)}" y1="${by - 4}" y2="${by + BH + 4}" stroke="var(--rule)"/>`);
-      out.push(`<text class="tick" x="${f1(tx + 4)}" y="${f1(by + BH / 2 + 3)}">${money(t)}</text>`);
+      // Labeled once, and only where the label clears the right-hand box (on a phone, $100B only).
+      if (tx + 4 + 40 < x1 + 10) out.push(`<text class="tick" x="${f1(tx + 4)}" y="${f1(by + BH / 2 + 3)}">${money(t)}</text>`);
     });
   }
   out.push(box(a, 0, by, BW, BH), box(b, W - BW, by, BW, BH));
