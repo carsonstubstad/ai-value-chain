@@ -1,0 +1,15 @@
+{
+ "id": "coreweave-openai-equity-2025-03-status-change-2025-05-14",
+ "date": "2025-05-14",
+ "kind": "status_change",
+ "companies": [
+  "coreweave",
+  "openai"
+ ],
+ "deal": "coreweave-openai-equity-2025-03",
+ "summary": "CoreWeave's 10-Q shows the $350M of stock issued to OpenAI, so the deal is closed and paid.",
+ "confidence": "filed",
+ "sources": [
+  "coreweave-10q-2025-q1"
+ ]
+}

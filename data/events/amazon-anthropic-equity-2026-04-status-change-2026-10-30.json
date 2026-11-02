@@ -1,0 +1,15 @@
+{
+ "id": "amazon-anthropic-equity-2026-04-status-change-2026-10-30",
+ "date": "2026-10-30",
+ "kind": "status_change",
+ "companies": [
+  "amazon",
+  "anthropic"
+ ],
+ "deal": "amazon-anthropic-equity-2026-04",
+ "summary": "Amazon's 10-Q shows $10B of its up to $25B Anthropic commitment funded, so the deal moves to signed.",
+ "confidence": "filed",
+ "sources": [
+  "amazon-10q-2026-q3"
+ ]
+}

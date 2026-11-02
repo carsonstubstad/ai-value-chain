@@ -1,0 +1,15 @@
+{
+ "id": "amazon-anthropic-equity-2023-09-basis-change-2026-10-30",
+ "date": "2026-10-30",
+ "kind": "basis_change",
+ "companies": [
+  "amazon",
+  "anthropic"
+ ],
+ "deal": "amazon-anthropic-equity-2023-09",
+ "summary": "Amazon's 10-Q confirms its first Anthropic round as funded, so it moves to paid and filed.",
+ "confidence": "filed",
+ "sources": [
+  "amazon-10q-2026-q3"
+ ]
+}

@@ -1,0 +1,15 @@
+{
+ "id": "nvidia-openai-guarantee-2026-08-new-deal-2026-08-26",
+ "date": "2026-08-26",
+ "kind": "new_deal",
+ "companies": [
+  "nvidia",
+  "openai"
+ ],
+ "deal": "nvidia-openai-guarantee-2026-08",
+ "summary": "NVIDIA's 10-Q discloses a guarantee of up to $105B on OpenAI's Ohio lease and power payments.",
+ "confidence": "filed",
+ "sources": [
+  "nvidia-10q-2026-q2"
+ ]
+}

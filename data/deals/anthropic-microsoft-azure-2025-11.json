@@ -14,5 +14,7 @@
  "last_checked": "2026-10-31",
  "sources": [
   "msft-nvda-anthropic-2025-11-18"
- ]
+ ],
+ "amount_kind": "multi_year_total",
+ "notes": "No term is stated. A compute purchase is drawn down over time, so the $30B is stored as a total commitment, not a one-time payment."
 }

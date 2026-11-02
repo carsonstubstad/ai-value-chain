@@ -1,6 +1,7 @@
 {
  "id": "coreweave-openai",
  "name": "CoreWeave and OpenAI",
+ "line": "CoreWeave gave OpenAI $350M of stock; OpenAI signed three CoreWeave contracts, the largest $11.9B.",
  "deals": [
   "coreweave-openai-equity-2025-03",
   "openai-coreweave-compute-2025-03",

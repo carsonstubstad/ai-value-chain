@@ -15,5 +15,6 @@
  "sources": [
   "nvidia-10q-2026-q2"
  ],
- "notes": "NVIDIA's 10-Q says it entered the guarantees in August 2026; the announced date is the filing date. They take effect as each of nine data centers opens, from NVIDIA's fiscal 2029, pay out only on tenant default, and shrink as OpenAI pays its leases. The landlord is an SB Energy affiliate, not a tracked company."
+ "notes": "NVIDIA's 10-Q says it entered the guarantees in August 2026; the announced date is the filing date. They take effect as each of nine data centers opens, from NVIDIA's fiscal 2029, pay out only on tenant default, and shrink as OpenAI pays its leases. The landlord is an SB Energy affiliate, not a tracked company.",
+ "contingent": true
 }

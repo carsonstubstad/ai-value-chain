@@ -1,0 +1,15 @@
+{
+ "id": "usg-intel-equity-2025-08-filing-2026-10-30",
+ "date": "2026-10-30",
+ "kind": "filing",
+ "companies": [
+  "us-government",
+  "intel"
+ ],
+ "deal": "usg-intel-equity-2025-08",
+ "summary": "Intel's 10-Q shows 132M shares still in escrow, so the stake stays committed rather than paid.",
+ "confidence": "filed",
+ "sources": [
+  "intel-10q-2026-q3"
+ ]
+}

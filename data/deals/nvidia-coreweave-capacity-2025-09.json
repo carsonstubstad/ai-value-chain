@@ -16,5 +16,6 @@
  "sources": [
   "coreweave-8k-nvidia-2025-09-09"
  ],
- "notes": "A backstop: NVIDIA pays only for capacity CoreWeave cannot sell. Subject to termination and delivery terms."
+ "notes": "A backstop: NVIDIA pays only for capacity CoreWeave cannot sell. Subject to termination and delivery terms.",
+ "contingent": true
 }

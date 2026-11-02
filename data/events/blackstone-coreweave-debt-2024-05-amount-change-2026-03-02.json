@@ -1,0 +1,15 @@
+{
+ "id": "blackstone-coreweave-debt-2024-05-amount-change-2026-03-02",
+ "date": "2026-03-02",
+ "kind": "amount_change",
+ "companies": [
+  "blackstone",
+  "coreweave"
+ ],
+ "deal": "blackstone-coreweave-debt-2024-05",
+ "summary": "CoreWeave's 10-K puts the Blackstone-led facility at $7.6B, replacing the $7.5B press release figure.",
+ "confidence": "filed",
+ "sources": [
+  "coreweave-10k-2025"
+ ]
+}

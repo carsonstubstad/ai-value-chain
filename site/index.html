@@ -4,26 +4,28 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>AI Value Chain Tracker</title>
+<meta name="description" content="Who pays whom to build AI: the AI value chain and the money flows between its players, every figure linked to its source.">
+<link rel="preload" href="fonts/newsreader-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/ibm-plex-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="css/site.css">
 </head>
 <body>
+<nav class="top" aria-label="Pages">
+  <div class="navin">
+    <a class="brand" href="#/"><svg viewBox="0 0 18 18" aria-hidden="true" fill="none" stroke-width="3"><path d="M9.45 2.52A6.5 6.5 0 0 1 12.12 3.30" stroke="var(--hw)"/><path d="M12.89 3.79A6.5 6.5 0 0 1 14.71 5.89" stroke="var(--hw)"/><path d="M15.09 6.72A6.5 6.5 0 0 1 15.48 9.47" stroke="var(--hw)"/><path d="M15.35 10.37A6.5 6.5 0 0 1 14.20 12.90" stroke="var(--hw)"/><path d="M13.60 13.59A6.5 6.5 0 0 1 11.26 15.09" stroke="var(--hw)"/><path d="M10.39 15.35A6.5 6.5 0 0 1 7.61 15.35" stroke="var(--infra)"/><path d="M6.74 15.09A6.5 6.5 0 0 1 4.40 13.59" stroke="var(--infra)"/><path d="M3.80 12.90A6.5 6.5 0 0 1 2.65 10.37" stroke="var(--infra)"/><path d="M2.52 9.47A6.5 6.5 0 0 1 2.91 6.72" stroke="var(--model)"/><path d="M3.29 5.89A6.5 6.5 0 0 1 5.11 3.79" stroke="var(--model)"/><path d="M5.88 3.30A6.5 6.5 0 0 1 8.55 2.52" stroke="var(--cap)"/></svg>AI Value Chain</a>
+    <a href="#/" data-nav="overview">Overview</a>
+    <a href="#/flows" data-nav="flows">Money flows</a>
+    <a href="#/loops" data-nav="loops">Loops</a>
+    <a href="#/companies" data-nav="companies">Companies</a>
+    <a href="#/changes" data-nav="changes">What changed</a>
+    <span class="seg" role="group" aria-label="Theme"><button type="button" data-theme-set="auto" aria-pressed="true">Auto</button><button type="button" data-theme-set="light" aria-pressed="false">Light</button><button type="button" data-theme-set="dark" aria-pressed="false">Dark</button></span>
+  </div>
+</nav>
 <main class="wrap">
-  <header class="masthead">
-    <div class="eyebrow">AI value chain tracker</div>
-    <h1>Who pays whom to build AI</h1>
-    <p class="state" id="state">Loading the data.</p>
-  </header>
-  <section aria-labelledby="chain-h">
-    <h2 id="chain-h" class="eyebrow">The chain, left to right</h2>
-    <div class="rail" id="rail"></div>
-  </section>
-  <section aria-labelledby="flows-h">
-    <h2 id="flows-h" class="eyebrow">Largest money flows, high end of each deal</h2>
-    <div class="flows" id="flows"></div>
-    <p class="legend">Solid bar: filed with a regulator. Striped bar: stated by a company. Dashed edge: a range or an "up to" cap. Amounts that were never disclosed are listed without a bar.</p>
-  </section>
+  <div id="view" class="view"><p class="empty">Loading the data.</p></div>
   <footer class="foot" id="foot"></footer>
 </main>
+<div class="tip" id="tip" role="tooltip" hidden></div>
 <script type="module" src="js/app.js"></script>
 </body>
 </html>

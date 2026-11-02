@@ -3,13 +3,13 @@ asml,ASML,equipment,,NL,public,ASML,https://www.asml.com/,Sole supplier of EUV l
 applied-materials,Applied Materials,equipment,,US,public,AMAT,https://www.appliedmaterials.com/,Broadest equipment vendor; US anchor for the layer
 tokyo-electron,Tokyo Electron,equipment,,JP,public,,https://www.tel.com/,Largest Japanese toolmaker; global coverage
 lam-research,Lam Research,equipment,,US,public,LRCX,https://www.lamresearch.com/,Etch and deposition with direct HBM and memory exposure
-nvidia,Nvidia,chip_design,capital,US,public,NVDA,https://www.nvidia.com/,Sits on nearly every loop as supplier and investor; the center of the map
+nvidia,NVIDIA,chip_design,capital,US,public,NVDA,https://www.nvidia.com/,Sits on nearly every loop as supplier and investor; the center of the map
 amd,AMD,chip_design,,US,public,AMD,https://www.amd.com/,"Second GPU supplier; its lab supply agreement reportedly includes equity warrants, a loop candidate"
 broadcom,Broadcom,chip_design,systems,US,public,AVGO,https://www.broadcom.com/,"Custom accelerators for hyperscalers and labs, plus networking silicon"
 arm,Arm,chip_design,,GB,public,ARM,https://www.arm.com/,"CPU IP across every layer; SoftBank-controlled, linking the capital rail"
-intel,Intel,chip_design,foundry,US,public,INTC,https://www.intel.com/,Equity stakes from the US government and Nvidia make it a cross-layer flow in its own right; foundry as secondary tag
+intel,Intel,chip_design,foundry,US,public,INTC,https://www.intel.com/,Equity stakes from the US government and NVIDIA make it a cross-layer flow in its own right; foundry as secondary tag
 tsmc,TSMC,foundry,,TW,public,TSM,https://www.tsmc.com/,Fabricates and packages nearly every leading-edge AI chip; CoWoS capacity is a chain-wide constraint
-sk-hynix,SK Hynix,memory,,KR,public,,https://www.skhynix.com/,HBM leader and principal supplier to Nvidia
+sk-hynix,SK Hynix,memory,,KR,public,,https://www.skhynix.com/,HBM leader and principal supplier to NVIDIA
 samsung,Samsung,memory,foundry,KR,public,,https://semiconductor.samsung.com/,DRAM and HBM at scale; foundry as secondary tag
 micron,Micron,memory,,US,public,MU,https://www.micron.com/,"US HBM supplier; CHIPS Act recipient, a capital-rail edge"
 foxconn,Foxconn (Hon Hai),systems,,TW,public,,https://www.foxconn.com/,Largest AI server and rack assembler; Taiwan coverage
@@ -21,7 +21,7 @@ vertiv,Vertiv,power,,US,public,VRT,https://www.vertiv.com/,Power and thermal equ
 ge-vernova,GE Vernova,power,,US,public,GEV,https://www.gevernova.com/,Gas turbines and grid equipment; the generation backlog story
 constellation,Constellation,power,,US,public,CEG,https://www.constellationenergy.com/,Nuclear power agreements with hyperscalers
 vistra,Vistra,power,,US,public,VST,https://vistracorp.com/,Power agreements and co-located capacity for data centers
-coreweave,CoreWeave,data_centers,,US,public,CRWV,https://www.coreweave.com/,"The archetypal neocloud; GPU-backed debt, hyperscaler and lab contracts, Nvidia equity"
+coreweave,CoreWeave,data_centers,,US,public,CRWV,https://www.coreweave.com/,"The archetypal neocloud; GPU-backed debt, hyperscaler and lab contracts, NVIDIA equity"
 nebius,Nebius,data_centers,,NL,public,NBIS,https://nebius.com/,Hyperscaler capacity contracts; Europe-origin coverage
 crusoe,Crusoe,data_centers,,US,private,,https://www.crusoe.ai/,Builder of flagship lab campuses
 lambda,Lambda,data_centers,,US,private,,https://lambda.ai/,GPU cloud with lab and hyperscaler contracts

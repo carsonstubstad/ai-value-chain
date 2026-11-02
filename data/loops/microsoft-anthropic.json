@@ -1,6 +1,7 @@
 {
  "id": "microsoft-anthropic",
  "name": "Microsoft and Anthropic",
+ "line": "Microsoft committed up to $5B to Anthropic; Anthropic committed $30B to Azure.",
  "deals": [
   "microsoft-anthropic-equity-2025-11",
   "anthropic-microsoft-azure-2025-11"

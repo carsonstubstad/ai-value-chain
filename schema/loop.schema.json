@@ -7,7 +7,8 @@
   "deals",
   "flagged_by",
   "explanation",
-  "last_checked"
+  "last_checked",
+  "line"
  ],
  "properties": {
   "id": {
@@ -37,6 +38,10 @@
   "last_checked": {
    "type": "string",
    "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+  },
+  "line": {
+   "type": "string",
+   "description": "One line of 15 words or fewer for the loop card (D39). Single sourced figures only, never a sum."
   }
  }
 }

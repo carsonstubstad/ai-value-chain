@@ -1,0 +1,15 @@
+{
+ "id": "meta-nebius-compute-2026-03-new-deal-2026-03-16",
+ "date": "2026-03-16",
+ "kind": "new_deal",
+ "companies": [
+  "meta",
+  "nebius"
+ ],
+ "deal": "meta-nebius-compute-2026-03",
+ "summary": "Meta signs $12B to $27B of Nebius capacity over five years, per Nebius's filing.",
+ "confidence": "filed",
+ "sources": [
+  "nebius-meta-6k-2026-03-16"
+ ]
+}

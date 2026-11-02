@@ -1,0 +1,15 @@
+{
+ "id": "openai-amazon-compute-2026-02-new-deal-2026-02-27",
+ "date": "2026-02-27",
+ "kind": "new_deal",
+ "companies": [
+  "openai",
+  "amazon"
+ ],
+ "deal": "openai-amazon-compute-2026-02",
+ "summary": "OpenAI adds $100B over eight years to its AWS commitment.",
+ "confidence": "company_stated",
+ "sources": [
+  "amazon-openai-2026-02-27"
+ ]
+}

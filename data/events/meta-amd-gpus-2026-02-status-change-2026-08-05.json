@@ -1,0 +1,15 @@
+{
+ "id": "meta-amd-gpus-2026-02-status-change-2026-08-05",
+ "date": "2026-08-05",
+ "kind": "status_change",
+ "companies": [
+  "meta",
+  "amd"
+ ],
+ "deal": "meta-amd-gpus-2026-02",
+ "summary": "AMD's 10-Q describes the Meta GPU agreement as signed.",
+ "confidence": "filed",
+ "sources": [
+  "amd-10q-2026-q2"
+ ]
+}

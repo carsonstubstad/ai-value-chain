@@ -1,0 +1,15 @@
+{
+ "id": "anthropic-aws-spend-2026-04-status-change-2026-10-30",
+ "date": "2026-10-30",
+ "kind": "status_change",
+ "companies": [
+  "anthropic",
+  "amazon"
+ ],
+ "deal": "anthropic-aws-spend-2026-04",
+ "summary": "Amazon's 10-Q describes Anthropic's AWS spending commitment as signed.",
+ "confidence": "filed",
+ "sources": [
+  "amazon-10q-2026-q3"
+ ]
+}

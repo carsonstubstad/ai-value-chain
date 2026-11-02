@@ -19,5 +19,8 @@
   "msft-10q-2026-03-31",
   "msft-10q-2026-09-30"
  ],
- "notes": "Cumulative commitments made in tranches since 2019, as reported in Microsoft's 10-Qs. The announced date is the as-of date of the first 10-Q figure used, not of any single tranche. The stake fell from about 27% after the October 2025 recapitalization to about 24% by September 30, 2026. The value of the stake is a valuation, not money paid, so it is not stored as an amount."
+ "notes": "Cumulative commitments made in tranches since 2019, as reported in Microsoft's 10-Qs. The announced date is the as-of date of the first 10-Q figure used, not of any single tranche. The stake fell from about 27% after the October 2025 recapitalization to about 24% by September 30, 2026. The value of the stake is a valuation, not money paid, so it is not stored as an amount.",
+ "paid_to_date_usd": 11800000000.0,
+ "paid_as_of": "2026-03-31",
+ "paid_source": "msft-10q-2026-03-31"
 }

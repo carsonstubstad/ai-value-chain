@@ -1,6 +1,7 @@
 {
  "id": "nvidia-openai",
  "name": "NVIDIA and OpenAI",
+ "line": "NVIDIA intends up to $100B and committed $30B; OpenAI plans 10 GW of NVIDIA systems.",
  "deals": [
   "nvidia-openai-equity-2025-09",
   "nvidia-openai-equity-2026-02",

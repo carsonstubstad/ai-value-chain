@@ -1,6 +1,7 @@
 {
  "id": "microsoft-openai",
  "name": "Microsoft and OpenAI",
+ "line": "Microsoft has funded $11.8B of $13B; OpenAI promised $250B of Azure back.",
  "deals": [
   "microsoft-openai-equity-2019",
   "openai-microsoft-azure-2025-10",
