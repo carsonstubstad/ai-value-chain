@@ -59,7 +59,7 @@ if (def.some((d) => d.confidence === "rumored")) problems.push("default filters 
 // select options, the filter drawer or the F/S/R markers. A word has a letter or digit.
 // The phone ledger repeats the sankey in words, so it is counted once, as the chart (HANDOFF 6);
 // a ledger of bars is a chart, as the mockup counts it. A chart's key line under it is a chart label
-// (D39 "excluding chart labels"; D56 proposed in 14f, when round 7 added two key lines).
+// (D39 "excluding chart labels"; D57, when round 7 added two key lines).
 const strip = (h) => h.replace(/<p class="legend">[\s\S]*?<\/p>/g, " ").replace(/<div class="phone-only">[\s\S]*?<\/div>/g, " ").replace(/<ul class="ledger[^"]*">[\s\S]*?<\/ul>/g, " ").replace(/<svg[\s\S]*?<\/svg>/g, " ").replace(/<select[\s\S]*?<\/select>/g, " ")
   .replace(/<details class="more"[\s\S]*?<\/details>/g, " ").replace(/<span class="mk"[^>]*>[^<]*<\/span>/g, " ");
 const words = (h) => strip(h).replace(/<[^>]+>/g, " ").replace(/&#39;/g, "'").replace(/&[a-z#0-9]+;/g, " ").split(/\s+/).filter((w) => /[A-Za-z0-9]/.test(w)).length;

@@ -123,8 +123,11 @@ Settled questions. Do not reopen without Carson. Add a dated line for every new 
 
 ## Round 7 review (2026-11-02, Carson: run session 14f per mockups/round7/REVIEW.md)
 - D56 Overview sankey: ribbons of $20B or more are drawn and labeled; smaller ones are 1px hairlines at 40% with no label, counted in the line under the key ("N smaller flows are unlabeled; see Money flows."). One computed sentence sits on the chart under the largest ribbon. Money flows keeps every ribbon and every label of $5B or more.
-- P24 (proposed in 14f, needs Carson) The word counter treats a chart's key line as a chart label (D39 excludes chart labels). Round 7 added two key lines and the Overview would read 263 words counted the old way; counted this way it reads 227. The alternative is to cut copy elsewhere.
-- P25 (proposed in 14f, needs Carson) The Overview sentence reads "clouds have paid labs $79.8B of $102B", not the review's $58B: $58B is the three deals recorded as paid, and the records also hold $21.8B paid to date on two committed deals (Amazon into Anthropic, Microsoft into OpenAI), which the ribbon already draws as paid. Likewise the records give 9 flows under $20B, not 7.
+
+## Settled by Carson (2026-11-02, "Approve all three", after 14f)
+- D57 (was proposed as P24 in 14f; renumbered because P24 and P25 were already used at Gate 2 and 3) The word counter treats a chart's key line as a chart label, as D39 excludes chart labels. The Overview reads 227 words this way (263 counted the old way).
+- D58 (was proposed as P25 in 14f) The Overview sentence uses the records: "clouds have paid labs $79.8B of $102B", counting the $58B of deals recorded as paid plus $21.8B paid to date on two committed deals (Amazon into Anthropic, Microsoft into OpenAI), as the ribbon already draws. The records give 9 hairline flows under $20B, not the review's 7. The render test recounts both from the records.
+- D59 Epoch AI terms (closes O12): the data hub and dataset pages state CC BY 4.0 (checked 2026-11-02), so derived CSV and JSON may be republished on the public site with credit and a note of changes. Footer and Method line in session 14: "Includes data from Epoch AI (epoch.ai/data), licensed CC BY 4.0 (creativecommons.org/licenses/by/4.0). Changes made: filtered and summarized." Each record that uses Epoch data cites the dataset name, its page URL and the date accessed. Not checked: site-wide terms (none found) and the AI companies, AI chip sales and chip owners pages; check those pages before using their data.
 
 ## Proposed at Gate 2 (2026-10-31), settled 2026-11-01 (O14)
 - P21 Company list: the 47 in data/companies-list.csv stand. Bench promotion order if a sourced edge appears: Core Scientific, Humain, Bloom Energy.
@@ -132,4 +135,4 @@ Settled questions. Do not reopen without Carson. Add a dated line for every new 
 - P23 Loop sides are shown gross each way and never netted when either side is a cap or multi-year total. Company rankings use the largest single deal, never a sum of caps.
 
 ## Open (need Carson)
-- O12 Epoch AI terms of use: confirm before Gate 5. Checked 2026-11-02: the data hub and the dataset pages (AI data centers, AI models, ML hardware, GPU clusters) state CC BY 4.0, which allows republishing derived CSV and JSON on a public site with attribution and a note of changes. The downloads page shows only a copyright line; no general site terms of use were found; the AI companies, AI chip sales and chip owners pages were not checked. The bundle holds no Epoch-sourced record today. Proposed footer and Method line: "Includes data from Epoch AI (epoch.ai/data), licensed CC BY 4.0 (creativecommons.org/licenses/by/4.0). Changes made: filtered and summarized." Each record that uses Epoch data also cites the dataset name, its page URL and the date accessed.
+- None. Next gates: Gate 4 pass and the merge of PR #10, then session 14 and Gate 5 (Pages).

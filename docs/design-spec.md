@@ -1,6 +1,6 @@
 # Design spec (round 6, as built in sessions 14a to 14e, with the round 7 changes from 14f)
 
-This is the reference for how the site looks and why. It is rewritten from `mockups/round6/spec.md` and `mockups/round6/HANDOFF.md` and describes what is built on the branch. Decisions D48 to D56 in `decisions.md` settle it, with the round 7 review (`mockups/round7/REVIEW.md`) applied in session 14f; P04 (color means layer) and P23 (no netting, counts not sums of caps) still hold. The mockups stay in `mockups/round6/` (the `png/` folder has the reference screenshots).
+This is the reference for how the site looks and why. It is rewritten from `mockups/round6/spec.md` and `mockups/round6/HANDOFF.md` and describes what is built on the branch. Decisions D48 to D59 in `decisions.md` settle it, with the round 7 review (`mockups/round7/REVIEW.md`) applied in session 14f; P04 (color means layer) and P23 (no netting, counts not sums of caps) still hold. The mockups stay in `mockups/round6/` (the `png/` folder has the reference screenshots).
 
 ## 1. Tokens
 
