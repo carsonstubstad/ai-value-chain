@@ -66,4 +66,10 @@ Every Monday at 06:00 UTC, `.github/workflows/fetch.yml` looks up the tracked co
 - Fonts: IBM Plex Sans, IBM Plex Mono and Newsreader, under the SIL Open Font License 1.1 (see `site/fonts/`).
 - Where a record uses Epoch AI data, the site says: "Includes data from Epoch AI (epoch.ai/data), licensed CC BY 4.0 (creativecommons.org/licenses/by/4.0). Changes made: filtered and summarized."
 
+## License
+
+- Code: MIT License, in `LICENSE`.
+- Data (`data/`, and `site/data/bundle.json` and `deals.csv` built from it): CC BY 4.0, in `LICENSE-DATA.md`. Credit "AI Value Chain Tracker (github.com/carsonstubstad/ai-value-chain), CC BY 4.0."
+- Fonts keep the SIL Open Font License 1.1, and documents the records link to belong to their publishers.
+
 How the design was decided is in `decisions.md` and `docs/design-spec.md`.

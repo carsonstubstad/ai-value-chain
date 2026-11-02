@@ -223,6 +223,7 @@ budgets("method", V.renderMethod(c0));
     if (!html.includes(`${LINE} (<a href="https://epoch.ai/data"`) || !html.includes("Changes made: filtered and summarized.")) problems.push(`${label}: the Epoch AI credit is missing when a record cites Epoch`);
   }
   if (!V.renderFoot(ce).includes("includes Epoch AI data, CC BY 4.0")) problems.push("footer: no Epoch AI credit when a record cites Epoch");
+  if (!V.renderFoot(c0).includes("code (MIT) and data (CC BY 4.0)") || !about.includes("creativecommons.org/licenses/by/4.0/")) problems.push("footer or about: the licenses are not stated (D65)");
   if (!/href="#\/method"/.test(V.renderFoot(c0)) || !/href="#\/data#about"/.test(V.renderFoot(c0))) problems.push("footer: no link to Method or About the data");
 }
 const foot = V.renderFoot(c0);

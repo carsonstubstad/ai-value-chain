@@ -261,6 +261,7 @@ export function findings(ctx) {
 // ---------- Data page (D53): the bundle and a deals CSV, both rebuilt by bundle.py ----------
 
 // The Epoch AI credit (D59), shown wherever a record uses Epoch data, in the footer and on Method.
+const REPO = "https://github.com/carsonstubstad/ai-value-chain";
 const usesEpoch = (data) => data.sources.some((src) => /epoch/i.test(`${src.publisher || ""} ${src.url || ""}`));
 const EPOCH_LINE = `Includes data from Epoch AI (<a href="https://epoch.ai/data" target="_blank" rel="noopener">epoch.ai/data</a>), licensed CC BY 4.0 (<a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">creativecommons.org/licenses/by/4.0</a>). Changes made: filtered and summarized.`;
 const count = (xs, f) => xs.reduce((m, x) => m.set(f(x), (m.get(f(x)) || 0) + 1), new Map());
@@ -286,6 +287,7 @@ export function renderData(ctx) {
       <li>${plural(data.sources.length, "source", "sources")}: ${esc(kinds)}. Each records its publisher, link and the date it was read.</li>
       <li>Ranges stay as a low and a high; caps and multi-year totals are marked and never summed as cash. Amounts are in US dollars; a deal stated only in another currency carries no dollar figure.</li>
       <li>Public information only, data as of ${esc(fmtDate(idx.asOf))}. Not investment advice. <a href="#/method">How the tracker works</a>.</li>
+      <li>The data is free to reuse under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>: credit "AI Value Chain Tracker" with a link. The code is under the <a href="${REPO}/blob/main/LICENSE" target="_blank" rel="noopener">MIT License</a>.</li>
     </ul>
     ${usesEpoch(data) ? `<p class="meta">${EPOCH_LINE}</p>` : ""}
   </section>`;
@@ -524,5 +526,5 @@ export function renderChanges(ctx) {
 
 export function renderFoot(ctx) {
   const { data } = ctx;
-  return `<p>${data.companies.length} companies · ${data.deals.length} deals · ${data.sources.length} sources · F filed, S stated, R reported · not investment advice · <a href="#/method">Method</a> · <a href="#/data#about">About the data</a> · <a href="https://github.com/carsonstubstad/ai-value-chain">code and data</a>${usesEpoch(data) ? ` · <a href="#/method#credits">includes Epoch AI data, CC BY 4.0</a>` : ""}</p>`;
+  return `<p>${data.companies.length} companies · ${data.deals.length} deals · ${data.sources.length} sources · F filed, S stated, R reported · not investment advice · <a href="#/method">Method</a> · <a href="#/data#about">About the data</a> · <a href="${REPO}">code (MIT) and data (CC BY 4.0)</a>${usesEpoch(data) ? ` · <a href="#/method#credits">includes Epoch AI data, CC BY 4.0</a>` : ""}</p>`;
 }

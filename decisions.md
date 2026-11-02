@@ -137,8 +137,8 @@ Settled questions. Do not reopen without Carson. Add a dated line for every new 
 - D62 The Epoch AI credit (D59) appears in full on Method and About the data, and as a short link in the footer ("includes Epoch AI data, CC BY 4.0"), exactly when a record cites Epoch AI; the footer stays one line (D39). No record cites Epoch today, so today Method says so instead.
 - D63 Weekly news gather (P16): fetch.yml's news job lists each tracked filer's 8-K and 6-K reports from the last eight days, with passages that name another tracked company or a dollar figure, capped at 30 and ranked partners first; it also lists records past the amber stale mark. Output goes to news/latest.json on the fetch branch. The Monday review that reads it is a Duet routine Carson sets up.
 - D64 CHANGELOG.md holds one entry a week, printed by scripts/changelog.py from the records; the first entry is week 44.
-- P26 (proposed, needs Carson) Remove the vendored d3 and d3-sankey files: the site draws its own SVG and never loads them. This amends P07 and P08 (the site stays dependency-free). Done on the session 14 branch; reverting is one commit if he says no.
-- P27 (proposed, needs Carson) Add a license before Pages goes on. The repo has none, so by default no one may reuse the code or data. Suggested: MIT for the code and CC BY 4.0 for the data, matching Epoch's terms.
+- P26 (proposed, kept on the branch on the coordinator's recommendation while Carson has not said otherwise) Remove the vendored d3 and d3-sankey files: the site draws its own SVG and never loads them. This amends P07 and P08 (the site stays dependency-free). Done on the session 14 branch; reverting is one commit if he says no.
+- D65 (was proposed as P27; Carson: "Keep MIT and CC BY", 2026-11-02) Licenses: MIT for the code (`LICENSE`) and CC BY 4.0 for the data in `data/` and the bundle and CSV built from it (`LICENSE-DATA.md`), credited "AI Value Chain Tracker (github.com/carsonstubstad/ai-value-chain), CC BY 4.0". Fonts keep the OFL; linked documents belong to their publishers; Epoch-derived data keeps Epoch's own credit. Shown in the README, on About the data and in the footer.
 
 ## Proposed at Gate 2 (2026-10-31), settled 2026-11-01 (O14)
 - P21 Company list: the 47 in data/companies-list.csv stand. Bench promotion order if a sourced edge appears: Core Scientific, Humain, Bloom Energy.
@@ -146,4 +146,4 @@ Settled questions. Do not reopen without Carson. Add a dated line for every new 
 - P23 Loop sides are shown gross each way and never netted when either side is a cap or multi-year total. Company rankings use the largest single deal, never a sum of caps.
 
 ## Open (need Carson)
-- Gate 5: Carson's yes to turning on GitHub Pages, after P26, P27 and the Monday review routine are settled.
+- Gate 5: Carson's yes to merging PR #11 and turning on GitHub Pages, with the Monday review routine set up.
