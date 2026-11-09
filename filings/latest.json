@@ -1,5 +1,5 @@
 {
- "run_at": "2026-11-02T17:35:58+00:00",
+ "run_at": "2026-11-09T15:56:18+00:00",
  "companies": {
   "alphabet": {
    "cik": "0001652044",
@@ -195,26 +195,19 @@
    "filings": [
     {
      "form": "10-Q",
-     "filed": "2026-08-05",
-     "period": "2026-06-27",
-     "accession": "0000002488-26-000123",
-     "doc": "amd-20260627.htm",
-     "url": "https://www.sec.gov/Archives/edgar/data/2488/000000248826000123/amd-20260627.htm",
-     "chars": 228212,
+     "filed": "2026-11-04",
+     "period": "2026-09-26",
+     "accession": "0000002488-26-000191",
+     "doc": "amd-20260926.htm",
+     "url": "https://www.sec.gov/Archives/edgar/data/2488/000000248826000191/amd-20260926.htm",
+     "chars": 253050,
      "passages": [
       {
        "terms": [
         "Meta",
         "OpenAI"
        ],
-       "text": "nts do not include the 1% excise tax on stock repurchases enacted by the Inflation Reduction Act of 2022. As of June 27, 2026, $ 9.2 billion remained available for future stock repurchases under the Repurchase Program. The Repurchase Program does not obligate the Company to acquire any common stock, has no termination date and may be suspended or discontinued at any time. Warrants In October 2025 and February 2026, the Company issued warrants to OpenAI OpCo, LLC (OpenAI) and Meta Platforms, Inc. (Meta), each entitling the holder the right to purchase up to 160 million shares of the Company’s common stock at an exercise price of $0.01 per share (the OpenAI Warrant and the Meta Warrant, respectively). The warrants vest in tranches based on specified AMD Instinct TM GPU purchase milestones by OpenAI, Meta, their affiliates, or indirectly through authorized third-parties and achievement of specified stock price targets. The vesting of the OpenAI Warrant is also subject to stock‑performance thresholds. Each vested tranche is further subject to additional technical and commercial conditions before becoming exercisable. The OpenAI Warrant and Meta Warrant is exercisable through October 5, 2030 and February 23, 2031, respectively. The warrants will be classified as liabilities until certain conditions for equity classification are met. As of June 27, 2026, no warrant shares had vested or become exercisable, and the warrants had no impact on the Condensed Consolidated Financial Statements for the three and six months ended June 27, 2026. Stock-based Compensation Stock-based compensation exp"
-      },
-      {
-       "terms": [
-        "Meta",
-        "OpenAI"
-       ],
-       "text": "6, our cash, cash equivalents and short-term investments were $13.1 billion compared to $10.6 billion as of December 27, 2025. During the six months ended June 27, 2026 , we generated $5.3 billion of cash from operating activities and we returned $221 million to stockholders through the repurchase of common stock under our stock repurchase program (Repurchase Program). In October 2025 and February 2026, we entered into multi-year agreements with OpenAI OpCo, LLC (OpenAI) and Meta Platforms, Inc. (Meta), respectively, under which each customer intends to deploy up to 6 gigawatts of AMD data center GPUs, with the first gigawatt of each deployment powered by our AMD Instinct MI450 series products. In connection with these agreements, we issued each customer a warrant to purchase up to 160 million shares of our common stock at an exercise price of $0.01 per share, vesting in tranches tied to AMD Instinct GPU purchase milestones and specified AMD"
+       "text": "s in the future. The trading price of our stock may fluctuate widely due to various factors including: actual or anticipated fluctuations in our financial conditions and operating results; failure to meet expectations related to future growth; changes in financial estimates by us or financial estimates and ratings by securities analysts; the potential dilutive effect of the exercise of outstanding warrants, such as the warrants we have issued to OpenAI OpCo., LLC and Meta Platforms, Inc. that are exercisable for up to a combined 320 million shares of our common stock, subject to certain vesting and exercise conditions (the customer warrants); changes in our capital structure, including issuance of additional debt or equity to the public; competitive landscape; news regarding our products or products of our competitors or other actions taken by competitors; broad market industry and competitor-related fluctuations"
       }
      ]
     },
@@ -373,12 +366,12 @@
    "filings": [
     {
      "form": "10-Q",
-     "filed": "2026-08-07",
-     "period": "2026-06-30",
-     "accession": "0001193125-26-340208",
-     "doc": "d158269d10q.htm",
-     "url": "https://www.sec.gov/Archives/edgar/data/1393818/000119312526340208/d158269d10q.htm",
-     "chars": 418175,
+     "filed": "2026-11-06",
+     "period": "2026-09-30",
+     "accession": "0001193125-26-451802",
+     "doc": "d179995d10q.htm",
+     "url": "https://www.sec.gov/Archives/edgar/data/1393818/000119312526451802/d179995d10q.htm",
+     "chars": 428088,
      "passages": []
     },
     {
@@ -1729,18 +1722,18 @@
    "filings": [
     {
      "form": "10-Q",
-     "filed": "2026-08-10",
-     "period": "2026-06-30",
-     "accession": "0001692819-26-000019",
-     "doc": "vistra-20260630.htm",
-     "url": "https://www.sec.gov/Archives/edgar/data/1692819/000169281926000019/vistra-20260630.htm",
-     "chars": 261990,
+     "filed": "2026-11-09",
+     "period": "2026-09-30",
+     "accession": "0001692819-26-000025",
+     "doc": "vistra-20260930.htm",
+     "url": "https://www.sec.gov/Archives/edgar/data/1692819/000169281926000025/vistra-20260930.htm",
+     "chars": 280285,
      "passages": [
       {
        "terms": [
         "Meta"
        ],
-       "text": "related to the revolving credit loans, revolving credit commitments, letters of credit, letters of commitments and/or secured cash management agreements, in each case, under the Vistra Operations Credit Agreement. The Vistra Operations Commodity-Linked Credit Facility was amended to release each guarantor from its guarantee. PJM Nuclear Power Purchase Agreements and Uprates In January 2026, Vistra announced it had entered into 20-year PPAs with Meta, pursuant to which the Company has agreed to supply Meta with a total of 2,609 MW of carbon-free power and capacity from the Company's PJM nuclear power plants as follows: • 1,268 MW of energy and capacity from Perry and 908 MW of energy and capacity from Davis-Besse; and • 213 MW of uprate energy and capacity from Perry, 80 MW of uprate energy and capacity from Davis-Besse, and 140 MW of uprate energy and capacity from Beaver Valley. Under the terms of the PPAs, the Company anticipates commencing del"
+       "text": "ers of credit, letter of credit commitments and/or secured cash management agreements (although guarantees related to secured hedging agreements remain), in each case, under the Vistra Operations Credit Agreement. The Vistra Operations Commodity-Linked Credit Agreement was amended to release each guarantor from its guarantee. PJM Nuclear Power Purchase Agreements and Uprates In January 2026, Vistra announced it had entered into 20-year PPAs with Meta, pursuant to which the Company has agreed to supply Meta with a total of 2,609 MW of carbon-free power and capacity from the Company's PJM nuclear power plants as follows: • 1,268 MW of energy and capacity from Perry and 908 MW of energy and capacity from Davis-Besse; and • 213 MW of uprate energy and capacity from Perry, 80 MW of uprate energy and capacity from Davis-Besse, and 140 MW of uprate energy and capacity from Beaver Valley. Under the terms of the PPAs, the Company anticipates commencing del"
       }
      ]
     },
