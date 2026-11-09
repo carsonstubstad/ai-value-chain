@@ -1,5 +1,5 @@
 {
- "run_at": "2026-11-02T17:32:52+00:00",
+ "run_at": "2026-11-09T15:55:43+00:00",
  "sec": {
   "asml": {
    "ticker": "ASML",
@@ -391,7 +391,8 @@
    "cik": "0001326801",
    "sec_name": "Meta Platforms, Inc.",
    "tickers": [
-    "META"
+    "META",
+    "METAM"
    ],
    "sic": "Services-Computer Programming, Data Processing, Etc.",
    "incorporated": "DE",
@@ -622,7 +623,7 @@
   "lambda": {
    "url": "https://lambda.ai/",
    "status": 200,
-   "final_url": "https://lambda.ai/"
+   "final_url": "https://lambda.com/"
   },
   "digital-realty": {
    "url": "https://www.digitalrealty.com/",
