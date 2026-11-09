@@ -1,6 +1,6 @@
 {
- "run_at": "2026-11-02T17:36:34+00:00",
- "since": "2026-10-25",
+ "run_at": "2026-11-09T15:57:01+00:00",
+ "since": "2026-11-01",
  "cap": 30,
  "stale": {
   "days": 90,
@@ -10,108 +10,61 @@
  "candidates": [
   {
    "form": "8-K",
-   "filed": "2026-10-29",
-   "accession": "0001018724-26-000038",
-   "doc": "amzn-20261029.htm",
+   "filed": "2026-11-03",
+   "accession": "0001596532-26-000252",
+   "doc": "anet-20261103.htm",
    "items": "2.02,9.01",
-   "company": "amazon",
-   "url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872426000038/amzn-20261029.htm",
+   "company": "arista",
+   "url": "https://www.sec.gov/Archives/edgar/data/1596532/000159653226000252/anet-20261103.htm",
    "exhibits": [
-    "amzn-20260930xex991.htm",
-    "amzn-20260930xex992.htm"
+    "ex991q326-earningsrelease.htm"
    ],
    "partners": [
+    "amd",
     "anthropic",
-    "lambda",
+    "arm",
+    "broadcom",
     "meta",
+    "microsoft",
+    "openai"
+   ],
+   "passages": [
+    "-99.1 Document Exhibit 99.1 Arista Networks, Inc. Reports Third Quarter 2026 Financial Results • Delivered total revenues in Q3 2026 of approximately $3.66 billion, exceeding guidance of $3.3 billion while growing 58.5%, the highest year-over-year revenue growth since our IPO. • In partnership with AMD, Arm, Broadcom, d-Matrix, Meta, Microsoft, and Qualcomm, Arista launched open standards-based rack-scale architectures for scale-up and scale-out AI networks. • In September 2026, Arista was added to the S&P 100, an index comprised of 100 major blue-chip companies across multiple industry groups. SANTA CLARA, Calif. - November 3, 2026 -- A",
+    "iplane forwarding, deterministic routing, and real-time congestion signaling enable lossless, high-radix AI fabrics across geographically distributed data centers up to one million XPUs. • Arista expanded AI-driven software security across its development lifecycle – Collaborating with the likes of Anthropic, Google, and OpenAI, Arista embedded domain-specific AI harnesses that accelerate 1 proactive vulnerability discovery, building on the company’s track record of low CVEs and no-downtime upgrades. Financial Outlook For the fourth quarter of 2026, we expect: • Revenue of $3.9 - $4.0 billion; • Non-GAAP operating margin"
+   ],
+   "money": true
+  },
+  {
+   "form": "6-K",
+   "filed": "2026-11-04",
+   "accession": "0001973239-26-000142",
+   "doc": "arm-20260930.htm",
+   "items": "",
+   "company": "arm",
+   "url": "https://www.sec.gov/Archives/edgar/data/1973239/000197323926000142/arm-20260930.htm",
+   "exhibits": [],
+   "partners": [
+    "amd",
     "nvidia",
-    "openai",
-    "oracle",
-    "salesforce",
-    "samsung"
+    "softbank"
    ],
    "passages": [
-    "$20.7 billion in the third quarter, or $1.89 per diluted share, compared with $21.2 billion, or $1.95 per diluted share, in third quarter 2025. This decrease is driven primarily by pre-tax gains of $9.5 billion in third quarter 2025 included in non-operating income (expense) from our investments in Anthropic. • Operating cash flow increased 29% to $168.3 billion for the trailing twelve months, compared with $130.7 billion for the trailing twelve months ended September 30, 2025. • Free cash flow decreased to an outflow of $42.4 billion for the trailing twelve months, driven primarily by a year-over-year",
-    "that need the robust infrastructure, controls, and tools necessary to run agents at production scale. Tens of thousands of customers currently use AgentCore, and they deployed 2x more agents in Q3 than the prior three quarters combined. • Recently topped a $1 billion annualized revenue run rate for Lambda, AWS’s flagship serverless offering, which is used by enterprises like Samsung, Volkswagen, United Airlines, Mercedes-Benz, and Booking.com. • Launched Lambda Web Functions to allow developers to run scalable, responsive web applications that serve global audiences on Lambda. Web Functions gives developers the flexibility to use a variety of popular web frameworks and iterate quickly, while Lambda handles scaling, multi-region distribution, and active CPU billing. • Made AWS Continuum—an AI-powered security service that automatically discovers, prioritizes, validates, and remediates software vulnerabilities at machine speed—generally available. Also announced that it’s bringing Continuum into Anthropic’s Claude Code, OpenAI’s Codex, and AWS’s Kiro. Continuum is already being used by companies like Capital One, IBM, Infor, Luminate, and Robinhood. • Expanded Amazon Quick, an intelligent AI work companion, into Outlook, Word, PowerPoint, and Excel. It can also now keep running when your laptop is closed. Companies like",
-    "y to Pharmacy to Amazon Leo to Zoox are progressing encouragingly. There has never been a trillion dollar revenue business, and we may have two of them in the next 5-10 years.” Some other highlights since the company’s last earnings announcement include that Amazon: • Signed new AWS agreements with Meta, NVIDIA, OpenAI, Salesforce, Oracle, Qualcomm, Verizon, ADP, Stripe, Accenture Edge, Novo, Fanatics, Zoom, Raymond James, Prometheus AI, AppFolio, Instructure, Cognition, Sigma, Lila Sciences, The Biological Computing Co., NATO, Columbia University Irving Medical Center, and more. • Drove continued rapid growth for Amazon Bedrock, AWS’s inference service, with Fortune 500 companies spending nearly 7x more year-over-year and total Bedrock token volume growing nearly 17x year-over-year. • Expanded Bedrock’s leading selection of frontier and open weight models, adding OpenAI’s GPT-6 Astra, GPT-6 Sol, GPT-6 Luna, and GPT-6.1 Sol; Anthropic’s Claude Fable 5.1, Opus 5.5, Sonnet 5.5, and Haiku 5.5; Moonshot AI’s Kimi K3; SpaceXAI’s Grok 4.7; Z.ai’s GLM 5.3; and two purpose-built cybersecurity models from OpenAI. • Launched built-in web search for OpenAI models on Bedrock so customers can ground responses in current information—while keeping data secure and answers accurate for time-sensitive questions without building and maintaining their own web-retrieval pipelines. • Launched public preview of Bedrock Managed Agents, which is a managed service powered by OpenAI that makes it faster for enterprises to build and deploy production-ready AI agents. • Added to AWS’s leadership position in open source agent-building: • Released Strands harness, a fully assembled, state-of-the-art agent harness that developers can get working with a single line of code and build"
+    "llion and $ 28.3 million, respectively, which is reflected in accounts receivable, net on the Condensed Consolidated Balance Sheets. See Note 5 - Equity Investments , for further details of the impact of Acetone Limited on the Company’s results. Other Entities Related by Virtue of Common Control by SoftBank Group Corp. (“SoftBank Group”) The Company is party to a consulting agreement with SoftBank Group pursuant to which the Company provides to SoftBank Group and its affiliates certain technical consultancy and advisory services relating to potential transactions, strategic partnerships, licensing agreements, commercial arrangements or other arrangements involving SoftBank Group or its affiliates (the “Consulting Agreement”). Pursuant to statements of work entered into under the Consulting Agreement, the Company may earn fees for services provided. For the three months ended September 30, 2026 and 2025 , revenue from the Consulting Agreement was $ 208.7 million and $ 177.9 million, respectively, from affiliates of SoftBank Group. For the six months ended September 30, 2026 and 2025 , revenue from the Consulting Agreement was $ 401.6 million and $ 304.0 million, respectively, from affiliates of SoftBank Group. As of September 30, 2026, the Company had current and non-current contract assets of $ 616.4 million and $ 0.9 million, respectively, from affiliates of SoftBank Group. As of March 31, 2026, the Company had current contract assets of $ 645.8 million and no non-current contract assets from an affiliate of SoftBank Group . 30 Table of Contents Arm Holdings plc Notes to Condensed Consolidated Financial Statements (Unaudited) In November 2025, SoftBank Group acquired all of the outstanding equity interests of Ampere, in which the Company previously had an equity investment and over which the Company had significant influence. The Company continues to have licensing and servicing arrangements with Ampere for which the Company may earn fees for services",
+    "urrent contract liabilities of $ 0.3 million related to contracts with Ampere. As of March 31, 2026, the Company had accounts receivable of $ 0.5 million, current contract assets of $ 0.5 million, and current contract liabilities of $ 5.4 million related to contracts with Ampere. In September 2026, SoftBank Group acquired all of the membership interests in a technology company, with which the Company previously had an existing agency sales agreement. The change in ownership resulted in the technology company becoming a related party by virtue of common control. For the three and six months ended September 3",
+    "ny recognized revenue of $ 6.2 million from the technology company. As of September 30, 2026 , the Company had accounts receivable of $ 12.5 million related to contracts with the technology company. There were no other material transactions with other entities related by virtue of common control by SoftBank Group. Other Equity Investments The Company has investments in limited partnerships or certain limited liability companies that maintain a specific ownership account for each investor, for which the Company has more than virtually no influence (i.e., at least 3% to 5% ownership). For the three months end"
    ],
    "money": true
   },
   {
    "form": "8-K",
-   "filed": "2026-10-29",
-   "accession": "0001104659-26-120212",
-   "doc": "dlr-20261029x8k.htm",
-   "items": "2.02,7.01,9.01",
-   "company": "digital-realty",
-   "url": "https://www.sec.gov/Archives/edgar/data/1297996/000110465926120212/dlr-20261029x8k.htm",
+   "filed": "2026-11-05",
+   "accession": "0001140361-26-042013",
+   "doc": "ef20084950_8k.htm",
+   "items": "2.01,2.03,3.02,7.01,9.01",
+   "company": "vistra",
+   "url": "https://www.sec.gov/Archives/edgar/data/1692819/000114036126042013/ef20084950_8k.htm",
    "exhibits": [
-    "dlr-ex99d1.htm",
-    "dlr-ex99d2.htm"
-   ],
-   "partners": [
-    "blackstone",
-    "meta",
-    "oracle"
-   ],
-   "passages": [
-    "​ ​ ​ ​ ​ ​ ​ ​ ​ ​ ​ ​ Weighted ​ ​ ​ ​ ​ ​ ​ ​ ​ ​ ​ Average ​ ​ ​ ​ ​ ​ Annualized ​ % of Annualized ​ Remaining ​ ​ ​ ​ Number of ​ Recurring ​ Recurring ​ Lease Term in ​ ​ Customer ​ Locations ​ Revenue (1) ​ Revenue ​ Years 1 ​ Fortune 50 Software Company ​ 75 ​ ​ $554,139 ​ 10.6% ​ 8.2 2 ​ Oracle Corporation ​ 42 ​ ​ 518,040 ​ 9.9% ​ 10.6 3 ​ Social Content Platform ​ 32 ​ ​ 284,682 ​ 5.4% ​ 2.3 4 ​ Global Cloud Provider ​ 64 ​ ​ 225,104 ​ 4.3% ​ 2.8 5 ​ Fortune 25 Tech Company ​ 61 ​ ​ 181,426 ​ 3.5% ​ 10.4 6 ​ Meta Platforms, Inc. ​ 52 ​ ​ 106,373 ​ 2.0% ​ 2.7 7 ​ IBM ​ 33 ​ ​ 105,888 ​ 2.0% ​ 2.3 8 ​ Equinix ​ 15 ​ ​ 98,455 ​ 1.9% ​ 2.6 9 ​ Leading AI Chip Maker ​ 7 ​ ​ 81,999 ​ 1.6% ​ 13.4 10 ​ Space Technology and Connectivity Provider ​ 24 ​ ​ 78,876 ​ 1.5% ​ 4.0 11 ​ LinkedIn Corporation ​ 7 ​ ​ 71,789 ​",
-    "​ ​ ​ ​ ​ ​ ​ ​ ​ ​ ​ Digital Realty's Pro Rata Share of Core FFO (5) ​ ​ $14,661 ​ ​ $19,208 ​ ​ $886 ​ ​ $7,534 ​ ​ ​ $42,289 ​ ​ ​ ​ ​ ​ ​ ​ ​ ​ ​ ​ ​ ​ ​ ​ ​ Digital Realty's Fee Income from Unconsolidated entities ​ ​ $44,395 ​ ​ $921 ​ ​ $3,572 ​ ​ $4,153 ​ ​ ​ $53,041 ​ (1) Includes Ascenty, Blackstone NoVa, Clise, Digital Realty DC Partners NA Fund, GI Partners, Mapletree, Menlo, Mitsubishi, Realty Income, TPG Real Estate and Walsh. (2) Includes Digital Realty Bersama, Digital Connexion, Lumen and MC Digital Realty. (3) Includes Blackstone Frankfurt, Blackstone Paris, Medallion and Mivne. (4) Includes Digital Core REIT. (5) For a definition of Core FFO , see page 28 . ​ Note: Digital Realty’s ownership percentages in the unconsolidated entities vary. ​ ​ ​ ​ 26 Table of Contents Reconciliation of Earnings Before Interest, Taxes, Depreciation & Amortizatio"
-   ],
-   "money": true
-  },
-  {
-   "form": "8-K",
-   "filed": "2026-10-28",
-   "accession": "0001193125-26-436149",
-   "doc": "msft-20261028.htm",
-   "items": "8.01,9.01",
-   "company": "microsoft",
-   "url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526436149/msft-20261028.htm",
-   "exhibits": [
-    "msft-ex99_1.htm"
-   ],
-   "partners": [
-    "openai"
-   ],
-   "passages": [
-    "(non-GAAP) 128,786 105,452 89,262 22% 18% Adjusted diluted earnings per share (non-GAAP) 17.28 14.13 11.95 22% 18% Adjusted net income and adjusted diluted earnings per share (“EPS”) are non-GAAP financial measures. These non-GAAP financial measures exclude net gains and losses from investments in OpenAI. Refer to the Non-GAAP Financial Measures section of our fiscal year 2026 Form 10-K for a reconciliation of our financial results reported in accordance with GAAP to non-GAAP financial results. Fiscal Year 2026 Compared with Fiscal Year 2025 Revenue increased $50.1 billion or 18% driven by growth i",
-    "ses. Operating income increased $26.7 billion or 21% with growth across both of our segments. Revenue and operating income both included a favorable foreign currency impact of 2%. 11 PART II Item 7 Fiscal year 2026 net income and diluted EPS were positively impacted by net gains from investments in OpenAI, which resulted in an increase in net income and diluted EPS of $5.0 billion and $0.67, respectively. Fiscal year 2025 net income and diluted EPS were negatively impacted by net losses from investments in OpenAI, which resulted in a decrease in net income and diluted EPS of $3.6 billion and $0.49, respectively. Fiscal Year 2025 Compared with Fiscal Year 2024 Revenue increased $36.6 billion or 15% driven by growth in Agents and Infra. Agents and Infra revenue increased driven by Azure and Microsoft 365 comm",
-    "o the VIE. We have determined we are not the primary beneficiary of any of our VIE investments. Therefore, our VIE investments are not consolidated and the majority are accounted for under the equity method of accounting or the measurement alternative. We have a long-term strategic partnership with OpenAI. In October 2025, we signed a new definitive agreement with OpenAI that extends this partnership. We have an investment accounted for under the equity method that represents an approximate 25 % interest on an as-converted basis. As an equity method investee, OpenAI is a related party as defined in Accounting Standards Codification Topic 850, Related Party Disclosures (“ASC 850”). In accordance with ASC 850, we are disclosing revenue and accounts receivable balances from transactions with OpenAI. For fiscal year 2026, we recorded revenue from commercial arrangements with OpenAI, inclusive of revenue-sharing payments, of $ 24.1 billion, and accounts receivable from OpenAI as of June 30, 2026 was $ 6.0 billion. We have made total funding commitments of $ 13.0 billion related to our investment, of which $ 11.9 billion has been funded as of June 30, 2026. We calculate our equity method income or loss using the hypothetical liquidation at book value (“HLBV”) method because our liquidation rights and priorities differ from our underlying ownership interest. Under the HLBV method, we recognize income or loss based on the change in the amount we would receive if the net assets of the investee were distributed at book value. In October 2025, OpenAI formed a public benefit corporation and completed a recapitalization (“OpenAI Recapitalization”). During fiscal year 2026, our proportionate ownership of OpenAI decreased due to the OpenAI Recapitalization and other funding activity, and we recorded dilution gains in other income (expense), net. Refer to Note 3 – Other Income (Expense), Net for additional information. Derivatives Derivative instruments are recognized as either assets or liabilities and measured at fair value. The acc"
-   ],
-   "money": true
-  },
-  {
-   "form": "8-K",
-   "filed": "2026-10-28",
-   "accession": "0001193125-26-436122",
-   "doc": "msft-20261028.htm",
-   "items": "2.02,9.01",
-   "company": "microsoft",
-   "url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526436122/msft-20261028.htm",
-   "exhibits": [
-    "msft-ex99_1.htm"
-   ],
-   "partners": [
-    "openai"
-   ],
-   "passages": [
-    "was $36.4 billion and increased 18% (up 19% in constant currency) on a non-GAAP basis • Diluted earnings per share was $4.92 and increased 32% on a GAAP basis, and was $4.89 and increased 18% (up 19% in constant currency) on a non-GAAP basis • Non-GAAP results exclude the impact from investments in OpenAI, explained in the Non-GAAP Definition section below “We are delivering greater capability, choice, control, and cost efficiency for customers across our entire stack,” said Satya Nadella, chairman and chief executive officer of Microsoft. “By helping organizations build and own their own intelligen",
-    "celerating to 30% (up 31% in constant currency) year-over-year,” said Amy Hood, executive vice president and chief financial officer of Microsoft. “Results exceeded expectations across revenue, operating income, and earnings per share.” The following table adjusts for the impact from investments in OpenAI and reconciles our financial results reported in accordance with generally accepted accounting principles (GAAP) to non-GAAP financial results. Additional information regarding our non-GAAP definition is provided below. All growth comparisons relate to the corresponding period in the last fiscal year. Three Months Ended September 30, 2026 2025 Percentage Change Y/Y Percentage Change Y/Y ($ in millions, except per share amounts) As Reported (GAAP) Impact from OpenAI* As Adjusted (non-GAAP) As Reported (GAAP) Impact from OpenAI* As Adjusted (non-GAAP) GAAP Constant Currency Net Impact from OpenAI* Non-GAAP Non-GAAP Constant Currency Net income $36,629 $(207) $36,422 $27,747 $3,086 $30,833 32% 33% $(3,293) 18% 19% Diluted earnings per share $4.92 $(0.03) $4.89 $3.72 $0.41 $4.13 32% 33% $(0.44) 18% 19% *Impact from OpenAI adjusts for the impact from investments in OpenAI Business Highlights Revenue in Agents and Infra was $76.8 billion and increased 25%, with the following business highlights: • Commercial remaining performance obligation increased 73% to $677 billion • Microsoft Cloud revenue was $63.9 billion and increased 30% (up 31% in constant currency) • Azur",
-    "crosoft.com/en-us/investor . Participants can also dial into the conference call at (877) 407-0666 or +1 (201) 689-8023 for international, no password required. The webcast will be available for replay through the close of business on October 28, 2027. Non-GAAP Definition Impact from investments in OpenAI. In the first quarter of fiscal year 2027, net income and diluted earnings per share were impacted by net gains from investments in OpenAI, which resulted in an increase in net income and diluted earnings per share of $207 million and $0.03, respectively. In the first quarter of fiscal year 2026, net income and diluted earnings per share were impacted by net losses from investments in OpenAI, which resulted in a decrease in net income and diluted earnings per share of $3.1 billion and $0.41, respectively. Microsoft has provided non-GAAP financial measures related to the impact from investments in OpenAI to aid investors in better understanding our performance. Microsoft believes these non-GAAP measures assist investors by providing additional insight into its operational performance and help clarify trends affecting its business. For comparability of reporting, management considers non-GAAP measur"
-   ],
-   "money": true
-  },
-  {
-   "form": "8-K",
-   "filed": "2026-10-29",
-   "accession": "0001823945-26-000050",
-   "doc": "owl-20261029.htm",
-   "items": "2.02,8.01,9.01",
-   "company": "blue-owl",
-   "url": "https://www.sec.gov/Archives/edgar/data/1823945/000182394526000050/owl-20261029.htm",
-   "exhibits": [
-    "a93026-ex991xearningspress.htm"
+    "ef20084950_ex99-1.htm"
    ],
    "partners": [],
    "passages": [],
@@ -119,27 +72,25 @@
   },
   {
    "form": "8-K",
-   "filed": "2026-10-28",
-   "accession": "0001193125-26-435853",
-   "doc": "d75538d8k.htm",
-   "items": "7.01,9.01",
+   "filed": "2026-11-05",
+   "accession": "0000707549-26-000057",
+   "doc": "lrcx-20261103.htm",
+   "items": "5.07,8.01,9.01",
+   "company": "lam-research",
+   "url": "https://www.sec.gov/Archives/edgar/data/707549/000070754926000057/lrcx-20261103.htm",
+   "exhibits": [],
+   "partners": [],
+   "passages": [],
+   "money": true
+  },
+  {
+   "form": "8-K",
+   "filed": "2026-11-04",
+   "accession": "0001193125-26-447507",
+   "doc": "d131790d8k.htm",
+   "items": "8.01,9.01",
    "company": "oracle",
-   "url": "https://www.sec.gov/Archives/edgar/data/1341439/000119312526435853/d75538d8k.htm",
-   "exhibits": [
-    "d75538dex991.htm"
-   ],
-   "partners": [],
-   "passages": [],
-   "money": true
-  },
-  {
-   "form": "8-K",
-   "filed": "2026-10-27",
-   "accession": "0001628280-26-067393",
-   "doc": "vrt-20261027.htm",
-   "items": "2.01,7.01,9.01",
-   "company": "vertiv",
-   "url": "https://www.sec.gov/Archives/edgar/data/1674101/000162828026067393/vrt-20261027.htm",
+   "url": "https://www.sec.gov/Archives/edgar/data/1341439/000119312526447507/d131790d8k.htm",
    "exhibits": [],
    "partners": [],
    "passages": [],
@@ -147,133 +98,58 @@
   },
   {
    "form": "8-K",
-   "filed": "2026-10-27",
-   "accession": "0001193125-26-434271",
-   "doc": "d148323d8k.htm",
-   "items": "2.03",
-   "company": "broadcom",
-   "url": "https://www.sec.gov/Archives/edgar/data/1730168/000119312526434271/d148323d8k.htm",
-   "exhibits": [],
-   "partners": [],
-   "passages": [],
-   "money": true
-  },
-  {
-   "form": "8-K",
-   "filed": "2026-10-27",
-   "accession": "0001193125-26-434438",
-   "doc": "d124611d8k.htm",
-   "items": "8.01,9.01",
-   "company": "blackstone",
-   "url": "https://www.sec.gov/Archives/edgar/data/1393818/000119312526434438/d124611d8k.htm",
-   "exhibits": [
-    "d124611dex991.htm"
-   ],
-   "partners": [],
-   "passages": [],
-   "money": true
-  },
-  {
-   "form": "8-K",
-   "filed": "2026-10-30",
-   "accession": "0001193125-26-441892",
-   "doc": "d170330d8k.htm",
-   "items": "8.01,9.01",
-   "company": "digital-realty",
-   "url": "https://www.sec.gov/Archives/edgar/data/1297996/000119312526441892/d170330d8k.htm",
-   "exhibits": [],
-   "partners": [],
-   "passages": [],
-   "money": false
-  },
-  {
-   "form": "8-K",
-   "filed": "2026-10-29",
-   "accession": "0001193125-26-438017",
-   "doc": "d183592d8k.htm",
-   "items": "1.01,3.03,5.03,9.01",
-   "company": "meta",
-   "url": "https://www.sec.gov/Archives/edgar/data/1326801/000119312526438017/d183592d8k.htm",
-   "exhibits": [],
-   "partners": [],
-   "passages": [],
-   "money": false
-  },
-  {
-   "form": "8-K",
-   "filed": "2026-10-29",
-   "accession": "0000050863-26-000188",
-   "doc": "intc-20261029.htm",
-   "items": "2.02,9.01",
-   "company": "intel",
-   "url": "https://www.sec.gov/Archives/edgar/data/50863/000005086326000188/intc-20261029.htm",
-   "exhibits": [],
-   "partners": [],
-   "passages": [],
-   "money": false
-  },
-  {
-   "form": "8-K",
-   "filed": "2026-10-28",
-   "accession": "0001628280-26-067707",
-   "doc": "vrt-20261028.htm",
+   "filed": "2026-11-04",
+   "accession": "0001193125-26-447200",
+   "doc": "d176836d8k.htm",
    "items": "2.02,7.01,9.01",
-   "company": "vertiv",
-   "url": "https://www.sec.gov/Archives/edgar/data/1674101/000162828026067707/vrt-20261028.htm",
-   "exhibits": [],
+   "company": "coherent",
+   "url": "https://www.sec.gov/Archives/edgar/data/820318/000119312526447200/d176836d8k.htm",
+   "exhibits": [
+    "d176836dex991.htm",
+    "d176836dex992.htm"
+   ],
    "partners": [],
    "passages": [],
-   "money": false
+   "money": true
   },
   {
    "form": "8-K",
-   "filed": "2026-10-28",
-   "accession": "0001996810-26-000162",
-   "doc": "gev-20261028.htm",
-   "items": "2.02,9.01",
-   "company": "ge-vernova",
-   "url": "https://www.sec.gov/Archives/edgar/data/1996810/000199681026000162/gev-20261028.htm",
-   "exhibits": [],
+   "filed": "2026-11-02",
+   "accession": "0001321655-26-000045",
+   "doc": "pltr-20261102.htm",
+   "items": "2.02,7.01,9.01",
+   "company": "palantir",
+   "url": "https://www.sec.gov/Archives/edgar/data/1321655/000132165526000045/pltr-20261102.htm",
+   "exhibits": [
+    "a2026q3ex991pressrelease.htm"
+   ],
    "partners": [],
    "passages": [],
-   "money": false
+   "money": true
   },
   {
    "form": "8-K",
-   "filed": "2026-10-28",
-   "accession": "0001652044-26-000080",
-   "doc": "goog-20261028.htm",
-   "items": "2.02,9.01",
-   "company": "alphabet",
-   "url": "https://www.sec.gov/Archives/edgar/data/1652044/000165204426000080/goog-20261028.htm",
-   "exhibits": [],
-   "partners": [],
-   "passages": [],
-   "money": false
-  },
-  {
-   "form": "8-K",
-   "filed": "2026-10-27",
-   "accession": "0001193125-26-432970",
-   "doc": "d142119d8k.htm",
-   "items": "8.01,9.01",
+   "filed": "2026-11-02",
+   "accession": "0001193125-26-443854",
+   "doc": "d377521d8k.htm",
+   "items": "1.01,2.03,8.01,9.01",
    "company": "blackstone",
-   "url": "https://www.sec.gov/Archives/edgar/data/1393818/000119312526432970/d142119d8k.htm",
+   "url": "https://www.sec.gov/Archives/edgar/data/1393818/000119312526443854/d377521d8k.htm",
    "exhibits": [
-    "d142119dex991.htm"
+    "d377521dex991.htm"
    ],
    "partners": [],
    "passages": [],
-   "money": false
+   "money": true
   },
   {
    "form": "8-K",
-   "filed": "2026-10-26",
-   "accession": "0001628280-26-067127",
-   "doc": "vrt-20261026.htm",
-   "items": "7.01,9.01",
-   "company": "vertiv",
-   "url": "https://www.sec.gov/Archives/edgar/data/1674101/000162828026067127/vrt-20261026.htm",
+   "filed": "2026-11-09",
+   "accession": "0001868275-26-000116",
+   "doc": "ceg-20261109.htm",
+   "items": "2.02,7.01,9.01",
+   "company": "constellation",
+   "url": "https://www.sec.gov/Archives/edgar/data/1868275/000186827526000116/ceg-20261109.htm",
    "exhibits": [],
    "partners": [],
    "passages": [],
@@ -281,15 +157,119 @@
   },
   {
    "form": "8-K",
-   "filed": "2026-10-26",
-   "accession": "0001628280-26-067303",
-   "doc": "amat-20261026.htm",
-   "items": "8.01,9.01",
-   "company": "applied-materials",
-   "url": "https://www.sec.gov/Archives/edgar/data/6951/000162828026067303/amat-20261026.htm",
+   "filed": "2026-11-06",
+   "accession": "0001692819-26-000023",
+   "doc": "vistra-20261106.htm",
+   "items": "2.02,9.01",
+   "company": "vistra",
+   "url": "https://www.sec.gov/Archives/edgar/data/1692819/000169281926000023/vistra-20261106.htm",
+   "exhibits": [],
+   "partners": [],
+   "passages": [],
+   "money": false
+  },
+  {
+   "form": "8-K",
+   "filed": "2026-11-05",
+   "accession": "0001193125-26-448357",
+   "doc": "d177209d8k.htm",
+   "items": "5.02",
+   "company": "microsoft",
+   "url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526448357/d177209d8k.htm",
+   "exhibits": [],
+   "partners": [],
+   "passages": [],
+   "money": false
+  },
+  {
+   "form": "8-K",
+   "filed": "2026-11-05",
+   "accession": "0001104659-26-123389",
+   "doc": "tm2629062d1_8k.htm",
+   "items": "5.02,9.01",
+   "company": "micron",
+   "url": "https://www.sec.gov/Archives/edgar/data/723125/000110465926123389/tm2629062d1_8k.htm",
    "exhibits": [
-    "ex991prforprojectbasil.htm"
+    "tm2629062d1_ex99-1.htm"
    ],
+   "partners": [],
+   "passages": [],
+   "money": false
+  },
+  {
+   "form": "8-K",
+   "filed": "2026-11-05",
+   "accession": "0001193125-26-450074",
+   "doc": "d166273d8k.htm",
+   "items": "8.01,9.01",
+   "company": "meta",
+   "url": "https://www.sec.gov/Archives/edgar/data/1326801/000119312526450074/d166273d8k.htm",
+   "exhibits": [],
+   "partners": [],
+   "passages": [],
+   "money": false
+  },
+  {
+   "form": "8-K",
+   "filed": "2026-11-05",
+   "accession": "0001193125-26-449835",
+   "doc": "d174184d8k.htm",
+   "items": "8.01,9.01",
+   "company": "alphabet",
+   "url": "https://www.sec.gov/Archives/edgar/data/1652044/000119312526449835/d174184d8k.htm",
+   "exhibits": [],
+   "partners": [],
+   "passages": [],
+   "money": false
+  },
+  {
+   "form": "8-K",
+   "filed": "2026-11-04",
+   "accession": "0001193125-26-447173",
+   "doc": "d178557d8k.htm",
+   "items": "8.01,9.01",
+   "company": "microsoft",
+   "url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526447173/d178557d8k.htm",
+   "exhibits": [],
+   "partners": [],
+   "passages": [],
+   "money": false
+  },
+  {
+   "form": "6-K",
+   "filed": "2026-11-04",
+   "accession": "0001973239-26-000141",
+   "doc": "arm-20261104.htm",
+   "items": "",
+   "company": "arm",
+   "url": "https://www.sec.gov/Archives/edgar/data/1973239/000197323926000141/arm-20261104.htm",
+   "exhibits": [],
+   "partners": [],
+   "passages": [],
+   "money": false
+  },
+  {
+   "form": "8-K",
+   "filed": "2026-11-03",
+   "accession": "0001375365-26-000026",
+   "doc": "smci-20261103.htm",
+   "items": "2.02,8.01,9.01",
+   "company": "supermicro",
+   "url": "https://www.sec.gov/Archives/edgar/data/1375365/000137536526000026/smci-20261103.htm",
+   "exhibits": [],
+   "partners": [],
+   "passages": [],
+   "money": false
+  },
+  {
+   "form": "8-K",
+   "filed": "2026-11-03",
+   "accession": "0000002488-26-000188",
+   "doc": "amd-20261103.htm",
+   "items": "2.02,7.01,9.01",
+   "company": "amd",
+   "url": "https://www.sec.gov/Archives/edgar/data/2488/000000248826000188/amd-20261103.htm",
+   "exhibits": [],
    "partners": [],
    "passages": [],
    "money": false
