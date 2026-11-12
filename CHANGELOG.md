@@ -5,13 +5,12 @@ One entry a week, newest first. Each entry is printed by `python3 scripts/change
 ## Week 46, 9 Nov 2026 to 15 Nov 2026 (data as of 9 Nov 2026)
 
 - 47 companies, 31 with at least one sourced deal.
-- 70 deals: 69 sourced (9 paid, 60 committed) and 1 rumored, hidden by default.
+- 69 deals: 68 sourced (9 paid, 59 committed) and 1 rumored, hidden by default.
 - 11 loops and 123 sources.
 
-Changes this week (4):
+Changes this week (3):
 
-- 2026-11-09 · New deal · Alphabet to Constellation: Google signs a 20-year deal for 890 MW of new nuclear capacity from Constellation uprates, confirmed in Constellation's Q3 8-K. (filed)
-- 2026-11-09 · New deal · Alphabet to Constellation: Google signs a 15-year, 2,700 MW supply agreement with Constellation in PJM, confirmed in Constellation's Q3 8-K. (filed)
+- 2026-11-09 · New deal · Alphabet to Constellation: Google signs a 20-year deal for 890 MW of new nuclear capacity from Constellation uprates plus 2,700 MW of 15-year supply, confirmed in Constellation's Q3 8-K. (filed)
 - 2026-11-09 · New deal · Amazon to Constellation: Amazon signs a 20-year, 690 MW power deal at Calvert Cliffs, confirmed in Constellation's Q3 8-K. (filed)
 - 2026-11-09 · New deal · US Government to Constellation: DOE conditionally commits to a loan of up to $5B for Constellation nuclear uprates, confirmed in Constellation's Q3 8-K. (filed)
 
