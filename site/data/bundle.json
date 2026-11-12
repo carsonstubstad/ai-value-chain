@@ -256,7 +256,7 @@
   {
    "hq_country": "US",
    "id": "constellation",
-   "last_checked": "2026-10-31",
+   "last_checked": "2026-11-12",
    "layer": "power",
    "name": "Constellation",
    "one_line": "US power producer with the largest US nuclear fleet, selling power to hyperscalers.",
@@ -793,6 +793,46 @@
    "type": "power_supply_agreement"
   },
   {
+   "amount_basis": "committed",
+   "amount_kind": "undisclosed",
+   "announced": "2026-10-06",
+   "as_of": "2026-11-09",
+   "confidence": "filed",
+   "id": "alphabet-constellation-ppa-2026-10",
+   "last_checked": "2026-11-12",
+   "notes": "Constellation says the deal enables more than $4.3B of its own investment in the uprates; that is not the contract value, so no amount is stored. The 15-year, 2,700 MW supply agreement signed alongside it is a separate edge. A five-year Google Cloud technology alliance announced the same day states no amount or direction and is not stored.",
+   "payee": "constellation",
+   "payer": "alphabet",
+   "sources": [
+    "ceg-8k-2026-q3",
+    "ceg-google-2026-10-06"
+   ],
+   "status": "signed",
+   "summary": "Google signs a 20-year deal for 890 MW of new capacity from uprates at 11 Constellation nuclear units in Illinois, Pennsylvania and New Jersey, the first due by 2028. No value stated.",
+   "term_years": 20,
+   "type": "power_supply_agreement"
+  },
+  {
+   "amount_basis": "committed",
+   "amount_kind": "undisclosed",
+   "announced": "2026-10-06",
+   "as_of": "2026-11-09",
+   "confidence": "filed",
+   "id": "alphabet-constellation-supply-2026-10",
+   "last_checked": "2026-11-12",
+   "notes": "The 8-K calls it a financial energy load following agreement; the release calls it an energy supply agreement. Stored apart from the 20-year deal because it is a separate agreement with its own term and size (one deal, one edge).",
+   "payee": "constellation",
+   "payer": "alphabet",
+   "sources": [
+    "ceg-8k-2026-q3",
+    "ceg-google-2026-10-06"
+   ],
+   "status": "signed",
+   "summary": "Google signs a 15-year agreement for 2,700 MW of Constellation's existing PJM supply, alongside its 20-year uprate deal. No value stated.",
+   "term_years": 15,
+   "type": "power_supply_agreement"
+  },
+  {
    "amount_basis": "paid",
    "amount_kind": "cap",
    "amount_usd_high": 4000000000.0,
@@ -857,6 +897,26 @@
    "status": "signed",
    "summary": "Amazon invests $5B in Anthropic and makes up to $20B more available through a financing facility, on top of $8B invested earlier.",
    "type": "equity_investment"
+  },
+  {
+   "amount_basis": "committed",
+   "amount_kind": "undisclosed",
+   "announced": "2026-09-30",
+   "as_of": "2026-11-09",
+   "confidence": "filed",
+   "id": "amazon-constellation-ppa-2026-09",
+   "last_checked": "2026-11-12",
+   "notes": "Constellation says the deal enables more than $3B of its own investment at Calvert Cliffs; that is Constellation's spending, not the contract value, so no amount is stored. A related retail supply agreement for Amazon's operations in PJM states no amount, term or size and is not stored as a separate edge.",
+   "payee": "constellation",
+   "payer": "amazon",
+   "sources": [
+    "ceg-8k-2026-q3",
+    "ceg-amazon-2026-09-30"
+   ],
+   "status": "signed",
+   "summary": "Amazon signs a 20-year deal for 690 MW from the Calvert Cliffs nuclear plant, including a 190 MW uprate due online between 2030 and 2032. No value stated.",
+   "term_years": 20,
+   "type": "power_supply_agreement"
   },
   {
    "amount_basis": "paid",
@@ -1946,6 +2006,28 @@
   },
   {
    "amount_basis": "committed",
+   "amount_kind": "cap",
+   "amount_usd_high": 5000000000.0,
+   "announced": "2026-10-27",
+   "as_of": "2026-11-09",
+   "confidence": "filed",
+   "id": "usg-constellation-loan-2026-10",
+   "last_checked": "2026-11-12",
+   "notes": "Conditional: no loan agreement is signed and nothing is drawn, so the status stays announced. Per the 8-K, DOE's Office of Energy Dominance Financing would guarantee a loan from the Federal Financing Bank at 0.375% over Treasuries; both are US government, so it is one loan edge, not a guarantee. The plants are Braidwood, Byron, Clinton, Dresden, LaSalle, Quad Cities, Calvert Cliffs and Limerick.",
+   "payee": "constellation",
+   "payer": "us-government",
+   "sources": [
+    "ceg-8k-2026-q3",
+    "ceg-doe-loan-2026-10-27",
+    "doe-constellation-loan-2026-10-27"
+   ],
+   "status": "announced",
+   "summary": "DOE conditionally commits to a 30-year federal loan of up to $5B for uprates at eight Constellation nuclear plants in Illinois, Maryland and Pennsylvania.",
+   "term_years": 30,
+   "type": "debt_or_gpu_backed_loan"
+  },
+  {
+   "amount_basis": "committed",
    "amount_kind": "one_time",
    "amount_usd_high": 8900000000.0,
    "amount_usd_low": 8900000000.0,
@@ -2047,6 +2129,38 @@
  "events": [
   {
    "companies": [
+    "alphabet",
+    "constellation"
+   ],
+   "confidence": "filed",
+   "date": "2026-11-09",
+   "deal": "alphabet-constellation-ppa-2026-10",
+   "id": "alphabet-constellation-ppa-2026-10-new-deal-2026-11-09",
+   "kind": "new_deal",
+   "sources": [
+    "ceg-google-2026-10-06",
+    "ceg-8k-2026-q3"
+   ],
+   "summary": "Google signs a 20-year deal for 890 MW of new nuclear capacity from Constellation uprates, confirmed in Constellation's Q3 8-K."
+  },
+  {
+   "companies": [
+    "alphabet",
+    "constellation"
+   ],
+   "confidence": "filed",
+   "date": "2026-11-09",
+   "deal": "alphabet-constellation-supply-2026-10",
+   "id": "alphabet-constellation-supply-2026-10-new-deal-2026-11-09",
+   "kind": "new_deal",
+   "sources": [
+    "ceg-google-2026-10-06",
+    "ceg-8k-2026-q3"
+   ],
+   "summary": "Google signs a 15-year, 2,700 MW supply agreement with Constellation in PJM, confirmed in Constellation's Q3 8-K."
+  },
+  {
+   "companies": [
     "amazon",
     "anthropic"
    ],
@@ -2089,6 +2203,22 @@
     "amazon-10q-2026-q3"
    ],
    "summary": "Amazon's 10-Q shows $10B of its up to $25B Anthropic commitment funded, so the deal moves to signed."
+  },
+  {
+   "companies": [
+    "amazon",
+    "constellation"
+   ],
+   "confidence": "filed",
+   "date": "2026-11-09",
+   "deal": "amazon-constellation-ppa-2026-09",
+   "id": "amazon-constellation-ppa-2026-09-new-deal-2026-11-09",
+   "kind": "new_deal",
+   "sources": [
+    "ceg-amazon-2026-09-30",
+    "ceg-8k-2026-q3"
+   ],
+   "summary": "Amazon signs a 20-year, 690 MW power deal at Calvert Cliffs, confirmed in Constellation's Q3 8-K."
   },
   {
    "companies": [
@@ -2269,6 +2399,23 @@
     "amd-10k-2025"
    ],
    "summary": "AMD's 10-K describes the OpenAI GPU agreement as signed."
+  },
+  {
+   "companies": [
+    "us-government",
+    "constellation"
+   ],
+   "confidence": "filed",
+   "date": "2026-11-09",
+   "deal": "usg-constellation-loan-2026-10",
+   "id": "usg-constellation-loan-2026-10-new-deal-2026-11-09",
+   "kind": "new_deal",
+   "sources": [
+    "ceg-doe-loan-2026-10-27",
+    "doe-constellation-loan-2026-10-27",
+    "ceg-8k-2026-q3"
+   ],
+   "summary": "DOE conditionally commits to a loan of up to $5B for Constellation nuclear uprates, confirmed in Constellation's Q3 8-K."
   },
   {
    "companies": [
@@ -2603,6 +2750,16 @@
    "url": "https://www.bloomberg.com/news/articles/2025-05-15/openai-expands-coreweave-tie-up-with-new-4-billion-cloud-deal"
   },
   {
+   "accessed": "2026-11-12",
+   "filing_form": "8-K",
+   "id": "ceg-8k-2026-q3",
+   "kind": "filing",
+   "label": "Constellation 8-K exhibit: third quarter 2026 results, with the Amazon, Google and DOE deals",
+   "published": "2026-11-09",
+   "publisher": "Constellation Energy",
+   "url": "https://www.sec.gov/Archives/edgar/data/1868275/000186827526000116/ceg-20261109991.htm"
+  },
+  {
    "accessed": "2026-10-31",
    "filing_form": "8-K",
    "id": "ceg-8k-microsoft-2024-09-20",
@@ -2611,6 +2768,33 @@
    "published": "2024-09-20",
    "publisher": "Constellation Energy",
    "url": "https://www.sec.gov/Archives/edgar/data/1868275/000186827524000058/ceg-202409208kexh991.htm"
+  },
+  {
+   "accessed": "2026-11-12",
+   "id": "ceg-amazon-2026-09-30",
+   "kind": "company",
+   "label": "Constellation release: 20-year Calvert Cliffs deal with Amazon",
+   "published": "2026-09-30",
+   "publisher": "Constellation Energy",
+   "url": "https://www.constellationenergy.com/news/2026/09/constellation-and-amazon-announce-20-year-power-purchase-agreement-at-calvert-cliffs.html"
+  },
+  {
+   "accessed": "2026-11-12",
+   "id": "ceg-doe-loan-2026-10-27",
+   "kind": "company",
+   "label": "Constellation release: conditional DOE loan commitment of up to $5B",
+   "published": "2026-10-27",
+   "publisher": "Constellation Energy",
+   "url": "https://www.constellationenergy.com/news/2026/10/constellation-secures-conditional-doe-loan-commitment-of-up-to-5-billion-to-expand-nuclear-output.html"
+  },
+  {
+   "accessed": "2026-11-12",
+   "id": "ceg-google-2026-10-06",
+   "kind": "company",
+   "label": "Constellation release: Google deal for 890 MW of nuclear uprates and 2,700 MW of supply",
+   "published": "2026-10-06",
+   "publisher": "Constellation Energy",
+   "url": "https://www.constellationenergy.com/news/2026/10/google-and-constellation-announce-landmark-agreement-to-bring-890-mw-of-new-nuclear-capacity-to-pjm-grid.html"
   },
   {
    "accessed": "2026-10-31",
@@ -2699,6 +2883,15 @@
    "published": "2025-05-21",
    "publisher": "Crusoe",
    "url": "https://crusoe.ai/newsroom/crusoe-blue-owl-capital-and-primary-digital-infrastructure-enter-joint-venture/"
+  },
+  {
+   "accessed": "2026-11-12",
+   "id": "doe-constellation-loan-2026-10-27",
+   "kind": "government",
+   "label": "DOE release: $5B conditional loan for Constellation nuclear uprates",
+   "published": "2026-10-27",
+   "publisher": "US Department of Energy",
+   "url": "https://www.energy.gov/articles/energy-department-announces-5-billion-loan-boost-nuclear-power-and-help-lower-costs"
   },
   {
    "accessed": "2026-10-31",
@@ -3562,7 +3755,7 @@
   }
  ],
  "state": {
-  "as_of": "2026-10-31",
+  "as_of": "2026-11-09",
   "draft": false,
   "text": "OpenAI and Anthropic have committed to 17 compute deals with clouds and chipmakers; none is recorded as paid yet."
  },

@@ -1,0 +1,20 @@
+{
+ "id": "alphabet-constellation-ppa-2026-10",
+ "payer": "alphabet",
+ "payee": "constellation",
+ "type": "power_supply_agreement",
+ "announced": "2026-10-06",
+ "amount_basis": "committed",
+ "amount_kind": "undisclosed",
+ "term_years": 20,
+ "confidence": "filed",
+ "status": "signed",
+ "summary": "Google signs a 20-year deal for 890 MW of new capacity from uprates at 11 Constellation nuclear units in Illinois, Pennsylvania and New Jersey, the first due by 2028. No value stated.",
+ "as_of": "2026-11-09",
+ "last_checked": "2026-11-12",
+ "sources": [
+  "ceg-8k-2026-q3",
+  "ceg-google-2026-10-06"
+ ],
+ "notes": "Constellation says the deal enables more than $4.3B of its own investment in the uprates; that is not the contract value, so no amount is stored. The 15-year, 2,700 MW supply agreement signed alongside it is a separate edge. A five-year Google Cloud technology alliance announced the same day states no amount or direction and is not stored."
+}

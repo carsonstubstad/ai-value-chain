@@ -1,0 +1,20 @@
+{
+ "id": "amazon-constellation-ppa-2026-09",
+ "payer": "amazon",
+ "payee": "constellation",
+ "type": "power_supply_agreement",
+ "announced": "2026-09-30",
+ "amount_basis": "committed",
+ "amount_kind": "undisclosed",
+ "term_years": 20,
+ "confidence": "filed",
+ "status": "signed",
+ "summary": "Amazon signs a 20-year deal for 690 MW from the Calvert Cliffs nuclear plant, including a 190 MW uprate due online between 2030 and 2032. No value stated.",
+ "as_of": "2026-11-09",
+ "last_checked": "2026-11-12",
+ "sources": [
+  "ceg-8k-2026-q3",
+  "ceg-amazon-2026-09-30"
+ ],
+ "notes": "Constellation says the deal enables more than $3B of its own investment at Calvert Cliffs; that is Constellation's spending, not the contract value, so no amount is stored. A related retail supply agreement for Amazon's operations in PJM states no amount, term or size and is not stored as a separate edge."
+}

@@ -1,0 +1,20 @@
+{
+ "id": "alphabet-constellation-supply-2026-10",
+ "payer": "alphabet",
+ "payee": "constellation",
+ "type": "power_supply_agreement",
+ "announced": "2026-10-06",
+ "amount_basis": "committed",
+ "amount_kind": "undisclosed",
+ "term_years": 15,
+ "confidence": "filed",
+ "status": "signed",
+ "summary": "Google signs a 15-year agreement for 2,700 MW of Constellation's existing PJM supply, alongside its 20-year uprate deal. No value stated.",
+ "as_of": "2026-11-09",
+ "last_checked": "2026-11-12",
+ "sources": [
+  "ceg-8k-2026-q3",
+  "ceg-google-2026-10-06"
+ ],
+ "notes": "The 8-K calls it a financial energy load following agreement; the release calls it an energy supply agreement. Stored apart from the 20-year deal because it is a separate agreement with its own term and size (one deal, one edge)."
+}

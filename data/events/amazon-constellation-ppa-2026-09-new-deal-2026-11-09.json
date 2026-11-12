@@ -1,0 +1,16 @@
+{
+ "id": "amazon-constellation-ppa-2026-09-new-deal-2026-11-09",
+ "date": "2026-11-09",
+ "kind": "new_deal",
+ "companies": [
+  "amazon",
+  "constellation"
+ ],
+ "deal": "amazon-constellation-ppa-2026-09",
+ "summary": "Amazon signs a 20-year, 690 MW power deal at Calvert Cliffs, confirmed in Constellation's Q3 8-K.",
+ "confidence": "filed",
+ "sources": [
+  "ceg-amazon-2026-09-30",
+  "ceg-8k-2026-q3"
+ ]
+}

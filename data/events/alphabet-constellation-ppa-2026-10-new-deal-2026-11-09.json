@@ -1,0 +1,16 @@
+{
+ "id": "alphabet-constellation-ppa-2026-10-new-deal-2026-11-09",
+ "date": "2026-11-09",
+ "kind": "new_deal",
+ "companies": [
+  "alphabet",
+  "constellation"
+ ],
+ "deal": "alphabet-constellation-ppa-2026-10",
+ "summary": "Google signs a 20-year deal for 890 MW of new nuclear capacity from Constellation uprates, confirmed in Constellation's Q3 8-K.",
+ "confidence": "filed",
+ "sources": [
+  "ceg-google-2026-10-06",
+  "ceg-8k-2026-q3"
+ ]
+}
