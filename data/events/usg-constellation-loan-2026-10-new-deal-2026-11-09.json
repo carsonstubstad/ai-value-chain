@@ -1,0 +1,17 @@
+{
+ "id": "usg-constellation-loan-2026-10-new-deal-2026-11-09",
+ "date": "2026-11-09",
+ "kind": "new_deal",
+ "companies": [
+  "us-government",
+  "constellation"
+ ],
+ "deal": "usg-constellation-loan-2026-10",
+ "summary": "DOE conditionally commits to a loan of up to $5B for Constellation nuclear uprates, confirmed in Constellation's Q3 8-K.",
+ "confidence": "filed",
+ "sources": [
+  "ceg-doe-loan-2026-10-27",
+  "doe-constellation-loan-2026-10-27",
+  "ceg-8k-2026-q3"
+ ]
+}

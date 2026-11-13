@@ -1,0 +1,22 @@
+{
+ "id": "usg-constellation-loan-2026-10",
+ "payer": "us-government",
+ "payee": "constellation",
+ "type": "debt_or_gpu_backed_loan",
+ "announced": "2026-10-27",
+ "amount_usd_high": 5000000000.0,
+ "amount_basis": "committed",
+ "amount_kind": "cap",
+ "term_years": 30,
+ "confidence": "filed",
+ "status": "announced",
+ "summary": "DOE conditionally commits to a 30-year federal loan of up to $5B for uprates at eight Constellation nuclear plants in Illinois, Maryland and Pennsylvania.",
+ "as_of": "2026-11-09",
+ "last_checked": "2026-11-12",
+ "sources": [
+  "ceg-8k-2026-q3",
+  "ceg-doe-loan-2026-10-27",
+  "doe-constellation-loan-2026-10-27"
+ ],
+ "notes": "Conditional: no loan agreement is signed and nothing is drawn, so the status stays announced. Per the 8-K, DOE's Office of Energy Dominance Financing would guarantee a loan from the Federal Financing Bank at 0.375% over Treasuries; both are US government, so it is one loan edge, not a guarantee. The plants are Braidwood, Byron, Clinton, Dresden, LaSalle, Quad Cities, Calvert Cliffs and Limerick."
+}

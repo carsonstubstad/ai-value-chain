@@ -143,6 +143,12 @@ Settled questions. Do not reopen without Carson. Add a dated line for every new 
 ## Gate 5 passed (2026-11-02, Carson: "Pass Gate 5")
 - D66 Gate 5 is passed: PR #11 merges to main and the site goes public on GitHub Pages, deployed from main by .github/workflows/pages.yml (validator and bundle check first, then site/ is published as is). The Monday review routine (set Nov 2, first run Nov 9) opens a pull request each week and never merges or deploys; publishing a change still means Carson merging it.
 
+## Constellation Q3 8-K records (2026-11-12, Carson: "Open the PR from here", after the Nov 9 Monday review could not push)
+- D67 The Q3 8-K (filed 2026-11-09) gives three edges, matching the routine: Amazon's 20-year Calvert Cliffs PPA, Google's deal, and the DOE conditional loan. Google's 20-year uprate PPA and its 15-year 2,700 MW supply agreement were signed and announced together, so they are one edge under D09 (the validator treats the same payer, payee, type and date as one edge); the record names both parts. Amazon's related PJM retail supply agreement gives no amount, term or size, so it is a note on the Amazon record, not an edge. The five-year Google Cloud alliance announced with the Google deal gives no amount or direction and is left out.
+- D68 The $3B (Calvert Cliffs) and $4.3B (uprates) figures are Constellation's own investment, not what Amazon or Google pay, so both PPAs stay undisclosed, as the Meta and Microsoft PPAs do. MW goes in the summary.
+- D69 The DOE commitment is one us-government to Constellation loan edge (debt_or_gpu_backed_loan, cap up to $5B, 30 years), not a guarantee, because the guarantor (DOE) and the lender (Federal Financing Bank) are both the US government. It stays status announced until a loan agreement is signed.
+- D70 New-deal events found in a filing are dated by the filing that put them in the records (here 2026-11-09), so they land in that week's changelog; each deal keeps its own announced date. data/state.json as_of moves to 2026-11-09; its sentence is unchanged and still matches the records.
+
 ## Proposed at Gate 2 (2026-10-31), settled 2026-11-01 (O14)
 - P21 Company list: the 47 in data/companies-list.csv stand. Bench promotion order if a sourced edge appears: Core Scientific, Humain, Bloom Energy.
 - P22 Schema: six JSON Schemas in schema/ plus data/taxonomy.json. Financials are JSON records like the rest, not a CSV, so one validator covers everything.
