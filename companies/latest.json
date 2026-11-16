@@ -1,5 +1,5 @@
 {
- "run_at": "2026-11-09T15:55:43+00:00",
+ "run_at": "2026-11-16T15:30:31+00:00",
  "sec": {
   "asml": {
    "ticker": "ASML",
@@ -474,8 +474,6 @@
     "BKFAF",
     "BKFDF",
     "BKFOF",
-    "BKFPF",
-    "BKPA",
     "BNH",
     "BNJ",
     "BRCFF",
@@ -547,8 +545,8 @@
   },
   "sk-hynix": {
    "url": "https://www.skhynix.com/",
-   "status": 200,
-   "final_url": "https://www.skhynix.com/"
+   "status": null,
+   "error": "URLError: <urlopen error timed out>"
   },
   "samsung": {
    "url": "https://semiconductor.samsung.com/",
