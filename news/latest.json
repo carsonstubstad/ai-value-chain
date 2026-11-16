@@ -1,6 +1,6 @@
 {
- "run_at": "2026-11-09T15:57:01+00:00",
- "since": "2026-11-01",
+ "run_at": "2026-11-16T15:32:34+00:00",
+ "since": "2026-11-08",
  "cap": 30,
  "stale": {
   "days": 90,
@@ -9,75 +9,91 @@
  },
  "candidates": [
   {
-   "form": "8-K",
-   "filed": "2026-11-03",
-   "accession": "0001596532-26-000252",
-   "doc": "anet-20261103.htm",
-   "items": "2.02,9.01",
-   "company": "arista",
-   "url": "https://www.sec.gov/Archives/edgar/data/1596532/000159653226000252/anet-20261103.htm",
+   "form": "6-K",
+   "filed": "2026-11-12",
+   "accession": "0001104659-26-126008",
+   "doc": "tm2629571d1_6k.htm",
+   "items": "",
+   "company": "nebius",
+   "url": "https://www.sec.gov/Archives/edgar/data/1513845/000110465926126008/tm2629571d1_6k.htm",
    "exhibits": [
-    "ex991q326-earningsrelease.htm"
+    "tm2629571d1_ex99-1.htm",
+    "tm2629571d1_ex99-2.htm"
    ],
    "partners": [
-    "amd",
-    "anthropic",
-    "arm",
-    "broadcom",
     "meta",
     "microsoft",
-    "openai"
+    "nvidia",
+    "palantir"
    ],
    "passages": [
-    "-99.1 Document Exhibit 99.1 Arista Networks, Inc. Reports Third Quarter 2026 Financial Results • Delivered total revenues in Q3 2026 of approximately $3.66 billion, exceeding guidance of $3.3 billion while growing 58.5%, the highest year-over-year revenue growth since our IPO. • In partnership with AMD, Arm, Broadcom, d-Matrix, Meta, Microsoft, and Qualcomm, Arista launched open standards-based rack-scale architectures for scale-up and scale-out AI networks. • In September 2026, Arista was added to the S&P 100, an index comprised of 100 major blue-chip companies across multiple industry groups. SANTA CLARA, Calif. - November 3, 2026 -- A",
-    "iplane forwarding, deterministic routing, and real-time congestion signaling enable lossless, high-radix AI fabrics across geographically distributed data centers up to one million XPUs. • Arista expanded AI-driven software security across its development lifecycle – Collaborating with the likes of Anthropic, Google, and OpenAI, Arista embedded domain-specific AI harnesses that accelerate 1 proactive vulnerability discovery, building on the company’s track record of low CVEs and no-downtime upgrades. Financial Outlook For the fourth quarter of 2026, we expect: • Revenue of $3.9 - $4.0 billion; • Non-GAAP operating margin"
+    "payment. • Our long-term agreements with investment-grade customers can be financed directly. In July we closed the first facility under our asset-backed financing framework: $775 million at SOFR plus 2.50%, secured against long-term agreements with an investment-grade customer. Our agreements with Microsoft and Meta can be financed the same way, and with more than $40 billion of similar committed revenue we see this as a repeatable framework. • Our balance sheet is healthy: $7.4 billion in cash and cash equivalents at quarter-end, the equity stakes we hold in other businesses, and cash from operations, which i",
+    "a rigorous evaluation. Their decision demonstrates our ability to support demanding AI R&D workloads. Datadog selected Nebius for AI cloud deployment, citing our purpose-built AI infrastructure, deep technical collaboration and responsive support as the foundation for an infrastructure partnership. Palantir named Nebius as a preferred AI cloud partner Palantir customers may leverage with the infrastructure needed to finetune and run inference on their Sovereign AI models. Snowflake signed an agreement to support Snowflake on Nebius AI Cloud. The agreement reflects our continued expansion among leading enterprise technology companies. CEOs letter Customer",
+    "cial update Other businesses Customers Deeper commitments, broader base Adoption panding a cross segments and routes to market AI-natives joined alongside them. Q3 2026 Cognition, the company behind Devin, an autonomous AI software engineer, is partnering with Nebius AI Cloud for its first at-scale NVIDIA Vera Rubin clusters to support its compute needs, and accelerating product innovation to meet growing enterprise demand. Ortet, a frontier lab for health, partnered with Nebius for its initial Blackwell cluster, and is set to receive an early Vera Rubin allocation as part of its compute scale-up. C"
    ],
    "money": true
   },
   {
    "form": "6-K",
-   "filed": "2026-11-04",
-   "accession": "0001973239-26-000142",
-   "doc": "arm-20260930.htm",
+   "filed": "2026-11-10",
+   "accession": "0001046179-26-000797",
+   "doc": "tsm-boardx202611xx.htm",
    "items": "",
-   "company": "arm",
-   "url": "https://www.sec.gov/Archives/edgar/data/1973239/000197323926000142/arm-20260930.htm",
+   "company": "tsmc",
+   "url": "https://www.sec.gov/Archives/edgar/data/1046179/000104617926000797/tsm-boardx202611xx.htm",
    "exhibits": [],
    "partners": [
-    "amd",
-    "nvidia",
-    "softbank"
+    "anthropic",
+    "openai"
    ],
    "passages": [
-    "llion and $ 28.3 million, respectively, which is reflected in accounts receivable, net on the Condensed Consolidated Balance Sheets. See Note 5 - Equity Investments , for further details of the impact of Acetone Limited on the Company’s results. Other Entities Related by Virtue of Common Control by SoftBank Group Corp. (“SoftBank Group”) The Company is party to a consulting agreement with SoftBank Group pursuant to which the Company provides to SoftBank Group and its affiliates certain technical consultancy and advisory services relating to potential transactions, strategic partnerships, licensing agreements, commercial arrangements or other arrangements involving SoftBank Group or its affiliates (the “Consulting Agreement”). Pursuant to statements of work entered into under the Consulting Agreement, the Company may earn fees for services provided. For the three months ended September 30, 2026 and 2025 , revenue from the Consulting Agreement was $ 208.7 million and $ 177.9 million, respectively, from affiliates of SoftBank Group. For the six months ended September 30, 2026 and 2025 , revenue from the Consulting Agreement was $ 401.6 million and $ 304.0 million, respectively, from affiliates of SoftBank Group. As of September 30, 2026, the Company had current and non-current contract assets of $ 616.4 million and $ 0.9 million, respectively, from affiliates of SoftBank Group. As of March 31, 2026, the Company had current contract assets of $ 645.8 million and no non-current contract assets from an affiliate of SoftBank Group . 30 Table of Contents Arm Holdings plc Notes to Condensed Consolidated Financial Statements (Unaudited) In November 2025, SoftBank Group acquired all of the outstanding equity interests of Ampere, in which the Company previously had an equity investment and over which the Company had significant influence. The Company continues to have licensing and servicing arrangements with Ampere for which the Company may earn fees for services",
-    "urrent contract liabilities of $ 0.3 million related to contracts with Ampere. As of March 31, 2026, the Company had accounts receivable of $ 0.5 million, current contract assets of $ 0.5 million, and current contract liabilities of $ 5.4 million related to contracts with Ampere. In September 2026, SoftBank Group acquired all of the membership interests in a technology company, with which the Company previously had an existing agency sales agreement. The change in ownership resulted in the technology company becoming a related party by virtue of common control. For the three and six months ended September 3",
-    "ny recognized revenue of $ 6.2 million from the technology company. As of September 30, 2026 , the Company had accounts receivable of $ 12.5 million related to contracts with the technology company. There were no other material transactions with other entities related by virtue of common control by SoftBank Group. Other Equity Investments The Company has investments in limited partnerships or certain limited liability companies that maintain a specific ownership account for each investor, for which the Company has more than virtually no influence (i.e., at least 3% to 5% ownership). For the three months end"
+    "aining capital expenditures, and capitalized leased assets. 4. Approved the investment of no more than US$500 million in the establishment of an investment company for the purpose of making strategic investments in the semiconductor industry and related ecosystem. 5. Approved the investments in (1) Anthropic, PBC at its per share initial public offering price in an amount not to exceed US$500 million to acquire Anthropic’s common shares; and (2) OpenAI Group PBC in an amount not to exceed US$500 million to acquire OpenAI’s preferred stock. About TSMC TSMC pioneered the pure-play foundry business model when it was founded in 1987 and has been the world’s leading dedicated semiconductor foundry ever since. The Company supports a thriving ecosystem of global customers and partners with the industry’s leading process t"
    ],
    "money": true
   },
   {
-   "form": "8-K",
-   "filed": "2026-11-05",
-   "accession": "0001140361-26-042013",
-   "doc": "ef20084950_8k.htm",
-   "items": "2.01,2.03,3.02,7.01,9.01",
-   "company": "vistra",
-   "url": "https://www.sec.gov/Archives/edgar/data/1692819/000114036126042013/ef20084950_8k.htm",
+   "form": "6-K",
+   "filed": "2026-11-12",
+   "accession": "0001104659-26-126238",
+   "doc": "nbis-20261112x6k.htm",
+   "items": "",
+   "company": "nebius",
+   "url": "https://www.sec.gov/Archives/edgar/data/1513845/000110465926126238/nbis-20261112x6k.htm",
    "exhibits": [
-    "ef20084950_ex99-1.htm"
+    "nbis-ex99d1.htm",
+    "nbis-ex99d2.htm"
    ],
+   "partners": [
+    "nvidia"
+   ],
+   "passages": [
+    "inancing, including convertible notes issued in June 2025, September 2025, March 2026 and August 2026, a senior secured Term Loan Facility entered into in July 2026, a public equity offering completed in September 2025, advances received under strategic customer contracts, an equity investment from NVIDIA Corporation and proceeds from sale of shares under the Group’s at-the-market equity program in the second and third quarters of 2026. As of September 30, 2026, $7,425.6 million was recorded in cash and cash equivalents. Cash equivalents mainly consist of bank deposits with original maturities of th",
+    "s outstanding during the period using the two-class method, including vested restricted share units, remaining shares to be delivered as part of the restructuring of the Company's convertible notes in June 2022, and Class A ordinary shares issuable upon exercise of the pre-funded warrants issued to NVIDIA. As no conditions must be met before the underlying shares are issued and the shares are issuable for little cash consideration, the warrant shares are included in the computation of basic net income/(loss) per share from their issue date. Unvested shares issued in June 2026 as part of the consider",
+    "ne months ended September 30, 2026, 150,000 and 246,830 Class B shares (par value €0.10), respectively, were converted into the same number of Class A shares (par value €0.01) on a one-for-one basis. Pre-Funded Warrants On March 11, 2026 the Company entered into a securities purchase agreement with NVIDIA to issue Pre-Funded Warrants to purchase 21,065,936 Class A ordinary shares (“Pre-Funded Warrant Shares”) for aggregate gross proceeds of $2,000. The Pre-Funded Warrants have an exercise price of $0.0001 per Class A ordinary share. The Pre-Funded Warrants are exercisable any time after the date of"
+   ],
+   "money": true
+  },
+  {
+   "form": "8-K/A",
+   "filed": "2026-11-16",
+   "accession": "0001193125-26-462340",
+   "doc": "d105780d8ka.htm",
+   "items": "3.02",
+   "company": "amd",
+   "url": "https://www.sec.gov/Archives/edgar/data/2488/000119312526462340/d105780d8ka.htm",
+   "exhibits": [],
    "partners": [],
    "passages": [],
    "money": true
   },
   {
-   "form": "8-K",
-   "filed": "2026-11-05",
-   "accession": "0000707549-26-000057",
-   "doc": "lrcx-20261103.htm",
-   "items": "5.07,8.01,9.01",
-   "company": "lam-research",
-   "url": "https://www.sec.gov/Archives/edgar/data/707549/000070754926000057/lrcx-20261103.htm",
+   "form": "6-K",
+   "filed": "2026-11-10",
+   "accession": "0001046179-26-000796",
+   "doc": "tsm-revenue20261110.htm",
+   "items": "",
+   "company": "tsmc",
+   "url": "https://www.sec.gov/Archives/edgar/data/1046179/000104617926000796/tsm-revenue20261110.htm",
    "exhibits": [],
    "partners": [],
    "passages": [],
@@ -85,62 +101,120 @@
   },
   {
    "form": "8-K",
-   "filed": "2026-11-04",
-   "accession": "0001193125-26-447507",
-   "doc": "d131790d8k.htm",
+   "filed": "2026-11-13",
+   "accession": "0001628280-26-073564",
+   "doc": "vrt-20261113.htm",
+   "items": "7.01,9.01",
+   "company": "vertiv",
+   "url": "https://www.sec.gov/Archives/edgar/data/1674101/000162828026073564/vrt-20261113.htm",
+   "exhibits": [],
+   "partners": [],
+   "passages": [],
+   "money": false
+  },
+  {
+   "form": "6-K",
+   "filed": "2026-11-13",
+   "accession": "0001046179-26-000801",
+   "doc": "tsm-fsx20261113x6k.htm",
+   "items": "",
+   "company": "tsmc",
+   "url": "https://www.sec.gov/Archives/edgar/data/1046179/000104617926000801/tsm-fsx20261113x6k.htm",
+   "exhibits": [],
+   "partners": [],
+   "passages": [],
+   "money": false
+  },
+  {
+   "form": "6-K",
+   "filed": "2026-11-12",
+   "accession": "0001046179-26-000800",
+   "doc": "a20261112statementregardin.htm",
+   "items": "",
+   "company": "tsmc",
+   "url": "https://www.sec.gov/Archives/edgar/data/1046179/000104617926000800/a20261112statementregardin.htm",
+   "exhibits": [],
+   "partners": [],
+   "passages": [],
+   "money": false
+  },
+  {
+   "form": "8-K",
+   "filed": "2026-11-12",
+   "accession": "0001045810-26-000082",
+   "doc": "nvda-20261111.htm",
+   "items": "5.02,9.01",
+   "company": "nvidia",
+   "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000082/nvda-20261111.htm",
+   "exhibits": [],
+   "partners": [],
+   "passages": [],
+   "money": false
+  },
+  {
+   "form": "8-K",
+   "filed": "2026-11-12",
+   "accession": "0001193125-26-458525",
+   "doc": "d177728d8k.htm",
    "items": "8.01,9.01",
-   "company": "oracle",
-   "url": "https://www.sec.gov/Archives/edgar/data/1341439/000119312526447507/d131790d8k.htm",
+   "company": "meta",
+   "url": "https://www.sec.gov/Archives/edgar/data/1326801/000119312526458525/d177728d8k.htm",
    "exhibits": [],
    "partners": [],
    "passages": [],
-   "money": true
+   "money": false
+  },
+  {
+   "form": "6-K",
+   "filed": "2026-11-12",
+   "accession": "0001171843-26-007374",
+   "doc": "f6k_111226.htm",
+   "items": "",
+   "company": "brookfield",
+   "url": "https://www.sec.gov/Archives/edgar/data/1001085/000117184326007374/f6k_111226.htm",
+   "exhibits": [],
+   "partners": [],
+   "passages": [],
+   "money": false
   },
   {
    "form": "8-K",
-   "filed": "2026-11-04",
-   "accession": "0001193125-26-447200",
-   "doc": "d176836d8k.htm",
-   "items": "2.02,7.01,9.01",
-   "company": "coherent",
-   "url": "https://www.sec.gov/Archives/edgar/data/820318/000119312526447200/d176836d8k.htm",
-   "exhibits": [
-    "d176836dex991.htm",
-    "d176836dex992.htm"
-   ],
+   "filed": "2026-11-12",
+   "accession": "0001628280-26-073360",
+   "doc": "amat-20261112.htm",
+   "items": "2.02,9.01",
+   "company": "applied-materials",
+   "url": "https://www.sec.gov/Archives/edgar/data/6951/000162828026073360/amat-20261112.htm",
+   "exhibits": [],
    "partners": [],
    "passages": [],
-   "money": true
+   "money": false
   },
   {
    "form": "8-K",
-   "filed": "2026-11-02",
-   "accession": "0001321655-26-000045",
-   "doc": "pltr-20261102.htm",
-   "items": "2.02,7.01,9.01",
-   "company": "palantir",
-   "url": "https://www.sec.gov/Archives/edgar/data/1321655/000132165526000045/pltr-20261102.htm",
-   "exhibits": [
-    "a2026q3ex991pressrelease.htm"
-   ],
+   "filed": "2026-11-10",
+   "accession": "0001769628-26-000461",
+   "doc": "crwv-20261110.htm",
+   "items": "2.02,9.01",
+   "company": "coreweave",
+   "url": "https://www.sec.gov/Archives/edgar/data/1769628/000176962826000461/crwv-20261110.htm",
+   "exhibits": [],
    "partners": [],
    "passages": [],
-   "money": true
+   "money": false
   },
   {
    "form": "8-K",
-   "filed": "2026-11-02",
-   "accession": "0001193125-26-443854",
-   "doc": "d377521d8k.htm",
-   "items": "1.01,2.03,8.01,9.01",
-   "company": "blackstone",
-   "url": "https://www.sec.gov/Archives/edgar/data/1393818/000119312526443854/d377521d8k.htm",
-   "exhibits": [
-    "d377521dex991.htm"
-   ],
+   "filed": "2026-11-09",
+   "accession": "0001140361-26-042795",
+   "doc": "ef20085053_8k.htm",
+   "items": "8.01,9.01",
+   "company": "vistra",
+   "url": "https://www.sec.gov/Archives/edgar/data/1692819/000114036126042795/ef20085053_8k.htm",
+   "exhibits": [],
    "partners": [],
    "passages": [],
-   "money": true
+   "money": false
   },
   {
    "form": "8-K",
@@ -154,127 +228,8 @@
    "partners": [],
    "passages": [],
    "money": false
-  },
-  {
-   "form": "8-K",
-   "filed": "2026-11-06",
-   "accession": "0001692819-26-000023",
-   "doc": "vistra-20261106.htm",
-   "items": "2.02,9.01",
-   "company": "vistra",
-   "url": "https://www.sec.gov/Archives/edgar/data/1692819/000169281926000023/vistra-20261106.htm",
-   "exhibits": [],
-   "partners": [],
-   "passages": [],
-   "money": false
-  },
-  {
-   "form": "8-K",
-   "filed": "2026-11-05",
-   "accession": "0001193125-26-448357",
-   "doc": "d177209d8k.htm",
-   "items": "5.02",
-   "company": "microsoft",
-   "url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526448357/d177209d8k.htm",
-   "exhibits": [],
-   "partners": [],
-   "passages": [],
-   "money": false
-  },
-  {
-   "form": "8-K",
-   "filed": "2026-11-05",
-   "accession": "0001104659-26-123389",
-   "doc": "tm2629062d1_8k.htm",
-   "items": "5.02,9.01",
-   "company": "micron",
-   "url": "https://www.sec.gov/Archives/edgar/data/723125/000110465926123389/tm2629062d1_8k.htm",
-   "exhibits": [
-    "tm2629062d1_ex99-1.htm"
-   ],
-   "partners": [],
-   "passages": [],
-   "money": false
-  },
-  {
-   "form": "8-K",
-   "filed": "2026-11-05",
-   "accession": "0001193125-26-450074",
-   "doc": "d166273d8k.htm",
-   "items": "8.01,9.01",
-   "company": "meta",
-   "url": "https://www.sec.gov/Archives/edgar/data/1326801/000119312526450074/d166273d8k.htm",
-   "exhibits": [],
-   "partners": [],
-   "passages": [],
-   "money": false
-  },
-  {
-   "form": "8-K",
-   "filed": "2026-11-05",
-   "accession": "0001193125-26-449835",
-   "doc": "d174184d8k.htm",
-   "items": "8.01,9.01",
-   "company": "alphabet",
-   "url": "https://www.sec.gov/Archives/edgar/data/1652044/000119312526449835/d174184d8k.htm",
-   "exhibits": [],
-   "partners": [],
-   "passages": [],
-   "money": false
-  },
-  {
-   "form": "8-K",
-   "filed": "2026-11-04",
-   "accession": "0001193125-26-447173",
-   "doc": "d178557d8k.htm",
-   "items": "8.01,9.01",
-   "company": "microsoft",
-   "url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526447173/d178557d8k.htm",
-   "exhibits": [],
-   "partners": [],
-   "passages": [],
-   "money": false
-  },
-  {
-   "form": "6-K",
-   "filed": "2026-11-04",
-   "accession": "0001973239-26-000141",
-   "doc": "arm-20261104.htm",
-   "items": "",
-   "company": "arm",
-   "url": "https://www.sec.gov/Archives/edgar/data/1973239/000197323926000141/arm-20261104.htm",
-   "exhibits": [],
-   "partners": [],
-   "passages": [],
-   "money": false
-  },
-  {
-   "form": "8-K",
-   "filed": "2026-11-03",
-   "accession": "0001375365-26-000026",
-   "doc": "smci-20261103.htm",
-   "items": "2.02,8.01,9.01",
-   "company": "supermicro",
-   "url": "https://www.sec.gov/Archives/edgar/data/1375365/000137536526000026/smci-20261103.htm",
-   "exhibits": [],
-   "partners": [],
-   "passages": [],
-   "money": false
-  },
-  {
-   "form": "8-K",
-   "filed": "2026-11-03",
-   "accession": "0000002488-26-000188",
-   "doc": "amd-20261103.htm",
-   "items": "2.02,7.01,9.01",
-   "company": "amd",
-   "url": "https://www.sec.gov/Archives/edgar/data/2488/000000248826000188/amd-20261103.htm",
-   "exhibits": [],
-   "partners": [],
-   "passages": [],
-   "money": false
   }
  ],
  "errors": {},
- "found": 18
+ "found": 15
 }
