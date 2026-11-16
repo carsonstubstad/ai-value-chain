@@ -1,15 +1,17 @@
 {
- "run_at": "2026-11-09T15:56:18+00:00",
+ "run_at": "2026-11-16T15:31:27+00:00",
  "companies": {
   "alphabet": {
    "cik": "0001652044",
    "terms": [
     "Anthropic",
-    "Brookfield"
+    "Brookfield",
+    "Constellation"
    ],
    "deals": [
     "alphabet-anthropic-equity-2025-01",
     "alphabet-brookfield-hydro-2025-07",
+    "alphabet-constellation-ppa-2026-10",
     "anthropic-alphabet-tpu-2025-10"
    ],
    "filings": [
@@ -39,10 +41,12 @@
    "cik": "0001018724",
    "terms": [
     "Anthropic",
+    "Constellation",
     "OpenAI"
    ],
    "deals": [
     "amazon-anthropic-equity-2026-04",
+    "amazon-constellation-ppa-2026-09",
     "anthropic-aws-spend-2026-04",
     "openai-amazon-compute-2025-11",
     "openai-amazon-compute-2026-02"
@@ -501,28 +505,42 @@
   "constellation": {
    "cik": "0001868275",
    "terms": [
+    "Alphabet",
+    "Amazon",
+    "CHIPS",
+    "Department of Commerce",
     "Meta",
-    "Microsoft"
+    "Microsoft",
+    "delayed draw"
    ],
    "deals": [
+    "alphabet-constellation-ppa-2026-10",
+    "amazon-constellation-ppa-2026-09",
     "meta-constellation-ppa-2025-06",
-    "microsoft-constellation-ppa-2024-09"
+    "microsoft-constellation-ppa-2024-09",
+    "usg-constellation-loan-2026-10"
    ],
    "filings": [
     {
      "form": "10-Q",
-     "filed": "2026-08-06",
-     "period": "2026-06-30",
-     "accession": "0001868275-26-000104",
-     "doc": "ceg-20260630.htm",
-     "url": "https://www.sec.gov/Archives/edgar/data/1868275/000186827526000104/ceg-20260630.htm",
-     "chars": 253888,
+     "filed": "2026-11-09",
+     "period": "2026-09-30",
+     "accession": "0001868275-26-000119",
+     "doc": "ceg-20260930.htm",
+     "url": "https://www.sec.gov/Archives/edgar/data/1868275/000186827526000119/ceg-20260930.htm",
+     "chars": 261390,
      "passages": [
+      {
+       "terms": [
+        "Amazon"
+       ],
+       "text": "reliable nuclear generation, primarily from our existing fleet. The agreements have terms of 15 to 20 years and are expected to commence between 2029 and 2032. This total includes a 176 MW PPA with Walmart that will support a 30 MW capacity expansion at our Dresden Clean Energy Center in Illinois, as well as additional investments in the facility, its workforce, and the local community. In September 2026, we announced a 20-year, 690 MW PPA with Amazon and a related retail supply agreement supporting Amazon's operations in PJM. The agreements will enable more than $3 billion of investment in our Calvert Cliffs Clean Energy Center, including facility improvements and a 190 MW capacity expansion expected to come online between 2030 and 2032, while supporting the facility's continued operation and future relicensing. In October 2026, we announced a 20-year PPA with Google that will enable more than $4.3 billion of investment across 11 of our nuclear u"
+      },
       {
        "terms": [
         "Microsoft"
        ],
-       "text": "3. Regulatory Matters As discussed in Note 3 — Regulatory Matters of our 2025 Form 10-K, we are involved in various regulatory and legislative proceedings. The following discusses developments in 2026 and updates to the 2025 Form 10-K. Capacity Interconnection Rights for Crane Clean Energy Center In 2024, we announced the restart of Three Mile Island Unit 1, renamed as the Crane Clean Energy Center. The restart is supported by a 20-year PPA with Microsoft to purchase the output generated from the renewed plant. The restart of the plant and delivery of electricity under the PPA is subject to certain regulatory approvals, including the NRC comprehensive safety and environmental review, as well as permits from relevant state and local agencies. PJM's Phase I System Impact Study for Crane identified contingent transmission upgrades that would need to be completed for Crane to be fully deliverable to"
+       "text": "3. Regulatory Matters As discussed in Note 3 — Regulatory Matters of our 2025 Form 10-K, we are involved in various regulatory and legislative proceedings. The following discusses developments in 2026 and updates to the 2025 Form 10-K. Capacity Interconnection Rights for Crane Clean Energy Center In 2024, we announced the restart of Three Mile Island Unit 1, renamed as the Crane Clean Energy Center. The restart is supported by a 20-year PPA with Microsoft to purchase the output generated from the renewed plant. The restart of the plant and delivery of electricity under the PPA is subject to certain regulatory approvals, 19 Table of Contents Combined Notes to Consolidated Financial Statements (Dollars in millions, unless otherwise noted) Note 3 — Regulatory Matters including the NRC comprehensive safety and environmental review, as well as permits from relevant state and local agencies. PJM's Phas"
       }
      ]
     },
@@ -543,16 +561,29 @@
       },
       {
        "terms": [
+        "CHIPS"
+       ],
+       "text": "nt Obligation ASR Accelerated Share Repurchase Atomic Energy Act Atomic Energy Act of 1954, as amended Bcf Billion cubic feet C&I Commercial and Industrial CAISO California ISO CARFR Credit-Adjusted, Risk-Free Rates CBAs Collective Bargaining Agreements CCUS Carbon Capture, Utilization, and Storage CenterPoint CenterPoint Energy Houston Electric, LLC CERCLA Comprehensive Environmental Response, Compensation, and Liability Act of 1980, as amended CHIPS and Science Act CHIPS and Science Act of 2022 Clean Air Act Clean Air Act of 1963, as amended Clean Energy Law Illinois Public Act 102-0062 signed into law on September 15, 2021 Clean Water Act Federal Water Pollution Control Amendments of 1972, as amended CMC Carbon Mitigation Credit CO2 Carbon Dioxide CODM Chief Operating Decision Maker CORe+ Constellation Offsite Renewables CWIP Construction Work In Progress DOE United States Department of Energy DOJ United States"
+      },
+      {
+       "terms": [
         "Microsoft"
        ],
        "text": "d ownership interests in five jointly-owned nuclear stations: Quad Cities (75% ownership), Peach Bottom (50% ownership), Salem (42.59% ownership), NMP Unit 2 (82% ownership), and STP (44% ownership), that are reflected in our consolidated financial statements relative to our proportionate ownership interest in each unit. See ITEM 2. PROPERTIES for additional information on our nuclear facilities. In September 2024, we executed a 20-year PPA with Microsoft that will support the restart of Three Mile Island Unit 1, renamed as the Crane Clean Energy Center, which was retired in 2019 for economic reasons. Under the agreement, Microsoft will purchase the output generated from the renewed plant which includes energy, capacity and emissions-free attributes as part of its goal to help power its data centers in PJM with clean reliable energy. The site, once operational, will have approximately 835 MWs of emissions-free capacity. The timing of the restart is subject to certain regulatory approvals, interconnection-related construction, permitting, and obtaining a renewed operating l"
       },
       {
        "terms": [
+        "Amazon",
         "Meta",
         "Microsoft"
        ],
-       "text": "of natural gas generation under the streamlined pathway. We are also continuing to evaluate additional resource options for Maryland, including battery storage projects, under a separate solicitation established by the Next Generation Energy Act. Data Center Growth. The rapid expansion of data centers continues to accelerate, driven by widespread adoption of AI technologies and large-scale infrastructure investments by major hyperscalers such as Microsoft, Google, Meta, and Amazon. This growth is creating unprecedented demand for reliable, around-the-clock electricity in the U.S. and globally. According to the DOE, data centers are amongst the most energy-intensive building types, consuming 10 to 50 times more energy per square foot than a typical commercial office building. As AI workloads scale and computing needs increase, the energy requirements of data centers are expected to grow substantially, further r"
+       "text": "of natural gas generation under the streamlined pathway. We are also continuing to evaluate additional resource options for Maryland, including battery storage projects, under a separate solicitation established by the Next Generation Energy Act. Data Center Growth. The rapid expansion of data centers continues to accelerate, driven by widespread adoption of AI technologies and large-scale infrastructure investments by major hyperscalers such as Microsoft, Google, Meta, and Amazon. This growth is creating unprecedented demand for reliable, around-the-clock electricity in the U.S. and globally. According to the DOE, data centers are amongst the most energy-intensive building types, consuming 10 to 50 times more energy per square foot than a typical commercial office building. As AI workloads scale and computing needs increase, the energy requirements of data centers are expected to grow substantially, further reinforcing t"
+      },
+      {
+       "terms": [
+        "CHIPS"
+       ],
+       "text": "ndustrial processes, heating and cooling, and household appliances. This transition has the potential to materially increase overall electricity demand. For companies like ours, whose core strength lies in safely generating and delivering electricity and related energy solutions, this growing demand represents a natural and meaningful opportunity for long-term growth. Onshoring of Manufacturing. Recent federal industrial policy, most notably the CHIPS and Science Act and the IRA, explicitly incentivize the return of manufacturing and supply‑chain capacity back to the United States. This resurgence in domestic industrial activity is driving a meaningful increase in electricity demand, as new facilities are both expanding and becoming more energy intensive. These trends are further amplified by broader shifts such as electrification and rapid data center growth. The resulting load growth presen"
       },
       {
        "terms": [
@@ -591,30 +622,18 @@
    "filings": [
     {
      "form": "10-Q",
-     "filed": "2026-08-12",
-     "period": "2026-06-30",
-     "accession": "0001769628-26-000366",
-     "doc": "crwv-20260630.htm",
-     "url": "https://www.sec.gov/Archives/edgar/data/1769628/000176962826000366/crwv-20260630.htm",
-     "chars": 447680,
+     "filed": "2026-11-12",
+     "period": "2026-09-30",
+     "accession": "0001769628-26-000465",
+     "doc": "crwv-20260930.htm",
+     "url": "https://www.sec.gov/Archives/edgar/data/1769628/000176962826000465/crwv-20260930.htm",
+     "chars": 479880,
      "passages": [
       {
        "terms": [
         "delayed draw"
        ],
-       "text": "SOFR + 4.50 % $ 3,100 2031 9.75 % Senior Notes April 2026 9.75 % $ 2,750 2032 9.625 % Senior Notes June 2026 9.625 % $ 1,250 2032 EUR Senior Notes June 2026 8.50 % € 2,000 2032 Convertible Senior Notes April 2026 1.75 % $ 4,000 (1) DDTL Facility floating-rate commitments are subject to an interest rate per annum equal to, at the Company's option, either the SOFR or the alternative base rate plus a spread. For the DDTL 4.0 Facility, refer to the Delayed Draw Term Loans below for further details on interest rates. (2) Amounts represent borrowing capacity for the DDTL Facilities and the principal amounts for the Senior Notes. Delayed Draw Term Loans (\"DDTL\") In March 2026, one of the Company's subsidiaries, CoreWeave Compute Acquisition Co. VIII, LLC (\"CCAC VIII\"), entered into a delayed draw term loan facility agreement with various lenders and MUFG Bank, LTD., as the administrative agent. The agreement provides an $ 8.5 billion delayed draw term loan facility (the “DDTL 4.0 Facility”) available in one or more draws through June 30, 2027, the commitment termination date. As of June 30, 2026, the facility has $ 1.4 billion of outstanding floating-rate loan and $ 1.5 billion of outstanding fixed-rate loan. Amounts borrowed under the floating-rate commitments bear interest, at the Company’s option, at daily compounded SOFR plus 2.25 % per annum or the alternative base rate plus 1.25 %"
-      },
-      {
-       "terms": [
-        "delayed draw"
-       ],
-       "text": "icted cash balances primarily based on a forward-looking three-month coverage of scheduled cash interest and principal payments, periodic swap settlements, and operating expenses. Following the commitment termination date, the requirement is based on the maximum projected three-month amounts of such obligations through the term maturity date. In May 2026, one of the Company's subsidiaries, CoreWeave Financing DDTL V, LLC (\"CFD V\") entered into a delayed draw term loan facility agreement with various lenders and Morgan Stanley Senior Funding, Inc., as the administrative agent. The agreement provides a $ 3.1 billion delayed draw term loan facility (the “DDTL 5.0 Facility”) available in one or more draws through September 30, 2026, the commitment termination date. The principal amount of the DDTL 5.0 Facility is required to be repaid in monthly installments, beginning in November 2026, with the expected final payment due in May 2031. The Company is required to pay a fee of 0.50 % per annum on the undrawn commitment. As of June 30, 2026, the Company had capitalized $ 25 m"
-      },
-      {
-       "terms": [
-        "delayed draw"
-       ],
-       "text": "ter into certain transactions with affiliates; and merge, consolidate, transfer, or sell all or substantially all of its assets. The carrying value of the fixed-rate borrowing under the DDTL 4.0 Facility approximates its estimated fair value, which was determined using a discounted cash flow method based on current market rates and is categorized as Level 3 in the fair value hierarchy. The carrying value of the variable-rate borrowings under the delayed draw term loans approximates fair value because the interest rates reset periodically to market rates. As of June 30, 2026, the Company was in compliance with all covenants under its delayed draw term loan facility agreements. In addition to DDTL 4.0, certain of the Company's debt facilities are entered into by bankruptcy-remote, special-purpose consolidated subsidiaries formed to hold the financed infrastructure and the related customer contracts. Certain assets of these consolidated entities may be used only to settle the obligations of those entities. As of June 30, 2026, the debt of these entities was secured by $ 18.2 billion of non"
+       "text": "as follows (in millions): Three Months Ended September 30, Nine Months Ended September 30, 2026 2025 2026 2025 Contractual interest expense $ 766 $ 324 $ 1,841 $ 807 Amortization of debt discounts and issuance costs and accretion of redemption premiums 57 21 143 88 Less: capitalized interest ( 54 ) ( 62 ) ( 230 ) ( 98 ) Total $ 769 $ 283 $ 1,754 $ 797 31 Table of Content s During the nine months ended September 30, 2026, the Company entered into delayed draw term loan facilities and issued senior notes (each as defined in this Note 10—Debt ) as follows (dollars in millions): Date of Issuance Stated Interest Rates (1) Amount (2) DDTL 4.0 Facility March 2026 SOFR + 2.25 %; Treasury + 2.00 % $ 8,500 DDTL 5.0 Facility May 2026 SOFR + 4.50 % $ 3,100 DDTL 5.5 Facility August 2026 Term SOFR + 5.50 % $ 2,600 2031 9.75 % Senior Notes April 2026 9.75 % $ 2,750 2032 9.625 % Senior Notes June 2026 9.625 % $ 1,250 2032 EUR Senior Notes June 2026 8.50 % € 2,000 2032 Convertible Senior Notes April 2026 1.75 % $ 4,000 2033 Convertible Senior Notes September 2026 2.875 % $ 4,200 (1) DDTL Facility floating-rate commitments are subject to an interest rate per annum equal to, at the Company's option, either the SOFR or the alternative base rate plus a spread. For the DDTL 4.0 Facility, refer to the Delayed Draw Term Loans below for further details on interest rates. (2) Amounts represent borrowing capacity for the DDTL Facilities and the principal amounts for the Senior Notes. Delayed Draw Term Loans (\"DDTL\") In March 2026, one of the Company's subsidiaries, CoreWeave Compute Acquisition Co. VIII, LLC (\"CCAC VIII\"), entered into a DDTL facility agreement with various lenders and MUFG Bank, LTD., as the administrative agent. The agreement provides an $ 8.5 billion DDTL facility (the \"DDTL 4.0 Facility\") available in one or more draws through June 30, 2027, the commitment termination date. As of September 30, 2026, the facility has"
       },
       {
        "terms": [
@@ -626,33 +645,32 @@
        "terms": [
         "delayed draw"
        ],
-       "text": "assets because many of these assets cannot be readily moved and are relatively illiquid, subjecting them to geographic risk. As of June 30, 2026 and December 31, 2025, 88 % of the Company's long-lived assets were located in the United States, with no other single country accounting for more than 10% of these assets. 16. Subsequent Events In August 2026, one of the Company's indirect subsidiaries, CoreWeave Financing DDTL V-V, LLC entered into a delayed draw term loan facility agreement with various lenders and JPMorgan Chase Bank, N.A., as the administrative agent. The agreement provides a $ 2.6 billion delayed draw term loan facility (the “DDTL 5.5 Facility”) available in one or more draws through the commitment termination date in December 2026. Interest on outstanding borrowings on the DDTL 5.5 Facility accrues for SOFR loans at an interest rate per annum equal to the Term SOFR plus an applicable margin of 5.5 % or for base rate loans at the applicable base rate plus 4.5 % per annum, at the Company's election. The DDTL 5.5 Facility matures in September 2"
+       "text": "o our Credit Facilities and the issuances of debt securities. The following table summarizes our principal sources of liquidity for the periods presented (in millions): September 30, 2026 December 31, 2025 Cash and cash equivalents $ 4,122 $ 3,127 Marketable securities 62 34 Availability under existing facilities (1) 5,653 3,701 Total liquidity $ 9,837 $ 6,862 ____________ (1) Refers to secured commitments under the revolving credit facility and delayed draw term loan agreements. We have generated significant losses from operations, as reflected in our accumulated deficit of $4.7 billion as of September 30, 2026. Additionally, we have generated significant negative cash flows from investing activities as we continue to support the growth of our CoreWeave Cloud Platform. We anticipate making significant investments for the foreseeable future, including in our infrastructure and go-to-market capabilit"
       },
       {
        "terms": [
         "delayed draw"
        ],
-       "text": "t to our Credit Facilities and the issuances of debt securities. The following table summarizes our principal sources of liquidity for the periods presented (in millions): June 30, 2026 December 31, 2025 Cash and cash equivalents $ 5,524 $ 3,127 Marketable securities 15 34 Availability under existing facilities (1) 10,014 3,701 Total liquidity $ 15,553 $ 6,862 ____________ (1) Refers to secured commitments under the revolving credit facility and delayed draw term loan agreements. We have generated significant losses from operations, as reflected in our accumulated deficit of $4.0 billion as of June 30, 2026. Additionally, we have generated significant negative cash flows from investing activities as we continue to support the growth of our CoreWeave Cloud Platform. We anticipate making significant investments for the foreseeable future, including in our infrastructure and go-to-market capabilities,"
+       "text": "t by higher paydown of principal on existing debt. Capital Investments Our capital investments in property and equipment consist primarily of technology and infrastructure, which consist of our investments in servers and network equipment for computing, storage, and networking requirements that collectively enable the development and deployment of AI models. We fund these capital investments through a mix of debt and equity securities issuances, delayed draw term loan facilities, OEM financing arrangements, and cash from our balance sheet. We expect capital investments will continue to be financed through a similar mix of debt and equity securities issuances, delayed draw term loan facilities, OEM financing arrangements, and cash from our balance sheet. During the nine months ended September 30, 2026 and 2025, cash paid for property and equipment was $23.6 billion and $6.2 billion, respectively. We expect to increase, relative to 2025, our investment in our technology and infrastructure, including servers, network equipment, and data center related expenses, to support the growth of our business and our long-term"
+      },
+      {
+       "terms": [
+        "NVIDIA"
+       ],
+       "text": "after deducting the underwriting discounts and commissions. In April 2025, the underwriters exercised a portion of their over-allotment option and purchased from us an additional approximately 2 million shares of our Class A common stock at the public offering price, which resulted in net proceeds to us of $68 million after deducting the underwriting discounts and commissions. In January 2026, we entered into a securities purchase agreement with NVIDIA Corporation for a private placement of approximately 23 million shares of our Class A common stock at a purchase price of $87.20 per share, for aggregate gross proceeds of $2.0 billion. The par value of the shares issued was recorded to Class A common stock, with the remainder recorded to additional paid-in capital. 53 Table of Content s In April 2026, we issued approximately 9 million shares of our Class A common stock in a private placement at"
       },
       {
        "terms": [
         "delayed draw"
        ],
-       "text": "e was partially offset by higher payments on debt. Capital Investments Our capital investments in property and equipment consist primarily of technology and infrastructure, which consist of our investments in servers and network equipment for computing, storage, and networking requirements that collectively enable the development and deployment of AI models. We fund these capital investments through a mix of debt and equity securities issuances, delayed draw term loan facilities, OEM financing arrangements, and cash from our balance sheet. We expect capital investments will continue to be financed through a similar mix of debt and equity securities issuances, delayed draw term loan facilities, OEM financing arrangements, and cash from our balance sheet. During the six months ended June 30, 2026 and 2025, cash paid for property and equipment was $14.1 billion and $3.9 billion, respectively. We expect to increase, relative to 2025, our investment in our technology and infrastructure, including servers, network equipment, and data center related expenses, to support the growth of our business and our long-term initi"
-      },
-      {
-       "terms": [
-        "NVIDIA",
-        "delayed draw"
-       ],
-       "text": "nderwriting discounts and commissions. In April 2025, the underwriters exercised a portion of their over-allotment option 47 Table of Contents and purchased from us an additional approximately 2 million shares of our Class A common stock at the public offering price, which resulted in net proceeds to us of $68 million after deducting the underwriting discounts and commissions. In January 2026, we entered into a securities purchase agreement with NVIDIA Corporation for a private placement of approximately 23 million shares of our Class A common stock at a purchase price of $87.20 per share, for aggregate gross proceeds of $2.0 billion. The par value of the shares issued was recorded to Class A common stock, with the remainder recorded to additional paid-in capital. In April 2026, we issued approximately 9 million shares of our Class A common stock in a private placement at a price of $109.00 per share, for aggregate gross proceeds of $1.0 billion. The par value of the shares issued was recorded to Class A common stock, with the remainder recorded to additional paid-in capital. Debt Financing As of June 30, 2026, we had $13.6 billion outstanding under our delayed draw term loan facilities. These delayed draw term loan facilities are collateralized with the assets underlying the contributed contracts and the pledged contractual cash flows, generally from investment grade counterparties. They are drawn as we build infrastructure to support customer requirements, and amortize over time as contracted cash flows are generated in a regular and predictable manner, with excess cash made available to us. As of June 30, 2026, we had $16.6 billion aggregate ou"
+       "text": "rd Seller under the ATM Program may be up to 2.0% of the gross sales price. No shares were sold and no collared forward sale agreements were entered into under the ATM Program during the three and nine months ended September 30, 2026. As of September 30, 2026, we had 35 million shares of our Class A common stock remaining available for sale under the ATM Program. Debt Financing As of September 30, 2026, we had $17.6 billion outstanding under our delayed draw term loan facilities. These delayed draw term loan facilities are collateralized with the assets underlying the contributed contracts and the pledged contractual cash flows, generally from investment grade counterparties. They are drawn as we build infrastructure to support customer requirements, and amortize over time as contracted cash flows are generated in a regular and predictable manner, with excess cash made available to us. As of September 30, 2026, we had $20.8 billion aggrega"
       },
       {
        "terms": [
         "Meta",
         "OpenAI"
        ],
-       "text": ", 26%, and 10% of our revenue from our top three customers for the three months ended June 30, 2026, with no other customer representing 10% or more of our revenue for that period. We recognized an aggregate of approximately 71% of our revenue from our top customer for the three months ended June 30, 2025, with no other customer representing 10% or more of our revenue for that period. In May 2025, we entered into a master services agreement with OpenAI OpCo, LLC (\"OpenAI\") and in September 2025, we entered into an order form under this master services agreement pursuant to which OpenAI committed to pay us up to approximately $6.5 billion through May 31, 2031 and, as a result, we expect OpenAI to be a significant customer in future periods. Similarly, in March 2026, we entered into an order form under an existing master services agreement pursuant to which Meta Platforms, Inc. (“Meta”) initially committed to pay us up to approximately $21.0 billion (inclusive of access to new computing capacity through December 20, 2032 and the exercise of an existing option to access additional computing capacity through April 10, 2032) and, as a result, we also expect Meta to be a significant customer in future periods. We expect that our customer concentration with a limited number of top customers is likely to continue in future years because of the long-term nature of contracts with those customers. Any negative changes in demand from our top customers or the perception of negative changes in demand from 58 Table of Contents our top customers, in their ability or willingness to perform under their contracts wit"
+       "text": "nd 24% of our revenue from our top two customers for the three months ended September 30, 2026, with no other customer representing 10% or more of our revenue for that period. We recognized an aggregate of approximately 67% of our revenue from our top customer for the three months ended September 30, 2025, with no other customer representing 10% or more of our revenue for that period. In May 2025, we entered into a master services agreement with OpenAI OpCo, LLC (\"OpenAI\") and in September 2025, we entered into an order form under this master services agreement pursuant to which OpenAI committed to pay us up to approximately $6.5 billion through May 31, 2031 and, as a result, we expect OpenAI to be a significant customer in future periods. Similarly, in March 2026, we entered into an order form under an existing master services agreement pursuant to which Meta Platforms, Inc. (\"Meta\") initially committed to pay us up to approximately $21.0 billion (inclusive of access to new computing capacity through December 20, 2032 and the exercise of an existing option to access additional computing capacity through April 10, 2032) and, as a result, we also expect Meta to be a significant customer in future periods. We expect that our customer concentration with a limited number of top customers is likely to continue in future years because of the long-term nature of contracts with those customers. Any negative changes in demand from our top customers or the perception of negative changes in demand from our top customers, in their ability or willingness to perform under their contracts with us, in laws or regu"
       },
       {
        "terms": [
@@ -664,13 +682,19 @@
        "terms": [
         "delayed draw"
        ],
-       "text": "ncipal payments. As of June 30, 2026, our total indebtedness was $35.6 billion and we had $10.0 billion of undrawn availability under our Revolving Credit Facility, DDTL 3.0 Facility, DDTL 4.0 Facility (as defined below), and DDTL 5.0 Facility (as defined below). In July 92 Table of Contents 2023, CoreWeave Compute Acquisition Co. II, LLC, our direct, wholly owned subsidiary, entered into the DDTL 1.0 Facility providing for up to $2.3 billion in delayed draw term loans. In May 2024, CoreWeave Compute Acquisition Co. IV, LLC, our direct, wholly owned subsidiary, entered into the DDTL 2.0 Facility providing for up to $7.6 billion in delayed draw term loans. In September 2025, we further amended the DDTL 2.0 Facility by entering into the DDTL 2.1 Facility to create a new tranche of delayed draw term loan facility up to $3.0 billion and extend the draw period for new borrowings to March 2026. In July 2025, CoreWeave Compute Acquisition Co. V, LLC, our direct, wholly owned subsidiary, and CoreWeave Compute Acquisition Co. VII, LLC, our indirect subsidiary, entered into the DDTL 3.0 Facility providing for up to $2.6 billion in delayed draw term loans. On March 30, 2026, CoreWeave Compute Acquisition Co. VIII, LLC, our indirect subsidiary, entered into the DDTL 4.0 Facility providing for an $8.5 billion delayed draw term loan facility (the \"DDTL 4.0 Facility\"). On May 15, 2026, CoreWeave Financing DDTL V, LLC, our indirect subsidiary, entered into the DDTL 5.0 Facility, providing for a $3.1 billion delayed draw term loan facility (the “DDTL 5.0 Facility”, and together with the DDTL 1.0 Facility, the DDTL 2.0 Facility, the DDTL 2.1 Facility, the DDTL 3.0 Facility, and the DDTL 4.0 Facility, the \"DDTL Facilities\"). All obligations under the DDTL Facilities, other than the DDTL 4.0 Facility, are unconditionally guaranteed by us. The DDTL 4.0 Facility is non-recourse, except for limited guarantees related to customary non-recourse carve-out obligations. In"
+       "text": "equires significant interest and principal payments. As of September 30, 2026, our total indebtedness was $47.5 billion and we had $5.7 billion of undrawn availability under our Revolving Credit Facility, DDTL 4.0 Facility (as defined below), and DDTL 5.5 Facility (as defined below). In July 2023, CoreWeave Compute Acquisition Co. II, LLC, our direct, wholly owned subsidiary, entered into the DDTL 1.0 Facility providing for up to $2.3 billion in delayed draw term loans. In May 2024, CoreWeave Compute Acquisition Co. IV, LLC, our direct, wholly owned subsidiary, entered into the DDTL 2.0 Facility providing for up to $7.6 billion in delayed draw term loans. In September 2025, we further amended the DDTL 2.0 Facility by entering into the DDTL 2.1 Facility to create a new tranche of delayed draw term loan facility up to $3.0 billion and extend the draw period for new borrowings to March 2026. In July 2025, CoreWeave Compute Acquisition Co. V, LLC, our direct, wholly owned subsidiary, and CoreWeave Compute Acquisition Co. VII, LLC, our indirect subsidiary, entered into the DDTL 3.0 Facility providing for up to $2.6 billion in delayed draw term loans. On March 30, 2026, CoreWeave Compute Acquisition Co. VIII, LLC, our indirect subsidiary, entered into the DDTL 4.0 Facility providing for an $8.5 billion delayed draw term loan facility (the \"DDTL 4.0 Facility\"). On May 15, 2026, CoreWeave Financing DDTL V, LLC, our indirect subsidiary, entered into the DDTL 5.0 Facility, providing for a $3.1 billion delayed draw term loan facility (the “DDTL 5.0 Facility”). On August 7, 2026, CoreWeave Financing DDTL V-V, LLC, our indirect subsidiary, entered into the DDTL 5.5 Facility providing for a $2.6 billion delayed draw term loan facility (the “DDTL 5.5 Facility” and together with the DDTL 1.0 Facility, the DDTL 2.0 Facility, the DDTL 2.1 Facility, the DDTL 3.0 Facility, the DDTL 4.0 Facility, and the DDTL 5.0 Facility, the \"DDTL Facilities\"). All obligations under the DDTL Facilities, other than the DDTL 4.0 Facility, are unconditionally guaranteed by us. The DDTL 4.0 Facility is non-recourse, except for limited guarantees related to customary non-recourse car"
+      },
+      {
+       "terms": [
+        "delayed draw"
+       ],
+       "text": "pany. They contain covenants that restrict the ability of the Company and/or CFD V-V to incur or guarantee additional indebtedness; pay dividends and make other distributions or repurchase stock; make certain investments; create or incur liens; sell assets; enter into certain transactions with affiliates; and merge, consolidate, transfer, or sell all or substantially all of its assets. The carrying value of the variable-rate borrowings under the delayed draw term loans approximates fair value because the interest rates reset periodically to market rates. The carrying value of the fixed-rate borrowing under the DDTL 4.0 Facility approximates its estimated fair value, which was determined using a discounted cash flow method based on current market rates and is categorized as Level 3 in the fair value hierarchy. Certain of the Company's debt facilities are entered into by bankruptcy-remote, special-pur"
       },
       {
        "terms": [
         "NVIDIA"
        ],
-       "text": "facture the components we use to build the technology infrastructure underlying our platform. We have a limited number of suppliers that we use to procure and configure significant components of the technology infrastructure that we use to operate our platform and provide our solutions and services to our customers. For example, as a result of our obligations in our current customer contracts, all of the GPUs used in our infrastructure today are NVIDIA GPUs. Additionally, for the year ended December 31, 2025, three suppliers accounted for 23%, 20%, and 17% of total purchases, for the year ended December 31, 2024, three suppliers accounted for 46%, 16%, and 14% of total purchases, and for the year ended December 31, 2023, three suppliers accounted for 57%, 22%, and 11% of total purchases. Utilizing a limited number of suppliers of the components for our technology infrastructure exposes us to r"
+       "text": "facture the components we use to build the technology infrastructure underlying our platform. We have a limited number of suppliers that we use to procure and configure significant components of the technology infrastructure that we use to operate our platform and provide our solutions and services to our customers. For example, as a result of our obligations in our current customer contracts, all of the GPUs used in our infrastructure today are NVIDIA GPUs and we have a limited number of suppliers for storage and memory components. Additionally, for the year ended December 31, 2025, three suppliers accounted for 23%, 20%, and 17% of total purchases, for the year ended December 31, 2024, three suppliers accounted for 46%, 16%, and 14% of total purchases, and for the year ended December 31, 2023, three suppliers accounted for 57%, 22%, and 11% of total purchases. Utilizing a limited number of s"
       },
       {
        "terms": [
@@ -694,7 +718,7 @@
        "terms": [
         "NVIDIA"
        ],
-       "text": "grow our business, we must continue to attract new customers in a cost-effective manner and enable these customers to realize the benefits associated with our platform. We may experience difficulties demonstrating to customers the value of our platform and any new solutions and services that we offer. As we develop and introduce new solutions and services and add new and upgraded components of our platform (such as our expected deployment of the NVIDIA Rubin platform in the second half of 2026), we face the risk that customers may not value or be willing to adopt these newer offerings, and may forgo adopting one or more newer generations of our existing offerings. Regardless of the improved features or superior performance of the newer offerings, customers may be unwilling to adopt our platform due to design or pricing constraints, among other reasons. Even if customers choose to adopt our pla"
+       "text": "order to grow our business, we must continue to attract new customers in a cost-effective manner and enable these customers to realize the benefits associated with our platform. We may experience difficulties demonstrating to customers the value of our platform and any new solutions and services that we offer. As we develop and introduce new solutions and services and add new and upgraded components of our platform (such as our announcement that NVIDIA Vera Rubin NVL72 was available on CoreWeave in the third quarter of 2026), we face the risk that customers may not value or be willing to adopt these newer offerings, and may forgo adopting one or more newer generations of our existing offerings. Regardless of the improved features or superior performance of the newer offerings, customers may be unwilling to adopt our platform due to design or pricing constraints, among other reasons. Even if cu"
       },
       {
        "terms": [
